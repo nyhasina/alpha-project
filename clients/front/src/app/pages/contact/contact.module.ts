@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { SharedModule } from '../../shared/shared.module';
+import { ContactFormComponent } from './components/contact-form/contact-form.component';
 import { ContactListComponent } from './components/contact-list/contact-list.component';
 
 import { ContactRoutingModule } from './contact-routing.module';
@@ -15,14 +16,15 @@ import { contactReducer } from './store/contact.reducers';
 import { ContactRouterEffects } from './store/contact.router-effects';
 
 @NgModule({
-    declarations: [ContactComponent, ContactListRootComponent, ContactFormRootComponent, ContactListComponent],
-    imports: [
-        CommonModule,
-        ContactRoutingModule,
-        StoreModule.forFeature('contact', contactReducer),
-        EffectsModule.forFeature([ContactEffects, ContactRouterEffects]),
-        SharedModule,
-    ],
-    providers: [ContactService],
+  declarations: [ContactComponent, ContactListRootComponent, ContactFormRootComponent, ContactListComponent, ContactFormComponent],
+  imports: [
+    CommonModule,
+    ContactRoutingModule,
+    StoreModule.forFeature('contact', contactReducer),
+    EffectsModule.forFeature([ContactEffects, ContactRouterEffects]),
+    SharedModule
+  ],
+  providers: [ContactService]
 })
-export class ContactModule {}
+export class ContactModule {
+}

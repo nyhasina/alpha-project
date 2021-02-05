@@ -3,6 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="e36506c2-d7ea-4b59-a9ff-295378462932" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients/front/src/app/pages/contact/containers/contact-form-root/contact-form-root.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/clients/front/src/app/pages/contact/containers/contact-form-root/contact-form-root.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients/front/src/app/pages/contact/containers/contact-list-root/contact-list-root.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/clients/front/src/app/pages/contact/containers/contact-list-root/contact-list-root.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients/front/src/app/pages/contact/store/contact.actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/clients/front/src/app/pages/contact/store/contact.actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients/front/src/app/pages/contact/store/contact.reducers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/clients/front/src/app/pages/contact/store/contact.reducers.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +78,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1612546028605</updated>
-      <workItem from="1612546038032" duration="1950000" />
+      <workItem from="1612546038032" duration="2484000" />
     </task>
     <servers />
   </component>

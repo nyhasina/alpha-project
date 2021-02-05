@@ -7,7 +7,7 @@ import { Contact } from '../../../../shared/interfaces/contact.interface';
     styleUrls: ['./contact-list.component.scss'],
 })
 export class ContactListComponent implements OnInit {
-    @Input() contacts!: Contact[];
+    @Input() contacts!: Contact[] | null;
     @Output() edit: EventEmitter<number> = new EventEmitter<number>();
 
     constructor() {}

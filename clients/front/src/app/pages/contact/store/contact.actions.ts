@@ -13,4 +13,4 @@ export const loadContactFail = createAction('[Contact] Load contact fail', props
 export const loadContactSuccess = createAction('[Contact] Load contact success', props<{ contact: Contact }>());
 export const saveContact = createAction('[Contact] Save contact', props<{ contact: Contact }>());
 export const saveContactFail = createAction('[Contact] Save contact fail', props<{ error: HttpErrorResponse }>());
-export const saveContactSuccess = createAction('[Contact] Save contact success', props<{ contact?: Contact }>());
+export const saveContactSuccess = createAction('[Contact] Save contact success', props<{ contact: Contact }>());

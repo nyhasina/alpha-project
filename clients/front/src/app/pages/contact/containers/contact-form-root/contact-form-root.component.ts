@@ -12,7 +12,7 @@ import { selectContact } from '../../store/contact.selectors';
     styleUrls: ['./contact-form-root.component.scss'],
 })
 export class ContactFormRootComponent implements OnInit {
-    contact$!: Observable<Contact | undefined>;
+    contact$!: Observable<Contact>;
 
     constructor(private contactStore: Store<ContactState>) {}
 

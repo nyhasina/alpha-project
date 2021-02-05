@@ -8,7 +8,7 @@ import { Contact } from '../../../../shared/interfaces/contact.interface';
     styleUrls: ['./contact-form.component.scss'],
 })
 export class ContactFormComponent implements OnInit, OnChanges {
-    @Input() contact!: Contact;
+    @Input() contact!: Contact | null;
     @Output() submit: EventEmitter<Contact> = new EventEmitter<Contact>();
     form!: FormGroup;
 

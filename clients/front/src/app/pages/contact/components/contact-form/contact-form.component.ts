@@ -9,7 +9,7 @@ import { Contact } from '../../../../shared/interfaces/contact.interface';
 })
 export class ContactFormComponent implements OnInit, OnChanges {
     @Input() contact!: Contact | null;
-    @Output() submit: EventEmitter<Contact> = new EventEmitter<Contact>();
+    @Output() save: EventEmitter<Contact> = new EventEmitter<Contact>();
     form!: FormGroup;
 
     constructor(private formBuilder: FormBuilder) {}
@@ -24,7 +24,7 @@ export class ContactFormComponent implements OnInit, OnChanges {
 
     onSubmit(): void {
         if (this.form?.valid) {
-            this.submit.emit(this.form.value);
+            this.save.emit(this.form.value);
         }
     }
 

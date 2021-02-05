@@ -1,11 +1,35 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { SharedModule } from '../../shared/shared.module';
 
 import { ContactRoutingModule } from './contact-routing.module';
 import { ContactComponent } from './contact.component';
+import { ContactListRootComponent } from './containers/contact-list-root/contact-list-root.component';
+import { ContactFormRootComponent } from './containers/contact-form-root/contact-form-root.component';
+import { ContactListComponent } from './components/contact-list/contact-list.component';
+import { ContactFormComponent } from './components/contact-form/contact-form.component';
+import { ContactService } from './services/contact.service';
+import { ContactEffects } from './store/contact.effects';
+import { contactReducer } from './store/contact.reducers';
+import { ContactRouterEffects } from './store/contact.router-effects';
 
 @NgModule({
-    declarations: [ContactComponent],
-    imports: [CommonModule, ContactRoutingModule],
+    declarations: [
+        ContactComponent,
+        ContactListRootComponent,
+        ContactFormRootComponent,
+        ContactListComponent,
+        ContactFormComponent,
+    ],
+    imports: [
+        CommonModule,
+        ContactRoutingModule,
+        StoreModule.forFeature('contact', contactReducer),
+        EffectsModule.forFeature([ContactEffects, ContactRouterEffects]),
+        SharedModule,
+    ],
+    providers: [ContactService],
 })
 export class ContactModule {}

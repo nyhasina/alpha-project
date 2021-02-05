@@ -7,17 +7,11 @@ const routes: Routes = [
         children: [
             {
                 path: '',
-                loadChildren: () =>
-                    import('./landing/landing.module').then(
-                        (m) => m.LandingModule
-                    ),
+                loadChildren: () => import('./landing/landing.module').then((m) => m.LandingModule),
             },
             {
                 path: 'administration',
-                loadChildren: () =>
-                    import('./administration/administration.module').then(
-                        (m) => m.AdministrationModule
-                    ),
+                loadChildren: () => import('./administration/administration.module').then((m) => m.AdministrationModule),
             },
         ],
     },

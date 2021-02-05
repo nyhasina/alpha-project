@@ -4,23 +4,22 @@ import { ContactFormRootComponent } from './containers/contact-form-root/contact
 import { ContactListRootComponent } from './containers/contact-list-root/contact-list-root.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: ContactListRootComponent
-  },
-  {
-    path: 'edit/:contactId',
-    component: ContactFormRootComponent
-  },
-  {
-    path: 'new',
-    component: ContactFormRootComponent
-  }
+    {
+        path: '',
+        component: ContactListRootComponent,
+    },
+    {
+        path: 'edit/:contactId',
+        component: ContactFormRootComponent,
+    },
+    {
+        path: 'new',
+        component: ContactFormRootComponent,
+    },
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule],
 })
-export class ContactRoutingModule {
-}
+export class ContactRoutingModule {}

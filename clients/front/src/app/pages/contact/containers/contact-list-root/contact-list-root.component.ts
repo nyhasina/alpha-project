@@ -10,7 +10,7 @@ import { selectContacts } from '../../store/contact.selectors';
     styleUrls: ['./contact-list-root.component.scss'],
 })
 export class ContactListRootComponent implements OnInit {
-    contacts$: Observable<Contact[] | undefined> | null | undefined;
+    contacts$!: Observable<Contact[] | undefined>;
 
     constructor(private contactStore: Store<Contact>) {}
 

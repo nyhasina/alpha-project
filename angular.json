@@ -51,7 +51,7 @@
               "apps/back-office/src/favicon.ico",
               "apps/back-office/src/assets"
             ],
-            "styles": ["apps/back-office/src/styles.scss"],
+            "styles": ["./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css", "apps/back-office/src/styles.scss"],
             "scripts": []
           },
           "configurations": {

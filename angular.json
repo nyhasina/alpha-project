@@ -163,7 +163,13 @@
             "aot": true,
             "assets": ["apps/front/src/favicon.ico", "apps/front/src/assets"],
             "styles": ["apps/front/src/styles.scss"],
-            "scripts": []
+            "scripts": [
+              "apps/front/src/assets/vendors/jquery/dist/jquery.min.js",
+              "apps/front/src/assets/vendors/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "apps/front/src/assets/vendors/js-cookie/js.cookie.js",
+              "apps/front/src/assets/vendors/jquery.scrollbar/jquery.scrollbar.min.js",
+              "apps/front/src/assets/js/argon.js"
+            ]
           },
           "configurations": {
             "production": {

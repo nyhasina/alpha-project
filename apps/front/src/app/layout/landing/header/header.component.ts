@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
@@ -6,14 +6,12 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
-  menu = ['Tournaments', 'Training', 'Game', 'Comminuty'];
+export class HeaderComponent {
+  menuListes = ['Tournaments', 'Training', 'Game', 'Comminuty'];
+  fa = ['globe', 'shopping-bag']
   navbarOpen = false;
-  constructor() { }
   toggleNavbar() {
     this.navbarOpen = !this.navbarOpen;
-  }
-  ngOnInit(): void {
   }
 
 }

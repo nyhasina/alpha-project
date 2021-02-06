@@ -162,7 +162,7 @@
             "tsConfig": "apps/front/tsconfig.app.json",
             "aot": true,
             "assets": ["apps/front/src/favicon.ico", "apps/front/src/assets"],
-            "styles": ["apps/front/src/styles.scss"],
+            "styles": ["apps/front/src/styles.scss",  "node_modules/font-awesome/css/font-awesome.css"],
             "scripts": []
           },
           "configurations": {

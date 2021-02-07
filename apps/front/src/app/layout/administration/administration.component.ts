@@ -1,5 +1,12 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
-import { SIDEBAR_ITEMS, SIDENAV_HIDDEN, SIDENAV_HIDE, SIDENAV_PINNED, SIDENAV_SHOW } from './administration.constants';
+import {
+    ASIDE_SIDEBAR_ITEMS,
+    SIDEBAR_ITEMS,
+    SIDENAV_HIDDEN,
+    SIDENAV_HIDE,
+    SIDENAV_PINNED,
+    SIDENAV_SHOW,
+} from './administration.constants';
 import { NavItem } from './interfaces/nav-item.interface';
 
 @Component({
@@ -9,11 +16,13 @@ import { NavItem } from './interfaces/nav-item.interface';
 })
 export class AdministrationComponent implements OnInit {
     sidebarItems: NavItem[];
+    asideSidebarItems: NavItem[];
 
     constructor(private renderer: Renderer2) {}
 
     ngOnInit(): void {
         this.sidebarItems = SIDEBAR_ITEMS;
+        this.asideSidebarItems = ASIDE_SIDEBAR_ITEMS;
     }
 
     onMouseEnter() {

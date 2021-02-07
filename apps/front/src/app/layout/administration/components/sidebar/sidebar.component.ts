@@ -8,4 +8,5 @@ import { NavItem } from '../../interfaces/nav-item.interface';
 })
 export class SidebarComponent {
     @Input() sidebarItems: NavItem[];
+    @Input() asideSidebarItems: NavItem[];
 }

@@ -1,10 +1,6 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
+import { SIDEBAR_ITEMS, SIDENAV_HIDDEN, SIDENAV_HIDE, SIDENAV_PINNED, SIDENAV_SHOW } from './administration.constants';
 import { NavItem } from './interfaces/nav-item.interface';
-
-const SIDENAV_PINNED = 'g-sidenav-pinned';
-const SIDENAV_SHOW = 'g-sidenav-show';
-const SIDENAV_HIDE = 'g-sidenav-hide';
-const SIDENAV_HIDDEN = 'g-sidenav-hidden';
 
 @Component({
     selector: 'nicecactus-platform-administration',
@@ -17,58 +13,7 @@ export class AdministrationComponent implements OnInit {
     constructor(private renderer: Renderer2) {}
 
     ngOnInit(): void {
-        this.sidebarItems = [
-            {
-                icon: 'ni ni-ui-04',
-                label: 'components',
-                children: [
-                    {
-                        label: 'buttons',
-                    },
-                    {
-                        label: 'cards',
-                    },
-                    {
-                        label: 'grid',
-                    },
-                    {
-                        label: 'notifications',
-                    },
-                    {
-                        label: 'icons',
-                    },
-                    {
-                        label: 'typography',
-                    },
-                    {
-                        label: 'multi level',
-                        children: [
-                            {
-                                label: 'third level menu',
-                            },
-                            {
-                                label: 'just another link',
-                            },
-                            {
-                                label: 'one last link',
-                            },
-                        ],
-                    },
-                ],
-            },
-            {
-                label: 'getting started',
-            },
-            {
-                label: 'foundation',
-            },
-            {
-                label: 'components',
-            },
-            {
-                label: 'plugins',
-            },
-        ];
+        this.sidebarItems = SIDEBAR_ITEMS;
     }
 
     onMouseEnter() {

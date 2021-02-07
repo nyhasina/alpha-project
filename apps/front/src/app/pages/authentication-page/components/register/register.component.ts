@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-
+import {matchPwds} from '../validators'
 @Component({
   selector: 'nicecactus-platform-register',
   templateUrl: './register.component.html',
@@ -8,22 +8,30 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
   formRegister: FormGroup;
+  submitted = false;
+  cookiesCheck = false;
   constructor(
     private formBuilder?: FormBuilder,
   ) {
     this.createformRegister();
-   }
-   createformRegister() {
+  }
+  get f() { return this.formRegister.controls; }
+  createformRegister() {
     this.formRegister = this.formBuilder.group({
-      email: ['', Validators.compose([
+      email:['', Validators.compose([
         Validators.required,
         this.checkMail
       ])],
       username: ['', Validators.required],
-      password: ['', Validators.compose([
+      password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(50)]],
+      confirmPassword: ['', Validators.compose([
         Validators.required,
       ])],
-    });
+      authorization: [false, Validators.requiredTrue],
+      cookies: [false, Validators.requiredTrue],
+    },{
+      validator: matchPwds('password', 'confirmPassword'),
+  });
   }
   checkMail(controls) {
     const regExp = new RegExp(/\S+@\S+\.\S+/);
@@ -31,6 +39,15 @@ export class RegisterComponent implements OnInit {
       return null;
     } else {
       return { checkMail: true };
+    }
+  }
+  functionForm01() {
+    console.log('ee')
+  }
+  onSubmit() {
+    this.submitted = true;
+    if (this.formRegister.invalid) {
+        return;
     }
   }
   ngOnInit(): void {

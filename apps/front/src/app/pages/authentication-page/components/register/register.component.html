@@ -1,20 +1,65 @@
 <div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card">
-                <form class="box" [formGroup]="formRegister">
-                    <h1>be the next champion</h1>
-                    <p class="text-muted"> Please enter your Information!</p> 
-                    <input class="form-control" type="text" name="email" placeholder="Email*">
-                    <input class="form-control" type="text" name="username" placeholder="Username*">  
-                    <input class="form-control" type="password" name="pwd" placeholder="Password*"> 
-                    <input class="form-control" type="password" name="confirmpwd" placeholder="Confirm password*"> 
-                    <input class="form-control" type="text" name="code" placeholder="code*"> 
-                    <a class="forgot text-muted" href="#">Forgot password?</a> 
-                    <button>Join Now</button>
-                   <p>Already a member?<a class="forgot text-muted" routerLink="/auth/login">Log in</a> </p> 
-                </form>
-            </div>
-        </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <form class="box" [formGroup]="formRegister">
+          <h1>be the next champion</h1>
+          <p class="text-muted"> Please enter your Information!</p>
+          <div class="form-group">
+			<input class="form-control" type="text" name="email" placeholder="Email*" formControlName="email">
+			<div class="alert-link" *ngIf="f.email.touched && f.email.invalid">
+				<p *ngIf="f.email.errors.required">Required fields</p>
+				<p *ngIf="f.email.errors.checkMail">Not a valid mail</p>
+			  </div>
+          </div>
+          <div class="form-group">
+			<input class="form-control" type="text" name="username" placeholder="Username*" formControlName="username">
+			<div class="alert-link" *ngIf="f.username.touched && f.username.invalid">
+				<p *ngIf="f.username.errors.required">Required fields</p>
+			  </div>
+		  </div>
+		  <div class="form-group">
+			<input class="form-control" type="password" name="pwd" placeholder="Password*" formControlName="password">
+			<div class="alert-link" *ngIf="f.password.touched && f.password.invalid">
+				<p *ngIf="f.password.errors.required">Required fields</p>
+				<p *ngIf="f.password.errors.minlength || f.password.errors.maxlength ">For security reasons, passwords must contain between 6 and 50 characters</p>
+			  </div>
+		  </div>
+		  <div class="form-group">
+			<input class="form-control" type="password" name="confirmpwd" placeholder="Confirm password*" formControlName="confirmPassword">
+			<div class="alert-link" *ngIf="f.confirmPassword.touched && f.confirmPassword.invalid">
+				<p *ngIf="f.confirmPassword.errors.required">Required fields</p>
+				<p *ngIf="f.confirmPassword.errors.mustMatch">Your password and confirm password must be the same</p>
+			  </div>
+		  </div>
+		  <div class="form-group">
+			<input class="form-control" type="text" name="code" placeholder="Code">
+		  </div>
+		  <div class="form-check">
+			<input type="checkbox" formControlName="authorization" [ngClass]="{ 'is-invalid': submitted && f.authorization.errors }" />
+			<label for="acceptTerms" class="form-check-label fs">I'm over 12 years old AND if I am below 16 my parents authorize me to access this website</label>
+			<p class="alert-link" *ngIf="submitted && f.authorization.errors">Authorization required</p>
+			<div class="alert-link" *ngIf="f.authorization.touched && f.authorization.invalid">
+				<p *ngIf="submitted && f.authorization.errors">Check This!!</p>
+			  </div>
+		</div>
+		<span class="form-check">
+			<input type="checkbox" formControlName="cookies" [ngClass]="{ 'is-invalid': cookiesCheck && f.authorization.errors }" />
+			<label for="cookies" class="form-check-label">I accept the Terms of Use and I acknowledge having read the Privacy and cookies policy</label>
+			<p class="alert-link" *ngIf="cookiesCheck && f.authorization.errors">Authorization required</p>
+			<div class="alert-link" *ngIf="f.authorization.touched && f.authorization.invalid">
+				<p *ngIf="cookiesCheck && f.authorization.errors">Authorization required</p>
+			  </div>
+			</span>
+			<span class="form-check">
+				<input type="checkbox" formControlName="authorization"/>
+				<label for="terms" class="form-check-label"> I  agree to receive communication from nicecactus</label>
+				</span>
+          <a class="forgot text-muted" href="#">Forgot password?</a>
+          <button   (click)="onSubmit()">Join Now</button>
+          <p>Already a member?<a class="forgot text-muted" routerLink="/auth/login">Log in</a> </p>
+        </form>
+      </div>
     </div>
+  </div>
 </div>

@@ -1,4 +1,5 @@
-import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
+import { NavItem } from './interfaces/nav-item.interface';
 
 const SIDENAV_PINNED = 'g-sidenav-pinned';
 const SIDENAV_SHOW = 'g-sidenav-show';
@@ -10,10 +11,65 @@ const SIDENAV_HIDDEN = 'g-sidenav-hidden';
     templateUrl: './administration.component.html',
     styleUrls: ['./administration.component.scss'],
 })
-export class AdministrationComponent {
-    @ViewChild('sidenav') sidenav!: ElementRef;
+export class AdministrationComponent implements OnInit {
+    sidebarItems: NavItem[];
 
     constructor(private renderer: Renderer2) {}
+
+    ngOnInit(): void {
+        this.sidebarItems = [
+            {
+                icon: 'ni ni-ui-04',
+                label: 'components',
+                children: [
+                    {
+                        label: 'buttons',
+                    },
+                    {
+                        label: 'cards',
+                    },
+                    {
+                        label: 'grid',
+                    },
+                    {
+                        label: 'notifications',
+                    },
+                    {
+                        label: 'icons',
+                    },
+                    {
+                        label: 'typography',
+                    },
+                    {
+                        label: 'multi level',
+                        children: [
+                            {
+                                label: 'third level menu',
+                            },
+                            {
+                                label: 'just another link',
+                            },
+                            {
+                                label: 'one last link',
+                            },
+                        ],
+                    },
+                ],
+            },
+            {
+                label: 'getting started',
+            },
+            {
+                label: 'foundation',
+            },
+            {
+                label: 'components',
+            },
+            {
+                label: 'plugins',
+            },
+        ];
+    }
 
     onMouseEnter() {
         if (!document.body.classList.contains(SIDENAV_PINNED)) {

@@ -13,6 +13,11 @@ const routes: Routes = [
                 path: 'administration',
                 loadChildren: () => import('./administration/administration.module').then((m) => m.AdministrationModule),
             },
+            {
+                path: 'auth',
+                loadChildren: () =>
+                    import('./authentication-layout/authentication-layout.module').then((m) => m.AuthenticationLayoutModule),
+            },
         ],
     },
 ];

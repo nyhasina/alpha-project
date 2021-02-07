@@ -1,15 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { NavItem } from '../../interfaces/nav-item.interface';
 
 @Component({
-  selector: 'nicecactus-platform-sidebar',
-  templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss']
+    selector: 'nicecactus-platform-sidebar',
+    templateUrl: './sidebar.component.html',
+    styleUrls: ['./sidebar.component.scss'],
 })
-export class SidebarComponent implements OnInit {
+export class SidebarComponent {
+    @Input() sidebarItems: NavItem[];
+    @Input() asideSidebarItems: NavItem[];
 
-  constructor() { }
+    constructor(private router: Router) {}
 
-  ngOnInit(): void {
-  }
-
+    go(routerLink: string[]) {
+      if (!routerLink) {
+        return;
+      }
+      this.router.navigate(routerLink);
+    }
 }

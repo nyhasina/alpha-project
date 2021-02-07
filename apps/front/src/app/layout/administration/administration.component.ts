@@ -1,19 +1,29 @@
-import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
-
-const SIDENAV_PINNED = 'g-sidenav-pinned';
-const SIDENAV_SHOW = 'g-sidenav-show';
-const SIDENAV_HIDE = 'g-sidenav-hide';
-const SIDENAV_HIDDEN = 'g-sidenav-hidden';
+import { Component, OnInit, Renderer2 } from '@angular/core';
+import {
+    ASIDE_SIDEBAR_ITEMS,
+    SIDEBAR_ITEMS,
+    SIDENAV_HIDDEN,
+    SIDENAV_HIDE,
+    SIDENAV_PINNED,
+    SIDENAV_SHOW,
+} from './administration.constants';
+import { NavItem } from './interfaces/nav-item.interface';
 
 @Component({
     selector: 'nicecactus-platform-administration',
     templateUrl: './administration.component.html',
     styleUrls: ['./administration.component.scss'],
 })
-export class AdministrationComponent {
-    @ViewChild('sidenav') sidenav!: ElementRef;
+export class AdministrationComponent implements OnInit {
+    sidebarItems: NavItem[];
+    asideSidebarItems: NavItem[];
 
     constructor(private renderer: Renderer2) {}
+
+    ngOnInit(): void {
+        this.sidebarItems = SIDEBAR_ITEMS;
+        this.asideSidebarItems = ASIDE_SIDEBAR_ITEMS;
+    }
 
     onMouseEnter() {
         if (!document.body.classList.contains(SIDENAV_PINNED)) {

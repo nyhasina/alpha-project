@@ -62,51 +62,52 @@
         <!-- Divider -->
         <hr class="my-3" />
         <!-- Heading -->
-        <h6 class="navbar-heading p-0 text-muted">
-            <span class="docs-normal">Documentation</span>
-            <span class="docs-mini">D</span>
-        </h6>
-        <!-- Navigation -->
-        <ul class="navbar-nav mb-md-3">
+        <ul class="navbar-nav" *ngFor="let item of asideSidebarItems; let i = index">
             <li class="nav-item">
                 <a
                     class="nav-link"
-                    href="https://demos.creative-tim.com/argon-dashboard-pro/docs/getting-started/overview.html"
-                    target="_blank"
+                    [attr.href]="item.children ? '#navbar-aside-' + i : null"
+                    [attr.data-toggle]="item.children ? 'collapse' : null"
+                    [attr.role]="item.children ? 'button' : null"
+                    [attr.aria-expanded]="item.children ? 'false' : null"
+                    [attr.aria-controls]="item.children ? 'navbar-aside-' + i : null"
+                    [attr.router-link]="!item.children ? item.routerLink : null"
                 >
-                    <i class="ni ni-spaceship"></i>
-                    <span class="nav-link-text">Getting started</span>
+                    <i [class]="item.icon" class="text-info"></i>
+                    <span class="nav-link-text">{{ item.label | titlecase }}</span>
                 </a>
-            </li>
-            <li class="nav-item">
-                <a
-                    class="nav-link"
-                    href="https://demos.creative-tim.com/argon-dashboard-pro/docs/foundation/colors.html"
-                    target="_blank"
-                >
-                    <i class="ni ni-palette"></i>
-                    <span class="nav-link-text">Foundation</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a
-                    class="nav-link"
-                    href="https://demos.creative-tim.com/argon-dashboard-pro/docs/components/alerts.html"
-                    target="_blank"
-                >
-                    <i class="ni ni-ui-04"></i>
-                    <span class="nav-link-text">Components</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a
-                    class="nav-link"
-                    href="https://demos.creative-tim.com/argon-dashboard-pro/docs/plugins/charts.html"
-                    target="_blank"
-                >
-                    <i class="ni ni-chart-pie-35"></i>
-                    <span class="nav-link-text">Plugins</span>
-                </a>
+                <div class="collapse" id="navbar-aside-{{ i }}" *ngIf="item.children">
+                    <ul class="nav nav-sm flex-column">
+                        <li class="nav-item" *ngFor="let secondLevel of item.children; let j = index">
+                            <a
+                                class="nav-link"
+                                [attr.href]="secondLevel.children ? '#navbar-aside-second-level-' + j : null"
+                                [attr.data-toggle]="secondLevel.children ? 'collapse' : null"
+                                [attr.button]="secondLevel.children ? 'button' : null"
+                                [attr.aria-expanded]="secondLevel.children ? true : null"
+                                [attr.controls]="secondLevel.children ? '#navbar-aside-second-level-' + j : null"
+                                [attr.router-link]="!secondLevel.children ? secondLevel.routerLink : null"
+                            >
+                                <span class="sidenav-mini-icon"> {{ secondLevel.label | firstLetter | uppercase }}</span>
+                                <span class="sidenav-normal"> {{ secondLevel.label | titlecase }} </span>
+                            </a>
+                            <div
+                                class="collapse show"
+                                id="navbar-aside-second-level-{{ j }}"
+                                style=""
+                                *ngIf="secondLevel.children"
+                            >
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item" *ngFor="let thirdLevel of secondLevel.children">
+                                        <a [routerLink]="thirdLevel.routerLink" class="nav-link">{{
+                                            thirdLevel.label | titlecase
+                                        }}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </li>
         </ul>
     </div>

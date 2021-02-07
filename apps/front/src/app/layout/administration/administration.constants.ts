@@ -14,17 +14,17 @@ export const SIDEBAR_ITEMS: NavItem[] = [
     {
         label: 'Dashboard',
         icon: 'fa fa-home',
-        routerLink: '/admin/dashboard',
+        routerLink: ['/admin/dashboard'],
     },
     {
         label: 'Tracking',
         icon: 'fa fa-line-chart',
-        routerLink: '/admin/tracking',
+        routerLink: ['/admin/tracking'],
     },
     {
         label: 'Tournois',
         icon: 'fa fa-trophy',
-        routerLink: '/admin/tournament',
+        routerLink: ['/admin/tournament'],
     },
     {
         label: 'Entrainements',
@@ -32,39 +32,39 @@ export const SIDEBAR_ITEMS: NavItem[] = [
         children: [
             {
                 label: 'Programmes',
-                routerLink: '/admin/training/program',
+                routerLink: ['/admin/training/program'],
             },
             {
                 label: 'Statistiques',
-                routerLink: '/admin/training/statistic',
+                routerLink: ['/admin/training/statistic'],
             },
             {
                 label: `Jeux d'adresse`,
-                routerLink: '/admin/training/skill-games',
+                routerLink: ['/admin/training/skill-games'],
             },
         ],
     },
     {
         label: 'Equipes',
         icon: 'fa fa-users',
-        routerLink: '/admin/team',
+        routerLink: ['/admin/team'],
     },
 ];
 export const ASIDE_SIDEBAR_ITEMS: NavItem[] = [
     {
         label: 'Sponsorship',
         icon: 'fa fa-university',
-        routerLink: '/admin/sponsorship',
+        routerLink: ['/admin/sponsorship'],
     },
     {
         label: 'Shop',
         icon: 'fa fa-shopping-cart',
-        routerLink: '/admin/shop',
+        routerLink: ['/admin/shop'],
     },
     {
         label: 'FAQ',
         icon: 'fa fa-question-circle',
-        routerLink: '/admin/faq',
+        routerLink: ['/admin/faq'],
     },
     {
         label: 'Contacte-nous',

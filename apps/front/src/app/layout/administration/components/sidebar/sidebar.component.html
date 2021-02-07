@@ -16,79 +16,41 @@
     <!-- Collapse -->
     <div class="collapse navbar-collapse" id="sidenav-collapse-main">
         <!-- Nav items -->
-        <ul class="navbar-nav">
+        <ul class="navbar-nav" *ngFor="let item of sidebarItems; let i = index">
             <li class="nav-item">
                 <a
                     class="nav-link"
-                    href="#navbar-components"
-                    data-toggle="collapse"
-                    role="button"
-                    aria-expanded="false"
-                    aria-controls="navbar-components"
+                    [attr.href]="item.children ? '#navbar-' + i : null"
+                    [attr.data-toggle]="item.children ? 'collapse' : null"
+                    [attr.role]="item.children ? 'button' : null"
+                    [attr.aria-expanded]="item.children ? 'false' : null"
+                    [attr.aria-controls]="item.children ? 'navbar-' + i : null"
+                    [attr.router-link]="!item.children ? item.routerLink : null"
                 >
-                    <i class="ni ni-ui-04 text-info"></i>
-                    <span class="nav-link-text">Components</span>
+                    <i [class]="item.icon" class="text-info"></i>
+                    <span class="nav-link-text">{{ item.label | titlecase }}</span>
                 </a>
-                <div class="collapse" id="navbar-components">
+                <div class="collapse" id="navbar-{{ i }}" *ngIf="item.children">
                     <ul class="nav nav-sm flex-column">
-                        <li class="nav-item">
-                            <a href="../../pages/components/buttons.html" class="nav-link">
-                                <span class="sidenav-mini-icon"> B </span>
-                                <span class="sidenav-normal"> Buttons </span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="../../pages/components/cards.html" class="nav-link">
-                                <span class="sidenav-mini-icon"> C </span>
-                                <span class="sidenav-normal"> Cards </span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="../../pages/components/grid.html" class="nav-link">
-                                <span class="sidenav-mini-icon"> G </span>
-                                <span class="sidenav-normal"> Grid </span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="../../pages/components/notifications.html" class="nav-link">
-                                <span class="sidenav-mini-icon"> N </span>
-                                <span class="sidenav-normal"> Notifications </span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="../../pages/components/icons.html" class="nav-link">
-                                <span class="sidenav-mini-icon"> I </span>
-                                <span class="sidenav-normal"> Icons </span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="../../pages/components/typography.html" class="nav-link">
-                                <span class="sidenav-mini-icon"> T </span>
-                                <span class="sidenav-normal"> Typography </span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
+                        <li class="nav-item" *ngFor="let secondLevel of item.children; let j = index">
                             <a
-                                href="#navbar-multilevel"
                                 class="nav-link"
-                                data-toggle="collapse"
-                                role="button"
-                                aria-expanded="true"
-                                aria-controls="navbar-multilevel"
+                                [attr.href]="secondLevel.children ? '#navbar-second-level-' + j : null"
+                                [attr.data-toggle]="secondLevel.children ? 'collapse' : null"
+                                [attr.button]="secondLevel.children ? 'button' : null"
+                                [attr.aria-expanded]="secondLevel.children ? true : null"
+                                [attr.controls]="secondLevel.children ? '#navbar-second-level-' + j : null"
+                                [attr.router-link]="!secondLevel.children ? secondLevel.routerLink : null"
                             >
-                                <span class="sidenav-mini-icon"> M </span>
-                                <span class="sidenav-normal"> Multi level </span>
+                                <span class="sidenav-mini-icon"> {{ secondLevel.label | firstLetter | uppercase }}</span>
+                                <span class="sidenav-normal"> {{ secondLevel.label | titlecase }} </span>
                             </a>
-                            <div class="collapse show" id="navbar-multilevel" style="">
+                            <div class="collapse show" id="navbar-second-level-{{ j }}" style="" *ngIf="secondLevel.children">
                                 <ul class="nav nav-sm flex-column">
-                                    <li class="nav-item">
-                                        <a href="#!" class="nav-link">Third level menu</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#!" class="nav-link">Just another link</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#!" class="nav-link">One last link</a>
+                                    <li class="nav-item" *ngFor="let thirdLevel of secondLevel.children">
+                                        <a [routerLink]="thirdLevel.routerLink" class="nav-link">{{
+                                            thirdLevel.label | titlecase
+                                        }}</a>
                                     </li>
                                 </ul>
                             </div>

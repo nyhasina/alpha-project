@@ -10,7 +10,7 @@ const routes: Routes = [
                 loadChildren: () => import('./landing/landing.module').then((m) => m.LandingModule),
             },
             {
-                path: 'administration',
+                path: 'admin',
                 loadChildren: () => import('./administration/administration.module').then((m) => m.AdministrationModule),
             },
             {

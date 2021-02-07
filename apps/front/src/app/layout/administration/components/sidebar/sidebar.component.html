@@ -25,7 +25,7 @@
                     [attr.role]="item.children ? 'button' : null"
                     [attr.aria-expanded]="item.children ? 'false' : null"
                     [attr.aria-controls]="item.children ? 'navbar-' + i : null"
-                    [attr.router-link]="!item.children ? item.routerLink : null"
+                    (click)="go(item.routerLink)"
                 >
                     <i [class]="item.icon" class="text-info"></i>
                     <span class="nav-link-text">{{ item.label | titlecase }}</span>
@@ -40,7 +40,7 @@
                                 [attr.button]="secondLevel.children ? 'button' : null"
                                 [attr.aria-expanded]="secondLevel.children ? true : null"
                                 [attr.controls]="secondLevel.children ? '#navbar-second-level-' + j : null"
-                                [attr.router-link]="!secondLevel.children ? secondLevel.routerLink : null"
+                                [routerLink]="secondLevel.routerLink"
                             >
                                 <span class="sidenav-mini-icon"> {{ secondLevel.label | firstLetter | uppercase }}</span>
                                 <span class="sidenav-normal"> {{ secondLevel.label | titlecase }} </span>
@@ -71,7 +71,7 @@
                     [attr.role]="item.children ? 'button' : null"
                     [attr.aria-expanded]="item.children ? 'false' : null"
                     [attr.aria-controls]="item.children ? 'navbar-aside-' + i : null"
-                    [attr.router-link]="!item.children ? item.routerLink : null"
+                    [routerLink]="item.routerLink"
                 >
                     <i [class]="item.icon" class="text-info"></i>
                     <span class="nav-link-text">{{ item.label | titlecase }}</span>

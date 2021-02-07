@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  menuListes = ['Tournaments', 'Training', 'Game', 'Comminuty'];
+  menuListes = ['Tournaments', 'Training', 'Game', 'Community'];
   fa = ['globe', 'shopping-bag']
   navbarOpen = false;
   toggleNavbar() {

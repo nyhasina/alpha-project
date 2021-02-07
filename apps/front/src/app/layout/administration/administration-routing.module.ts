@@ -15,6 +15,30 @@ const routes: Routes = [
                 path: 'contact',
                 loadChildren: () => import('../../pages/contact/contact.module').then((m) => m.ContactModule),
             },
+            {
+                path: 'faq',
+                loadChildren: () => import('../../pages/faq/faq.module').then((m) => m.FaqModule),
+            },
+            {
+                path: 'shop',
+                loadChildren: () => import('../../pages/shop/shop.module').then((m) => m.ShopModule),
+            },
+            {
+                path: 'sponsorship',
+                loadChildren: () => import('../../pages/sponsorship/sponsorship.module').then((m) => m.SponsorshipModule),
+            },
+            {
+                path: 'team',
+                loadChildren: () => import('../../pages/team/team.module').then((m) => m.TeamModule),
+            },
+            {
+                path: 'tournament',
+                loadChildren: () => import('../../pages/tournament/tournament.module').then((m) => m.TournamentModule),
+            },
+            {
+                path: 'tracking',
+                loadChildren: () => import('../../pages/tracking/tracking.module').then((m) => m.TrackingModule),
+            },
         ],
     },
 ];

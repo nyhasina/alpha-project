@@ -1,49 +1,88 @@
 ul {
   list-style: none;
 }
-footer{
+.newsletter {
+  padding: 80px 0;
+  background: #f2f2f2;
+}
+.aboutus-content {
+  padding: 40px 0;
+  background:#d7d7da;
+}
+.newsletter .content{
+  max-width: 650px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+ h2 {
+  color: #243c4f;
+  margin-bottom: 40px;
+  font-size: 32px;
+}
+.newsletter .content .form-control {
+  height: 50px;
+  border-color: #ffffff;
+  border-radius: 0;
+}
+.newsletter .content.form-control:focus {
+  box-shadow: none;
+  border: 2px solid #243c4f;
+}
+.newsletter .content .btn {
+  min-height: 50px;
+  border-radius: 0;
+  background: #243c4f;
+  color: #fff;
+  font-weight: 600;
+}
+footer {
+  .footer-list {
     background-color: #f5f5f5;
-    padding: 80px 0;
-    h3{font-size: 20px;
-        font-weight: bold;}
-    .contact-link{
-      display:inline-block;
-      width: 100%;
-      color: #333;
-    }
-    .footer-social{
-      ul{
-        li{
-          list-style: none;
-          float: left;
-          padding: 0 10px;
-          &:first-child{
-            padding-left: 0;
-          }
-          a{
-            font-size: 25px;
-            color: #333;
-            &:hover{
-              color: #007bff;
-            }
-          }
+    padding: 40px;
+  }
+  h3 {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .contact-link {
+    display: inline-block;
+    width: 100%;
+    color: #333;
+  }
+  .footer-social {
+    ul {
+      li {
+        list-style: none;
+        float: left;
+        padding: 0 10px;
+        &:first-child {
+          padding-left: 0;
         }
-      }
-    }
-    .opening-time{
-      li{
-          cursor: pointer;
-          font-size: 16px;
-          font-weight: 400;
-          &:hover{
+        a {
+          font-size: 25px;
+          color: #333;
+          &:hover {
             color: #007bff;
           }
-        span{
-          float:left;
-          padding-right: 10px;
         }
       }
     }
+  }
+  .opening-time {
+    li {
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 400;
+      &:hover {
+        color: #007bff;
+      }
+      span {
+        float: left;
+        padding-right: 10px;
+      }
+    }
+  }
 }
 .listing-menu {
   li {

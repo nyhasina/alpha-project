@@ -1,64 +1,107 @@
-<footer class="footer">
+<section class="aboutus-content">
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-4">
-				<div class="footer-widget">
-					<h3 class="text-center">Follow US</h3>
-					<div class="footer-widget-content">
-						<div class="footer-social">
-							<ul>
-								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-								<li><a href="#"><i class="fa fa-youtube"></i></a></li>
-								<li><a href="#"><i class="fa fa-rss"></i></a></li>
+			<div class="aboutUS m-auto text-center">
+				<form>
+					<h2>A propos de Nicecactus</h2>
+					<div class="row">
+						<div class="col-2" *ngFor="let item of aboutUsListes">
+							<span>
+								<i class="fas {{item.fa}} fa-3x"></i>
+								<p style="color:#3b464a">{{item.detail}}</p>
+								<p class="text-uppercase" style="font-size: 13px;">{{item.name}}</p>
+							</span>
+						</div>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="newsletter">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="content">
+					<form>
+						<h2>Obtiens ton compte gratuit maintenant</h2>
+						<div class="input-group">
+							<input type="email" class="form-control" placeholder="Enter your email">
+							<span class="input-group-btn">
+								<button class="btn" type="submit">Obtiens Toncompte Gratuit</button>
+							</span>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<footer class="footer pt-0">
+	<div class="footer-list">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="footer-widget">
+						<h3 class="text-center">Follow US</h3>
+						<div class="footer-widget-content">
+							<div class="footer-social">
+								<ul>
+									<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+									<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+									<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+									<li><a href="#"><i class="fa fa-youtube"></i></a></li>
+									<li><a href="#"><i class="fa fa-rss"></i></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="footer-widget">
+						<div class="footer-widget-content">
+							<ul class="opening-time pl-0">
+								<li>About us</li>
+								<li>Tournaments</li>
+								<li>Training</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+	
+				<div class="col-sm-4">
+					<div class="footer-widget">
+						<div class="footer-widget-content">
+							<ul class="opening-time pl-0">
+								<li>Tracking</li>
+								<li>Go Premium</li>
+								<li>FAQ</li>
 							</ul>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-4">
-				<div class="footer-widget">
-					<div class="footer-widget-content">
-						<ul class="opening-time pl-0">
-							<li>About us</li>
-							<li>Tournaments</li>
-							<li>Training</li>
-						</ul>
-					</div>
-				</div>
-			</div>
+		</div>
 
-			<div class="col-sm-4">
-				<div class="footer-widget">
-					<div class="footer-widget-content">
-						<ul class="opening-time pl-0">
-							<li>Tracking</li>
-							<li>Go Premium</li>
-							<li>FAQ</li>
-						</ul>
+	</div>
+	<div class="navbar-fixed-bottom">
+		<div class="container">
+			<div class="row">
+				<div class="col-4">
+					<p class="navbar-text">© nicecactus 2021</p>
+				</div>
+				<div class="col-8">
+					<div class="footer-widget">
+						<div class="footer-widget-content">
+							<ul class="listing-menu pl-0" >
+								<li *ngFor="let item of footerListes" class="d-inline pr-5"><a> . {{ item }}</a> </li>
+							</ul>
+						</div>
 					</div>
 				</div>
+	
 			</div>
 		</div>
 	</div>
 </footer>
-<div class="navbar-fixed-bottom">
-	<div class="container">
-		<div class="row">
-			<div class="col-4">
-				<p class="navbar-text">© nicecactus 2021</p>
-			</div>
-			<div class="col-8">
-				<div class="footer-widget">
-					<div class="footer-widget-content">
-						<ul class="listing-menu pl-0" >
-							<li *ngFor="let item of footerListes" class="d-inline pr-5"><a> . {{ item }}</a> </li>
-						</ul>
-					</div>
-				</div>
-			</div>
-
-		</div>
-	</div>
-</div>

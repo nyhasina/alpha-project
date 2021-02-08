@@ -4,9 +4,10 @@ import { CommonModule } from '@angular/common';
 import { LandingRoutingModule } from './landing-routing.module';
 import { LandingComponent } from './landing.component';
 import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
-    declarations: [LandingComponent, HeaderComponent],
+    declarations: [LandingComponent, HeaderComponent, FooterComponent],
     imports: [CommonModule, LandingRoutingModule],
 })
 export class LandingModule {}

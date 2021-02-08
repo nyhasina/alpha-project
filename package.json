@@ -62,6 +62,7 @@
     "@nrwl/eslint-plugin-nx": "11.2.10",
     "@nrwl/jest": "11.2.10",
     "@nrwl/linter": "11.2.10",
+    "@nrwl/nest": "^11.2.10",
     "@nrwl/tao": "11.2.10",
     "@nrwl/workspace": "11.2.10",
     "@types/jest": "26.0.8",

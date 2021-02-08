@@ -14,4 +14,8 @@ export class HeaderComponent {
     toggleNavbar() {
         this.navbarOpen = !this.navbarOpen;
     }
+    scrollTo(section: string) {
+        document.getElementById(section)
+          .scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
 }

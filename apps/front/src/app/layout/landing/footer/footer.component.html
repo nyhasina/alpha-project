@@ -1,1 +1,64 @@
-<p>footer works!</p>
+<footer class="footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-4">
+				<div class="footer-widget">
+					<h3 class="text-center">Follow US</h3>
+					<div class="footer-widget-content">
+						<div class="footer-social">
+							<ul>
+								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+								<li><a href="#"><i class="fa fa-youtube"></i></a></li>
+								<li><a href="#"><i class="fa fa-rss"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="footer-widget">
+					<div class="footer-widget-content">
+						<ul class="opening-time pl-0">
+							<li>About us</li>
+							<li>Tournaments</li>
+							<li>Training</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-sm-4">
+				<div class="footer-widget">
+					<div class="footer-widget-content">
+						<ul class="opening-time pl-0">
+							<li>Tracking</li>
+							<li>Go Premium</li>
+							<li>FAQ</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+<div class="navbar-fixed-bottom">
+	<div class="container">
+		<div class="row">
+			<div class="col-4">
+				<p class="navbar-text">© nicecactus 2021</p>
+			</div>
+			<div class="col-8">
+				<div class="footer-widget">
+					<div class="footer-widget-content">
+						<ul class="listing-menu pl-0" >
+							<li *ngFor="let item of footerListes" class="d-inline pr-5"><a> . {{ item }}</a> </li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>

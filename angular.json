@@ -87,7 +87,8 @@
                 "serve": {
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "options": {
-                        "browserTarget": "back-office:build"
+                        "browserTarget": "back-office:build",
+                        "proxyConfig": "apps/front/proxy.conf.json"
                     },
                     "configurations": {
                         "production": {

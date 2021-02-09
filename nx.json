@@ -20,6 +20,7 @@
         "back-office-e2e": { "tags": [], "implicitDependencies": ["back-office"] },
         "front": { "tags": [] },
         "front-e2e": { "tags": [], "implicitDependencies": ["front"] },
-        "api": { "tags": [] }
+        "api": { "tags": [] },
+        "types": { "tags": [] }
     }
 }

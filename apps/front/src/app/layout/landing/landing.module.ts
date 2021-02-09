@@ -6,7 +6,7 @@ import { LandingComponent } from './landing.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { GamesComponent } from './games/games.component';
-// import { LazyloadingDirective } from './games/lazyloading.directive';
+import { LazyloadingDirective } from './games/lazyloading.directive';
 
 @NgModule({
     declarations: [
@@ -14,7 +14,7 @@ import { GamesComponent } from './games/games.component';
         HeaderComponent,
         FooterComponent,
         GamesComponent,
-        // LazyloadingDirective
+        LazyloadingDirective
     ],
     imports: [CommonModule, LandingRoutingModule],
 })

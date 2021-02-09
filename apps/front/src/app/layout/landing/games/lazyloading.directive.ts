@@ -1,14 +1,33 @@
-import { Directive, ElementRef } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, HostBinding, Input } from '@angular/core';
 
 // eslint-disable-next-line @angular-eslint/directive-selector
 @Directive({selector: 'img'})
-export class LazyloadingDirective {
-  constructor({ nativeElement }: ElementRef<HTMLImageElement>) {
-    const supports = 'loading' in HTMLImageElement.prototype;
-    console.log(supports)
-    if (supports) {
-      nativeElement.setAttribute('loading', 'lazy');
-    }
+export class LazyloadingDirective implements AfterViewInit{
+  @HostBinding('attr.src') srcAttr = null;
+  @Input() src: string;
+  constructor(private el: ElementRef) {}
+  ngAfterViewInit() {
+    this.canLazyLoad() ? this.lazyLoadImage() : this.loadImage();
+    console.log("mandalo ve")
+  }
+
+  private canLazyLoad() {
+    return window && 'IntersectionObserver' in window;
+  }
+
+  private lazyLoadImage() {
+    const obs = new IntersectionObserver(entries => {
+    entries.forEach(({ isIntersecting }) => {
+      if (isIntersecting) {
+        this.loadImage();
+        obs.unobserve(this.el.nativeElement);
+      }
+    });
+  });
+  obs.observe(this.el.nativeElement);}
+
+  private loadImage() {
+    this.srcAttr = this.src;
   }
 
 }

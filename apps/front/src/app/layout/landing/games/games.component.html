@@ -1,9 +1,9 @@
-<div id="games">
+<div id="games"  style="background-color: black;">
     <h2 class="text-center">Games</h2>
     <a>Voir plus</a>
     <div class="row justify-content-center mx-auto w-75">
-        <div class="col-md-2 col-sm-3 col-4 align-self-center mb-5">
-            <img class="w-100" alt="Auto" style="    background: black;" src="https://public.nicecact.us/game/5d81f5cf5a598347f45a2cd6/medias/SelectImage" loading="lazy">
+        <div class="ccol-md-2 col-sm-3 col-lg-2 col-4 align-self-center mb-5" *ngFor="let item of imagesListe">
+            <img class="w-100" alt="{{item}}" [src]="item" loading="lazy">
         </div>
     </div>
 </div>

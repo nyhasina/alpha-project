@@ -1,4 +1,5 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
+import { NavItem } from '@nicecactus-platform/types';
 import {
     ASIDE_SIDEBAR_ITEMS,
     SIDEBAR_ITEMS,
@@ -7,7 +8,6 @@ import {
     SIDENAV_PINNED,
     SIDENAV_SHOW,
 } from './administration.constants';
-import { NavItem } from './interfaces/nav-item.interface';
 
 @Component({
     selector: 'nicecactus-platform-administration',

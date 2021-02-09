@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavItem } from '../../interfaces/nav-item.interface';
+import { NavItem } from '../../../../../../../../libs/types/src/lib/nav-item.interface';
 
 @Component({
     selector: 'nicecactus-platform-sidebar',

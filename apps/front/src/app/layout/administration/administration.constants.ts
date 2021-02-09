@@ -1,4 +1,4 @@
-import { NavItem } from './interfaces/nav-item.interface';
+import { NavItem } from '../../../../../../libs/types/src/lib/nav-item.interface';
 
 export enum NavItemType {
     MENU,

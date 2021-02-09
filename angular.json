@@ -341,6 +341,28 @@
                     }
                 }
             }
+        },
+        "form-validators": {
+            "projectType": "library",
+            "root": "libs/form-validators",
+            "sourceRoot": "libs/form-validators/src",
+            "prefix": "nicecactus-platform",
+            "architect": {
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": ["libs/form-validators/src/**/*.ts", "libs/form-validators/src/**/*.html"]
+                    }
+                },
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/form-validators"],
+                    "options": {
+                        "jestConfig": "libs/form-validators/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                }
+            }
         }
     }
 }

@@ -15,7 +15,8 @@
         "skipDefaultLibCheck": true,
         "baseUrl": ".",
         "paths": {
-            "@nicecactus-platform/types": ["libs/types/src/index.ts"]
+            "@nicecactus-platform/types": ["libs/types/src/index.ts"],
+            "@nicecactus-platform/form-validators": ["libs/form-validators/src/index.ts"]
         }
     },
     "exclude": ["node_modules", "tmp"]

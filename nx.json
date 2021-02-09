@@ -21,6 +21,7 @@
         "front": { "tags": [] },
         "front-e2e": { "tags": [], "implicitDependencies": ["front"] },
         "api": { "tags": [] },
-        "types": { "tags": [] }
+        "types": { "tags": [] },
+        "form-validators": { "tags": [] }
     }
 }

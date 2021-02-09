@@ -1,1 +1,28 @@
-<div id="tournois" class="main-container position-relative w-100 h-100 mb-5 section-wrapper"></div>
+<div id="tournois" class="main-container position-relative w-100 h-100 mb-5">
+    <div class="section-wrapper">
+        <div class="d-flex flex-md-row flex-wrap align-items-baseline my-2">
+            <div class="border"></div>
+            <h2>Participer à des tournois</h2>
+        </div>
+        <p class="text-left">Joue en ligne contre d'autres joueurs du monde entier et gagne des prix</p>
+        <div class="row mb-5">
+            <div class="h-100 col-lg-8 col-12 align-items-center mt-md-auto justify-content-lg-center">
+                <div class="d-flex flex-md-row flex-wrap align-items-center mb-3">
+                    <label for="select">Prochains tournois disponibles pour:</label>
+                    <select class="ml-md-2 ml-0">
+                        <option value="item" *ngFor=" let item of gamesList; trackBy: trackByFn;">{{item}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="w-100 col-lg-4 col-12">
+                <div class="custom-video w-100 p-2">
+                    <div class="m-0 justify-content-center">
+                        <div class="w-100">
+                            <video class=" w-100" src="https://public.nicecact.us/homepage/videos/tournament/tournament-video.mp4" autoplay [muted]="'muted'" loop></video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,4 @@
-import { Contact } from '../../shared/interfaces/contact.interface';
+import { Contact } from '@nicecactus-platform/types';
 
 export const EMPTY_CONTACT: Contact = {
     id: null,

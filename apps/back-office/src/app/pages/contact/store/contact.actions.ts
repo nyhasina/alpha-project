@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { createAction, props } from '@ngrx/store';
-import { Contact } from '../../../shared/interfaces/contact.interface';
+import { Contact } from '@nicecactus-platform/types';
 
 export const createContact = createAction('[Contact] Create contact');
 export const createContactFail = createAction('[Contact] Create contact fail', props<{ error: HttpErrorResponse }>());

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Contact } from '../../../../shared/interfaces/contact.interface';
+import { Contact } from '@nicecactus-platform/types';
 
 @Component({
     selector: 'app-contact-list',

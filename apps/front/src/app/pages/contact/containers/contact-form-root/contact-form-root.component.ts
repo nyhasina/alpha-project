@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { Contact } from '../../../../shared/interfaces/contact.interface';
+import { Contact } from '@nicecactus-platform/types';
 import { saveContact } from '../../store/contact.actions';
 import { ContactState } from '../../store/contact.reducers';
 import { selectContact } from '../../store/contact.selectors';

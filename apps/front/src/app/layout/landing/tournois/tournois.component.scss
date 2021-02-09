@@ -17,6 +17,60 @@ select {
     padding: 5px;
     height: 36px;
 }
+.tournament-name{
+    font-size: 22px;
+    line-height: 127%;
+    font-style: normal;
+    font-weight: 400;
+    text-align: left;
+    width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.plateform>img {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+}
+.info-seats{
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: .015em;
+    color: #d8d8d8;
+}
+a{
+    button {
+        background: linear-gradient(
+            90deg
+            ,#ff9b52,#ff5b51)!important;
+                color: #fff;
+    }
+}
+.view-more {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    -webkit-text-decoration-line: underline;
+    text-decoration-line: underline;
+    color: #d8d8d8;
+    margin-top: 16px;
+}
+.mobile-margin {
+    margin-bottom: 32px;
+}
+.mobile-margin-second{
+    margin-bottom: 8px;
+}
+.info-numbers{
+    font-size: 36px;
+    line-height: 112%;
+}
+.info-text{
+    font-size: 16px;
+    line-height: 24px;
+}
 @media (min-width: 1200px) {
     h2 {
         font-size: 48px;
@@ -29,5 +83,11 @@ select {
 @media (min-width: 576px) {
     .section-wrapper {
         padding: 64px 64px 0;
+    }
+    .view-more {
+        margin-top: 16px;
+    }
+    .mobile-margin, .mobile-margin-second {
+        margin-bottom: 0;
     }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { passwordMustMatch } from '../password-must-match.validator'
+import { passwordMustMatch } from '../../../../../../../../libs/form-validators/src/lib/password-must-match.validator'
 @Component({
   selector: 'nicecactus-platform-register',
   templateUrl: './register.component.html',

@@ -1,57 +1,60 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { passwordMustMatch } from '../../../../../../../../libs/form-validators/src/lib/password-must-match.validator'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { passwordMustMatch } from '@nicecactus-platform/form-validators';
+
 @Component({
-  selector: 'nicecactus-platform-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss', '../login/login.component.scss']
+    selector: 'nicecactus-platform-register',
+    templateUrl: './register.component.html',
+    styleUrls: ['./register.component.scss', '../login/login.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-  formRegister: FormGroup;
-  submitted = false;
-  cookiesCheck = false;
-  constructor(
-    private formBuilder?: FormBuilder,
-  ) {
-    this.createformRegister();
-  }
-  get f() { return this.formRegister.controls; }
+    formRegister: FormGroup;
+    submitted = false;
+    cookiesCheck = false;
 
-  createformRegister() {
-    this.formRegister = this.formBuilder.group({
-      email: ['', Validators.compose([
-        Validators.required,
-        this.checkMail
-      ])],
-      username: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(50)]],
-      confirmPassword: ['', Validators.compose([
-        Validators.required,
-      ])],
-      authorization: [false, Validators.requiredTrue],
-      cookies: [false, Validators.requiredTrue],
-    }, {
-      validator: passwordMustMatch('password', 'confirmPassword'),
-    });
-  }
-  checkMail(controls) {
-    const regExp = new RegExp(/\S+@\S+\.\S+/);
-    if (regExp.test(controls.value)) {
-      return null;
-    } else {
-      return { checkMail: true };
+    constructor(private formBuilder?: FormBuilder) {
+        this.createformRegister();
     }
-  }
-  functionForm01() {
-    console.log('ee')
-  }
-  onSubmit() {
-    this.submitted = true;
-    if (this.formRegister.invalid) {
-      return;
-    }
-  }
-  ngOnInit(): void {
-  }
 
+    get f() {
+        return this.formRegister.controls;
+    }
+
+    createformRegister() {
+        this.formRegister = this.formBuilder.group(
+            {
+                email: ['', Validators.compose([Validators.required, this.checkMail])],
+                username: ['', Validators.required],
+                password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(50)]],
+                confirmPassword: ['', Validators.compose([Validators.required])],
+                authorization: [false, Validators.requiredTrue],
+                cookies: [false, Validators.requiredTrue],
+            },
+            {
+                validator: passwordMustMatch('password', 'confirmPassword'),
+            }
+        );
+    }
+
+    checkMail(controls) {
+        const regExp = new RegExp(/\S+@\S+\.\S+/);
+        if (regExp.test(controls.value)) {
+            return null;
+        } else {
+            return { checkMail: true };
+        }
+    }
+
+    functionForm01() {
+        console.log('ee');
+    }
+
+    onSubmit() {
+        this.submitted = true;
+        if (this.formRegister.invalid) {
+            return;
+        }
+    }
+
+    ngOnInit(): void {}
 }

@@ -1,7 +1,11 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { FirstLetterPipe } from './first-letter.pipe';
 
 @NgModule({
-    imports: [CommonModule],
+  imports: [CommonModule],
+  declarations: [FirstLetterPipe],
+  exports: [FirstLetterPipe]
 })
-export class PipesModule {}
+export class PipesModule {
+}

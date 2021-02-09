@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { matchPwds } from '../validators'
+import { passwordMustMatch } from '../validators'
 @Component({
   selector: 'nicecactus-platform-register',
   templateUrl: './register.component.html',
@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
       authorization: [false, Validators.requiredTrue],
       cookies: [false, Validators.requiredTrue],
     }, {
-      validator: matchPwds('password', 'confirmPassword'),
+      validator: passwordMustMatch('password', 'confirmPassword'),
     });
   }
   checkMail(controls) {

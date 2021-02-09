@@ -1,4 +1,4 @@
-import { NavItem } from './interfaces/nav-item.interface';
+import { NavItem } from '@nicecactus-platform/types';
 
 export enum NavItemType {
   MENU,

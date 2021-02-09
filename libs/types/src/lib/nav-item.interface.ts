@@ -4,3 +4,9 @@ export interface NavItem {
   children?: NavItem[];
   routerLink?: string | string[];
 }
+
+export enum NavItemType {
+  MENU,
+  NAV_HEADING,
+  DIVIDER,
+}

@@ -8,7 +8,6 @@ export class LazyloadingDirective implements AfterViewInit{
   constructor(private el: ElementRef) {}
   ngAfterViewInit() {
     this.canLazyLoad() ? this.lazyLoadImage() : this.loadImage();
-    console.log("mandalo ve")
   }
 
   private canLazyLoad() {

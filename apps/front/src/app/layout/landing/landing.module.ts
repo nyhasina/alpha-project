@@ -8,6 +8,7 @@ import { FooterComponent } from './footer/footer.component';
 import { GamesComponent } from './games/games.component';
 import { LazyloadingDirective } from './games/lazyloading.directive';
 import { CommunityComponent } from './community/community.component';
+import { TournoisComponent } from './tournois/tournois.component';
 
 @NgModule({
     declarations: [
@@ -16,7 +17,8 @@ import { CommunityComponent } from './community/community.component';
         FooterComponent,
         GamesComponent,
         LazyloadingDirective,
-        CommunityComponent
+        CommunityComponent,
+        TournoisComponent
     ],
     imports: [CommonModule, LandingRoutingModule],
 })

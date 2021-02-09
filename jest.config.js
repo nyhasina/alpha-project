@@ -5,5 +5,6 @@ module.exports = {
         '<rootDir>/apps/api',
         '<rootDir>/libs/types',
         '<rootDir>/libs/form-validators',
+        '<rootDir>/libs/pipes',
     ],
 };

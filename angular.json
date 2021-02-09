@@ -363,6 +363,28 @@
                     }
                 }
             }
+        },
+        "pipes": {
+            "projectType": "library",
+            "root": "libs/pipes",
+            "sourceRoot": "libs/pipes/src",
+            "prefix": "nicecactus-platform",
+            "architect": {
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": ["libs/pipes/src/**/*.ts", "libs/pipes/src/**/*.html"]
+                    }
+                },
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/pipes"],
+                    "options": {
+                        "jestConfig": "libs/pipes/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                }
+            }
         }
     }
 }

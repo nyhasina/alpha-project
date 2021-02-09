@@ -1,0 +1,23 @@
+<nav
+    class="sidenav navbar navbar-vertical fixed-left navbar-expand-xs navbar-light bg-white"
+    id="sidenav-main"
+    (mouseenter)="onMouseEnter()"
+    (mouseleave)="onMouseLeave()"
+    #sidenav
+>
+    <div class="scrollbar-inner">
+        <nicecactus-platform-sidebar
+            [sidebarItems]="sidebarItems"
+            [asideSidebarItems]="asideSidebarItems"
+        ></nicecactus-platform-sidebar>
+    </div>
+</nav>
+<!-- Main content -->
+<div class="main-content" id="panel">
+    <nicecactus-platform-navbar></nicecactus-platform-navbar>
+    <nicecactus-platform-header></nicecactus-platform-header>
+    <div class="container-fluid mt--6">
+        <router-outlet></router-outlet>
+        <nicecactus-platform-footer></nicecactus-platform-footer>
+    </div>
+</div>

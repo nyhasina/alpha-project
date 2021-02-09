@@ -1,0 +1,114 @@
+<div class="sidenav-header d-flex align-items-center">
+    <a class="navbar-brand" href="../../pages/dashboards/dashboard.html">
+        <img src="/assets/img/brand/blue.png" class="navbar-brand-img" alt="..." />
+    </a>
+    <div class="ml-auto">
+        <div class="sidenav-toggler d-none d-xl-block" data-action="sidenav-unpin" data-target="#sidenav-main">
+            <div class="sidenav-toggler-inner">
+                <i class="sidenav-toggler-line"></i>
+                <i class="sidenav-toggler-line"></i>
+                <i class="sidenav-toggler-line"></i>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="navbar-inner">
+    <!-- Collapse -->
+    <div class="collapse navbar-collapse" id="sidenav-collapse-main">
+        <!-- Nav items -->
+        <ul class="navbar-nav" *ngFor="let item of sidebarItems; let i = index">
+            <li class="nav-item">
+                <a
+                    class="nav-link"
+                    [attr.href]="item.children ? '#navbar-' + i : null"
+                    [attr.data-toggle]="item.children ? 'collapse' : null"
+                    [attr.role]="item.children ? 'button' : null"
+                    [attr.aria-expanded]="item.children ? 'false' : null"
+                    [attr.aria-controls]="item.children ? 'navbar-' + i : null"
+                    (click)="go(item.routerLink)"
+                >
+                    <i [class]="item.icon" class="text-info"></i>
+                    <span class="nav-link-text">{{ item.label | titlecase }}</span>
+                </a>
+                <div class="collapse" id="navbar-{{ i }}" *ngIf="item.children">
+                    <ul class="nav nav-sm flex-column">
+                        <li class="nav-item" *ngFor="let secondLevel of item.children; let j = index">
+                            <a
+                                class="nav-link"
+                                [attr.href]="secondLevel.children ? '#navbar-second-level-' + j : null"
+                                [attr.data-toggle]="secondLevel.children ? 'collapse' : null"
+                                [attr.button]="secondLevel.children ? 'button' : null"
+                                [attr.aria-expanded]="secondLevel.children ? true : null"
+                                [attr.controls]="secondLevel.children ? '#navbar-second-level-' + j : null"
+                                [routerLink]="secondLevel.routerLink"
+                            >
+                                <span class="sidenav-mini-icon"> {{ secondLevel.label | firstLetter | uppercase }}</span>
+                                <span class="sidenav-normal"> {{ secondLevel.label | titlecase }} </span>
+                            </a>
+                            <div class="collapse show" id="navbar-second-level-{{ j }}" style="" *ngIf="secondLevel.children">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item" *ngFor="let thirdLevel of secondLevel.children">
+                                        <a [routerLink]="thirdLevel.routerLink" class="nav-link">{{
+                                            thirdLevel.label | titlecase
+                                        }}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+        <!-- Divider -->
+        <hr class="my-3" />
+        <!-- Heading -->
+        <ul class="navbar-nav" *ngFor="let item of asideSidebarItems; let i = index">
+            <li class="nav-item">
+                <a
+                    class="nav-link"
+                    [attr.href]="item.children ? '#navbar-aside-' + i : null"
+                    [attr.data-toggle]="item.children ? 'collapse' : null"
+                    [attr.role]="item.children ? 'button' : null"
+                    [attr.aria-expanded]="item.children ? 'false' : null"
+                    [attr.aria-controls]="item.children ? 'navbar-aside-' + i : null"
+                    [routerLink]="item.routerLink"
+                >
+                    <i [class]="item.icon" class="text-info"></i>
+                    <span class="nav-link-text">{{ item.label | titlecase }}</span>
+                </a>
+                <div class="collapse" id="navbar-aside-{{ i }}" *ngIf="item.children">
+                    <ul class="nav nav-sm flex-column">
+                        <li class="nav-item" *ngFor="let secondLevel of item.children; let j = index">
+                            <a
+                                class="nav-link"
+                                [attr.href]="secondLevel.children ? '#navbar-aside-second-level-' + j : null"
+                                [attr.data-toggle]="secondLevel.children ? 'collapse' : null"
+                                [attr.button]="secondLevel.children ? 'button' : null"
+                                [attr.aria-expanded]="secondLevel.children ? true : null"
+                                [attr.controls]="secondLevel.children ? '#navbar-aside-second-level-' + j : null"
+                                [attr.router-link]="!secondLevel.children ? secondLevel.routerLink : null"
+                            >
+                                <span class="sidenav-mini-icon"> {{ secondLevel.label | firstLetter | uppercase }}</span>
+                                <span class="sidenav-normal"> {{ secondLevel.label | titlecase }} </span>
+                            </a>
+                            <div
+                                class="collapse show"
+                                id="navbar-aside-second-level-{{ j }}"
+                                style=""
+                                *ngIf="secondLevel.children"
+                            >
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item" *ngFor="let thirdLevel of secondLevel.children">
+                                        <a [routerLink]="thirdLevel.routerLink" class="nav-link">{{
+                                            thirdLevel.label | titlecase
+                                        }}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

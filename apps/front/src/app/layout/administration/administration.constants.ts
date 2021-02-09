@@ -1,10 +1,4 @@
-import { NavItem } from './interfaces/nav-item.interface';
-
-export enum NavItemType {
-    MENU,
-    NAV_HEADING,
-    DIVIDER,
-}
+import { NavItem } from '@nicecactus-platform/types';
 
 export const SIDENAV_PINNED = 'g-sidenav-pinned';
 export const SIDENAV_SHOW = 'g-sidenav-show';

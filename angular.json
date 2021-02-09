@@ -52,7 +52,13 @@
                             "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
                             "apps/back-office/src/styles.scss"
                         ],
-                        "scripts": []
+                        "scripts": [
+                            "apps/front/src/assets/vendors/jquery/dist/jquery.min.js",
+                            "apps/front/src/assets/vendors/bootstrap/dist/js/bootstrap.bundle.min.js",
+                            "apps/front/src/assets/vendors/js-cookie/js.cookie.js",
+                            "apps/front/src/assets/vendors/jquery.scrollbar/jquery.scrollbar.min.js",
+                            "apps/front/src/assets/js/argon.js"
+                        ]
                     },
                     "configurations": {
                         "production": {
@@ -309,6 +315,72 @@
                     "outputs": ["coverage/apps/api"],
                     "options": {
                         "jestConfig": "apps/api/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                }
+            }
+        },
+        "types": {
+            "projectType": "library",
+            "root": "libs/types",
+            "sourceRoot": "libs/types/src",
+            "prefix": "nicecactus-platform",
+            "architect": {
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": ["libs/types/src/**/*.ts", "libs/types/src/**/*.html"]
+                    }
+                },
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/types"],
+                    "options": {
+                        "jestConfig": "libs/types/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                }
+            }
+        },
+        "form-validators": {
+            "projectType": "library",
+            "root": "libs/form-validators",
+            "sourceRoot": "libs/form-validators/src",
+            "prefix": "nicecactus-platform",
+            "architect": {
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": ["libs/form-validators/src/**/*.ts", "libs/form-validators/src/**/*.html"]
+                    }
+                },
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/form-validators"],
+                    "options": {
+                        "jestConfig": "libs/form-validators/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                }
+            }
+        },
+        "pipes": {
+            "projectType": "library",
+            "root": "libs/pipes",
+            "sourceRoot": "libs/pipes/src",
+            "prefix": "nicecactus-platform",
+            "architect": {
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": ["libs/pipes/src/**/*.ts", "libs/pipes/src/**/*.html"]
+                    }
+                },
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/pipes"],
+                    "options": {
+                        "jestConfig": "libs/pipes/jest.config.js",
                         "passWithNoTests": true
                     }
                 }

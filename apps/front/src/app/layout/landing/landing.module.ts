@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 
 import { LandingRoutingModule } from './landing-routing.module';
 import { LandingComponent } from './landing.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { GamesComponent } from './games/games.component';
-import { LazyloadingDirective } from './games/lazyloading.directive';
-import { CommunityComponent } from './community/community.component';
-import { TournoisComponent } from './tournois/tournois.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { GamesComponent } from './components/games/games.component';
+import { LazyloadingDirective } from './components/games/lazyloading.directive';
+import { CommunityComponent } from './components/community/community.component';
+import { TournoisComponent } from './components/tournois/tournois.component';
 
 @NgModule({
     declarations: [

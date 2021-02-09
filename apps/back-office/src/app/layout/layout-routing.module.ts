@@ -1,0 +1,30 @@
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+    {
+        path: '',
+        children: [
+            {
+                path: 'admin',
+                loadChildren: () => import('./administration/administration.module').then((m) => m.AdministrationModule),
+            },
+            {
+                path: 'auth',
+                loadChildren: () =>
+                    import('./authentication-layout/authentication-layout.module').then((m) => m.AuthenticationLayoutModule),
+            },
+            {
+                path: '',
+                redirectTo: 'auth',
+                pathMatch: 'full',
+            },
+        ],
+    },
+];
+
+@NgModule({
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule],
+})
+export class LayoutRoutingModule {}

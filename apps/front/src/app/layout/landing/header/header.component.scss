@@ -24,11 +24,43 @@
     height: calc(100vh - 56px);
     z-index: 100;
 }
-.overlay {
+.overlay, .bg-video {
+    position: absolute;
     width: 100%;
     height: calc(100vh - 56px);
-    top: 56px;
     left: 0;
+
+}
+.overlay {
+    background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.7) 0);
+    background-size: 3px 3px;
+    z-index: 2;
+}
+.bg-video {object-fit: cover;}
+.svg-inline--fa.fa-w-10 {
+    width: .625em;
+    display: inline-block;
+    font-size: inherit;
+    height: 1em;
+    vertical-align: -.125em;
+    color: white;
+}
+#back-to-top {
+    background-color: #676864;
+    border-radius: 125px;
+    color: #323639;
+    position: fixed;
+    z-index: 9;
+    right: 15px;
+    display: none;
+    bottom: 15px;
+    font-size: 18px;
+    line-height: 20px;
+    width: 45px;
+    height: 45px;
+    text-align: center;
+    padding: 12px;
+    cursor: pointer;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .navbar-expand-md {

@@ -1,44 +1,53 @@
 <div class="header-lg">
     <nav class="navbar navbar-expand-xl navbar-light container">
+        <a id="back-to-top" class=""><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-up"
+                role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"
+                class="svg-inline--fa fa-angle-up fa-w-10">
+                <path fill="currentColor"
+                    d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"
+                    class=""></path>
+            </svg></a>
         <button class="navbar-toggler" type="button" (click)="toggleNavbar()">
             <span class="navbar-toggler-icon"></span>
         </button>
         <a class="navbar-brand" href="#">Nicecactus</a>
-        <div  class="w-100 d-flex justify-content-end">
-            <div
-            class="collapse navbar-collapse show "
-            id="navbarSupportedContent"
-            [ngClass]="{ show: navbarOpen }"
-        >
-            <ul class="navbar-nav menu-link align-items-center h-100 flex-grow-1 justify-content-end" >
-                <li class="nav-item" *ngFor="let item of menuListes">
-                    <a class="nav-link" href="#">{{ item }}</a>
-                </li>
-                <li class="nav-item m-3">
-                    <i class="nav-link fa fa-shopping-bag fa-2x"></i>
-                </li>
-            </ul>
-            <ul class="navbar-nav flex-row align-items-center">
-                <li class="nav-item m-3">
-                    <i class="nav-link fa fa-globe fa-2x"></i>
-                </li>
-                <li class="nav-item m-3">
-                    <a class="nav-link" routerLink="/auth/login">Login</a>
-                </li>
-                <li class="nav-item m-3">
-                    <a class="nav-link" routerLink="/auth/register">Join Now</a>
-                </li>
-            </ul>
-        </div>
+        <div class="w-100 d-flex justify-content-end">
+            <div class="collapse navbar-collapse show " id="navbarSupportedContent" [ngClass]="{ show: navbarOpen }">
+                <ul class="navbar-nav menu-link align-items-center h-100 flex-grow-1 justify-content-end">
+                    <li class="nav-item" *ngFor="let item of menuListes">
+                        <a class="nav-link" href="#">{{ item }}</a>
+                    </li>
+                    <li class="nav-item m-3">
+                        <i class="nav-link fa fa-shopping-bag fa-2x"></i>
+                    </li>
+                </ul>
+                <ul class="navbar-nav flex-row align-items-center">
+                    <li class="nav-item m-3">
+                        <i class="nav-link fa fa-globe fa-2x"></i>
+                    </li>
+                    <li class="nav-item m-3">
+                        <a class="nav-link" routerLink="/auth/login">Login</a>
+                    </li>
+                    <li class="nav-item m-3">
+                        <a class="nav-link" routerLink="/auth/register">Join Now</a>
+                    </li>
+                </ul>
+            </div>
         </div>
 
     </nav>
 </div>
-<div class="main-wrapper">
-    <div class="overlay">
-        <div class="content d-flex justify-content-center flex-column text-center">
-            <h1 class="title">Train, track, compete and connect</h1>
-            <p class="subtitle">Nous sommes la plateforme "tout-en-un" avec la plus forte croissance en Europe pour les joueurs de tous niveaux</p>
+
+<div>
+    <video src="https://public.nicecact.us/homepage/videos/intro/hp_vl.mp4" loop="loop" controls autoplay muted="muted"
+        class="bg-video"></video>
+    <div class="main-wrapper">
+        <div class="overlay">
+            <div class="content d-flex justify-content-center flex-column text-center">
+                <h1 class="title">Train, track, compete and connect</h1>
+                <p class="subtitle">Nous sommes la plateforme "tout-en-un" avec la plus forte croissance en Europe pour
+                    les joueurs de tous niveaux</p>
+            </div>
         </div>
     </div>
 </div>

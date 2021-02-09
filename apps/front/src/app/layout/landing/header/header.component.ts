@@ -19,3 +19,4 @@ export class HeaderComponent {
           .scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
 }
+

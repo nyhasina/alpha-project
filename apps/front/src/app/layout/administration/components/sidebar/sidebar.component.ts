@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavItem } from '../../../../../../../../libs/types/src/lib/nav-item.interface';
+import { NavItem } from '@nicecactus-platform/types';
 
 @Component({
     selector: 'nicecactus-platform-sidebar',
@@ -14,9 +14,9 @@ export class SidebarComponent {
     constructor(private router: Router) {}
 
     go(routerLink: string[]) {
-      if (!routerLink) {
-        return;
-      }
-      this.router.navigate(routerLink);
+        if (!routerLink) {
+            return;
+        }
+        this.router.navigate(routerLink);
     }
 }

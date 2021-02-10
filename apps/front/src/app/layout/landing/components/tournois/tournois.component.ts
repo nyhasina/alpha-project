@@ -27,7 +27,8 @@ gameCalendar: Array<any> = [
     prize: '3£',
     date: '02/09/2021, 9:44 PM'
   }
-]
+];
+gameAcademy: Array<string> = ["assets/img/games/apex.png","assets/img/games/auto.png", "assets/img/games/brawl.png", "assets/img/games/chess.png"]
   constructor() { }
 
   ngOnInit(): void {

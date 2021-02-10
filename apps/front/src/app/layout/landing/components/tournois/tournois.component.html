@@ -28,7 +28,7 @@
   </div>
   <div class="tournament-card-cointainer justify-content-center d-flex w-100 h-100 row m-0">
     <div class="col-lg-4 col-md-4 dol-12 p-1" *ngFor="let item of gameCalendar">
-      <div class="tournament-card position-relative p-2" >
+      <div class="tournament-card position-relative p-2">
         <div class="d-flex">
           <div class="tournament-name mb-5">{{item.name}}</div>
           <div class="platform">
@@ -36,55 +36,145 @@
           </div>
         </div>
         <div class="d-flex flex-column align-items-start w-100">
-            <div class="prize d-flex align-items-baseline mb-1">
-                <p><i class="fas fa-award"></i><span class="ml-1">{{item.prize}} prize</span></p> 
-            </div>
-            <div class="prize d-flex align-items-baseline mb-1">
-                <p><i class="fas fa-calendar-week"></i><span class="ml-1">{{item.date}}</span></p>
-            </div>
-           
+          <div class="prize d-flex align-items-baseline mb-1">
+            <p><i class="fas fa-award"></i><span class="ml-1">{{item.prize}} prize</span></p>
+          </div>
+          <div class="prize d-flex align-items-baseline mb-1">
+            <p><i class="fas fa-calendar-week"></i><span class="ml-1">{{item.date}}</span></p>
+          </div>
+
         </div>
       </div>
     </div>
   </div>
   <div class="section-wrapper">
-      <div class="row">
-          <div class="col-md-6 col-12">
-              <div class="d-flex flex-column align-items-start">
-                <div class="info-seats ml-lg-2">
-                    Seulement 16 places restantes
-                    <span class="tournament-link text-decoration-underline">Apex Legends Top Dégâts Apex 1v1 Dégâts 3EUR</span>
-                    </div>
-                    <div class="d-flex align-items-center w-100 justify-content-center justify-content-lg-start flex-column flex-lg-row mb-3 mb-lg-0">
-                        <a class="categorized-button tournament"><button>Rejoins le concours</button></a>
-                        <a class="view-more ml-2 mobile-margin my-md-auto">Voir plus</a>
-                    </div>
-              </div>
+    <div class="row">
+      <div class="col-md-6 col-12">
+        <div class="d-flex flex-column align-items-start">
+          <div class="info-seats ml-lg-2 mb-5">
+            Seulement 16 places restantes
+            <span class="tournament-link text-decoration-underline">Apex Legends Top Dégâts Apex 1v1 Dégâts 3EUR</span>
           </div>
-          <div class="col-md-6 col-12 flex-column">
-              <div class="row mb-3 flex-column flex-md-row">
-                  <div class="flex-fill mobile-margin col-4">
-                    <div class="info-numbers mobile-margin-second">500+</div>
-                    <div class="info-text text-center">tournois-semaine</div>
-                  </div>
-                  <div class="flex-fill mobile-margin col-4">
-                    <div class="info-numbers mobile-margin-second">25+</div>
-                    <div class="info-text text-center">jeux</div>
-                  </div>
-                  <div class="flex-fill mobile-margin col-4">
-                    <div class="info-numbers mobile-margin-second">5000$</div>
-                    <div class="info-text text-center">de cashprizes chaque semaine</div>
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="d-flex justify-content-center justify-content-md-start align-items-center col-md-6 col-12">
-                      <p>Essaie l'application et participe à la compétition!</p>
-                  </div>
-                  <div class="col-md-6 col-12">
-                      <div class="d-flex justify-content-center"></div>
-                  </div>
-              </div>
+          <div
+            class="d-flex align-items-center w-100 justify-content-center justify-content-lg-start flex-column flex-lg-row mb-3 mb-lg-0">
+            <a class="categorized-button tournament"><button>Rejoins le concours</button></a>
+            <a class="view-more ml-2 mobile-margin my-md-auto">Voir plus</a>
           </div>
+        </div>
       </div>
+      <div class="col-md-6 col-12 flex-column">
+        <div class="row mb-3 flex-column flex-md-row">
+          <div class="flex-fill mobile-margin col-4">
+            <div class="info-numbers mobile-margin-second text-center">500+</div>
+            <div class="info-text text-center">tournois-semaine</div>
+          </div>
+          <div class="flex-fill mobile-margin col-4">
+            <div class="info-numbers mobile-margin-second text-center">25+</div>
+            <div class="info-text text-center">jeux</div>
+          </div>
+          <div class="flex-fill mobile-margin col-4">
+            <div class="info-numbers mobile-margin-second text-center">5000$</div>
+            <div class="info-text text-center">de cashprizes chaque semaine</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="d-flex justify-content-center justify-content-md-start align-items-center col-md-6 col-12">
+            <p class="try">Essaie l'application et participe à la compétition!</p>
+          </div>
+          <div class="col-md-6 col-12">
+            <div class="d-flex justify-content-center"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section-wrapper">
+    <div class="title-wrapper d-flex flex-md-row flex-wrap align-items-baseline mb-6">
+      <div class="d-flex flex-md-row flex-wrap align-items-baseline my-2">
+        <div class="border academy"></div>
+        <h2>Entraine-toi avec l’Académie</h2>
+      </div>
+      <div class="academy-subtitle">POWERED BY NICECACTUS 360</div>
+    </div>
+    <div class="d-flex flex-column justify-content-center m-0">
+      <div class="row training-wrapper mb-5">
+        <div class="col-md-5 col-12 d-flex justify-content-center justify-content-md-end">
+          <img alt="TrainingImage" class="w-100" style="object-fit: contain" loading="lazy"
+            src="assets/img/games/training_image.png">
+        </div>
+        <div class="col-md-7 col-12 training-logo d-flex flex-md-row flex-wrap align-items-baseline">
+          <div class="mt-5 mt-md-0 mb-3 mb-md-0">
+            <div class="d-flex flex-md-row flex-wrap align-items-baseline my-2">
+              <h3 class="title">Training</h3>
+            </div>
+          </div>
+          <div class="text-left d-flex flex-column">
+            <p class="training-description">
+              Le facteur numéro un pour s'améliorer dans l'esport est un entrainement de qualité. Nos modules de
+              formation basés sur les données ingame sont conçus pour les joueurs de tous niveaux. Entraîne-toi à ton
+              propre rythme et atteint ton plein potentiel
+            </p>
+          </div>
+          <div class="training-button-wrapper">
+            <a><button class="categorized-button training">DÉMARRER L'ENTRAÎNEMENT</button></a>
+            <a href="https://app.nicecactus.gg/training/description" target="_blank"
+              class="view-more view-more-training ml-2 text-decoration-underline">Voir plus</a>
+          </div>
+        </div>
+      </div>
+      <div class="row w-100 tracking-wrapper d-flex flex-md-row-reverse text-right mb-5">
+        <div class="col-md-7 col-12 d-flex justify-content-center justify-content-md-start">
+          <div class="position-relative d-flex justify-content-center justify-content-md-start w-100">
+            <img alt="graph Image" class="w-100" style="object-fit: contain" loading="lazy"
+              src="assets/img/games/graph.svg" class="tracking-img p-3 p-md-0 lazyLoad isLoaded">
+          </div>
+        </div>
+        <div
+          class="col-md-5 col-12 tracking-logo d-flex flex-md-row flex-wrap align-items-baseline justify-content-end">
+          <div class="d-flex w-100 align-items-baseline justify-content-end">
+          <div class="mt-5 mt-md-0 mb-3 mb-md-0">
+              <div class="d-flex flex-md-row flex-wrap align-items-baseline my-2">
+                <h3 class="title">Tracking</h3>
+              </div>
+            </div>
+          </div>
+
+          <p class="tracking-description">Suis tes progrès grâce à des statistiques en temps réel et analyse tes
+            résultats à l'aide de tableaux de bord. dentifie tes faiblesses, travaille sur des solutions pour
+            améliorer et exploiter tes points forts !</p>
+          <div class="training-button-wrapper mt-3 mt-md-0">
+            <a class="view-more mr-2">Voir plus</a>
+            <a><button class="categorized-button tracking">Téléchargez notre application</button></a>
+          </div>
+        </div>
+      </div>
+      <div class="row m-0 justify-content-center academy-available d-flex my-2 mr-1 w-100">
+        <div class="w-100 col-md-6 col-12 academy-video-wrapper">
+          <div class="w-100 m-0 justify-content-center">
+            <video src="https://public.nicecact.us/homepage/videos/academy/tracking-video.mp4" autoplay [muted]="'muted'" loop class="w-100"></video>
+          </div>
+        </div>
+        <div class="col-md-6 col-12 academy-available-right d-flex flex-column justify-content-center w-100">
+          <h2 class="my-3 academy-available-text text-center">Cette académie est disponible pour</h2>
+          <div class="row logo-wrapper d-flex flex-wrap">
+            <div class="col-6 col-md-3 my-2 d-flex justify-content-center align-items-center" *ngFor="let item of gameAcademy">
+              <img [src]="item" alt="item" loading="lazy" class="w-100">
+            </div>
+          </div>
+          <h4 class="my-3 text-center">Plus de jeux à venir bientôt!</h4>
+          <div class="levels-wrapper d-flex flex-column flex-md-row justify-content-between align-items-center">
+            <div class="text-center mb-3 mb-md-0">
+              <div class="levels-title">4 niveaux</div>
+              <p class="levels-subtitle">de débutant à avancé</p>
+            </div>
+            <div class="premium-training d-flex flex-column justify-content-center align-items-center mb-3 mb-md-0">
+              <img src="assets/img/games/premium-badge.svg" class="mb-3" loading="lazy">
+              <span>entrainements premium</span>
+            </div>
+            <div class="text-center"><div class="levels-title">500+</div> <div class="levels-subtitle">données suivies en temps réel</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

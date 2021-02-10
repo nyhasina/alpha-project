@@ -1,11 +1,25 @@
+.header-lg {
+    background-color: black;
+    color: white;
+}
 .main-wrapper {
     min-height: 93vh;
-    background-color: #0c0c0c;
+    background-color: #ffffff;
+}
+.navbar-brand {
+    color: white;
+    font-size: 33px;
+    cursor: pointer;
+}
+.navbar-brand:hover {
+    color: #b2f617;
+    border-bottom: 2px solid;
 }
 .subtitle {
     font-style: normal;
     font-size: 18px;
     line-height: 120%;
+    color: white;
     margin-top: 16px;
 }
 .title {
@@ -14,11 +28,13 @@
     font-size: 48px;
     line-height: 100%;
     letter-spacing: -0.04em;
-    color: #fff;
+    color: white;
+}
+.navbar-light .navbar-nav .nav-link {
+    color: rgb(255 255 255 / 60%);
 }
 .content {
     background: rgba(53, 50, 50, 0.5);
-    color: #f1f1f1;
     width: 100%;
     padding: 20px;
     height: calc(100vh - 56px);
@@ -29,6 +45,38 @@
     width: 100%;
     height: calc(100vh - 56px);
     left: 0;
+
+}
+button {
+    font-size: 14px;
+    background-image: linear-gradient(
+90deg
+,#d9fb33,#b2f617);
+    border-color: #b2f617;
+    font-weight: 700;
+    font-weight: 700;
+    display: inline-block;
+    font-weight: 400;
+    color: #212529;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+button:hover {
+border: 1px solid #b2f617;
+color: white;
+background-color: black;
+font-weight: bold;
+background-image: none;
 
 }
 .overlay {
@@ -43,7 +91,6 @@
     font-size: inherit;
     height: 1em;
     vertical-align: -.125em;
-    color: white;
 }
 #back-to-top {
     background-color: #676864;
@@ -62,6 +109,7 @@
     padding: 12px;
     cursor: pointer;
 }
+
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .navbar-expand-md {
         max-width: 100%;

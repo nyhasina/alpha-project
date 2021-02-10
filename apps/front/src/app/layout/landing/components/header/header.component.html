@@ -10,7 +10,7 @@
         <button class="navbar-toggler" type="button" (click)="toggleNavbar()">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="#">Nicecactus</a>
+        <a class="navbar-brand">Nicecactus</a>
         <div class="w-100 d-flex justify-content-end">
             <div class="collapse navbar-collapse show " id="navbarSupportedContent" [ngClass]="{ show: navbarOpen }">
                 <ul class="navbar-nav menu-link align-items-center h-100 flex-grow-1 justify-content-end">
@@ -29,7 +29,7 @@
                         <a class="nav-link" routerLink="/auth/login">Login</a>
                     </li>
                     <li class="nav-item m-3">
-                        <a class="nav-link" routerLink="/auth/register">Join Now</a>
+                        <a class="nav-link" routerLink="/auth/register"><button>Join Now</button></a>
                     </li>
                 </ul>
             </div>

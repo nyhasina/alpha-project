@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
     // eslint-disable-next-line @angular-eslint/component-selector
@@ -10,13 +10,34 @@ export class HeaderComponent {
     menuListes = ['Tournaments', 'Training', 'Game', 'Community'];
     fa = ['globe', 'shopping-bag'];
     navbarOpen = false;
-
+    idElement: string;
+    isShow = false
+    topPosToStartShowing = 200;
     toggleNavbar() {
         this.navbarOpen = !this.navbarOpen;
     }
+    @HostListener('window:scroll')
+    checkScroll() {
+        const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        if (scrollPosition >= this.topPosToStartShowing) {
+            this.isShow = true;
+        } else {
+            this.isShow = false;
+        }
+    }
     scrollTo(section: string) {
-        document.getElementById(section)
-          .scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+        if (section === 'Tournaments') {
+            this.idElement = 'tournois'
+        } else if (section === 'Training') {
+            this.idElement = 'training'
+        } else if (section === 'Game') {
+            this.idElement = 'games'
+        } else if (section === 'Community') {
+            this.idElement = 'community'
+        }
+        document.getElementById(this.idElement)
+            .scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    backToTop() { window.scrollTo(0, 0) }
 }
 

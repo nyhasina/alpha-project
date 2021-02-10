@@ -1,6 +1,17 @@
+#tournois {
+    min-height: 100vh;
+    justify-content: center;
+    text-align: center;
+    background-color: #0c0c0c;
+    color: #fff;
+}
 .border {
-    background: #ff5b51 !important;
+    background: #ff5b51;
     margin-right: 8px;
+}
+.border.academy {
+    transform: matrix(1, 0, 0, -1, 0, 0);
+    background: #5f82ff;
 }
 h2 {
     font-style: normal;
@@ -11,14 +22,177 @@ h2 {
     color: #d8d8d8;
 }
 select {
+    background-color: #1a1a1a;
+    color: #fff;
     border: none;
     font-size: 16px;
     line-height: 24px;
     padding: 5px;
     height: 36px;
+    box-shadow: inset 0 -1px 1px hsl(0deg 0% 100% / 25%), inset 0 2px 8px rgb(0 0 0 / 25%);
+    width: 96%;
 }
+.tournament-name {
+    font-size: 22px;
+    line-height: 127%;
+    font-style: normal;
+    font-weight: 400;
+    text-align: left;
+    width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.plateform > img {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+}
+.info-seats {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.015em;
+    color: #d8d8d8;
+}
+a {
+    button {
+        background: linear-gradient(90deg, #ff9b52, #ff5b51) !important;
+        color: #fff;
+    }
+}
+.view-more {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    -webkit-text-decoration-line: underline;
+    text-decoration-line: underline;
+    color: #d8d8d8;
+    margin-top: 16px;
+}
+.mobile-margin {
+    margin-bottom: 32px;
+}
+.mobile-margin-second {
+    margin-bottom: 8px;
+}
+.info-numbers {
+    font-size: 36px;
+    line-height: 112%;
+}
+.info-text {
+    font-size: 16px;
+    line-height: 24px;
+}
+video {
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgb(0 0 0 / 50%);
+    overflow: hidden;
+}
+.try {
+    font-size: 22px;
+    line-height: 127%;
+    text-align: center;
+    letter-spacing: 0.02em;
+}
+.academy-subtitle {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    text-transform: uppercase;
+    color: #868c88;
+    margin-left: 32px;
+}
+button {
+    background: #b2f617;
+    color: #000;
+    font-weight: 700;
+    text-transform: uppercase;
+    box-sizing: border-box;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    -webkit-tap-highlight-color: transparent;
+    display: inline-block;
+    white-space: nowrap;
+    text-decoration: none;
+    vertical-align: baseline;
+    text-align: center;
+    margin: 0;
+    min-width: 64px;
+    line-height: 36px;
+    padding: 0 16px;
+    border-radius: 4px;
+    overflow: visible;
+}
+.training.categorized-button {
+    background: linear-gradient(90deg, #a5ff85, #00ffd1) !important;
+    color: #000;
+}
+.tracking.categorized-button {
+    background: linear-gradient(
+90deg
+,#94e5ff,#5f82ff)!important;
+    color: #000;
+}
+h3.title  {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 22px;
+    letter-spacing: -.01em;
+    color: #d8d8d8;
+}
+h4 {color:white}
+.premium-training img {
+    width: 33px;
+    height: 33px;
+    -o-object-fit: contain;
+    object-fit: contain;
+}
+.premium-training span {
+    font-size: 16px;
+    background: linear-gradient(
+0deg
+,#fe5c2b .03%,#ffde00 99.97%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.academy-available-text {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 127%;
+}
+.levels-title {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+}
+.levels-subtitle {
+    font-size: 16px;
+    line-height: 24px;
+}
+.mobile-margin{
+    margin-bottom: 32px;
+}
+.tournament-game {
+    border: 1px solid;
+    margin: auto;
+    border-radius: 5px;
+}
+ .border {
+    width: 4px;
+    height: 20px;
+    margin-right: 8px;
+ }
 @media (min-width: 1200px) {
-    h2 {
+    h2, h3.title {
         font-size: 48px;
     }
     .border {
@@ -27,7 +201,23 @@ select {
     }
 }
 @media (min-width: 576px) {
-    .section-wrapper {
+    .container-fluid {
         padding: 64px 64px 0;
+    }
+    select {
+        width: auto;
+    }
+    .view-more {
+        margin-top: 16px;
+    }
+    .mobile-margin,
+    .mobile-margin-second {
+        margin-bottom: 0;
+    }
+    .try {
+        text-align: right;
+    }
+    .mobile-margin {
+        margin-bottom: 0x;
     }
 }

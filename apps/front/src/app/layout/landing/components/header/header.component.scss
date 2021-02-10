@@ -33,6 +33,20 @@
 .navbar-light .navbar-nav .nav-link {
     color: rgb(255 255 255 / 60%);
 }
+.navbar-nav.menu-link {
+    
+    cursor: pointer;
+    .nav-item:hover{
+        border-bottom: 5px solid #b2f617;
+        cursor: pointer;
+        a.nav-link{        color: #b2f617;}
+    }
+    .nav-item:hover:last-child{
+        border-bottom: none;
+        a.nav-link, i{        color: #b2f617;}
+    }
+}
+
 .content {
     background: rgba(53, 50, 50, 0.5);
     width: 100%;
@@ -99,7 +113,6 @@ background-image: none;
     position: fixed;
     z-index: 9;
     right: 15px;
-    display: none;
     bottom: 15px;
     font-size: 18px;
     line-height: 20px;

@@ -84,10 +84,19 @@ footer {
     }
   }
 }
-.listing-menu {
-  li {
-    font-size: 10px;
-    color: #524f4f;
-    cursor: pointer;
-  }
+.navbar-fixed-bottom {
+  min-height: 70px;
+    background-color: #1a1a1a;
+    display: flex;
+    justify-content: space-between;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 14px;
+    text-align: right;
+    letter-spacing: .06em;
+    color: #fff;
+    align-items: center;
+    padding-top: 28px;
+    padding-bottom: 32px;
 }

@@ -15,7 +15,7 @@
             <div class="collapse navbar-collapse show " id="navbarSupportedContent" [ngClass]="{ show: navbarOpen }">
                 <ul class="navbar-nav menu-link align-items-center h-100 flex-grow-1 justify-content-end">
                     <li class="nav-item" *ngFor="let item of menuListes">
-                        <a class="nav-link" href="#">{{ item }}</a>
+                        <a class="nav-link" (click)="scrollTo(item)">{{ item }}</a>
                     </li>
                     <li class="nav-item m-3">
                         <i class="nav-link fa fa-shopping-bag fa-2x"></i>

@@ -1,53 +1,55 @@
 <div id="tournois" class="main-container position-relative w-100 h-100 mb-5">
-  <div class="section-wrapper">
-    <div class="d-flex flex-md-row flex-wrap align-items-baseline my-2">
-      <div class="border"></div>
-      <h2>Participer à des tournois</h2>
-    </div>
-    <p class="text-left">Joue en ligne contre d'autres joueurs du monde entier et gagne des prix</p>
-    <div class="row mb-5">
-      <div class="h-100 col-lg-8 col-12 align-items-center mt-md-auto justify-content-lg-center">
-        <div class="d-flex flex-md-row flex-wrap align-items-center mb-3">
-          <label for="select">Prochains tournois disponibles pour:</label>
-          <select class="ml-md-2 ml-0">
-            <option value="item" *ngFor=" let item of gamesList; trackBy: trackByFn;">{{item}}</option>
-          </select>
-        </div>
+  <div class="container-fluid ">
+    <div class="d-flex flex-column mb-4">
+      <div class="d-flex flex-md-row flex-wrap align-items-baseline my-2">
+        <div class="border" style="border: 1px solid #ff5b51 !important;"></div>
+        <h2>Participer à des tournois</h2>
       </div>
-      <div class="w-100 col-lg-4 col-12">
-        <div class="custom-video w-100 p-2">
-          <div class="m-0 justify-content-center">
-            <div class="w-100">
-              <video class=" w-100" src="https://public.nicecact.us/homepage/videos/tournament/tournament-video.mp4"
-                autoplay [muted]="'muted'" loop></video>
+      <p class="text-left">Joue en ligne contre d'autres joueurs du monde entier et gagne des prix</p>
+      <div class="row mb-5">
+        <div class="h-100 col-lg-8 col-12 align-items-center mt-md-auto justify-content-lg-center">
+          <div class="d-flex flex-md-row flex-wrap align-items-center mb-3">
+            <label for="select">Prochains tournois disponibles pour:</label>
+            <select class="ml-md-2 ml-0">
+              <option value="item" *ngFor=" let item of gamesList; trackBy: trackByFn;">{{item}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="w-100 col-lg-4 col-12">
+          <div class="custom-video w-100 p-2">
+            <div class="m-0 justify-content-center">
+              <div class="w-100">
+                <video class=" w-100" src="https://public.nicecact.us/homepage/videos/tournament/tournament-video.mp4"
+                  autoplay [muted]="'muted'" loop></video>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    
   </div>
-  <div class="tournament-card-cointainer justify-content-center d-flex w-100 h-100 row m-0">
-    <div class="col-lg-4 col-md-4 dol-12 p-1" *ngFor="let item of gameCalendar">
-      <div class="tournament-card position-relative p-2">
-        <div class="d-flex">
-          <div class="tournament-name mb-5">{{item.name}}</div>
-          <div class="platform">
-            <img [src]="item.logo" alt="">
+  <div class="container-fluid  tournament-card-cointainer justify-content-center d-flex w-100 h-100 row m-0">
+      <div class="col-md-4 col-lg-4 dol-12 p-1 " *ngFor="let item of gameCalendar">
+        <div class="tournament-card position-relative p-2 tournament-game">
+          <div class="d-flex">
+            <div class="tournament-name mb-5">{{item.name}}</div>
+            <div class="platform">
+              <img [src]="item.logo" alt="">
+            </div>
           </div>
-        </div>
-        <div class="d-flex flex-column align-items-start w-100">
-          <div class="prize d-flex align-items-baseline mb-1">
-            <p><i class="fas fa-award"></i><span class="ml-1">{{item.prize}} prize</span></p>
-          </div>
-          <div class="prize d-flex align-items-baseline mb-1">
-            <p><i class="fas fa-calendar-week"></i><span class="ml-1">{{item.date}}</span></p>
-          </div>
-
+          <div class="d-flex flex-column align-items-start w-100">
+            <div class="prize d-flex align-items-baseline mb-1">
+              <p><i class="fas fa-award"></i><span class="ml-1">{{item.prize}} prize</span></p>
+            </div>
+            <div class="prize d-flex align-items-baseline mb-1">
+              <p><i class="fas fa-calendar-week"></i><span class="ml-1">{{item.date}}</span></p>
+            </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="section-wrapper">
+  <div class="container-fluid ">
     <div class="row">
       <div class="col-md-6 col-12">
         <div class="d-flex flex-column align-items-start">
@@ -64,15 +66,15 @@
       </div>
       <div class="col-md-6 col-12 flex-column">
         <div class="row mb-3 flex-column flex-md-row">
-          <div class="flex-fill mobile-margin col-4">
+          <div class="flex-fill mobile-margin col-lg-4 col-md-4 col-12">
             <div class="info-numbers mobile-margin-second text-center">500+</div>
             <div class="info-text text-center">tournois-semaine</div>
           </div>
-          <div class="flex-fill mobile-margin col-4">
+          <div class="flex-fill mobile-margin col-lg-4 col-md-4 col-12">
             <div class="info-numbers mobile-margin-second text-center">25+</div>
             <div class="info-text text-center">jeux</div>
           </div>
-          <div class="flex-fill mobile-margin col-4">
+          <div class="flex-fill mobile-margin col-lg-4 col-md-4 col-12">
             <div class="info-numbers mobile-margin-second text-center">5000$</div>
             <div class="info-text text-center">de cashprizes chaque semaine</div>
           </div>
@@ -88,10 +90,10 @@
       </div>
     </div>
   </div>
-  <div class="section-wrapper">
+  <div class="container-fluid ">
     <div class="title-wrapper d-flex flex-md-row flex-wrap align-items-baseline mb-6">
       <div class="d-flex flex-md-row flex-wrap align-items-baseline my-2">
-        <div class="border academy"></div>
+        <div class="border academy" style="border: 1px solid #5f82ff !important"></div>
         <h2>Entraine-toi avec l’Académie</h2>
       </div>
       <div class="academy-subtitle">POWERED BY NICECACTUS 360</div>
@@ -126,7 +128,7 @@
         <div class="col-md-7 col-12 d-flex justify-content-center justify-content-md-start">
           <div class="position-relative d-flex justify-content-center justify-content-md-start w-100">
             <img alt="graph Image" class="w-100" style="object-fit: contain" loading="lazy"
-              src="assets/img/games/graph.svg" class="tracking-img p-3 p-md-0 lazyLoad isLoaded">
+              src="assets/img/games/graph.svg" class="tracking-img p-3 p-md-0 w-100">
           </div>
         </div>
         <div

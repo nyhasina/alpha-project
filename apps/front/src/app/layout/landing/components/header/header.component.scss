@@ -124,7 +124,12 @@ background-image: none;
     padding: 7px;
     cursor: pointer;
 }
-
+.auth-mobile{display: block}
+@media only screen and (min-width: 1200px) {
+    .auth-mobile{
+        display: none;
+    }
+}
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .navbar-expand-md {
         max-width: 100%;

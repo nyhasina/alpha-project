@@ -1,0 +1,12 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type ContactModel {
+  forename: String!
+  surname: String!
+}
+
+type Query {
+  loadContact(id: Int!): ContactModel!
+}

@@ -1,0 +1,32 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type ContactModel {
+  id: Int!
+  forename: String
+  surname: String
+}
+
+type UserModel {
+  id: Int!
+  email: String!
+  password: String
+}
+
+type Query {
+  contact(id: Int!): ContactModel!
+  contacts: [ContactModel!]!
+  user(id: Int!): UserModel!
+  users: [UserModel!]!
+}
+
+type Mutation {
+  createContact(forename: String, surname: String): ContactModel!
+  updateContact(forename: String, surname: String, id: Int!): ContactModel!
+  deleteContact(id: Int!): ContactModel!
+  login(email: String!, password: String!): UserModel!
+  createUser(email: String!, password: String!): UserModel!
+  updateUser(email: String!, password: String!, id: Int!): UserModel!
+  deleteUser(id: Int!): UserModel!
+}

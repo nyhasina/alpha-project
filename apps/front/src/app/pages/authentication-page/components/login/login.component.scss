@@ -91,3 +91,6 @@ button:hover {
     margin-top: 0;
 }
 }
+::ng-deep .g-sidenav-hidden{
+    background-color: black;
+}

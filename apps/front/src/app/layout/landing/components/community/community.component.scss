@@ -60,9 +60,6 @@ video {
 h2 {
     font-size: 76px;
 }
-h3 {
-    font-size: 25px;
-}
 .mobile-margin{
     margin-bottom: 32px;
 }
@@ -70,4 +67,13 @@ h3 {
     margin-left: 32px;
 }
 }
-
+@media (max-width:575px) {
+    h3 {
+        font-size: 16px;
+    }
+}
+@media screen and (min-width:768px) and (max-width: 995px) {
+    h3 {
+    font-size: 20px;
+    }
+}

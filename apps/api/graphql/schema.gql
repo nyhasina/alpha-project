@@ -3,10 +3,18 @@
 # ------------------------------------------------------
 
 type ContactModel {
-  forename: String!
-  surname: String!
+  id: Int!
+  forename: String
+  surname: String
 }
 
 type Query {
-  loadContact(id: Int!): ContactModel!
+  contact(id: Int!): ContactModel!
+  contacts: [ContactModel!]!
+}
+
+type Mutation {
+  createContact(forename: String, surname: String): ContactModel!
+  updateContact(forename: String, surname: String, id: Int!): ContactModel!
+  deleteContact(id: Int!): ContactModel!
 }

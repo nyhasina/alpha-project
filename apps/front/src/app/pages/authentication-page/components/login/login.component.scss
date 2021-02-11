@@ -91,6 +91,6 @@ button:hover {
     margin-top: 0;
 }
 }
-::ng-deep .g-sidenav-hidden{
+::ng-deep .g-sidenav-show.g-sidenav-pinned{
     background-color: black;
 }

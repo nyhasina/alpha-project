@@ -1,12 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
 }
 ::-webkit-scrollbar-track {
-    background: red;
+    background-color: #c0f348;
+    border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
     background-image: linear-gradient(90deg, #d9fb33, #b2f617);
 }
 ::-webkit-scrollbar-track-piece {

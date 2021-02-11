@@ -5,7 +5,6 @@
     top: 50%;
     left: 50%;
     background: #191919;
-    ;
     text-align: center;
     transition: 0.25s;
     margin-top: 100px
@@ -67,12 +66,28 @@ button:hover {
         color: red;
         text-decoration: underline;
 }
-
+.navbar-brand {
+    color: white;
+    font-size: 33px;
+    cursor: pointer;
+    font-weight: 900;
+}
+.navbar-brand:hover {
+    color: #b2f617;
+    border-bottom: 2px solid;
+}
 ::ng-deep.box{
     .form-control.ng-touched.ng-invalid {
         border: 3px solid red;
         width: 300px;
         color: red
     }
-
+}
+@media (max-width: 767px) {
+.box {
+    width: 100%;
+    left: 0;
+    top: 0;
+    margin-top: 0;
+}
 }

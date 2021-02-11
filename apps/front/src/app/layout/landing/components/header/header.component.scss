@@ -107,19 +107,21 @@ background-image: none;
     vertical-align: -.125em;
 }
 #back-to-top {
-    background-color: #676864;
+    background-image: linear-gradient(
+90deg
+, #d9fb33, #b2f617);
     border-radius: 125px;
-    color: #323639;
+    color: #121312;
     position: fixed;
     z-index: 9;
     right: 15px;
     bottom: 15px;
-    font-size: 18px;
+    font-size: 30px;
     line-height: 20px;
     width: 45px;
     height: 45px;
     text-align: center;
-    padding: 12px;
+    padding: 7px;
     cursor: pointer;
 }
 

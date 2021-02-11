@@ -6,14 +6,14 @@ import { AuthenticationModule } from './authentication/authentication.module';
 import { UserModule } from './user/user.module';
 
 @Module({
-  imports: [
-    GraphQLModule.forRoot({
-      autoSchemaFile: join(process.cwd(), 'apps/api/graphql/schema.gql')
-    }),
-    ContactModule,
-    AuthenticationModule,
-    UserModule
-  ]
+    imports: [
+        GraphQLModule.forRoot({
+            autoSchemaFile: join(process.cwd(), 'apps/api/graphql/schema.gql'),
+            debug: true,
+        }),
+        ContactModule,
+        AuthenticationModule,
+        UserModule,
+    ],
 })
-export class AppModule {
-}
+export class AppModule {}

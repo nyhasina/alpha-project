@@ -14,12 +14,14 @@
 
         <div class="auth-mobile">
             <ul class="navbar-nav flex-row align-items-center">
-                <li class="nav-item m-3">
-                    <i class="nav-link fa fa-globe fa-2x" ></i>
-                </li>
-                <li class="nav-item m-3">
-                    <a class="nav-link" routerLink="/auth/login">Login</a>
-                </li>
+                     <li class="nav-item m-3" ngbDropdown>
+                        <i class="nav-link fa fa-globe fa-2x" id="selectLangue" ngbDropdownToggle></i>
+                        <div  ngbDropdownMenu aria-labelledby="selectLangue" class="listing-langue position-absolute">
+                            <ul class="p-0">
+                                <li class="m-2" *ngFor="let item of langueList">{{item}}</li>
+                            </ul>
+                          </div>
+                    </li>
                 <li class="nav-item m-3">
                     <a class="nav-link" routerLink="/auth/register"><button>Join Now</button></a>
                 </li>
@@ -35,9 +37,14 @@
                         <i class="nav-link fa fa-shopping-bag fa-2x"></i>
                     </li>
                 </ul>
-                <ul class="navbar-nav flex-row align-items-center">
-                    <li class="nav-item m-3">
-                        <i class="nav-link fa fa-globe fa-2x" ></i>
+                <ul class="navbar-nav login-list flex-row align-items-center">
+                    <li class="nav-item m-3" ngbDropdown>
+                        <i class="nav-link fa fa-globe fa-2x" id="selectLangue" ngbDropdownToggle></i>
+                        <div  ngbDropdownMenu aria-labelledby="selectLangue" class="listing-langue">
+                            <ul class="p-0">
+                                <li class="m-2" *ngFor="let item of langueList">{{item}}</li>
+                            </ul>
+                          </div>
                     </li>
                     <li class="nav-item m-3">
                         <a class="nav-link" routerLink="/auth/login">Login</a>

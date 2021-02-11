@@ -1,4 +1,4 @@
-.header-lg {
+.header-lg, .listing-langue {
     background-color: black;
     color: white;
 }
@@ -6,6 +6,7 @@
     min-height: 93vh;
     background-color: #ffffff;
 }
+
 .navbar-brand {
     color: white;
     font-size: 33px;
@@ -46,7 +47,12 @@
         a.nav-link, i{        color: #b2f617;}
     }
 }
-
+.login-list{
+    cursor: pointer;
+    .nav-item:hover {
+        a.nav-link, i{        color: #b2f617;}
+    }
+    }
 .content {
     background: rgba(53, 50, 50, 0.5);
     width: 100%;
@@ -61,7 +67,7 @@
     left: 0;
 
 }
-button {
+button, .listing-langue>ul>li {
     font-size: 14px;
     background-image: linear-gradient(
 90deg
@@ -85,7 +91,11 @@ button {
     border-radius: .25rem;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
-button:hover {
+.listing-langue>ul>li {
+    display: list-item;
+    list-style-type: none;
+}
+button:hover, .listing-langue>ul>li:hover {
 border: 1px solid #b2f617;
 color: white;
 background-color: black;
@@ -125,6 +135,9 @@ background-image: none;
     cursor: pointer;
 }
 .auth-mobile{display: block}
+::ng-deep.dropdown-toggle:empty::after {
+    display: none;
+}
 @media only screen and (min-width: 1200px) {
     .auth-mobile{
         display: none;

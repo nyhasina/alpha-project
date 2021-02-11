@@ -9,7 +9,7 @@ import { GamesComponent } from './components/games/games.component';
 import { LazyloadingDirective } from './components/games/lazyloading.directive';
 import { CommunityComponent } from './components/community/community.component';
 import { TournoisComponent } from './components/tournois/tournois.component';
-
+import {NgbDropdownModule} from '@ng-bootstrap/ng-bootstrap/';
 @NgModule({
     declarations: [
         LandingComponent,
@@ -20,6 +20,6 @@ import { TournoisComponent } from './components/tournois/tournois.component';
         CommunityComponent,
         TournoisComponent
     ],
-    imports: [CommonModule, LandingRoutingModule],
+    imports: [CommonModule, LandingRoutingModule, NgbDropdownModule],
 })
 export class LandingModule {}

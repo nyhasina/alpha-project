@@ -10,12 +10,12 @@ export class UserService {
 
     async createUser(data: Prisma.UserCreateInput): Promise<User> {
         const { password } = data;
-        const hash = await this.hashPassword(password);
+        const hash = await this.encrypt(password);
 
         return this.prisma.user.create({ data: { ...data, password: hash } });
     }
 
-    async hashPassword(password) {
+    async encrypt(password: string) {
         const saltOrRound = 10;
         return await bcrypt.hash(password, saltOrRound);
     }
@@ -25,7 +25,7 @@ export class UserService {
     }
 
     async validateCredentials(email: string, password: string): Promise<User | null> {
-        const hash = await this.hashPassword(password);
+        const hash = await this.encrypt(password);
         return this.prisma.user.findUnique({
             email,
             password: hash,

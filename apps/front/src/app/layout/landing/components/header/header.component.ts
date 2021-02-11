@@ -7,8 +7,9 @@ import { Component, HostListener } from '@angular/core';
     styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-    menuListes = ['Tournaments', 'Training', 'Game', 'Community'];
-    fa = ['globe', 'shopping-bag'];
+    menuListes: Array<string> = ['Tournaments', 'Training', 'Game', 'Community'];
+    fa: Array<string> = ['globe', 'shopping-bag'];
+    langueList: Array<string> = ['Français', 'English', 'Spanish', 'Portugues', 'Deutsch']
     navbarOpen = false;
     idElement: string;
     isShow = false

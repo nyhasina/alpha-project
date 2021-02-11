@@ -17,8 +17,7 @@ export class UserService {
 
     private async hashPassword(password) {
         const saltOrRound = 10;
-        const hash = await bcrypt.hash(password, saltOrRound);
-        return hash;
+        return await bcrypt.hash(password, saltOrRound);
     }
 
     async loadUser(where: Prisma.UserWhereUniqueInput): Promise<User> {

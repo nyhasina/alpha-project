@@ -1,12 +1,20 @@
-import { PrismaClient } from '@prisma/client';
-import * as bcrypt from 'bcrypt';
+/* eslint-disable */
+const { PrismaClient } = require('@prisma/client');
 
 const prisma = new PrismaClient();
+const bcrypt = require('bcrypt');
 
 async function main() {
     const saltOrRound = 10;
     const hash = await bcrypt.hash('admin', saltOrRound);
-    const admin = await prisma.user.create({ data: { email: 'admin@mailnesia.com', password: hash } });
+    const admin = await prisma.user.upsert({
+        where: { email: 'admin@mailnesia.com' },
+        update: {},
+        create: {
+            email: 'admin@mailnesia.com',
+            password: hash,
+        },
+    });
 }
 
 main()

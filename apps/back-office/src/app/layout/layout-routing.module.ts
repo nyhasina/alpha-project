@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { IsAuthenticatedGuard } from '@nicecactus-platform/guards';
 
 const routes: Routes = [
     {
@@ -8,6 +9,7 @@ const routes: Routes = [
             {
                 path: 'admin',
                 loadChildren: () => import('./administration/administration.module').then((m) => m.AdministrationModule),
+                canActivate: [IsAuthenticatedGuard],
             },
             {
                 path: 'auth',

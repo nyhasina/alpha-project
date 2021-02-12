@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { IsAuthenticatedGuard } from '@nicecactus-platform/guards';
+import { IsAuthenticatedGuard, IsNotAuthenticated } from '@nicecactus-platform/guards';
 
 const routes: Routes = [
     {
@@ -15,6 +15,7 @@ const routes: Routes = [
                 path: 'auth',
                 loadChildren: () =>
                     import('./authentication-layout/authentication-layout.module').then((m) => m.AuthenticationLayoutModule),
+                canActivate: [IsNotAuthenticated],
             },
             {
                 path: '',

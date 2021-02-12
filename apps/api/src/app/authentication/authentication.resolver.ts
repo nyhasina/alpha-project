@@ -25,8 +25,8 @@ export class AuthenticationResolver {
         if (!user) {
             throw new Error('Email or password is invalid');
         }
-        const token = await this.jwtService.sign({ ...user });
-        const response = new AuthenticationModel(token);
+        const accessToken = await this.jwtService.sign({ ...user });
+        const response = new AuthenticationModel(accessToken, null);
         return response;
     }
 }

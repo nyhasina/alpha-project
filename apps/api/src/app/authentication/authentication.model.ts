@@ -3,13 +3,13 @@ import { Field, ObjectType } from '@nestjs/graphql';
 @ObjectType()
 export class AuthenticationModel {
     @Field()
-    token: string;
+    accessToken: string;
 
     @Field()
     refreshToken: string;
 
-    constructor(token?: string, refreshToken?: string) {
-        this.token = token;
+    constructor(accessToken?: string, refreshToken?: string) {
+        this.accessToken = accessToken;
         this.refreshToken = refreshToken;
     }
 }

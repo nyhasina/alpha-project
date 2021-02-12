@@ -7,6 +7,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../../environments/environment';
 import { GraphQLModule } from './graphql.module';
+import { AuthenticationService } from './services/authentication.service';
 import { CoreEffects } from './store/core.effects';
 import { reducers } from './store/core.reducer';
 import { CoreRouterEffects } from './store/core.router-effects';
@@ -25,5 +26,6 @@ import { CoreRouterEffects } from './store/core.router-effects';
         HttpClientModule,
         GraphQLModule,
     ],
+    providers: [AuthenticationService],
 })
 export class CoreModule {}

@@ -1,10 +1,12 @@
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../../environments/environment';
+import { GraphQLModule } from './graphql.module';
 import { CoreEffects } from './store/core.effects';
 import { reducers } from './store/core.reducer';
 import { CoreRouterEffects } from './store/core.router-effects';
@@ -20,6 +22,8 @@ import { CoreRouterEffects } from './store/core.router-effects';
         }),
         EffectsModule.forRoot([CoreEffects, CoreRouterEffects]),
         StoreRouterConnectingModule.forRoot(),
+        HttpClientModule,
+        GraphQLModule,
     ],
 })
 export class CoreModule {}

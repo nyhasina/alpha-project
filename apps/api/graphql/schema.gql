@@ -2,15 +2,15 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type AuthenticationModel {
+  token: String!
+  refreshToken: String!
+}
+
 type ContactModel {
   id: Int!
   forename: String
   surname: String
-}
-
-type AuthenticationModel {
-  token: String!
-  refreshToken: String!
 }
 
 type UserModel {

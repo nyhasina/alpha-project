@@ -1,7 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { routerReducer } from '@ngrx/router-store';
 import * as fromRouter from '@ngrx/router-store';
-import { createReducer, on } from '@ngrx/store';
+import { routerReducer } from '@ngrx/router-store';
+import { createReducer, MetaReducer, on } from '@ngrx/store';
+import { localStorageSyncReducer } from '../core.module';
 import { signIn, signInFail, signInSuccess } from './core.actions';
 
 export interface AuthState {
@@ -14,6 +15,7 @@ export interface AuthState {
 
 export interface AppState {
     router: fromRouter.RouterReducerState<any>;
+    auth: AuthState;
 }
 
 const initialAuthState: AuthState = {
@@ -35,3 +37,4 @@ export const reducers = {
     router: routerReducer,
     auth: authenticationReducer,
 };
+export const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];

@@ -23,6 +23,8 @@
         "api": { "tags": [] },
         "types": { "tags": [] },
         "form-validators": { "tags": [] },
-        "pipes": { "tags": [] }
+        "pipes": { "tags": [] },
+        "graphql-layer": { "tags": [] },
+        "graph-ql-service": { "tags": [] }
     }
 }

@@ -5,9 +5,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { GraphQlServiceModule } from '@nicecactus-platform/graph-ql-service';
 import { environment } from '../../environments/environment';
-import { GraphQLModule } from './graphql.module';
-import { AuthenticationService } from './services/authentication.service';
 import { CoreEffects } from './store/core.effects';
 import { reducers } from './store/core.reducer';
 import { CoreRouterEffects } from './store/core.router-effects';
@@ -24,8 +23,7 @@ import { CoreRouterEffects } from './store/core.router-effects';
         EffectsModule.forRoot([CoreEffects, CoreRouterEffects]),
         StoreRouterConnectingModule.forRoot(),
         HttpClientModule,
-        GraphQLModule,
+        GraphQlServiceModule,
     ],
-    providers: [AuthenticationService],
 })
 export class CoreModule {}

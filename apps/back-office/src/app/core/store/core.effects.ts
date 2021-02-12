@@ -6,7 +6,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { AuthenticationResponse } from '@nicecactus-platform/types';
 import { of } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
-import { AuthenticationService } from '../services/authentication.service';
+import { AuthenticationService } from '../../../../../../libs/graph-ql-service/src/lib/services/authentication.service';
 import { backward, forward, go, signIn, signInFail, signInSuccess } from './core.actions';
 
 @Injectable()

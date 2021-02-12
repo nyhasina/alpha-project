@@ -1,4 +1,6 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { AuthenticationService } from './services/authentication.service';
 import { APOLLO_OPTIONS } from 'apollo-angular';
 import { ApolloClientOptions, InMemoryCache } from '@apollo/client/core';
 import { HttpLink } from 'apollo-angular/http';
@@ -12,12 +14,14 @@ export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
 }
 
 @NgModule({
+    imports: [CommonModule],
     providers: [
         {
             provide: APOLLO_OPTIONS,
             useFactory: createApollo,
             deps: [HttpLink],
         },
+        AuthenticationService,
     ],
 })
-export class GraphQLModule {}
+export class GraphQlServiceModule {}

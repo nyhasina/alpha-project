@@ -17,7 +17,9 @@
         "paths": {
             "@nicecactus-platform/types": ["libs/types/src/index.ts"],
             "@nicecactus-platform/form-validators": ["libs/form-validators/src/index.ts"],
-            "@nicecactus-platform/pipes": ["libs/pipes/src/index.ts"]
+            "@nicecactus-platform/pipes": ["libs/pipes/src/index.ts"],
+            "@nicecactus-platform/graphql-layer": ["libs/graphql-layer/src/index.ts"],
+            "@nicecactus-platform/graph-ql-service": ["libs/graph-ql-service/src/index.ts"]
         }
     },
     "exclude": ["node_modules", "tmp"]

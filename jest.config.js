@@ -6,5 +6,7 @@ module.exports = {
         '<rootDir>/libs/types',
         '<rootDir>/libs/form-validators',
         '<rootDir>/libs/pipes',
+        '<rootDir>/libs/graphql-layer',
+        '<rootDir>/libs/graph-ql-service',
     ],
 };

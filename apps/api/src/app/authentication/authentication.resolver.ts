@@ -1,5 +1,6 @@
 import { Args, ArgsType, Field, Mutation, Resolver } from '@nestjs/graphql';
 import { JwtService } from '@nestjs/jwt';
+import { Public } from '../shared/decorators/is-public.decorator';
 import { AuthenticationModel } from './authentication.model';
 import { AuthenticationService } from './authentication.service';
 
@@ -16,6 +17,7 @@ class AuthenticationPayload {
 export class AuthenticationResolver {
     constructor(private authenticationService: AuthenticationService, private jwtService: JwtService) {}
 
+    @Public()
     @Mutation((of) => AuthenticationModel)
     async login(@Args() payload: AuthenticationPayload) {
         const { email, password } = payload;

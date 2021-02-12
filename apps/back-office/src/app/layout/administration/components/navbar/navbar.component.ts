@@ -1,15 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
-  selector: 'nicecactus-platform-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+    selector: 'nicecactus-platform-navbar',
+    templateUrl: './navbar.component.html',
+    styleUrls: ['./navbar.component.scss'],
 })
-export class NavbarComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class NavbarComponent {
+    @Output() signOut: EventEmitter<void> = new EventEmitter<void>();
 }

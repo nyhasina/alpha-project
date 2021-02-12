@@ -442,6 +442,40 @@
                     }
                 }
             }
+        },
+        "guards": {
+            "projectType": "library",
+            "root": "libs/guards",
+            "sourceRoot": "libs/guards/src",
+            "prefix": "nicecactus-platform",
+            "architect": {
+                "build": {
+                    "builder": "@nrwl/angular:ng-packagr-lite",
+                    "options": {
+                        "tsConfig": "libs/guards/tsconfig.lib.json",
+                        "project": "libs/guards/ng-package.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "libs/guards/tsconfig.lib.prod.json"
+                        }
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": ["libs/guards/src/**/*.ts", "libs/guards/src/**/*.html"]
+                    }
+                },
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/guards"],
+                    "options": {
+                        "jestConfig": "libs/guards/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                }
+            }
         }
     }
 }

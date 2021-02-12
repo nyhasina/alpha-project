@@ -25,6 +25,7 @@
         "form-validators": { "tags": [] },
         "pipes": { "tags": [] },
         "graphql-layer": { "tags": [] },
-        "graph-ql-service": { "tags": [] }
+        "graph-ql-service": { "tags": [] },
+        "guards": { "tags": [] }
     }
 }

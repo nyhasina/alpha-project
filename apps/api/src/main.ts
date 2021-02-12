@@ -14,13 +14,13 @@ async function bootstrap() {
     const globalPrefix = 'api';
     app.setGlobalPrefix(globalPrefix);
     const port = process.env.PORT || 3333;
-    app.use(csurf);
-    app.use(
-        rateLimit({
-            windowMs: 15 * 60 * 1000, // 15 minutes
-            max: 100, // limit each IP to 100 requests per windowMs
-        })
-    );
+    // app.use(csurf);
+    // app.use(
+    //     rateLimit({
+    //         windowMs: 15 * 60 * 1000, // 15 minutes
+    //         max: 100, // limit each IP to 100 requests per windowMs
+    //     })
+    // );
     await app.listen(port, () => {
         Logger.log('Listening at http://localhost:' + port + '/' + globalPrefix);
     });

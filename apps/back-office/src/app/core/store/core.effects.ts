@@ -43,6 +43,24 @@ export class CoreEffects {
         { dispatch: false }
     );
 
+    signIn$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(signIn),
+            switchMap(({ email, password }) =>
+                this.authenticationService.signIn(email, password).pipe(
+                    map((response: ApolloQueryResult<AuthenticationResponse>) => signInSuccess({ ...response.data.login })),
+                    catchError((error) => of(signInFail({ error })))
+                )
+            )
+        )
+    );
+
+    signInSuccess$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(signInSuccess),
+            map(() => go({ path: ['/', 'admin'] }))
+        )
+    );
 
     constructor(
         private actions$: Actions,

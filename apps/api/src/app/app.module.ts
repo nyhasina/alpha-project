@@ -8,21 +8,21 @@ import { GqlAuthGuard } from './shared/decorators/gql-auth-guard.decorator';
 import { UserModule } from './user/user.module';
 
 @Module({
-  imports: [
-    GraphQLModule.forRoot({
-      autoSchemaFile: join(process.cwd(), 'apps/api/graphql/schema.gql'),
-      debug: true
-    }),
-    ContactModule,
-    AuthenticationModule,
-    UserModule
-  ],
-  providers: [
-    {
-      provide: APP_GUARD,
-      useClass: GqlAuthGuard
-    }
-  ]
+    imports: [
+        GraphQLModule.forRoot({
+            autoSchemaFile: join(process.cwd(), 'apps/api/graphql/schema.gql'),
+            debug: true,
+            cors: true,
+        }),
+        ContactModule,
+        AuthenticationModule,
+        UserModule,
+    ],
+    providers: [
+        {
+            provide: APP_GUARD,
+            useClass: GqlAuthGuard,
+        },
+    ],
 })
-export class AppModule {
-}
+export class AppModule {}

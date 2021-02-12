@@ -56,6 +56,7 @@
         "bcrypt": "^5.0.0",
         "bootstrap": "^4.5.0",
         "csurf": "^1.11.0",
+        "express-rate-limit": "^5.2.5",
         "font-awesome": "^4.7.0",
         "graphql": "^15.5.0",
         "graphql-tools": "^7.0.3",

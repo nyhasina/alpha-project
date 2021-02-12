@@ -8,6 +8,11 @@ type ContactModel {
   surname: String
 }
 
+type AuthenticationModel {
+  token: String!
+  refreshToken: String!
+}
+
 type UserModel {
   id: Int!
   email: String!
@@ -25,7 +30,7 @@ type Mutation {
   createContact(forename: String, surname: String): ContactModel!
   updateContact(forename: String, surname: String, id: Int!): ContactModel!
   deleteContact(id: Int!): ContactModel!
-  login(email: String!, password: String!): UserModel!
+  login(email: String!, password: String!): AuthenticationModel!
   createUser(email: String!, password: String!): UserModel!
   updateUser(email: String!, password: String!, id: Int!): UserModel!
   deleteUser(id: Int!): UserModel!

@@ -62,6 +62,7 @@
         "font-awesome": "^4.7.0",
         "graphql": "^15.5.0",
         "graphql-tools": "^7.0.3",
+        "ngrx-store-localstorage": "^11.0.0",
         "passport": "^0.4.1",
         "passport-jwt": "^4.0.0",
         "passport-local": "^1.0.0",

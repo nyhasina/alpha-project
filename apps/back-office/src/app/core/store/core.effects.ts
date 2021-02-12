@@ -7,7 +7,7 @@ import { AuthenticationResponse } from '@nicecactus-platform/types';
 import { of } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { AuthenticationService } from '../../../../../../libs/graph-ql-service/src/lib/services/authentication.service';
-import { backward, forward, go, signIn, signInFail, signInSuccess } from './core.actions';
+import { backward, forward, go, signIn, signInFail, signInSuccess, signOut } from './core.actions';
 
 @Injectable()
 export class CoreEffects {
@@ -52,6 +52,16 @@ export class CoreEffects {
                     catchError((error) => of(signInFail({ error })))
                 )
             )
+        )
+    );
+
+    signOut$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(signOut),
+            map(() => {
+                localStorage.clear();
+                return go({ path: ['/', 'auth'] });
+            })
         )
     );
 

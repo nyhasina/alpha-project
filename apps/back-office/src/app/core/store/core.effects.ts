@@ -58,6 +58,9 @@ export class CoreEffects {
     signInSuccess$ = createEffect(() =>
         this.actions$.pipe(
             ofType(signInSuccess),
+            tap(({ accessToken, refreshToken }) => {
+                localStorage.setItem('accessToken', accessToken);
+            }),
             map(() => go({ path: ['/', 'admin'] }))
         )
     );

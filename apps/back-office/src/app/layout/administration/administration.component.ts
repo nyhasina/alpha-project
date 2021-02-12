@@ -1,5 +1,8 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { NavItem } from '@nicecactus-platform/types';
+import { signOut } from '../../core/store/core.actions';
+import { AppState } from '../../core/store/core.reducer';
 import {
     ASIDE_SIDEBAR_ITEMS,
     SIDEBAR_ITEMS,
@@ -18,7 +21,7 @@ export class AdministrationComponent implements OnInit {
     sidebarItems: NavItem[];
     asideSidebarItems: NavItem[];
 
-    constructor(private renderer: Renderer2) {}
+    constructor(private renderer: Renderer2, private store: Store<AppState>) {}
 
     ngOnInit(): void {
         this.sidebarItems = SIDEBAR_ITEMS;
@@ -41,5 +44,9 @@ export class AdministrationComponent implements OnInit {
                 this.renderer.addClass(document.body, SIDENAV_HIDDEN);
             }, 300);
         }
+    }
+
+    onSignOut() {
+        this.store.dispatch(signOut());
     }
 }

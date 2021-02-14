@@ -19,11 +19,20 @@ type UserModel {
   password: String
 }
 
+type PlatformModel {
+  id: Int!
+  name: String!
+  logo: String
+  deleted: Boolean
+}
+
 type Query {
   contact(id: Int!): ContactModel!
   contacts: [ContactModel!]!
   user(id: Int!): UserModel!
   users: [UserModel!]!
+  platform(id: Int!): PlatformModel!
+  platforms: [PlatformModel!]!
 }
 
 type Mutation {
@@ -34,4 +43,7 @@ type Mutation {
   createUser(email: String!, password: String!): UserModel!
   updateUser(email: String!, password: String!, id: Int!): UserModel!
   deleteUser(id: Int!): UserModel!
+  createPlatform(name: String!, logo: String, deleted: Boolean): PlatformModel!
+  updatePlatform(name: String!, logo: String, deleted: Boolean, id: Int!): PlatformModel!
+  deletePlatform(id: Int!): PlatformModel!
 }

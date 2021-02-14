@@ -1,6 +1,6 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { NavItem } from '@nicecactus-platform/types';
+import { NavItem } from '@nicecactus-platform/graph-ql-service';
 import { signOut } from '../../core/store/core.actions';
 import { AppState } from '../../core/store/core.reducer';
 import {

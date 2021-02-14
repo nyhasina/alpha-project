@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FetchResult } from '@apollo/client';
-import { AuthenticationResponse } from '@nicecactus-platform/types';
+import { AuthenticationResponse } from '../interfaces/authentication-response.interface';
 import { Apollo } from 'apollo-angular';
 import { Observable } from 'rxjs';
 import { SIGN_IN } from '../queries/authentication.queries';

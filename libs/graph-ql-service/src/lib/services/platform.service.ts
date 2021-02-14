@@ -1,16 +1,11 @@
 import { Injectable } from '@angular/core';
 import { FetchResult } from '@apollo/client';
-import {
-    CREATE_PLATFORM,
-    DELETE_PLATFORM,
-    LOAD_PLATFORM,
-    LOAD_PLATFORMS,
-    UPDATE_PLATFORM,
-} from '../queries/platform.queries';
-import { EMPTY_PLATFORM, Platform } from '@nicecactus-platform/graph-ql-service';
 import { Apollo } from 'apollo-angular';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { EMPTY_PLATFORM } from '../constants/platform.constants';
+import { Platform } from '../interfaces/platform.interface';
+import { CREATE_PLATFORM, DELETE_PLATFORM, LOAD_PLATFORM, LOAD_PLATFORMS, UPDATE_PLATFORM } from '../queries/platform.queries';
 
 @Injectable()
 export class PlatformService {

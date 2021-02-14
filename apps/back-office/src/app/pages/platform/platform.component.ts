@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { Platform } from '@nicecactus-platform/types';
+import { Platform } from '@nicecactus-platform/graph-ql-service';
 import { Observable } from 'rxjs';
 import { savePlatform } from './store/platform.actions';
 import { PlatformState } from './store/platform.reducers';

@@ -6,6 +6,7 @@ import { AuthenticationModule } from './authentication/authentication.module';
 import { ContactModule } from './contact/contact.module';
 import { GqlAuthGuard } from './shared/decorators/gql-auth-guard.decorator';
 import { UserModule } from './user/user.module';
+import { PlatformModule } from './platform/platform.module';
 
 @Module({
     imports: [
@@ -17,6 +18,7 @@ import { UserModule } from './user/user.module';
         ContactModule,
         AuthenticationModule,
         UserModule,
+        PlatformModule,
     ],
     providers: [
         {

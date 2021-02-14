@@ -1,4 +1,7 @@
 import { Module } from '@nestjs/common';
+import { PlatformService } from './platform.service';
 
-@Module({})
+@Module({
+  providers: [PlatformService]
+})
 export class PlatformModule {}

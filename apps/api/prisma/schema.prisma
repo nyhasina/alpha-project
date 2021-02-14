@@ -25,5 +25,6 @@ model User {
 model Platform {
   id  Int @default(autoincrement()) @id
   name String @unique
+  logo String?
   deleted Boolean @default(false)
 }

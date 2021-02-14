@@ -17,7 +17,7 @@
                 </div>
             </div>
             <div class="table-responsive">
-                <nicecactus-platform-platform-list></nicecactus-platform-platform-list>
+                <nicecactus-platform-platform-list [items]="platforms$ | async"></nicecactus-platform-platform-list>
             </div>
         </div>
     </div>
@@ -26,7 +26,10 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col">
-                        <nicecactus-platform-platform-form></nicecactus-platform-platform-form>
+                        <nicecactus-platform-platform-form
+                            (save)="onSave($event)"
+                            [platform]="platform$ | async"
+                        ></nicecactus-platform-platform-form>
                     </div>
                 </div>
             </div>

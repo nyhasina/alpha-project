@@ -1,7 +1,16 @@
-import { ObjectType } from '@nestjs/graphql';
+import { Field, Int, ObjectType } from '@nestjs/graphql';
 
 @ObjectType()
 export class PlatformModel {
-  id: number;
-  name: string;
+    @Field((type) => Int)
+    id: number;
+
+    @Field()
+    name: string;
+
+    @Field({ nullable: true })
+    logo?: string;
+
+    @Field({ nullable: true })
+    deleted?: boolean;
 }

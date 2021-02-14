@@ -9,6 +9,11 @@ export const SIDEBAR_ITEMS: NavItem[] = [
     label: 'Dashboard',
     icon: 'fa fa-home',
     routerLink: ['/admin/dashboard']
+  },
+  {
+    label: 'Plateforme',
+    icon: 'fab fa-playstation',
+    routerLink: ['/admin/platform']
   }
 ];
 export const ASIDE_SIDEBAR_ITEMS: NavItem[] = [];

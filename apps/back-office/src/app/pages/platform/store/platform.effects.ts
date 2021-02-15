@@ -61,7 +61,7 @@ export class PlatformEffects {
         () =>
             this.actions$.pipe(
                 ofType(savePlatformSuccess),
-                tap(() => this.router.navigate(['/administration/platform']))
+                tap(() => this.router.navigate(['/admin/platform']))
             ),
         { dispatch: false }
     );

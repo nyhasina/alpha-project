@@ -56,6 +56,7 @@ export class PlatformService {
         return this.apolloService.mutate<{ updatePlatform: Platform }>({
             mutation: UPDATE_PLATFORM,
             variables: {
+                id: payload.id,
                 name: payload.name,
                 logo: payload.logo,
             },

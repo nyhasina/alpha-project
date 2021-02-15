@@ -11,7 +11,12 @@
                 <b>{{ item.name | titlecase }}</b>
             </td>
             <td class="table-actions">
-                <a (click)="edit.emit(item.id)" class="table-action" data-toggle="tooltip" data-original-title="Edit product">
+                <a
+                    [routerLink]="['/', 'admin', 'platform', 'edit', item.id]"
+                    class="table-action"
+                    data-toggle="tooltip"
+                    data-original-title="Edit product"
+                >
                     <i class="fas fa-user-edit"></i>
                 </a>
                 <a

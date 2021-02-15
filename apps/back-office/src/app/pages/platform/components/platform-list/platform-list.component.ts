@@ -8,6 +8,5 @@ import { Platform } from '@nicecactus-platform/graph-ql-service';
 })
 export class PlatformListComponent {
     @Input() items: Platform[];
-    @Output() edit: EventEmitter<number> = new EventEmitter<number>();
     @Output() delete: EventEmitter<number> = new EventEmitter<number>();
 }

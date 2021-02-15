@@ -26,5 +26,14 @@ model Platform {
   id  Int @default(autoincrement()) @id
   name String @unique
   logo String?
+  games Game[]
   deleted Boolean @default(false)
+}
+
+model Game {
+  id  Int @default(autoincrement()) @id
+  name String @unique
+  coverImage String
+  deleted Boolean @default(false)
+  platforms Platform[]
 }

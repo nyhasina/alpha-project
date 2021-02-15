@@ -38,6 +38,7 @@ export class PlatformService {
                 variables: {
                     id,
                 },
+                fetchPolicy: 'no-cache',
             })
             .pipe(map((response) => response.data.platform));
     }
@@ -46,6 +47,7 @@ export class PlatformService {
         return this.apolloService
             .query<{ platforms: Platform[] }>({
                 query: LOAD_PLATFORMS,
+                fetchPolicy: 'no-cache',
             })
             .pipe(map((response) => response.data.platforms));
     }

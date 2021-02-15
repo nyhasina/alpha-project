@@ -17,6 +17,27 @@ async function main() {
             password: hash,
         },
     });
+
+    const platforms = [
+        'Playstation 5',
+        'Playstation 4',
+        'Playstation Network',
+        'Playstation 3',
+        'Playstation 2',
+        'Playstation',
+        'PC',
+        'Xbox One',
+        'Xbox 360',
+        'Xbox Series',
+    ];
+
+    for (const platform of platforms) {
+        await prisma.platform.upsert({
+            where: { name: platform },
+            update: { name: platform },
+            create: { name: platform },
+        });
+    }
 }
 
 main()

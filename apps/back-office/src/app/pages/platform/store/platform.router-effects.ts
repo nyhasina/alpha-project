@@ -13,7 +13,7 @@ export class PlatformRouterEffects {
         this.actions$.pipe(
             ofType(routerNavigationAction),
             withLatestFrom(this.coreStore.pipe(select(selectUrl))),
-            filter(([_, url]) => url.endsWith('platform')),
+            filter(([_, url]) => url.includes('platform')),
             map(() => loadPlatforms())
         )
     );

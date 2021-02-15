@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { createReducer, on } from '@ngrx/store';
-import { Platform } from '@nicecactus-platform/graph-ql-service';
+import { EMPTY_PLATFORM, Platform } from '@nicecactus-platform/graph-ql-service';
 import {
     createPlatformSuccess,
     loadPlatform,
@@ -82,6 +82,6 @@ export const platformReducer = createReducer(
         ...state,
         savingPlatform: false,
         platformSaved: false,
-        platform,
+        platform: EMPTY_PLATFORM,
     }))
 );

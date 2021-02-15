@@ -18,7 +18,7 @@
                 </div>
             </div>
             <div class="table-responsive">
-                <nicecactus-platform-platform-list [items]="platforms$ | async"></nicecactus-platform-platform-list>
+                <nicecactus-platform-platform-list [items]="platforms$ | async" (delete)="onDelete($event)"></nicecactus-platform-platform-list>
             </div>
         </div>
     </div>

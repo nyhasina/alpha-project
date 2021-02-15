@@ -16,13 +16,9 @@ import { selectPlatform, selectPlatforms } from '../../store/platform.selectors'
 export class PlatformListRootComponent implements OnInit {
     platforms$: Observable<Platform[]>;
 
-    constructor(private platformStore: Store<PlatformState>, private coreStore: Store<AppState>) {}
+    constructor(private platformStore: Store<PlatformState>) {}
 
     ngOnInit() {
         this.platforms$ = this.platformStore.pipe(select(selectPlatforms));
-    }
-
-    onAdd() {
-        this.coreStore.dispatch(go({ path: ['/', 'admin', 'platform', 'new'] }));
     }
 }

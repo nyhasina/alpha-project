@@ -1,4 +1,4 @@
-import { Args, ArgsType, Field, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { Args, ArgsType, Field, Int, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
 import { PlatformModel } from '../platform/platform.model';
 import { PlatformService } from './platform.service';
 
@@ -17,6 +17,7 @@ export class CreatePlatformInput {
 @Resolver((of) => PlatformModel)
 export class PlatformResolver {
     constructor(private platformService: PlatformService) {}
+
     @Query((returns) => PlatformModel)
     async platform(@Args('id', { type: () => Int, name: 'platform' }) id: number) {
         return this.platformService.loadPlatform({ id });

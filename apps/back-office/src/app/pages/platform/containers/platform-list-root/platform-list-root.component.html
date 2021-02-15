@@ -5,14 +5,15 @@
                 <div class="row">
                     <div class="col-6"></div>
                     <div class="col-6 text-right">
-                        <button
+                        <a
                             class="btn btn-sm btn-neutral btn-round btn-icon"
                             data-toggle="tooltip"
                             data-original-title="Edit product"
+                            [routerLink]="['/', 'admin', 'platform', 'new']"
                         >
                             <span class="btn-inner--icon"><i class="fas fa-user-edit"></i></span>
-                            <span class="btn-inner--text" (click)="onAdd()">Ajouter</span>
-                        </button>
+                            <span class="btn-inner--text">Ajouter</span>
+                        </a>
                     </div>
                 </div>
             </div>

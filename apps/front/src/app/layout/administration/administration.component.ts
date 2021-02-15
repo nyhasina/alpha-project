@@ -1,5 +1,5 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
-import { NavItem } from '@nicecactus-platform/types';
+import { NavItem } from '@nicecactus-platform/graph-ql-service';
 import {
     ASIDE_SIDEBAR_ITEMS,
     SIDEBAR_ITEMS,

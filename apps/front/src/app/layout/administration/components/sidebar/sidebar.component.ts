@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavItem } from '@nicecactus-platform/types';
+import { NavItem } from '@nicecactus-platform/graph-ql-service';
 
 @Component({
     selector: 'nicecactus-platform-sidebar',

@@ -1,4 +1,4 @@
-import { NavItem } from '@nicecactus-platform/types';
+import { NavItem } from '@nicecactus-platform/graph-ql-service';
 
 export const SIDENAV_PINNED = 'g-sidenav-pinned';
 export const SIDENAV_SHOW = 'g-sidenav-show';

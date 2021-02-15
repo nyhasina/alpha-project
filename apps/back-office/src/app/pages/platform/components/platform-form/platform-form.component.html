@@ -1,11 +1,11 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
+<form [formGroup]="form" (ngSubmit)="onSubmit()" *ngIf="form">
     <div class="form-group">
         <label class="form-control-label">Plateforme</label>
-        <input class="form-control form-control-sm" type="text" placeholder="Plateforme" />
+        <input class="form-control form-control-sm" type="text" formControlName="name" placeholder="Plateforme" />
     </div>
     <div class="custom-file">
         <input type="file" class="custom-file-input" id="logo" lang="en" />
         <label class="custom-file-label" for="logo"></label>
     </div>
-    <button (click)="onSubmit()" class="btn btn-primary btn-lg btn-block">Sauvegarder</button>
+    <button class="btn btn-primary btn-lg btn-block">Sauvegarder</button>
 </form>

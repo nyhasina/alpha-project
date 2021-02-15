@@ -11,7 +11,7 @@
                             data-original-title="Edit product"
                         >
                             <span class="btn-inner--icon"><i class="fas fa-user-edit"></i></span>
-                            <span class="btn-inner--text">Export</span>
+                            <span class="btn-inner--text" (click)="onAdd()">Ajouter</span>
                         </button>
                     </div>
                 </div>
@@ -22,17 +22,6 @@
         </div>
     </div>
     <div class="col-xl-4 col-md-6">
-        <div class="card border-0">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col">
-                        <nicecactus-platform-platform-form
-                            (save)="onSave($event)"
-                            [platform]="platform$ | async"
-                        ></nicecactus-platform-platform-form>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <router-outlet></router-outlet>
     </div>
 </div>

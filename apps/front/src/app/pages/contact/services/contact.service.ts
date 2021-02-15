@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Contact } from '@nicecactus-platform/types';
+
 import { EMPTY_CONTACT } from '../contact.constants';
 
 @Injectable()

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Contact } from '@nicecactus-platform/types';
+
 
 @Component({
     selector: 'app-contact-form',

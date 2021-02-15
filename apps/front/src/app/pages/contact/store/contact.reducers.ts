@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { createReducer, on } from '@ngrx/store';
-import { Contact } from '@nicecactus-platform/types';
+
 import { EMPTY_CONTACT } from '../contact.constants';
 import {
     createContactSuccess,

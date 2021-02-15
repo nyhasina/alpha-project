@@ -8,6 +8,9 @@ import {
     createPlatform,
     createPlatformFail,
     createPlatformSuccess,
+    deletePlatform,
+    deletePlatformFail,
+    deletePlatformSuccess,
     loadPlatform,
     loadPlatformFail,
     loadPlatforms,
@@ -42,6 +45,25 @@ export class PlatformEffects {
                     catchError((error) => of(loadPlatformFail({ error })))
                 )
             )
+        )
+    );
+
+    deletePlatform$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(deletePlatform),
+            switchMap(({ id }) =>
+                this.platformService.delete(id).pipe(
+                    map((platform) => deletePlatformSuccess({ platform })),
+                    catchError((error) => of(deletePlatformFail({ error })))
+                )
+            )
+        )
+    );
+
+    deletePlatformSuccess = createEffect(() =>
+        this.actions$.pipe(
+            ofType(deletePlatformSuccess),
+            map(() => loadPlatforms())
         )
     );
 

@@ -29,7 +29,8 @@ export class PlatformFormComponent implements OnChanges {
     }
 
     onSubmit(): void {
-        if (this.form.valid) {
+      console.log(this.form.value);
+      if (this.form.valid) {
             this.save.emit(this.form.value);
         }
     }

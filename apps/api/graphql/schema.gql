@@ -26,6 +26,13 @@ type PlatformModel {
   deleted: Boolean
 }
 
+type GameModel {
+  id: Int!
+  name: String!
+  coverImage: String
+  platforms: [PlatformModel!]
+}
+
 type Query {
   contact(id: Int!): ContactModel!
   contacts: [ContactModel!]!
@@ -33,6 +40,8 @@ type Query {
   users: [UserModel!]!
   platform(id: Int!): PlatformModel!
   platforms: [PlatformModel!]!
+  game(id: Int!): GameModel!
+  games: [GameModel!]!
 }
 
 type Mutation {
@@ -46,4 +55,7 @@ type Mutation {
   createPlatform(name: String!, logo: String, deleted: Boolean): PlatformModel!
   updatePlatform(name: String!, logo: String, deleted: Boolean, id: Int!): PlatformModel!
   deletePlatform(id: Int!): PlatformModel!
+  createGame(name: String!, coverImage: String, platforms: [Int!]): GameModel!
+  updateGame(name: String!, coverImage: String, platforms: [Int!], id: Int!): GameModel!
+  deleteGame(id: Int!): GameModel!
 }

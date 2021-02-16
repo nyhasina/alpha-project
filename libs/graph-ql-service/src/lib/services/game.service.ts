@@ -42,7 +42,13 @@ export class GameService {
                 },
                 fetchPolicy: 'no-cache',
             })
-            .pipe(map((response) => response.data));
+            .pipe(
+                map((response) => response.data),
+                map((data) => ({
+                    ...data,
+                    game: { ...data.game, platforms: (data.game.platforms as Platform[]).map((item) => item.id) },
+                }))
+            );
     }
 
     loadAll(): Observable<Game[]> {

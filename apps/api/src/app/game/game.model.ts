@@ -15,3 +15,13 @@ export class GameModel {
     @Field((type) => [PlatformModel], { nullable: true })
     platforms: PlatformModel[];
 }
+
+@ObjectType()
+export class GameCountModel {
+    @Field((type) => Int)
+    total: number;
+
+    constructor(total: number) {
+        this.total = total;
+    }
+}

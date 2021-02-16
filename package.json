@@ -49,6 +49,7 @@
         "@nestjs/passport": "^7.1.5",
         "@nestjs/platform-express": "^7.0.0",
         "@ng-bootstrap/ng-bootstrap": "^9.0.2",
+        "@ng-select/ng-select": "^6.1.0",
         "@ngrx/effects": "^10.1.2",
         "@ngrx/router-store": "^10.1.2",
         "@ngrx/store": "^10.1.2",

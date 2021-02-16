@@ -11,3 +11,4 @@ export * from './lib/constants/platform.constants';
 export * from './lib/interfaces/game.interface';
 export * from './lib/constants/game.constants';
 export * from './lib/services/game.service';
+export * from './lib/interfaces/pagination.interface';

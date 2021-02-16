@@ -17,12 +17,11 @@
                     </div>
                 </div>
             </div>
-            <div class="table-responsive">
-                <nicecactus-platform-game-list
-                    [items]="games$ | async"
-                    (delete)="onDelete($event)"
-                ></nicecactus-platform-game-list>
-            </div>
+            <nicecactus-platform-game-list
+                [items]="games$ | async"
+                [count]="gameCount$ | async"
+                (delete)="onDelete($event)"
+            ></nicecactus-platform-game-list>
         </div>
     </div>
     <div class="col-xl-4 col-md-6">

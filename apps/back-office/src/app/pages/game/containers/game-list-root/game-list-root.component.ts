@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { Game } from '@nicecactus-platform/graph-ql-service';
+import { Game, GameCount } from '@nicecactus-platform/graph-ql-service';
 import { deleteGame } from '../../store/game.actions';
 import { GameState } from '../../store/game.reducers';
-import { selectGames } from '../../store/game.selectors';
+import { selectGameCount, selectGames } from '../../store/game.selectors';
 
 @Component({
     selector: 'nicecactus-platform-game-list-root',
@@ -13,11 +13,13 @@ import { selectGames } from '../../store/game.selectors';
 })
 export class GameListRootComponent implements OnInit {
     games$: Observable<Game[]>;
+    gameCount$: Observable<GameCount>;
 
     constructor(private gameStore: Store<GameState>) {}
 
     ngOnInit() {
         this.games$ = this.gameStore.pipe(select(selectGames));
+        this.gameCount$ = this.gameStore.pipe(select(selectGameCount));
     }
 
     onDelete(id: number) {

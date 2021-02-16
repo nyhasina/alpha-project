@@ -15,6 +15,10 @@ const routes: Routes = [
                 path: 'platform',
                 loadChildren: () => import('../../pages/platform/platform.module').then((m) => m.PlatformModule),
             },
+            {
+                path: 'game',
+                loadChildren: () => import('../../pages/game/game.module').then((m) => m.GameModule),
+            },
         ],
     },
 ];

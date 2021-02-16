@@ -23,14 +23,6 @@ export const DELETE_GAME = gql`
     mutation deleteGame($id: Int!) {
         deleteGame(id: $id) {
             id
-            name
-            coverImage
-            platforms {
-                id
-                name
-                logo
-                deleted
-            }
         }
     }
 `;

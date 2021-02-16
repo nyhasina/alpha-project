@@ -32,8 +32,8 @@ model Platform {
 
 model Game {
   id  Int @default(autoincrement()) @id
-  name String
-  coverImage String
-  deleted Boolean @default(false)
+  name String @unique
+  coverImage String?
   platforms Platform[]
+  deleted Boolean @default(false)
 }

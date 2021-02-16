@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { PipesModule } from '../../../../../../libs/pipes/src';
 
 import { GameRoutingModule } from './game-routing.module';
 import { GameListRootComponent } from './containers/game-list-root/game-list-root.component';
@@ -23,6 +24,7 @@ import { GameFormRootComponent } from './containers/game-form-root/game-form-roo
         EffectsModule.forFeature([GameEffects, GameRouterEffects]),
         ReactiveFormsModule,
         NgSelectModule,
+        PipesModule,
     ],
 })
 export class GameModule {}

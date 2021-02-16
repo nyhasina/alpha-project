@@ -4,5 +4,5 @@ export interface Game {
     id: number;
     name: string;
     coverImage?: string;
-    platforms?: Platform[];
+    platforms?: Platform[] | number[];
 }

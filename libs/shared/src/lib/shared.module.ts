@@ -6,5 +6,6 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 @NgModule({
     imports: [CommonModule],
     declarations: [PaginatorComponent, SearchBarComponent],
+    exports: [PaginatorComponent, SearchBarComponent],
 })
 export class SharedModule {}

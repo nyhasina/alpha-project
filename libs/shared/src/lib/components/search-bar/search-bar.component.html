@@ -1,22 +1,21 @@
 <div class="row">
-  <div class="col-sm-12 col-md-6">
-    <div class="dataTables_length" id="datatable-basic_length">
-      <label
-      >Show
-        <ng-select [items]="[10, 25, 50, 100]" [clearable]="false" [searchable]="false"></ng-select>
-        entries</label
-      >
+    <div class="col-sm-12 col-md-3">
+        <div class="dataTables_length" id="datatable-basic_length">
+            <label class="d-flex align-items-center">
+                <span> Afficher </span>
+                <span class="mx-1 flex-grow-1">
+                    <ng-select [items]="pageSizes" [clearable]="false" [searchable]="false"></ng-select>
+                </span>
+                <span> éléments </span>
+            </label>
+        </div>
     </div>
-  </div>
-  <div class="col-sm-12 col-md-6">
-    <div id="datatable-basic_filter" class="dataTables_filter">
-      <label
-      >Search:<input
-        type="search"
-        class="form-control form-control-sm"
-        placeholder=""
-        aria-controls="datatable-basic"
-      /></label>
+    <div class="col-sm-12 col-md-9">
+        <div id="datatable-basic_filter" class="dataTables_filter">
+            <label class="d-flex align-items-center"
+                ><span class="mr-1"> Recherche: </span
+                ><input type="search" class="form-control form-control-sm" placeholder="" aria-controls="datatable-basic"
+            /></label>
+        </div>
     </div>
-  </div>
 </div>

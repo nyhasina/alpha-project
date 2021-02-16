@@ -67,6 +67,7 @@ export class GameResolver {
                 name,
                 coverImage,
                 platforms: {
+                    set: [],
                     connect: platforms,
                 },
             },

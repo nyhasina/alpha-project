@@ -2,7 +2,7 @@
     <thead class="thead-light">
         <tr>
             <th>Nom</th>
-            <th></th>
+            <th>Plateformes</th>
             <th></th>
         </tr>
     </thead>
@@ -11,6 +11,7 @@
             <td class="table-user">
                 <b>{{ item.name | titlecase }}</b>
             </td>
+            <td>{{ item.platforms | objectToString: 'name' }}</td>
             <td class="table-actions">
                 <a
                     [routerLink]="['/', 'admin', 'game', 'edit', item.id]"

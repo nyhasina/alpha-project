@@ -3,8 +3,8 @@ import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Game } from '@nicecactus-platform/graph-ql-service';
 import { saveGame } from '../../store/game.actions';
-import { GameState } from '../../store/game.reducers';
-import { selectGame } from '../../store/game.selectors';
+import { GameDependencies, GameState } from '../../store/game.reducers';
+import { selectDependencies, selectGame } from '../../store/game.selectors';
 
 @Component({
     selector: 'nicecactus-platform-game-form-root',
@@ -13,11 +13,13 @@ import { selectGame } from '../../store/game.selectors';
 })
 export class GameFormRootComponent implements OnInit {
     game$: Observable<Game>;
+    dependencies$: Observable<GameDependencies>;
 
     constructor(private store: Store<GameState>) {}
 
     ngOnInit(): void {
         this.game$ = this.store.pipe(select(selectGame));
+        this.dependencies$ = this.store.pipe(select(selectDependencies));
     }
 
     onSave(payload: Game) {

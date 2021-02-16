@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Game } from '@nicecactus-platform/graph-ql-service';
+import { GameDependencies } from '../../store/game.reducers';
 
 @Component({
     selector: 'nicecactus-platform-game-form',
@@ -9,6 +10,7 @@ import { Game } from '@nicecactus-platform/graph-ql-service';
 })
 export class GameFormComponent implements OnChanges {
     @Input() game: Game;
+    @Input() dependencies: GameDependencies;
     @Output() save: EventEmitter<Game> = new EventEmitter<Game>();
     form: FormGroup;
 

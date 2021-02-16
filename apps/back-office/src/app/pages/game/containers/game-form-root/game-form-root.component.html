@@ -5,6 +5,7 @@
                 <nicecactus-platform-game-form
                     (save)="onSave($event)"
                     [game]="game$ | async"
+                    [dependencies]="dependencies$ | async"
                 ></nicecactus-platform-game-form>
             </div>
         </div>

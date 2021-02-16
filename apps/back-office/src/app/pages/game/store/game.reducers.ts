@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { createReducer, on } from '@ngrx/store';
-import { EMPTY_GAME, Game } from '@nicecactus-platform/graph-ql-service';
+import { EMPTY_GAME, Game, Platform } from '@nicecactus-platform/graph-ql-service';
 import {
     createGameSuccess,
     loadGame,
@@ -14,8 +14,13 @@ import {
     saveGameSuccess,
 } from './game.actions';
 
+export interface GameDependencies {
+    platforms?: Platform[];
+}
+
 export interface GameState {
     games: Game[];
+    dependencies: GameDependencies;
     loadingGames: boolean;
     gamesLoaded: boolean;
     loadingGamesError?: HttpErrorResponse;
@@ -30,6 +35,9 @@ export interface GameState {
 
 export const initialState: GameState = {
     games: [],
+    dependencies: {
+        platforms: [],
+    },
     game: null,
     loadingGames: false,
     gamesLoaded: false,
@@ -65,11 +73,15 @@ export const gameReducer = createReducer(
         gameLoaded: false,
         loadingGameError: error,
     })),
-    on(loadGameSuccess, (state, { game }) => ({
+    on(loadGameSuccess, (state, { game, platforms }) => ({
         ...state,
         loadingGame: false,
         gameLoaded: true,
         game,
+        dependencies: {
+            ...state.dependencies,
+            platforms,
+        },
     })),
     on(saveGame, (state) => ({ ...state, savingGame: true })),
     on(saveGameFail, (state, { error }) => ({

@@ -3,6 +3,7 @@ import { FetchResult } from '@apollo/client';
 import { Apollo } from 'apollo-angular';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Platform } from '../interfaces/platform.interface';
 import { EMPTY_GAME } from '../constants/game.constants';
 import { Game } from '../interfaces/game.interface';
 import { CREATE_GAME, DELETE_GAME, LOAD_GAME, LOAD_GAMES, UPDATE_GAME } from '../queries/game.queries';
@@ -32,16 +33,16 @@ export class GameService {
         });
     }
 
-    load(id: number): Observable<Game> {
+    load(id: number): Observable<{ game: Game; platforms?: Platform[] }> {
         return this.apolloService
-            .query<{ game: Game }>({
+            .query<{ game: Game; platforms?: Platform[] }>({
                 query: LOAD_GAME,
                 variables: {
                     id,
                 },
                 fetchPolicy: 'no-cache',
             })
-            .pipe(map((response) => response.data.game));
+            .pipe(map((response) => response.data));
     }
 
     loadAll(): Observable<Game[]> {

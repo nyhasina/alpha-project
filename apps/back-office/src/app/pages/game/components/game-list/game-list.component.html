@@ -1,13 +1,13 @@
 <div class="table-responsive py-4">
-    <div id="datatable-basic_wrapper" class="dataTables_wrapper dt-bootstrap4">
+    <div class="dataTables_wrapper dt-bootstrap4" id="datatable-basic_wrapper">
         <nicecactus-platform-search-bar></nicecactus-platform-search-bar>
         <div class="row">
             <div class="col-sm-12">
                 <table
+                    aria-describedby="datatable-basic_info"
                     class="table table-flush dataTable"
                     id="datatable-basic"
                     role="grid"
-                    aria-describedby="datatable-basic_info"
                 >
                     <thead class="thead-light">
                         <tr role="row">
@@ -33,16 +33,16 @@
                                 <a
                                     [routerLink]="['/', 'admin', 'game', 'edit', item.id]"
                                     class="table-action"
-                                    data-toggle="tooltip"
                                     data-original-title="Edit product"
+                                    data-toggle="tooltip"
                                 >
                                     <i class="fas fa-user-edit"></i>
                                 </a>
                                 <a
                                     (click)="delete.emit(item.id)"
                                     class="table-action table-action-delete"
-                                    data-toggle="tooltip"
                                     data-original-title="Delete product"
+                                    data-toggle="tooltip"
                                 >
                                     <i class="fas fa-trash"></i>
                                 </a>

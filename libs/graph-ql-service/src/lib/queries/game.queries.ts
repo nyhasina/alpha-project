@@ -36,7 +36,7 @@ export const DELETE_GAME = gql`
 `;
 
 export const LOAD_GAME = gql`
-    query game($id: Int!) {
+    query loadGameByIdAndAllPlatforms($id: Int!) {
         game(id: $id) {
             id
             name
@@ -45,6 +45,10 @@ export const LOAD_GAME = gql`
                 id
                 name
             }
+        }
+        platforms {
+            id
+            name
         }
     }
 `;

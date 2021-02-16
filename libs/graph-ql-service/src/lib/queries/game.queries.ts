@@ -56,5 +56,8 @@ export const LOAD_GAMES = gql`
                 name
             }
         }
+        gameCount {
+          total
+        }
     }
 `;

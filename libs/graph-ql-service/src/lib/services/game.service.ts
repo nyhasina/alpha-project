@@ -5,7 +5,7 @@ import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Platform } from '../interfaces/platform.interface';
 import { EMPTY_GAME } from '../constants/game.constants';
-import { Game } from '../interfaces/game.interface';
+import { Game, GameCount } from '../interfaces/game.interface';
 import { CREATE_GAME, DELETE_GAME, LOAD_GAME, LOAD_GAMES, UPDATE_GAME } from '../queries/game.queries';
 
 @Injectable()
@@ -51,13 +51,13 @@ export class GameService {
             );
     }
 
-    loadAll(): Observable<Game[]> {
+    loadAll(): Observable<{ games: Game[]; gameCount: GameCount }> {
         return this.apolloService
-            .query<{ games: Game[] }>({
+            .query<{ games: Game[]; gameCount: GameCount }>({
                 query: LOAD_GAMES,
                 fetchPolicy: 'no-cache',
             })
-            .pipe(map((response) => response.data.games));
+            .pipe(map((response) => response.data));
     }
 
     update(payload: Game): Observable<FetchResult<{ updateGame: Game }>> {

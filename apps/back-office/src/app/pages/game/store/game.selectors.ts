@@ -11,3 +11,4 @@ export const selectLoadingGame = createSelector(selectGameState, (state: GameSta
 export const selectGameLoaded = createSelector(selectGameState, (state: GameState) => state.gameLoaded);
 export const selectLoadingGameError = createSelector(selectGameState, (state: GameState) => state.loadingGameError);
 export const selectDependencies = createSelector(selectGameState, (state: GameState) => state.dependencies);
+export const selectGameCount = createSelector(selectGameState, (state: GameState) => state.gameCount);

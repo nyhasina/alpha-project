@@ -29,7 +29,7 @@ export class GameEffects {
             ofType(loadGames),
             switchMap(() =>
                 this.gameService.loadAll().pipe(
-                    map((response) => loadGamesSuccess({ games: response })),
+                    map(({ games, gameCount }) => loadGamesSuccess({ games, gameCount })),
                     catchError((error) => of(loadGamesFail({ error })))
                 )
             )

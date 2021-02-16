@@ -33,6 +33,10 @@ type GameModel {
   platforms: [PlatformModel!]
 }
 
+type GameCountModel {
+  total: Int!
+}
+
 type Query {
   contact(id: Int!): ContactModel!
   contacts: [ContactModel!]!
@@ -42,6 +46,7 @@ type Query {
   platforms: [PlatformModel!]!
   game(id: Int!): GameModel!
   games: [GameModel!]!
+  gameCount: GameCountModel!
 }
 
 type Mutation {

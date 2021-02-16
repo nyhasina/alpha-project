@@ -62,9 +62,10 @@ export const gameReducer = createReducer(
         gamesLoaded: true,
         games,
     })),
-    on(createGameSuccess, (state, { game }) => ({
+    on(createGameSuccess, (state, { game, platforms }) => ({
         ...state,
         game,
+        dependencies: { ...state.dependencies, platforms },
     })),
     on(loadGame, (state) => ({ ...state, loadingGame: true })),
     on(loadGameFail, (state, { error }) => ({

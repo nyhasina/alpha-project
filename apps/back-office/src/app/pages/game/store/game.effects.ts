@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { of } from 'rxjs';
+import { forkJoin, of } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
-import { GameService } from '@nicecactus-platform/graph-ql-service';
+import { GameService, PlatformService } from '@nicecactus-platform/graph-ql-service';
 import {
     createGame,
     createGameFail,
@@ -92,13 +92,18 @@ export class GameEffects {
         this.actions$.pipe(
             ofType(createGame),
             switchMap(() =>
-                this.gameService.gameFactory().pipe(
-                    map((response) => createGameSuccess({ game: response })),
+                forkJoin([this.gameService.gameFactory(), this.platformService.loadAll()]).pipe(
+                    map(([game, platforms]) => createGameSuccess({ game, platforms })),
                     catchError((error) => of(createGameFail({ error })))
                 )
             )
         )
     );
 
-    constructor(private actions$: Actions, private gameService: GameService, private router: Router) {}
+    constructor(
+        private actions$: Actions,
+        private gameService: GameService,
+        private platformService: PlatformService,
+        private router: Router
+    ) {}
 }

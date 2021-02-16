@@ -9,5 +9,6 @@ module.exports = {
         '<rootDir>/libs/graphql-layer',
         '<rootDir>/libs/graph-ql-service',
         '<rootDir>/libs/guards',
+        '<rootDir>/libs/shared',
     ],
 };

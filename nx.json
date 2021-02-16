@@ -26,6 +26,7 @@
         "pipes": { "tags": [] },
         "graphql-layer": { "tags": [] },
         "graph-ql-service": { "tags": [] },
-        "guards": { "tags": [] }
+        "guards": { "tags": [] },
+        "shared": { "tags": [] }
     }
 }

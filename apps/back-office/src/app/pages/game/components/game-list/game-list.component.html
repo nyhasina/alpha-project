@@ -1,0 +1,34 @@
+<table class="table align-items-center table-flush">
+    <thead class="thead-light">
+        <tr>
+            <th>Nom</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of items">
+            <td class="table-user">
+                <b>{{ item.name | titlecase }}</b>
+            </td>
+            <td class="table-actions">
+                <a
+                    [routerLink]="['/', 'admin', 'game', 'edit', item.id]"
+                    class="table-action"
+                    data-toggle="tooltip"
+                    data-original-title="Edit product"
+                >
+                    <i class="fas fa-user-edit"></i>
+                </a>
+                <a
+                    (click)="delete.emit(item.id)"
+                    class="table-action table-action-delete"
+                    data-toggle="tooltip"
+                    data-original-title="Delete product"
+                >
+                    <i class="fas fa-trash"></i>
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,5 +1,5 @@
 import { Args, ArgsType, Field, Int, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
-import { GameModel } from '../game/game.model';
+import { GameCountModel, GameModel } from '../game/game.model';
 import { GameService } from '../game/game.service';
 import { PlatformService } from '../platform/platform.service';
 
@@ -39,6 +39,13 @@ export class GameResolver {
     @Query((returns) => [GameModel])
     async games() {
         return this.gameService.loadGames({});
+    }
+
+    @Query((returns) => GameCountModel)
+    async gameCount() {
+        const total = await this.gameService.count();
+        const count = new GameCountModel(total);
+        return count;
     }
 
     @Mutation((returns) => GameModel)

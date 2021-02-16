@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { passwordMustMatch } from '@nicecactus-platform/form-validators';
-
 @Component({
     selector: 'nicecactus-platform-register',
     templateUrl: './register.component.html',
@@ -29,6 +28,7 @@ export class RegisterComponent implements OnInit {
                 confirmPassword: ['', Validators.compose([Validators.required])],
                 authorization: [false, Validators.requiredTrue],
                 cookies: [false, Validators.requiredTrue],
+                code: ['', Validators.required]
             },
             {
                 validator: passwordMustMatch('password', 'confirmPassword'),
@@ -51,8 +51,8 @@ export class RegisterComponent implements OnInit {
 
     onSubmit() {
         this.submitted = true;
-        if (this.formRegister.invalid) {
-            return;
+        if (this.formRegister.valid) {
+          console.log(this.formRegister.value)
         }
     }
 

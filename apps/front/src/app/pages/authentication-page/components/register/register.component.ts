@@ -29,6 +29,7 @@ export class RegisterComponent implements OnInit {
                 confirmPassword: ['', Validators.compose([Validators.required])],
                 authorization: [false, Validators.requiredTrue],
                 cookies: [false, Validators.requiredTrue],
+                code: ['', Validators.required]
             },
             {
                 validator: passwordMustMatch('password', 'confirmPassword'),
@@ -51,8 +52,8 @@ export class RegisterComponent implements OnInit {
 
     onSubmit() {
         this.submitted = true;
-        if (this.formRegister.invalid) {
-            return;
+        if (this.formRegister.valid) {
+          console.log(this.formRegister.value)
         }
     }
 

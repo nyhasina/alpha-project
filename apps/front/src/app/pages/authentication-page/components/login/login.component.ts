@@ -19,6 +19,11 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required],
   });
   }
+  submitLogin() {
+    if (this.formLogin.valid) {
+      console.log(this.formLogin.value)
+    }
+  }
   ngOnInit(): void {
   }
 

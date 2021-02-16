@@ -1,9 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-    name: 'objetToString',
+    name: 'objectToString',
 })
-export class ObjetToStringPipe implements PipeTransform {
+export class ObjectToStringPipe implements PipeTransform {
     transform(value: any[], key: string): unknown {
         return value.map((item) => item[key]);
     }

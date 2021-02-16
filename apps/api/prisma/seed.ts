@@ -38,6 +38,34 @@ async function main() {
             create: { name: platform },
         });
     }
+
+    const ps5 = await prisma.platform.findUnique({ where: { name: 'Playstation 5' } });
+    const games = [
+        `Assassin's Creed Valhalla`,
+        `Marvel's Spider-Man: Miles Morales (2020)`,
+        'Resident Evil Village',
+        'Cyberpunk 2077',
+        'Grand Turismo 7',
+        'Watch Dogs: Legion',
+        'Godfall 2020',
+        'Sackboy: A Big Adventure',
+        'Call of Duty: Black-Ops Coldwar',
+        'Destruction Allstars',
+        'FIFA 21',
+        'Ratchet and Clank: Rift Apart',
+        `Astro's Playroom`,
+        'Dirt 5',
+        'NBA 2K21',
+        'Bugsnax',
+        'Outriders',
+    ];
+    for (const game of games) {
+        await prisma.game.upsert({
+            where: { name: game },
+            create: { name: game, coverImage: '', platforms: { connect: [{ id: ps5.id }] } },
+            update: {},
+        });
+    }
 }
 
 main()

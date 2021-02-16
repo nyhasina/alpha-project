@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgSelectModule } from '@ng-select/ng-select';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 
@@ -15,12 +16,13 @@ import { GameFormRootComponent } from './containers/game-form-root/game-form-roo
 
 @NgModule({
     declarations: [GameListRootComponent, GameFormComponent, GameListComponent, GameFormRootComponent],
-  imports: [
-    CommonModule,
-    GameRoutingModule,
-    StoreModule.forFeature('game', gameReducer),
-    EffectsModule.forFeature([GameEffects, GameRouterEffects]),
-    ReactiveFormsModule
-  ]
+    imports: [
+        CommonModule,
+        GameRoutingModule,
+        StoreModule.forFeature('game', gameReducer),
+        EffectsModule.forFeature([GameEffects, GameRouterEffects]),
+        ReactiveFormsModule,
+        NgSelectModule,
+    ],
 })
 export class GameModule {}

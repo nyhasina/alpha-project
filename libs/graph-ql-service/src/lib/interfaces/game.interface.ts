@@ -6,3 +6,7 @@ export interface Game {
     coverImage?: string;
     platforms?: Platform[] | number[];
 }
+
+export interface GameCount {
+    total?: number;
+}

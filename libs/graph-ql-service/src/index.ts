@@ -8,3 +8,6 @@ export * from './lib/interfaces/nav-item.interface';
 export * from './lib/interfaces/authentication-response.interface';
 export * from './lib/interfaces/platform.interface';
 export * from './lib/constants/platform.constants';
+export * from './lib/interfaces/game.interface';
+export * from './lib/constants/game.constants';
+export * from './lib/services/game.service';

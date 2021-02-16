@@ -5,6 +5,7 @@ import { setContext } from '@apollo/client/link/context';
 import { APOLLO_OPTIONS } from 'apollo-angular';
 import { HttpLink } from 'apollo-angular/http';
 import { AuthenticationService } from './services/authentication.service';
+import { GameService } from './services/game.service';
 import { PlatformService } from './services/platform.service';
 
 const uri = 'http://localhost:3333/graphql'; // <-- add the URL of the GraphQL server here
@@ -38,6 +39,7 @@ export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
         },
         AuthenticationService,
         PlatformService,
+        GameService,
     ],
 })
 export class GraphQlServiceModule {}

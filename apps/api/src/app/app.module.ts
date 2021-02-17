@@ -8,6 +8,7 @@ import { GqlAuthGuard } from './shared/decorators/gql-auth-guard.decorator';
 import { UserModule } from './user/user.module';
 import { PlatformModule } from './platform/platform.module';
 import { GameModule } from './game/game.module';
+import { UploadModule } from './upload/upload.module';
 
 @Module({
     imports: [
@@ -21,6 +22,7 @@ import { GameModule } from './game/game.module';
         UserModule,
         PlatformModule,
         GameModule,
+        UploadModule
     ],
     providers: [
         {

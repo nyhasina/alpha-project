@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { select, Store } from '@ngrx/store';
 import { forkJoin, of } from 'rxjs';
-import { catchError, map, switchMap, tap } from 'rxjs/operators';
+import { catchError, map, switchMap, tap, withLatestFrom } from 'rxjs/operators';
 import { GameService, PlatformService } from '@nicecactus-platform/graph-ql-service';
 import {
     createGame,
@@ -21,6 +22,8 @@ import {
     saveGameFail,
     saveGameSuccess,
 } from './game.actions';
+import { GameState } from './game.reducers';
+import { selectGameCriteria } from './game.selectors';
 
 @Injectable()
 export class GameEffects {
@@ -63,7 +66,8 @@ export class GameEffects {
     deleteGameSuccess = createEffect(() =>
         this.actions$.pipe(
             ofType(deleteGameSuccess),
-            map(() => loadGames())
+            withLatestFrom(this.gameStore.pipe(select(selectGameCriteria))),
+            map(([_, criteria]) => loadGames({ criteria }))
         )
     );
 
@@ -104,6 +108,7 @@ export class GameEffects {
         private actions$: Actions,
         private gameService: GameService,
         private platformService: PlatformService,
-        private router: Router
+        private router: Router,
+        private gameStore: Store<GameState>
     ) {}
 }

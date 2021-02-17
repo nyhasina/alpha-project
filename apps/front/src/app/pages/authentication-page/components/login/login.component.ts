@@ -7,7 +7,7 @@ import { Apollo } from 'apollo-angular';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent   {
+export class LoginComponent {
   formLogin: FormGroup;
   constructor(
     private formBuilder?: FormBuilder,

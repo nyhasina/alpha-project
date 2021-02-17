@@ -2,19 +2,19 @@
 ::-webkit-scrollbar {
     width: 8px;
 }
-::-webkit-scrollbar-track {
+::-webkit-scrollbar-track:vertical {
     background-color: #c0f348;
     border-radius: 10px;
 }
 
-::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb:vertical {
     border-radius: 10px;
     background-image: linear-gradient(90deg, #d9fb33, #b2f617);
 }
-::-webkit-scrollbar-track-piece {
+::-webkit-scrollbar-track-piece:vertical {
     background-color: black;
 }
-::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:vertical:hover {
     background-color: #c0f348;
     background-image: none;
 }

@@ -4,6 +4,6 @@ export enum SortOrder {
 }
 
 export interface Sort<T> {
-    orderBy?: keyof T;
+    by?: keyof T;
     direction?: SortOrder;
 }

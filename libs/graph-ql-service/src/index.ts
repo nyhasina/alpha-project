@@ -12,3 +12,5 @@ export * from './lib/interfaces/game.interface';
 export * from './lib/constants/game.constants';
 export * from './lib/services/game.service';
 export * from './lib/interfaces/pagination.interface';
+export * from './lib/interfaces/criteria.interface';
+export * from './lib/interfaces/sort.interface';

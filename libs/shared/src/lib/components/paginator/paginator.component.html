@@ -14,7 +14,7 @@
         <div class="dataTables_paginate paging_simple_numbers" id="datatable-basic_paginate">
             <ul class="pagination">
                 <li class="paginate_button page-item previous disabled" id="datatable-basic_previous" (click)="previousPage()">
-                    <a href="#" aria-controls="datatable-basic" data-dt-idx="0" tabindex="0" class="page-link"
+                    <a aria-controls="datatable-basic" data-dt-idx="0" tabindex="0" class="page-link"
                         ><i class="fas fa-angle-left"></i
                     ></a>
                 </li>
@@ -29,12 +29,7 @@
                     }}</a>
                 </li>
                 <li class="paginate_button page-item next" id="datatable-basic_next" (click)="nextPage()">
-                    <a
-                        href="#"
-                        aria-controls="datatable-basic"
-                        [attr.data-dt-idx]="pages.length + 1"
-                        tabindex="0"
-                        class="page-link"
+                    <a aria-controls="datatable-basic" [attr.data-dt-idx]="pages.length + 1" tabindex="0" class="page-link"
                         ><i class="fas fa-angle-right"></i
                     ></a>
                 </li>

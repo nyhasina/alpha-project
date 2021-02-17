@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Game, GameCount } from '@nicecactus-platform/graph-ql-service';
+import { Criteria, Game, GameCount, Pagination } from '@nicecactus-platform/graph-ql-service';
 
 @Component({
     selector: 'nicecactus-platform-game-list',
@@ -10,4 +10,22 @@ export class GameListComponent {
     @Input() items: Game[];
     @Input() count: GameCount;
     @Output() delete: EventEmitter<number> = new EventEmitter<number>();
+    @Output() paginate: EventEmitter<Criteria<Game>> = new EventEmitter<Criteria<Game>>();
+
+    _criteria: Criteria<Game>;
+
+    @Input() set criteria(value: Criteria<Game>) {
+        this._criteria = value;
+    }
+
+    onPaginate(pagination: Pagination) {
+        this._criteria = {
+            ...this._criteria,
+            pagination: {
+                ...pagination,
+                skip: (pagination.skip - 1) * pagination.take,
+            },
+        };
+        this.paginate.emit(this._criteria);
+    }
 }

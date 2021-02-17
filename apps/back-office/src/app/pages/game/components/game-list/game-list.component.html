@@ -52,6 +52,6 @@
                 </table>
             </div>
         </div>
-        <nicecactus-platform-paginator [length]="count.total" [pageSize]="10"></nicecactus-platform-paginator>
+        <nicecactus-platform-paginator [length]="count.total" [pageSize]="10" (paginate)="onPaginate($event)"></nicecactus-platform-paginator>
     </div>
 </div>

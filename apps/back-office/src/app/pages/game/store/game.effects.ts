@@ -30,8 +30,8 @@ export class GameEffects {
     loadGames$ = createEffect(() =>
         this.actions$.pipe(
             ofType(loadGames),
-            switchMap(() =>
-                this.gameService.loadAll().pipe(
+            switchMap(({ criteria }) =>
+                this.gameService.loadAll(criteria).pipe(
                     map(({ games, gameCount }) => loadGamesSuccess({ games, gameCount })),
                     catchError((error) => of(loadGamesFail({ error })))
                 )

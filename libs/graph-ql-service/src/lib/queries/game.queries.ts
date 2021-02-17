@@ -46,18 +46,20 @@ export const LOAD_GAME = gql`
 `;
 
 export const LOAD_GAMES = gql`
-    query games {
-        games {
+    query games($take: Int, $skip: Int, $by: String, $direction: String, $search: String) {
+        games(take: $take, skip: $skip, by: $by, direction: $direction, search: $search) {
             id
             name
             coverImage
             platforms {
                 id
                 name
+                logo
+                deleted
             }
         }
-        gameCount {
-          total
+        gameCount(search: $search) {
+            total
         }
     }
 `;

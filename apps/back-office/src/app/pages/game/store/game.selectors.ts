@@ -3,6 +3,7 @@ import { GameState } from './game.reducers';
 
 export const selectGameState = createFeatureSelector<GameState>('game');
 export const selectGames = createSelector(selectGameState, (state: GameState) => state.games);
+export const selectGameCriteria = createSelector(selectGameState, (state: GameState) => state.criteria);
 export const selectLoadingGames = createSelector(selectGameState, (state: GameState) => state.loadingGames);
 export const selectGamesLoaded = createSelector(selectGameState, (state: GameState) => state.gamesLoaded);
 export const selectLoadingGamesError = createSelector(selectGameState, (state: GameState) => state.loadingGamesError);

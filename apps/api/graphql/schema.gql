@@ -45,7 +45,7 @@ type Query {
   platform(id: Int!): PlatformModel!
   platforms: [PlatformModel!]!
   game(id: Int!): GameModel!
-  games: [GameModel!]!
+  games(take: Int, skip: Int, by: String, direction: String, search: String): [GameModel!]!
   gameCount: GameCountModel!
 }
 

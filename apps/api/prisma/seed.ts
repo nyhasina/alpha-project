@@ -63,7 +63,10 @@ async function main() {
         await prisma.game.upsert({
             where: { name: game },
             create: { name: game, coverImage: '', platforms: { connect: [{ id: ps5.id }] } },
-            update: {},
+            update: {
+                name: game,
+                platforms: { set: [], connect: [{ id: ps5.id }] },
+            },
         });
     }
 }

@@ -3,6 +3,7 @@ import { FetchResult } from '@apollo/client';
 import { Apollo } from 'apollo-angular';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Criteria } from '../..';
 import { Platform } from '../interfaces/platform.interface';
 import { EMPTY_GAME } from '../constants/game.constants';
 import { Game, GameCount } from '../interfaces/game.interface';
@@ -51,11 +52,19 @@ export class GameService {
             );
     }
 
-    loadAll(): Observable<{ games: Game[]; gameCount: GameCount }> {
+    loadAll(criteria: Criteria<Game>): Observable<{ games: Game[]; gameCount: GameCount }> {
+        const { pagination, search, sort } = criteria;
         return this.apolloService
             .query<{ games: Game[]; gameCount: GameCount }>({
                 query: LOAD_GAMES,
                 fetchPolicy: 'no-cache',
+                variables: {
+                    skip: pagination.skip,
+                    take: pagination.take,
+                    by: sort.by,
+                    direction: sort.direction,
+                    search,
+                },
             })
             .pipe(map((response) => response.data));
     }

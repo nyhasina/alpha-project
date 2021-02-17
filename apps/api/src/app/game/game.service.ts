@@ -35,8 +35,10 @@ export class GameService {
         });
     }
 
-    async count(): Promise<number> {
-        return this.prisma.game.count();
+    async count(where: Prisma.GameWhereInput = {}): Promise<number> {
+        return this.prisma.game.count({
+            where,
+        });
     }
 
     async createGame(data: Prisma.GameCreateInput): Promise<Game> {

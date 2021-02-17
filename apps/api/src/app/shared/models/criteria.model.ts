@@ -1,7 +1,7 @@
-import { ArgsType, Field, Int } from '@nestjs/graphql';
+import { ArgsType, Field, Int, OmitType } from '@nestjs/graphql';
 
 @ArgsType()
-export class Pagination<T> {
+export class Pagination {
     @Field((type) => Int, { nullable: true })
     take?: number;
 
@@ -17,3 +17,6 @@ export class Pagination<T> {
     @Field({ nullable: true })
     search?: string;
 }
+
+@ArgsType()
+export class CountArgs extends OmitType(Pagination, ['take', 'skip', 'by', 'direction']) {}

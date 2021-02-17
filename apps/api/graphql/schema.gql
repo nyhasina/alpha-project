@@ -46,7 +46,7 @@ type Query {
   platforms: [PlatformModel!]!
   game(id: Int!): GameModel!
   games(take: Int, skip: Int, by: String, direction: String, search: String): [GameModel!]!
-  gameCount: GameCountModel!
+  gameCount(search: String): GameCountModel!
 }
 
 type Mutation {

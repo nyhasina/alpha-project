@@ -2,6 +2,7 @@ import { Args, ArgsType, Field, Int, Mutation, Parent, Query, ResolveField, Reso
 import { GameCountModel, GameModel } from '../game/game.model';
 import { GameService } from '../game/game.service';
 import { PlatformService } from '../platform/platform.service';
+import { Pagination } from '../shared/models/criteria.model';
 
 @ArgsType()
 export class CreateGameInput {
@@ -37,8 +38,35 @@ export class GameResolver {
     }
 
     @Query((returns) => [GameModel])
-    async games() {
-        return this.gameService.loadGames({});
+    async games(@Args() pagination: Pagination<GameModel>) {
+        const { take, skip, by, direction, search } = pagination;
+        let orderBy = {};
+        if (by && direction) {
+            orderBy = { [by]: direction };
+        }
+        return this.gameService.loadGames({
+            skip,
+            take,
+            where: {
+                OR: [
+                    {
+                        name: {
+                            contains: search,
+                        },
+                    },
+                    {
+                        platforms: {
+                            some: {
+                                name: {
+                                    contains: search,
+                                },
+                            },
+                        },
+                    },
+                ],
+            },
+            orderBy,
+        });
     }
 
     @Query((returns) => GameCountModel)

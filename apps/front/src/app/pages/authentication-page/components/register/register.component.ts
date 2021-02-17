@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { passwordMustMatch } from '@nicecactus-platform/form-validators';
 @Component({
@@ -6,7 +6,7 @@ import { passwordMustMatch } from '@nicecactus-platform/form-validators';
     templateUrl: './register.component.html',
     styleUrls: ['./register.component.scss', '../login/login.component.scss'],
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
     formRegister: FormGroup;
     submitted = false;
     cookiesCheck = false;
@@ -56,5 +56,4 @@ export class RegisterComponent implements OnInit {
         }
     }
 
-    ngOnInit(): void {}
 }

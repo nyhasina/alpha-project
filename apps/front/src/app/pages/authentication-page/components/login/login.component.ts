@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthenticationResponse, SIGN_IN } from '@nicecactus-platform/graph-ql-service';
 import { Apollo } from 'apollo-angular';
@@ -7,7 +7,7 @@ import { Apollo } from 'apollo-angular';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   formLogin: FormGroup;
   constructor(
     private formBuilder?: FormBuilder,
@@ -37,8 +37,6 @@ export class LoginComponent implements OnInit {
          console.log('there was an error sending the query', error);
        });
     }
-  }
-  ngOnInit(): void {
   }
 
 }

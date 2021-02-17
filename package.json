@@ -65,6 +65,7 @@
         "graphql": "^15.5.0",
         "graphql-tools": "^7.0.3",
         "minio": "^7.0.18",
+        "nestjs-minio-client": "^1.0.6",
         "ngrx-store-localstorage": "^11.0.0",
         "passport": "^0.4.1",
         "passport-jwt": "^4.0.0",

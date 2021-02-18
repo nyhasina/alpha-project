@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { SharedModule } from '@nicecactus-platform/shared';
 
 import { PlatformRoutingModule } from './platform-routing.module';
 import { PlatformListRootComponent } from './containers/platform-list-root/platform-list-root.component';
@@ -15,12 +16,13 @@ import { PlatformFormRootComponent } from './containers/platform-form-root/platf
 
 @NgModule({
     declarations: [PlatformListRootComponent, PlatformFormComponent, PlatformListComponent, PlatformFormRootComponent],
-  imports: [
-    CommonModule,
-    PlatformRoutingModule,
-    StoreModule.forFeature('platform', platformReducer),
-    EffectsModule.forFeature([PlatformEffects, PlatformRouterEffects]),
-    ReactiveFormsModule
-  ]
+    imports: [
+        CommonModule,
+        PlatformRoutingModule,
+        StoreModule.forFeature('platform', platformReducer),
+        EffectsModule.forFeature([PlatformEffects, PlatformRouterEffects]),
+        ReactiveFormsModule,
+        SharedModule,
+    ],
 })
 export class PlatformModule {}

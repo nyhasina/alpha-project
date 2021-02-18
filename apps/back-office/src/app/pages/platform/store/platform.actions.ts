@@ -14,6 +14,7 @@ export const loadPlatformSuccess = createAction('[Platform] Load platform succes
 export const savePlatform = createAction('[Platform] Save platform', props<{ platform: Platform }>());
 export const savePlatformFail = createAction('[Platform] Save platform fail', props<{ error: HttpErrorResponse }>());
 export const savePlatformSuccess = createAction('[Platform] Save platform success', props<{ platform: Platform }>());
+export const confirmPlatformDeletion = createAction('[Platform] Confirm platform deletion', props<{ platform: Platform }>());
 export const deletePlatform = createAction('[Platform] Delete platform', props<{ id: number }>());
 export const deletePlatformFail = createAction('[Platform] Delete platform fail', props<{ error: HttpErrorResponse }>());
 export const deletePlatformSuccess = createAction('[Platform] Delete platform success', props<{ platform: Platform }>());

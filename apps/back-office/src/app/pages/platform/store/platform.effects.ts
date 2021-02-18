@@ -3,8 +3,12 @@ import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { PlatformService } from '@nicecactus-platform/graph-ql-service';
 import { of } from 'rxjs';
-import { catchError, map, switchMap, tap } from 'rxjs/operators';
+import { catchError, exhaustMap, map, switchMap, tap } from 'rxjs/operators';
+import { DialogService } from '../../../../../../../libs/shared/src';
+import { discard } from '../../../core/store/core.actions';
+import { confirmGameDeletion, deleteGame } from '../../game/store/game.actions';
 import {
+    confirmPlatformDeletion,
     createPlatform,
     createPlatformFail,
     createPlatformSuccess,
@@ -45,6 +49,14 @@ export class PlatformEffects {
                     catchError((error) => of(loadPlatformFail({ error })))
                 )
             )
+        )
+    );
+
+    confirmPlatformDeletion$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(confirmPlatformDeletion),
+            exhaustMap(({ platform }) => this.dialogService.openConfirmationModal({ id: platform.id, entity: platform.name })),
+            map((id) => (!!id ? deletePlatform({ id }) : discard()))
         )
     );
 
@@ -100,5 +112,10 @@ export class PlatformEffects {
         )
     );
 
-    constructor(private actions$: Actions, private platformService: PlatformService, private router: Router) {}
+    constructor(
+        private actions$: Actions,
+        private platformService: PlatformService,
+        private dialogService: DialogService,
+        private router: Router
+    ) {}
 }

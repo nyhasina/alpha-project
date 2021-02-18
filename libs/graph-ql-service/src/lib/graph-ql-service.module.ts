@@ -1,42 +1,22 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ApolloClientOptions, ApolloLink, InMemoryCache } from '@apollo/client/core';
-import { setContext } from '@apollo/client/link/context';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { APOLLO_OPTIONS } from 'apollo-angular';
 import { HttpLink } from 'apollo-angular/http';
+import { createApollo } from './graph-ql.factory';
 import { AuthenticationService } from './services/authentication.service';
 import { GameService } from './services/game.service';
 import { PlatformService } from './services/platform.service';
 
-const uri = 'http://localhost:3333/graphql'; // <-- add the URL of the GraphQL server here
-export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
-    const token = localStorage.getItem('accessToken');
-    const auth = setContext((operation, context) => {
-        if (!token) {
-            return {};
-        }
-        return {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        };
-    });
-    const link = ApolloLink.from([auth, httpLink.create({ uri })]);
-    return {
-        link,
-        cache: new InMemoryCache({
-            resultCaching: false,
-        }),
-    };
-}
 
 @NgModule({
-    imports: [CommonModule],
+    imports: [CommonModule, MatSnackBarModule],
     providers: [
         {
             provide: APOLLO_OPTIONS,
             useFactory: createApollo,
-            deps: [HttpLink],
+            deps: [HttpLink, Router, MatSnackBar],
         },
         AuthenticationService,
         PlatformService,

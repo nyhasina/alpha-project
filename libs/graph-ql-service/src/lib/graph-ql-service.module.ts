@@ -12,13 +12,14 @@ const uri = 'http://localhost:3333/graphql'; // <-- add the URL of the GraphQL s
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
     const token = localStorage.getItem('accessToken');
     const auth = setContext((operation, context) => {
-        if (token) {
-            return {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            };
+        if (!token) {
+            return {};
         }
+        return {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        };
     });
     const link = ApolloLink.from([auth, httpLink.create({ uri })]);
     return {

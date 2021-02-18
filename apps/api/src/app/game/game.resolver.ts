@@ -18,7 +18,7 @@ export class CreateGameInput {
 
 @Resolver(() => GameModel)
 export class GameResolver {
-    constructor(private gameService: GameService, private platformService: PlatformService) {}
+    constructor(private gameService: GameService, private platformService: PlatformService) { }
 
     @ResolveField()
     async platforms(@Parent() game: GameModel) {

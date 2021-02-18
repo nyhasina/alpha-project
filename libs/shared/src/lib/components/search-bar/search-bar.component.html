@@ -4,7 +4,13 @@
             <label class="d-flex align-items-center">
                 <span> Afficher </span>
                 <span class="mx-1 flex-grow-1">
-                    <ng-select [items]="pageSizes" [clearable]="false" [searchable]="false"></ng-select>
+                    <ng-select
+                        (change)="onPageSizeChange($event)"
+                        [clearable]="false"
+                        [items]="pageSizes"
+                        [(ngModel)]="pageSize"
+                        [searchable]="false"
+                    ></ng-select>
                 </span>
                 <span> éléments </span>
             </label>
@@ -12,10 +18,17 @@
     </div>
     <div class="col-sm-12 col-md-9">
         <div id="datatable-basic_filter" class="dataTables_filter">
-            <label class="d-flex align-items-center"
-                ><span class="mr-1"> Recherche: </span
-                ><input type="search" class="form-control form-control-sm" placeholder="" aria-controls="datatable-basic"
-            /></label>
+            <label class="d-flex align-items-center">
+                <span class="mr-1"> Recherche: </span>
+                <input
+                    [(ngModel)]="searchTerm"
+                    (ngModelChange)="onChange()"
+                    type="search"
+                    class="form-control form-control-sm"
+                    placeholder=""
+                    aria-controls="datatable-basic"
+                />
+            </label>
         </div>
     </div>
 </div>

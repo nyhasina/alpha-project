@@ -1,6 +1,10 @@
 <div class="table-responsive py-4">
     <div class="dataTables_wrapper dt-bootstrap4" id="datatable-basic_wrapper">
-        <nicecactus-platform-search-bar></nicecactus-platform-search-bar>
+        <nicecactus-platform-search-bar
+            (pageChange)="onPageChange($event)"
+            (search)="onSearch($event)"
+            [initialValue]="_criteria.pagination"
+        ></nicecactus-platform-search-bar>
         <div class="row">
             <div class="col-sm-12">
                 <table
@@ -52,6 +56,11 @@
                 </table>
             </div>
         </div>
-        <nicecactus-platform-paginator [length]="count.total" [pageSize]="10" (paginate)="onPaginate($event)"></nicecactus-platform-paginator>
+        <nicecactus-platform-paginator
+            [initialValue]="_criteria.pagination"
+            [length]="count.total"
+            [pageSize]="10"
+            (paginate)="onPaginate($event)"
+        ></nicecactus-platform-paginator>
     </div>
 </div>

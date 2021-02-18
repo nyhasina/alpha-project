@@ -28,4 +28,23 @@ export class GameListComponent {
         };
         this.paginate.emit(this._criteria);
     }
+
+    onPageChange(page: number) {
+        this._criteria = {
+            ...this._criteria,
+            pagination: {
+                ...this._criteria.pagination,
+                take: page,
+            },
+        };
+        this.paginate.emit(this._criteria);
+    }
+
+    onSearch(search: string) {
+        this._criteria = {
+            ...this._criteria,
+            search,
+        };
+        this.paginate.emit(this._criteria);
+    }
 }

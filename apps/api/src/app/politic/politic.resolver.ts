@@ -2,7 +2,6 @@ import { Args, ArgsType, Field, Int, Mutation, Parent, Query, ResolveField, Reso
 import { PoliticModel } from '../politic/politic.model';
 import { PoliticService } from '../politic/politic.service';
 import { PlatformService } from '../platform/platform.service';
-import { CountArgs, Pagination } from '../shared/models/criteria.model';
 
 @ArgsType()
 export class CreatePoliticInput {
@@ -10,13 +9,43 @@ export class CreatePoliticInput {
     name: string;
 
     @Field({ nullable: true })
-    coverImage?: string;
+    content?: string;
 
-    @Field((type) => [Int], { nullable: true })
-    platforms: number[];
+    @Field()
+    deleted: boolean;
 }
 
 @Resolver(() => PoliticModel)
 export class PoliticResolver {
-    constructor(private PoliticService: PoliticService, private platformService: PlatformService) {}
+    constructor(private politicService: PoliticService, private platformService: PlatformService) { }
+    @Mutation((returns) => PoliticModel)
+    async createPolitic(@Args() input: CreatePoliticInput) {
+        const { name, content } = input;
+
+        return this.politicService.createPolitic({
+            name,
+            content,
+        });
+    }
+
+    @Mutation((returns) => PoliticModel)
+    async updatePolitic(@Args('id', { type: () => Int }) id: number, @Args() input: CreatePoliticInput) {
+        const { name, content } = input;
+        return this.politicService.updatePolitic({
+            where: {
+                id,
+            },
+            data: {
+                name,
+                content,
+            },
+        });
+    }
+
+    @Mutation((returns) => PoliticModel)
+    async deletePolitic(@Args('id', { type: () => Int }) id: number) {
+        return this.politicService.deletePolitic({
+            id,
+        });
+    }
 }

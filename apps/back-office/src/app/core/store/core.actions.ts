@@ -8,3 +8,4 @@ export const signOut = createAction('[Core] Sign out');
 export const go = createAction(`[Core] Go`, props<{ path: any; queryParams?: Record<string, any>; extras?: any }>());
 export const forward = createAction(`[Core] Forward`);
 export const backward = createAction(`[Core] Backward`);
+export const discard = createAction(`[Core] Discard`);

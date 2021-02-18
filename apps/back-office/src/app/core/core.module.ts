@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
@@ -26,6 +27,7 @@ import { CoreRouterEffects } from './store/core.router-effects';
         StoreRouterConnectingModule.forRoot(),
         HttpClientModule,
         GraphQlServiceModule,
+        NoopAnimationsModule,
     ],
 })
 export class CoreModule {}

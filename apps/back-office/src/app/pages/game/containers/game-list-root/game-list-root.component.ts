@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Criteria, Game, GameCount } from '@nicecactus-platform/graph-ql-service';
-import { deleteGame, loadGames } from '../../store/game.actions';
+import { confirmGameDeletion, deleteGame, loadGames } from '../../store/game.actions';
 import { GameState } from '../../store/game.reducers';
 import { selectGameCount, selectGameCriteria, selectGames } from '../../store/game.selectors';
 
@@ -24,8 +24,8 @@ export class GameListRootComponent implements OnInit {
         this.criteria$ = this.gameStore.pipe(select(selectGameCriteria));
     }
 
-    onDelete(id: number) {
-        this.gameStore.dispatch(deleteGame({ id }));
+    onDelete(game: Game) {
+        this.gameStore.dispatch(confirmGameDeletion({ game }));
     }
 
     onPaginate(criteria: Criteria<Game>) {

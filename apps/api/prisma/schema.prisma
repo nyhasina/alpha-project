@@ -11,29 +11,36 @@ generator client {
 }
 
 model Contact {
-  id    Int     @default(autoincrement()) @id
-  forename  String?
+  id       Int     @id @default(autoincrement())
+  forename String?
   surname  String?
 }
 
 model User {
-  id  Int @default(autoincrement()) @id
-  email String @unique
+  id       Int     @id @default(autoincrement())
+  email    String  @unique
   password String?
 }
 
 model Platform {
-  id  Int @default(autoincrement()) @id
-  name String @unique
-  logo String?
-  games Game[]
+  id      Int     @id @default(autoincrement())
+  name    String  @unique
+  logo    String?
+  games   Game[]
   deleted Boolean @default(false)
 }
 
 model Game {
-  id  Int @default(autoincrement()) @id
-  name String @unique
+  id         Int        @id @default(autoincrement())
+  name       String     @unique
   coverImage String?
-  platforms Platform[]
+  platforms  Platform[]
+  deleted    Boolean    @default(false)
+}
+
+model Politic {
+  id      Int     @id @default(autoincrement())
+  name    String
+  content String?
   deleted Boolean @default(false)
 }

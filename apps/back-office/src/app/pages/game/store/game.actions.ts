@@ -14,6 +14,7 @@ export const loadGameSuccess = createAction('[Game] Load game success', props<{ 
 export const saveGame = createAction('[Game] Save game', props<{ game: Game }>());
 export const saveGameFail = createAction('[Game] Save game fail', props<{ error: HttpErrorResponse }>());
 export const saveGameSuccess = createAction('[Game] Save game success', props<{ game: Game }>());
+export const confirmGameDeletion = createAction('[Game] Confirm game deletion', props<{ game: Game }>());
 export const deleteGame = createAction('[Game] Delete game', props<{ id: number }>());
 export const deleteGameFail = createAction('[Game] Delete game fail', props<{ error: HttpErrorResponse }>());
 export const deleteGameSuccess = createAction('[Game] Delete game success', props<{ game: Game }>());

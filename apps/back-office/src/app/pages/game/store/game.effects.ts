@@ -2,10 +2,13 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { select, Store } from '@ngrx/store';
-import { forkJoin, of } from 'rxjs';
-import { catchError, map, switchMap, tap, withLatestFrom } from 'rxjs/operators';
 import { GameService, PlatformService } from '@nicecactus-platform/graph-ql-service';
+import { DialogService } from '@nicecactus-platform/shared';
+import { forkJoin, of } from 'rxjs';
+import { catchError, exhaustMap, map, switchMap, tap, withLatestFrom } from 'rxjs/operators';
+import { discard } from '../../../core/store/core.actions';
 import {
+    confirmGameDeletion,
     createGame,
     createGameFail,
     createGameSuccess,
@@ -48,6 +51,14 @@ export class GameEffects {
                     catchError((error) => of(loadGameFail({ error })))
                 )
             )
+        )
+    );
+
+    confirmGameDeletion$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(confirmGameDeletion),
+            exhaustMap(({ game }) => this.dialogService.openConfirmationModal({ id: game.id, entity: game.name })),
+            map((id) => (!!id ? deleteGame({ id }) : discard()))
         )
     );
 
@@ -109,6 +120,7 @@ export class GameEffects {
         private gameService: GameService,
         private platformService: PlatformService,
         private router: Router,
-        private gameStore: Store<GameState>
+        private gameStore: Store<GameState>,
+        private dialogService: DialogService
     ) {}
 }

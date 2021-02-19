@@ -11,10 +11,12 @@ const routes: Routes = [
             {
                 path: 'edit/:gameId',
                 component: GameFormRootComponent,
+                data: { breadcrumb: `Modification d'un jeu` },
             },
             {
                 path: 'new',
                 component: GameFormRootComponent,
+                data: { breadcrumb: `Création d'un nouveau jeu` },
             },
         ],
     },

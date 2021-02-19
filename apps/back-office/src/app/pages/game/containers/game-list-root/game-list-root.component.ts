@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Criteria, Game, GameCount } from '@nicecactus-platform/graph-ql-service';
 import { confirmGameDeletion, deleteGame, loadGames } from '../../store/game.actions';
 import { GameState } from '../../store/game.reducers';
-import { selectGameCount, selectGameCriteria, selectGames } from '../../store/game.selectors';
+import { selectGameCount, selectGameCriteria, selectGames, selectLoadingGames } from '../../store/game.selectors';
 
 @Component({
     selector: 'nicecactus-platform-game-list-root',
@@ -15,6 +15,7 @@ export class GameListRootComponent implements OnInit {
     games$: Observable<Game[]>;
     gameCount$: Observable<GameCount>;
     criteria$: Observable<Criteria<Game>>;
+    loadingGames$: Observable<boolean>;
 
     constructor(private gameStore: Store<GameState>) {}
 
@@ -22,6 +23,7 @@ export class GameListRootComponent implements OnInit {
         this.games$ = this.gameStore.pipe(select(selectGames));
         this.gameCount$ = this.gameStore.pipe(select(selectGameCount));
         this.criteria$ = this.gameStore.pipe(select(selectGameCriteria));
+        this.loadingGames$ = this.gameStore.pipe(select(selectLoadingGames));
     }
 
     onDelete(game: Game) {

@@ -9,6 +9,7 @@ import { Criteria, Game, GameCount, Pagination } from '@nicecactus-platform/grap
 export class GameListComponent {
     @Input() items: Game[];
     @Input() count: GameCount;
+    @Input() loading: boolean;
     @Output() delete: EventEmitter<Game> = new EventEmitter<Game>();
     @Output() paginate: EventEmitter<Criteria<Game>> = new EventEmitter<Criteria<Game>>();
 
@@ -45,11 +46,11 @@ export class GameListComponent {
         this._criteria = {
             ...this._criteria,
             search,
-          pagination: {
-            ...this._criteria.pagination,
-            skip: 0,
-          },
+            pagination: {
+                ...this._criteria.pagination,
+                skip: 0,
+            },
         };
-      this.paginate.emit(this._criteria);
+        this.paginate.emit(this._criteria);
     }
 }

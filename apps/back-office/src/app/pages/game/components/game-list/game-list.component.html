@@ -28,30 +28,37 @@
                         </tr>
                     </tfoot>
                     <tbody>
-                        <tr *ngFor="let item of items">
-                            <td class="table-user">
-                                <b>{{ item.name | titlecase }}</b>
-                            </td>
-                            <td>{{ item.platforms | objectToString: 'name' }}</td>
-                            <td class="table-actions">
-                                <a
-                                    [routerLink]="['/', 'admin', 'game', 'edit', item.id]"
-                                    class="table-action"
-                                    data-original-title="Edit product"
-                                    data-toggle="tooltip"
-                                >
-                                    <i class="fas fa-user-edit"></i>
-                                </a>
-                                <a
-                                    (click)="delete.emit(item)"
-                                    class="table-action table-action-delete"
-                                    data-original-title="Delete product"
-                                    data-toggle="tooltip"
-                                >
-                                    <i class="fas fa-trash"></i>
-                                </a>
-                            </td>
-                        </tr>
+                        <nicecactus-platform-skeleton-list
+                            *ngIf="loading"
+                            [columns]="3"
+                            [rows]="_criteria.pagination.take"
+                        ></nicecactus-platform-skeleton-list>
+                        <ng-container *ngIf="!loading">
+                            <tr *ngFor="let item of items">
+                                <td class="table-user">
+                                    <b>{{ item.name | titlecase }}</b>
+                                </td>
+                                <td>{{ item.platforms | objectToString: 'name' }}</td>
+                                <td class="table-actions">
+                                    <a
+                                        [routerLink]="['/', 'admin', 'game', 'edit', item.id]"
+                                        class="table-action"
+                                        data-original-title="Edit product"
+                                        data-toggle="tooltip"
+                                    >
+                                        <i class="fas fa-user-edit"></i>
+                                    </a>
+                                    <a
+                                        (click)="delete.emit(item)"
+                                        class="table-action table-action-delete"
+                                        data-original-title="Delete product"
+                                        data-toggle="tooltip"
+                                    >
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </ng-container>
                     </tbody>
                 </table>
             </div>

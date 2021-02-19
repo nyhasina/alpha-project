@@ -10,14 +10,23 @@ const routes: Routes = [
             {
                 path: '',
                 loadChildren: () => import('../../pages/dashboard/dashboard.module').then((m) => m.DashboardModule),
+                data: {
+                    breadcrumb: 'Tableau de bord',
+                },
             },
             {
                 path: 'platform',
                 loadChildren: () => import('../../pages/platform/platform.module').then((m) => m.PlatformModule),
+                data: {
+                    breadcrumb: 'Liste des plateformes',
+                },
             },
             {
                 path: 'game',
                 loadChildren: () => import('../../pages/game/game.module').then((m) => m.GameModule),
+                data: {
+                    breadcrumb: 'Liste des jeux',
+                },
             },
         ],
     },

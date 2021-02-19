@@ -11,10 +11,12 @@ const routes: Routes = [
             {
                 path: 'edit/:platformId',
                 component: PlatformFormRootComponent,
+                data: { breadcrumb: `Modification d'une plateforme` },
             },
             {
                 path: 'new',
                 component: PlatformFormRootComponent,
+                data: { breadcrumb: `Création d'une nouvelle plateforme` },
             },
         ],
     },

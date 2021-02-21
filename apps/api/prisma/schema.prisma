@@ -17,9 +17,35 @@ model Contact {
 }
 
 model User {
-  id       Int     @id @default(autoincrement())
-  email    String  @unique
-  password String?
+  id        Int     @id @default(autoincrement())
+  email     String  @unique
+  password  String?
+  profile   Profile?
+}
+
+model Profile {
+  id          Int       @id @default(autoincrement())
+  user        User      @relation(fields: [userId], references: [id])
+  currency    Currency?  @relation(fields: [currencyId], references: [id])
+  language    Language?  @relation(fields: [langugageId], references: [id])
+  userId      Int
+  currencyId  Int
+}
+
+model Currency {
+  id      Int     @id @default(autoincrement())
+  code    String
+  label   String
+  profiles Profile[]
+  deleted Boolean @default(false)
+}
+
+model Language {
+  id      Int     @id @default(autoincrement())
+  code    String
+  label   String
+  profiles Profile[]
+  deleted Boolean @default(false)
 }
 
 model Platform {
@@ -44,3 +70,4 @@ model Politic {
   content String?
   deleted Boolean @default(false)
 }
+

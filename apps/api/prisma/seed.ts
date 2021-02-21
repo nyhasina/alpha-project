@@ -46,27 +46,51 @@ async function main() {
         });
     }
 
-    const fr = await prisma.language.findUnique({ code: 'FR' });
-    const euro = await prisma.currency.findUnique({ code: 'EUR' });
+    const fr = await prisma.language.findUnique({ where: { code: 'FR' } });
+    const euro = await prisma.currency.findUnique({ where: { code: 'EUR' } });
 
     const admin = await prisma.user.upsert({
         where: { email: 'admin@mailnesia.com' },
         update: {
             password: hash,
-            username: 'admin',
-            firstname: 'Thierry',
-            lastname: 'Houssein',
-            currency: euro.id,
-            language: fr.id,
+            profile: {
+                create: {
+                    username: 'admin',
+                    firstname: 'Thierry',
+                    lastname: 'Houssein',
+                    currency: {
+                        connect: {
+                            id: euro.id,
+                        },
+                    },
+                    language: {
+                        connect: {
+                            id: fr.id,
+                        },
+                    },
+                },
+            },
         },
         create: {
             email: 'admin@mailnesia.com',
             password: hash,
-            username: 'admin',
-            firstname: 'Thierry',
-            lastname: 'Houssein',
-            currency: euro.id,
-            language: fr.id,
+            profile: {
+                create: {
+                    username: 'admin',
+                    firstname: 'Thierry',
+                    lastname: 'Houssein',
+                    currency: {
+                        connect: {
+                            id: euro.id,
+                        },
+                    },
+                    language: {
+                        connect: {
+                            id: fr.id,
+                        },
+                    },
+                },
+            },
         },
     });
 

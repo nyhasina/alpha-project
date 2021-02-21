@@ -1,4 +1,7 @@
-import { Args, ArgsType, Field, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { Args, ArgsType, Field, Int, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
+import { GameModel } from '../game/game.model';
+import { ProfileModel } from '../profile/profile.model';
+import { ProfileService } from '../profile/profile.service';
 import { Pagination } from '../shared/models/criteria.model';
 import { UserModel } from './user.model';
 import { UserService } from './user.service';
@@ -10,15 +13,40 @@ export class CreateUserInput {
 
     @Field()
     password: string;
+
+    @Field({ nullable: true })
+    firstname?: string;
+
+    @Field({ nullable: true })
+    lastname?: string;
+
+    @Field({ nullable: true })
+    username?: string;
+
+    @Field((type) => Int, { nullable: true })
+    currency?: number;
+
+    @Field((type) => Int, { nullable: true })
+    language?: number;
 }
 
 @Resolver((of) => UserModel)
 export class UserResolver {
-    constructor(private userService: UserService) {}
+    constructor(private userService: UserService, private profileService: ProfileService) {}
+
+    @ResolveField((type) => ProfileModel)
+    async profile(@Parent() user: UserModel) {
+        const { id } = user;
+        return this.profileService.loadProfile({
+            userId: id,
+        });
+    }
 
     @Query((returns) => UserModel)
     async user(@Args('id', { type: () => Int }) id: number) {
-        return this.userService.loadUser({ id });
+        return this.userService.loadUser({
+            id,
+        });
     }
 
     @Query((returns) => [UserModel])
@@ -40,8 +68,28 @@ export class UserResolver {
 
     @Mutation((returns) => UserModel)
     async createUser(@Args() input: CreateUserInput) {
-        const { email, password } = input;
-        return this.userService.createUser({ email, password });
+        const { email, password, firstname, lastname, currency, language, username } = input;
+        return this.userService.createUser({
+            email,
+            password,
+            profile: {
+                create: {
+                    username,
+                    firstname,
+                    lastname,
+                    language: {
+                        connect: {
+                            id: language,
+                        },
+                    },
+                    currency: {
+                        connect: {
+                            id: currency,
+                        },
+                    },
+                },
+            },
+        });
     }
 
     @Mutation((returns) => UserModel)

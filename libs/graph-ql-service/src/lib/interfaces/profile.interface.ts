@@ -5,6 +5,6 @@ export interface Profile {
     firstname?: string;
     lastname?: string;
     username?: string;
-    language?: CodeLabel;
-    currency?: CodeLabel;
+    language?: CodeLabel | number;
+    currency?: CodeLabel | number;
 }

@@ -1,5 +1,5 @@
 import { Args, ArgsType, Field, Int, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
-import { GameModel } from '../game/game.model';
+import { PROFILE_FILTERING } from '../profile/profile.constants';
 import { ProfileModel } from '../profile/profile.model';
 import { ProfileService } from '../profile/profile.service';
 import { Pagination } from '../shared/models/criteria.model';
@@ -60,7 +60,18 @@ export class UserResolver {
             skip,
             take,
             where: {
-                OR: [],
+                OR: [
+                    {
+                        email: {
+                            contains: search,
+                        },
+                    },
+                    {
+                        profile: {
+                            OR: PROFILE_FILTERING(search),
+                        },
+                    },
+                ],
             },
             orderBy,
         });

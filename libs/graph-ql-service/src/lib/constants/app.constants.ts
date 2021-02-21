@@ -1,4 +1,4 @@
-import { Criteria, SortOrder } from '@nicecactus-platform/graph-ql-service';
+import { CodeLabel, Criteria, SortOrder } from '@nicecactus-platform/graph-ql-service';
 
 export const DEFAULT_CRITERIA: Criteria<any> = {
     pagination: {
@@ -10,4 +10,10 @@ export const DEFAULT_CRITERIA: Criteria<any> = {
         direction: SortOrder.ASC,
     },
     search: '',
+};
+
+export const CODE_LABEL: CodeLabel = {
+    id: null,
+    code: null,
+    label: null,
 };

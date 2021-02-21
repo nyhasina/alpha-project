@@ -42,6 +42,13 @@ const routes: Routes = [
                     breadcrumb: 'Liste des devises',
                 },
             },
+            {
+                path: 'user',
+                loadChildren: () => import('../../pages/user/user.module').then((m) => m.UserModule),
+                data: {
+                    breadcrumb: 'Liste des utilisateurs',
+                },
+            },
         ],
     },
 ];

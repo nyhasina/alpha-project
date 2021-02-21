@@ -30,5 +30,10 @@ export const SIDEBAR_ITEMS: NavItem[] = [
         icon: 'fas fa-money-bill',
         routerLink: ['/admin/currency'],
     },
+    {
+        label: 'Utilisateurs',
+        icon: 'fas fa-user',
+        routerLink: ['/admin/user'],
+    },
 ];
 export const ASIDE_SIDEBAR_ITEMS: NavItem[] = [];

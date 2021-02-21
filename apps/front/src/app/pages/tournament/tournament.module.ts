@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import { TournamentRoutingModule } from './tournament-routing.module';
 import { TournamentComponent } from './tournament.component';
+import { ListingTournamentComponent } from './listing-tournament/listing-tournament.component';
 
 
 @NgModule({
-  declarations: [TournamentComponent],
+  declarations: [TournamentComponent, ListingTournamentComponent],
   imports: [
     CommonModule,
     TournamentRoutingModule

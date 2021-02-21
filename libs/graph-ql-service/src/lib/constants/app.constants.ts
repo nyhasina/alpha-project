@@ -12,7 +12,7 @@ export const DEFAULT_CRITERIA: Criteria<any> = {
     search: '',
 };
 
-export const CODE_LABEL: CodeLabel = {
+export const EMPTY_CODE_LABEL: CodeLabel = {
     id: null,
     code: null,
     label: null,

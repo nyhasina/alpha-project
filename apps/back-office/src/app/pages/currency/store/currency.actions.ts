@@ -1,0 +1,20 @@
+import { HttpErrorResponse } from '@angular/common/http';
+import { createAction, props } from '@ngrx/store';
+import { CodeLabel } from '@nicecactus-platform/graph-ql-service';
+
+export const createCurrency = createAction('[Currency] Create currency');
+export const createCurrencyFail = createAction('[Currency] Create currency fail', props<{ error: HttpErrorResponse }>());
+export const createCurrencySuccess = createAction('[Currency] Create currency success', props<{ currency: CodeLabel }>());
+export const loadCurrencies = createAction('[Currency] Load currencies');
+export const loadCurrenciesFail = createAction('[Currency] Load currencies fail', props<{ error: HttpErrorResponse }>());
+export const loadCurrenciesSuccess = createAction('[Currency] Load currencies success', props<{ currencies: CodeLabel[] }>());
+export const loadCurrency = createAction('[Currency] Load currency', props<{ id: number }>());
+export const loadCurrencyFail = createAction('[Currency] Load currency fail', props<{ error: HttpErrorResponse }>());
+export const loadCurrencySuccess = createAction('[Currency] Load currency success', props<{ currency: CodeLabel }>());
+export const saveCurrency = createAction('[Currency] Save currency', props<{ currency: CodeLabel }>());
+export const saveCurrencyFail = createAction('[Currency] Save currency fail', props<{ error: HttpErrorResponse }>());
+export const saveCurrencySuccess = createAction('[Currency] Save currency success', props<{ currency: CodeLabel }>());
+export const confirmCurrencyDeletion = createAction('[Currency] Confirm currency deletion', props<{ currency: CodeLabel }>());
+export const deleteCurrency = createAction('[Currency] Delete currency', props<{ id: number }>());
+export const deleteCurrencyFail = createAction('[Currency] Delete currency fail', props<{ error: HttpErrorResponse }>());
+export const deleteCurrencySuccess = createAction('[Currency] Delete currency success', props<{ currency: CodeLabel }>());

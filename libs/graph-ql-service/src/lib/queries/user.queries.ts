@@ -133,3 +133,48 @@ export const CREATE_USER = gql`
         }
     }
 `;
+
+export const UPDATE_USER = gql`
+    mutation updateUser(
+        $email: String!
+        $password: String!
+        $firstname: String
+        $lastname: String
+        $username: String
+        $currency: Int
+        $language: Int
+        $id: Int!
+    ) {
+        updateUser(
+            email: $email
+            password: $password
+            firstname: $firstname
+            lastname: $lastname
+            username: $username
+            currency: $currency
+            language: $language
+            id: $id
+        ) {
+            id
+            email
+            password
+            profile {
+                id
+                firstname
+                lastname
+                username
+                currency {
+                    id
+                    code
+                    label
+                }
+                language {
+                    id
+                    code
+                    label
+                }
+                deleted
+            }
+        }
+    }
+`;

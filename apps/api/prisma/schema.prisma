@@ -31,8 +31,6 @@ model Profile {
   currencyId    Int?
   language      Language?   @relation(fields: [languageId], references: [id])
   languageId    Int?
-  languageCode  String?
-  languageLabel String?
 }
 
 model Currency {

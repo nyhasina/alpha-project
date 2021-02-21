@@ -13,10 +13,35 @@ type ContactModel {
   surname: String
 }
 
+type CurrencyModel {
+  id: Int!
+  code: String!
+  label: String!
+}
+
+type LanguageModel {
+  id: Int!
+  code: String!
+  label: String!
+}
+
+type ProfileModel {
+  id: Int!
+  firstname: String
+  lastname: String
+  username: String
+  currency: CurrencyModel
+  language: LanguageModel
+  currencyId: Int
+  languageId: Int
+  deleted: Boolean
+}
+
 type UserModel {
   id: Int!
   email: String!
   password: String
+  profile: ProfileModel
 }
 
 type PlatformModel {
@@ -41,12 +66,18 @@ type Query {
   contact(id: Int!): ContactModel!
   contacts: [ContactModel!]!
   user(id: Int!): UserModel!
-  users: [UserModel!]!
+  users(take: Int, skip: Int, by: String, direction: String, search: String): [UserModel!]!
+  profile(id: Int!): ProfileModel!
+  profiles: [ProfileModel!]!
   platform(id: Int!): PlatformModel!
   platforms: [PlatformModel!]!
   game(id: Int!): GameModel!
   games(take: Int, skip: Int, by: String, direction: String, search: String): [GameModel!]!
   gameCount(search: String): GameCountModel!
+  currency(id: Int!): CurrencyModel!
+  currencies: [CurrencyModel!]!
+  language(id: Int!): LanguageModel!
+  languages: [LanguageModel!]!
 }
 
 type Mutation {
@@ -54,13 +85,22 @@ type Mutation {
   updateContact(forename: String, surname: String, id: Int!): ContactModel!
   deleteContact(id: Int!): ContactModel!
   login(email: String!, password: String!): AuthenticationModel!
-  createUser(email: String!, password: String!): UserModel!
-  updateUser(email: String!, password: String!, id: Int!): UserModel!
+  createUser(email: String!, password: String!, firstname: String, lastname: String, username: String, currency: Int, language: Int): UserModel!
+  updateUser(email: String!, password: String!, firstname: String, lastname: String, username: String, currency: Int, language: Int, id: Int!): UserModel!
   deleteUser(id: Int!): UserModel!
+  createProfile(user: Int, firstname: String, lastname: String, username: String, currency: Int, language: Int, deleted: Boolean): ProfileModel!
+  updateProfile(user: Int, firstname: String, lastname: String, username: String, currency: Int, language: Int, deleted: Boolean, id: Int!): ProfileModel!
+  deleteProfile(id: Int!): ProfileModel!
   createPlatform(name: String!, logo: String, deleted: Boolean): PlatformModel!
   updatePlatform(name: String!, logo: String, deleted: Boolean, id: Int!): PlatformModel!
   deletePlatform(id: Int!): PlatformModel!
   createGame(name: String!, coverImage: String, platforms: [Int!]): GameModel!
   updateGame(name: String!, coverImage: String, platforms: [Int!], id: Int!): GameModel!
   deleteGame(id: Int!): GameModel!
+  createCurrency(code: String!, label: String): CurrencyModel!
+  updateCurrency(code: String!, label: String, id: Int!): CurrencyModel!
+  deleteCurrency(id: Int!): CurrencyModel!
+  createLanguage(code: String!, label: String): LanguageModel!
+  updateLanguage(code: String!, label: String, id: Int!): LanguageModel!
+  deleteLanguage(id: Int!): LanguageModel!
 }

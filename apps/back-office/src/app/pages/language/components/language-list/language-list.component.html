@@ -1,0 +1,40 @@
+<table class="table align-items-center table-flush">
+    <thead class="thead-light">
+        <tr>
+            <th>Code</th>
+            <th>Libellé</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <nicecactus-platform-skeleton-list *ngIf="loading" [columns]="2" [rows]="10"></nicecactus-platform-skeleton-list>
+        <ng-container *ngIf="!loading">
+            <tr *ngFor="let item of items">
+                <td class="table-user">
+                    <b>{{ item.code }}</b>
+                </td>
+                <td class="table-user">
+                    <b>{{ item.label | titlecase }}</b>
+                </td>
+                <td class="table-actions">
+                    <a
+                        [routerLink]="['/', 'admin', 'language', 'edit', item.id]"
+                        class="table-action"
+                        data-original-title="Edit product"
+                        data-toggle="tooltip"
+                    >
+                        <i class="fas fa-user-edit"></i>
+                    </a>
+                    <a
+                        (click)="delete.emit(item)"
+                        class="table-action table-action-delete"
+                        data-original-title="Delete product"
+                        data-toggle="tooltip"
+                    >
+                        <i class="fas fa-trash"></i>
+                    </a>
+                </td>
+            </tr>
+        </ng-container>
+    </tbody>
+</table>

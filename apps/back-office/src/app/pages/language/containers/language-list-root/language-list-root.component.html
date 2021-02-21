@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-xl-8 col-md-6">
+        <div class="card">
+            <div class="card-header border-0">
+                <div class="row">
+                    <div class="col-6"></div>
+                    <div class="col-6 text-right">
+                        <a
+                            class="btn btn-sm btn-neutral btn-round btn-icon"
+                            data-toggle="tooltip"
+                            data-original-title="Edit product"
+                            [routerLink]="['/', 'admin', 'language', 'new']"
+                        >
+                            <span class="btn-inner--icon"><i class="fas fa-user-edit"></i></span>
+                            <span class="btn-inner--text">Ajouter</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <nicecactus-platform-platform-list
+                    [items]="languages$ | async"
+                    [loading]="loadingLanguages$ | async"
+                    (delete)="onDelete($event)"
+                ></nicecactus-platform-platform-list>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-md-6">
+        <router-outlet></router-outlet>
+    </div>
+</div>

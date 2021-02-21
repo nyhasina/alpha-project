@@ -178,3 +178,30 @@ export const UPDATE_USER = gql`
         }
     }
 `;
+
+export const DELETE_USER = gql`
+    mutation deleteUser($id: Int!) {
+        deleteUser(id: $id) {
+            id
+            email
+            password
+            profile {
+                id
+                firstname
+                lastname
+                username
+                currency {
+                    id
+                    code
+                    label
+                }
+                language {
+                    id
+                    code
+                    label
+                }
+                deleted
+            }
+        }
+    }
+`;

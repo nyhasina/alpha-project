@@ -18,5 +18,5 @@ export class BlogModel {
     video?: string;
 
     @Field({ nullable: true })
-    isRemoved?: string;
+    isRemoved?: boolean;
 }

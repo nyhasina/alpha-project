@@ -11,7 +11,7 @@ async function main() {
     const currencies = [
         {
             code: 'USD',
-            label: 'US Dollar',
+            label: 'United States Dollar',
         },
         {
             code: 'EUR',

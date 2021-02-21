@@ -38,7 +38,7 @@ async function main() {
         },
     ];
 
-    for (const language of currencies) {
+    for (const language of languages) {
         await prisma.language.upsert({
             where: { code: language.code },
             update: { code: language.code, label: language.label },

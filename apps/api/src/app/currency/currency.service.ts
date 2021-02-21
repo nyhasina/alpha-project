@@ -12,7 +12,7 @@ export class CurrencyService {
         });
     }
 
-    async loadCurrencys(params: {
+    async loadCurrencies(params: {
         skip?: number;
         take?: number;
         cursor?: Prisma.CurrencyWhereUniqueInput;

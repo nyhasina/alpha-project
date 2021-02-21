@@ -21,8 +21,8 @@ export class CurrencyResolver {
     }
 
     @Query((returns) => [CurrencyModel])
-    async currencys() {
-        return this.currencyService.loadCurrencys({});
+    async currencies() {
+        return this.currencyService.loadCurrencies({});
     }
 
     @Mutation((returns) => CurrencyModel)

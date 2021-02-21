@@ -1,4 +1,5 @@
 import { Args, ArgsType, Field, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { Pagination } from '../shared/models/criteria.model';
 import { UserModel } from './user.model';
 import { UserService } from './user.service';
 
@@ -21,8 +22,20 @@ export class UserResolver {
     }
 
     @Query((returns) => [UserModel])
-    async users() {
-        return this.userService.loadUsers({});
+    async users(@Args() pagination: Pagination) {
+        const { take, skip, by, direction, search } = pagination;
+        let orderBy = {};
+        if (by && direction) {
+            orderBy = { [by]: direction };
+        }
+        return this.userService.loadUsers({
+            skip,
+            take,
+            where: {
+                OR: [],
+            },
+            orderBy,
+        });
     }
 
     @Mutation((returns) => UserModel)

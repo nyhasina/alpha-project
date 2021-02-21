@@ -4,6 +4,8 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { join } from 'path';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { ContactModule } from './contact/contact.module';
+import { CurrencyModule } from './currency/currency.module';
+import { LanguageModule } from './language/language.module';
 import { GqlAuthGuard } from './shared/decorators/gql-auth-guard.decorator';
 import { UserModule } from './user/user.module';
 import { PlatformModule } from './platform/platform.module';
@@ -22,7 +24,9 @@ import { UploadModule } from './upload/upload.module';
         UserModule,
         PlatformModule,
         GameModule,
-        UploadModule
+        UploadModule,
+        CurrencyModule,
+        LanguageModule,
     ],
     providers: [
         {

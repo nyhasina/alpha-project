@@ -1,8 +1,9 @@
 import { Args, ArgsType, Field, Int, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
+import { GameCountModel } from '../game/game.model';
 import { PROFILE_FILTERING } from '../profile/profile.constants';
 import { ProfileModel } from '../profile/profile.model';
 import { ProfileService } from '../profile/profile.service';
-import { Pagination } from '../shared/models/criteria.model';
+import { CountArgs, Pagination } from '../shared/models/criteria.model';
 import { UserModel } from './user.model';
 import { UserService } from './user.service';
 
@@ -40,6 +41,27 @@ export class UserResolver {
         return this.profileService.loadProfile({
             userId: id,
         });
+    }
+
+    @Query((returns) => GameCountModel)
+    async userCount(@Args() countArgs: CountArgs) {
+        const { search } = countArgs;
+        const total = await this.userService.count({
+            OR: [
+                {
+                    email: {
+                        contains: search,
+                    },
+                },
+                {
+                    profile: {
+                        OR: PROFILE_FILTERING(search),
+                    },
+                },
+            ],
+        });
+        const count = new GameCountModel(total);
+        return count;
     }
 
     @Query((returns) => UserModel)

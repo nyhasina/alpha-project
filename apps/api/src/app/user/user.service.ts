@@ -9,6 +9,9 @@ export class UserService {
     async loadUser(where: Prisma.UserWhereUniqueInput): Promise<User | null> {
         return this.prisma.user.findUnique({
             where,
+            include: {
+                profile: true,
+            },
         });
     }
 
@@ -26,6 +29,9 @@ export class UserService {
             cursor,
             where,
             orderBy,
+            include: {
+                profile: true,
+            },
         });
     }
 
@@ -38,6 +44,9 @@ export class UserService {
     async createUser(data: Prisma.UserCreateInput): Promise<User> {
         return this.prisma.user.create({
             data,
+            include: {
+                profile: true,
+            },
         });
     }
 
@@ -46,12 +55,18 @@ export class UserService {
         return this.prisma.user.update({
             data,
             where,
+            include: {
+                profile: true,
+            },
         });
     }
 
     async deleteUser(where: Prisma.UserWhereUniqueInput): Promise<User> {
         return this.prisma.user.delete({
             where,
+            include: {
+                profile: true,
+            },
         });
     }
 }

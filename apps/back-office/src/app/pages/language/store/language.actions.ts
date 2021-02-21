@@ -1,0 +1,20 @@
+import { HttpErrorResponse } from '@angular/common/http';
+import { createAction, props } from '@ngrx/store';
+import { CodeLabel } from '@nicecactus-platform/graph-ql-service';
+
+export const createLanguage = createAction('[Language] Create language');
+export const createLanguageFail = createAction('[Language] Create language fail', props<{ error: HttpErrorResponse }>());
+export const createLanguageSuccess = createAction('[Language] Create language success', props<{ language: CodeLabel }>());
+export const loadLanguages = createAction('[Language] Load languages');
+export const loadLanguagesFail = createAction('[Language] Load languages fail', props<{ error: HttpErrorResponse }>());
+export const loadLanguagesSuccess = createAction('[Language] Load languages success', props<{ languages: CodeLabel[] }>());
+export const loadLanguage = createAction('[Language] Load language', props<{ id: number }>());
+export const loadLanguageFail = createAction('[Language] Load language fail', props<{ error: HttpErrorResponse }>());
+export const loadLanguageSuccess = createAction('[Language] Load language success', props<{ language: CodeLabel }>());
+export const saveLanguage = createAction('[Language] Save language', props<{ language: CodeLabel }>());
+export const saveLanguageFail = createAction('[Language] Save language fail', props<{ error: HttpErrorResponse }>());
+export const saveLanguageSuccess = createAction('[Language] Save language success', props<{ language: CodeLabel }>());
+export const confirmLanguageDeletion = createAction('[Language] Confirm language deletion', props<{ language: CodeLabel }>());
+export const deleteLanguage = createAction('[Language] Delete language', props<{ id: number }>());
+export const deleteLanguageFail = createAction('[Language] Delete language fail', props<{ error: HttpErrorResponse }>());
+export const deleteLanguageSuccess = createAction('[Language] Delete language success', props<{ language: CodeLabel }>());

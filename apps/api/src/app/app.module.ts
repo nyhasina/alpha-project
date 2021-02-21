@@ -6,6 +6,7 @@ import { AuthenticationModule } from './authentication/authentication.module';
 import { ContactModule } from './contact/contact.module';
 import { CurrencyModule } from './currency/currency.module';
 import { LanguageModule } from './language/language.module';
+import { ProfileModule } from './profile/profile.module';
 import { GqlAuthGuard } from './shared/decorators/gql-auth-guard.decorator';
 import { UserModule } from './user/user.module';
 import { PlatformModule } from './platform/platform.module';
@@ -22,6 +23,7 @@ import { UploadModule } from './upload/upload.module';
         ContactModule,
         AuthenticationModule,
         UserModule,
+        ProfileModule,
         PlatformModule,
         GameModule,
         UploadModule,

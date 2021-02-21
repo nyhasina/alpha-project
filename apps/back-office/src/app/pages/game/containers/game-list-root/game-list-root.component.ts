@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { Criteria, Game, GameCount } from '@nicecactus-platform/graph-ql-service';
+import { Criteria, Game, Count } from '@nicecactus-platform/graph-ql-service';
 import { confirmGameDeletion, deleteGame, loadGames } from '../../store/game.actions';
 import { GameState } from '../../store/game.reducers';
 import { selectGameCount, selectGameCriteria, selectGames, selectLoadingGames } from '../../store/game.selectors';
@@ -13,7 +13,7 @@ import { selectGameCount, selectGameCriteria, selectGames, selectLoadingGames } 
 })
 export class GameListRootComponent implements OnInit {
     games$: Observable<Game[]>;
-    gameCount$: Observable<GameCount>;
+    gameCount$: Observable<Count>;
     criteria$: Observable<Criteria<Game>>;
     loadingGames$: Observable<boolean>;
 

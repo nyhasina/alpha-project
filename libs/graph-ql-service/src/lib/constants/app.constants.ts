@@ -1,4 +1,6 @@
-import { CodeLabel, Criteria, SortOrder } from '@nicecactus-platform/graph-ql-service';
+import { CodeLabel } from '../interfaces/code-label.interface';
+import { Criteria } from '../interfaces/criteria.interface';
+import { SortOrder } from '../interfaces/sort.interface';
 
 export const DEFAULT_CRITERIA: Criteria<any> = {
     pagination: {

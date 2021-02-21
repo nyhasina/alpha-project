@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators';
 import { Criteria } from '../..';
 import { Platform } from '../interfaces/platform.interface';
 import { EMPTY_GAME } from '../constants/game.constants';
-import { Game, GameCount } from '../interfaces/game.interface';
+import { Game, Count } from '../interfaces/game.interface';
 import { CREATE_GAME, DELETE_GAME, LOAD_GAME, LOAD_GAMES, UPDATE_GAME } from '../queries/game.queries';
 
 @Injectable()
@@ -52,10 +52,10 @@ export class GameService {
             );
     }
 
-    loadAll(criteria: Criteria<Game>): Observable<{ games: Game[]; gameCount: GameCount }> {
+    loadAll(criteria: Criteria<Game>): Observable<{ games: Game[]; gameCount: Count }> {
         const { pagination, search, sort } = criteria;
         return this.apolloService
-            .query<{ games: Game[]; gameCount: GameCount }>({
+            .query<{ games: Game[]; gameCount: Count }>({
                 query: LOAD_GAMES,
                 fetchPolicy: 'no-cache',
                 variables: {

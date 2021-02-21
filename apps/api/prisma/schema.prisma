@@ -38,16 +38,16 @@ model Profile {
 
 model Currency {
   id      Int     @id @default(autoincrement())
-  code    String
-  label   String
+  code    String  @unique
+  label   String  @unique
   profiles Profile[]
   deleted Boolean @default(false)
 }
 
 model Language {
   id      Int     @id @default(autoincrement())
-  code    String
-  label   String
+  code    String  @unique
+  label   String  @unique
   profiles Profile[]
   deleted Boolean @default(false)
 }

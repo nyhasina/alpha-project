@@ -61,6 +61,9 @@ export const LOAD_PAGINATED_USERS = gql`
                 deleted
             }
         }
+        userCount(search: $search) {
+            total
+        }
     }
 `;
 
@@ -88,6 +91,24 @@ export const LOAD_PAGINATED_USERS_AND_DEPENDENCIES = gql`
                 deleted
             }
         }
+        userCount(search: $search) {
+            total
+        }
+        currencies {
+            id
+            code
+            label
+        }
+        languages {
+            id
+            code
+            label
+        }
+    }
+`;
+
+export const LOAD_USER_DEPENDENCIES = gql`
+    query userDependencies {
         currencies {
             id
             code

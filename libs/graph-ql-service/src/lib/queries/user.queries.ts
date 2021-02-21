@@ -90,3 +90,46 @@ export const LOAD_PAGINATED_USERS_AND_DEPENDENCIES = gql`
         }
     }
 `;
+
+export const CREATE_USER = gql`
+    mutation createUser(
+        $email: String!
+        $password: String!
+        $firstname: String
+        $lastname: String
+        $username: String
+        $currency: Int
+        $language: Int
+    ) {
+        createUser(
+            email: $email
+            password: $password
+            firstname: $firstname
+            lastname: $lastname
+            username: $username
+            currency: $currency
+            language: $language
+        ) {
+            id
+            email
+            password
+            profile {
+                id
+                firstname
+                lastname
+                username
+                currency {
+                    id
+                    code
+                    label
+                }
+                language {
+                    id
+                    code
+                    label
+                }
+                deleted
+            }
+        }
+    }
+`;

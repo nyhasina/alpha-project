@@ -7,6 +7,45 @@ const bcrypt = require('bcrypt');
 async function main() {
     const saltOrRound = 10;
     const hash = await bcrypt.hash('admin', saltOrRound);
+
+    const currencies = [
+        {
+            code: 'USD',
+            label: 'US Dollar',
+        },
+        {
+            code: 'EUR',
+            label: 'Euro',
+        },
+    ];
+
+    for (const currency of currencies) {
+        await prisma.currency.upsert({
+            where: { code: currency.code },
+            update: { code: currency.code, label: currency.label },
+            create: { code: currency.code, label: currency.label },
+        });
+    }
+
+    const languages = [
+        {
+            code: 'FR',
+            label: 'France',
+        },
+        {
+            code: 'USA',
+            label: 'United States of America',
+        },
+    ];
+
+    for (const language of currencies) {
+        await prisma.language.upsert({
+            where: { code: language.code },
+            update: { code: language.code, label: language.label },
+            create: { code: language.code, label: language.label },
+        });
+    }
+
     const admin = await prisma.user.upsert({
         where: { email: 'admin@mailnesia.com' },
         update: {
@@ -59,6 +98,7 @@ async function main() {
         'Bugsnax',
         'Outriders',
     ];
+
     for (const game of games) {
         await prisma.game.upsert({
             where: { name: game },

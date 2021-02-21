@@ -53,3 +53,40 @@ export const LOAD_PAGINATED_USERS = gql`
         }
     }
 `;
+
+export const LOAD_PAGINATED_USERS_AND_DEPENDENCIES = gql`
+    query users($take: Int, $skip: Int, $by: String, $direction: String, $search: String) {
+        users(take: $take, skip: $skip, by: $by, direction: $direction, search: $search) {
+            id
+            email
+            password
+            profile {
+                id
+                firstname
+                lastname
+                username
+                currency {
+                    id
+                    code
+                    label
+                }
+                language {
+                    id
+                    code
+                    label
+                }
+                deleted
+            }
+        }
+        currencies {
+            id
+            code
+            label
+        }
+        languages {
+            id
+            code
+            label
+        }
+    }
+`;

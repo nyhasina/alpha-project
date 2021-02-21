@@ -37,13 +37,6 @@ type ProfileModel {
   deleted: Boolean
 }
 
-type UserModel {
-  id: Int!
-  email: String!
-  password: String
-  profile: ProfileModel
-}
-
 type PlatformModel {
   id: Int!
   name: String!
@@ -62,9 +55,17 @@ type GameCountModel {
   total: Int!
 }
 
+type UserModel {
+  id: Int!
+  email: String!
+  password: String
+  profile: ProfileModel
+}
+
 type Query {
   contact(id: Int!): ContactModel!
   contacts: [ContactModel!]!
+  userCount(search: String): GameCountModel!
   user(id: Int!): UserModel!
   users(take: Int, skip: Int, by: String, direction: String, search: String): [UserModel!]!
   profile(id: Int!): ProfileModel!

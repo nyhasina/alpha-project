@@ -19,5 +19,36 @@
                 </figure>
             </section>
         </div>
+        <div class="grid-wrapper">
+            <div class="subtitle">
+                <span>Ces tournois peuvent t'intéresser</span>
+                <div class="subtitle--actions">
+                    <a class="button"><span>VOIR TOUT</span></a>
+                </div>
+            </div>
+            <div class="dashboard--tournaments row">
+                <div class="col-2 col-xs-4 tiled-tournament--item" *ngFor="let item of tournament">
+                    <div class="tiled-tournament--overlay">
+                        <div class="tiled-tournament--description">
+                            <div>
+                                <span class="with-clock">{{ item.date }}</span>
+                            </div>
+                        </div>
+                        <figcaption class="tiled-tournament--title">
+                            <span class="game-title">{{ item.name }}</span
+                            ><span class="platform-icon"></span>
+                        </figcaption>
+                    </div>
+                    <div class="tiled-tournament--image-cover">
+                        <img [src]="item.src" alt="" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="grid-wrapper">
+            <div class="subtitle">
+                <span>Evénements</span>
+            </div>
+        </div>
     </section>
 </div>

@@ -28,6 +28,20 @@ const routes: Routes = [
                     breadcrumb: 'Liste des jeux',
                 },
             },
+            {
+                path: 'language',
+                loadChildren: () => import('../../pages/language/language.module').then((m) => m.LanguageModule),
+                data: {
+                    breadcrumb: 'Liste des langues',
+                },
+            },
+            {
+                path: 'currency',
+                loadChildren: () => import('../../pages/currency/currency.module').then((m) => m.CurrencyModule),
+                data: {
+                    breadcrumb: 'Liste des devises',
+                },
+            },
         ],
     },
 ];

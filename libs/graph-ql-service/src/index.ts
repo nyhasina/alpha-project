@@ -16,3 +16,7 @@ export * from './lib/interfaces/criteria.interface';
 export * from './lib/interfaces/sort.interface';
 export { createApollo } from './lib/graph-ql.factory';
 export * from './lib/interfaces/code-label.interface';
+export * from './lib/interfaces/user.interface';
+export * from './lib/services/currency.service';
+export * from './lib/services/language.service';
+export * from './lib/services/user.service';

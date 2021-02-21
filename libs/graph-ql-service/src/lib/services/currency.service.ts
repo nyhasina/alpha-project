@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { FetchResult } from '@apollo/client';
-import { CodeLabel } from '@nicecactus-platform/graph-ql-service';
 import { Apollo } from 'apollo-angular';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { EMPTY_CODE_LABEL } from '../constants/app.constants';
+import { CodeLabel } from '../interfaces/code-label.interface';
 import {
     CREATE_CURRENCY,
     DELETE_CURRENCY,
@@ -14,7 +14,7 @@ import {
 } from '../queries/currency.queries';
 
 @Injectable()
-export class CodeLabelService {
+export class CurrencyService {
     constructor(private apolloService: Apollo) {}
 
     currencyFactory(): Observable<CodeLabel> {

@@ -4,6 +4,7 @@ import { CodeLabel } from '@nicecactus-platform/graph-ql-service';
 import { Apollo } from 'apollo-angular';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { EMPTY_CODE_LABEL } from '../constants/app.constants';
 import {
     CREATE_CURRENCY,
     DELETE_CURRENCY,
@@ -17,7 +18,7 @@ export class CodeLabelService {
     constructor(private apolloService: Apollo) {}
 
     currencyFactory(): Observable<CodeLabel> {
-        return of();
+        return of(EMPTY_CODE_LABEL);
     }
 
     save(payload: CodeLabel): Observable<CodeLabel> {

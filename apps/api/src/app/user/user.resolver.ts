@@ -127,13 +127,30 @@ export class UserResolver {
 
     @Mutation((returns) => UserModel)
     async updateUser(@Args('id', { type: () => Int }) id: number, @Args() input: CreateUserInput) {
-        const { email, password } = input;
+        const { email, password, username, firstname, lastname, language, currency } = input;
         return this.userService.updateUser({
             where: {
                 id,
             },
             data: {
                 email,
+                profile: {
+                    update: {
+                        username,
+                        firstname,
+                        lastname,
+                        language: {
+                            connect: {
+                                id: language,
+                            },
+                        },
+                        currency: {
+                            connect: {
+                                id: currency,
+                            },
+                        },
+                    },
+                },
             },
         });
     }

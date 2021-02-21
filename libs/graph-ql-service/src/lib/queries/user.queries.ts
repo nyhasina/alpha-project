@@ -24,6 +24,16 @@ export const LOAD_USER_BY_ID = gql`
                 deleted
             }
         }
+        currencies {
+            id
+            code
+            label
+        }
+        languages {
+            id
+            code
+            label
+        }
     }
 `;
 

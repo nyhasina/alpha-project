@@ -75,3 +75,11 @@ model Politic {
   deleted Boolean @default(false)
 }
 
+model Blog {
+  id      Int     @id @default(autoincrement())
+  name    String
+  content String?
+  cover String?
+  video String?
+  isRemoved Boolean @default(false)
+}

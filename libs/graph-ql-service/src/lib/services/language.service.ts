@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { FetchResult } from '@apollo/client';
-import { CodeLabel } from '@nicecactus-platform/graph-ql-service';
 import { Apollo } from 'apollo-angular';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { EMPTY_CODE_LABEL } from '../constants/app.constants';
+import { CodeLabel } from '../interfaces/code-label.interface';
 import {
     CREATE_LANGUAGE,
     DELETE_LANGUAGE,
@@ -14,10 +14,10 @@ import {
 } from '../queries/language.queries';
 
 @Injectable()
-export class CodeLabelService {
+export class LanguageService {
     constructor(private apolloService: Apollo) {}
 
-    currencyFactory(): Observable<CodeLabel> {
+    languageFactory(): Observable<CodeLabel> {
         return of(EMPTY_CODE_LABEL);
     }
 

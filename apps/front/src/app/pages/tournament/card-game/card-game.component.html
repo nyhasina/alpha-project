@@ -1,1 +1,15 @@
-<p>card-game works!</p>
+
+<div class="tiled-tournament--overlay">
+    <div class="tiled-tournament--description">
+        <div>
+            <span class="with-clock"> {{data.date}}</span>
+        </div>
+    </div>
+    <figcaption class="tiled-tournament--title">
+        <span class="game-title">{{data.name}}</span
+        ><span class="platform-icon"></span>
+    </figcaption>
+</div>
+<div class="tiled-tournament--image-cover">
+    <img [src]="data.src" alt="" />
+</div>

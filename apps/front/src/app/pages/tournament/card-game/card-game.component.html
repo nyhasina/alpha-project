@@ -1,12 +1,14 @@
-
 <div class="tiled-tournament--overlay">
     <div class="tiled-tournament--description">
         <div>
-            <span class="with-clock"> {{data.date}}</span>
+            <span class="with-clock" *ngIf="data.date"> {{ data.date }}</span>
+            <div class="games--platforms-cell" *ngIf="data.plateform">
+                <a class="badge {{item}} " *ngFor="let item of data.plateform">{{item}}</a>
+            </div>
         </div>
     </div>
     <figcaption class="tiled-tournament--title">
-        <span class="game-title">{{data.name}}</span
+        <span class="game-title">{{ data.name }}</span
         ><span class="platform-icon"></span>
     </figcaption>
 </div>

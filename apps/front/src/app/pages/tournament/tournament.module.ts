@@ -6,10 +6,11 @@ import { TournamentComponent } from './tournament.component';
 import { ListingTournamentComponent } from './listing-tournament/listing-tournament.component';
 import { DetailTournamentComponent } from './detail-tournament/detail-tournament.component';
 import { CardGameComponent } from './card-game/card-game.component';
+import { GameListeComponent } from './game-liste/game-liste.component';
 
 
 @NgModule({
-  declarations: [TournamentComponent, ListingTournamentComponent, DetailTournamentComponent, CardGameComponent],
+  declarations: [TournamentComponent, ListingTournamentComponent, DetailTournamentComponent, CardGameComponent, GameListeComponent],
   imports: [
     CommonModule,
     TournamentRoutingModule

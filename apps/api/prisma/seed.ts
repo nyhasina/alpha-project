@@ -30,11 +30,11 @@ async function main() {
     const languages = [
         {
             code: 'FR',
-            label: 'France',
+            label: 'Français',
         },
         {
-            code: 'USA',
-            label: 'United States of America',
+            code: 'English US',
+            label: 'United States of America English',
         },
     ];
 

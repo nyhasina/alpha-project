@@ -6,9 +6,11 @@ import { APOLLO_OPTIONS } from 'apollo-angular';
 import { HttpLink } from 'apollo-angular/http';
 import { createApollo } from './graph-ql.factory';
 import { AuthenticationService } from './services/authentication.service';
+import { CurrencyService } from './services/currency.service';
 import { GameService } from './services/game.service';
+import { LanguageService } from './services/language.service';
 import { PlatformService } from './services/platform.service';
-
+import { UserService } from './services/user.service';
 
 @NgModule({
     imports: [CommonModule, MatSnackBarModule],
@@ -21,6 +23,9 @@ import { PlatformService } from './services/platform.service';
         AuthenticationService,
         PlatformService,
         GameService,
+        CurrencyService,
+        LanguageService,
+        UserService,
     ],
 })
 export class GraphQlServiceModule {}

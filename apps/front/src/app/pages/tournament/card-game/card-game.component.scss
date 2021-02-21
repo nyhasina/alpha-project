@@ -1,0 +1,88 @@
+
+
+.tiled-tournament--overlay {
+     background-color: rgba(20,32,64,.5);
+    z-index: 2;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+}
+.tiled-tournament--image-cover {
+    background-size: cover;
+    background-position: 50%;
+    transition: all .3s cubic-bezier(.06,.79,.54,1.9);
+    z-index: 1;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+}
+.with-clock {
+    font-size: 20px;
+    font-weight: 900;
+    display: block;
+}
+.tiled-tournament--description {
+    height: calc(100% - 30px);
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    color: #fff;
+    text-shadow: 0 1px 1px rgb(0 0 0 / 15%);
+    padding: 8px 21px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+.tiled-tournament--title {
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+    text-align: left;
+    text-transform: uppercase;
+    background-color: #323639;
+    padding: 5px 10px 6px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+.games--platforms-cell a  {
+    min-width: 64px;
+    font-size: 10px;
+    font-weight: 500;
+    color: #fff;
+    text-align: left;
+    text-transform: uppercase;
+    border-radius: 5px;
+    box-shadow: 0 1px 1px 0 rgb(0 0 0 / 30%);
+    transition: all .3s cubic-bezier(.06,.79,.54,1.9);
+    position: relative;
+    display: inline-block;
+    padding: 4px 14px 4px 8px;
+    margin: 5px;
+}
+a.badge:hover{
+    transform: scale(1.05);
+    box-shadow: 0 2px 6px 0 rgb(0 0 0 / 35%);
+}
+.PS4 {
+    background-color: #003e91;
+}
+.XBOX {
+    
+        background-color: #107c10;  
+}
+.PS5 {
+    background-color: #6796d4;
+}
+.PC  {
+    background-color: #5a5e6b;
+}
+.Mobile  {
+    background-color: #000;
+}

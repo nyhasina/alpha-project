@@ -1,0 +1,118 @@
+.subtitle {
+    width: 100%;
+    font-size: 18px;
+    font-weight: 700;
+    color: #323639;
+    border-bottom: 2px solid rgba(50,54,57,.15);
+    text-transform: uppercase;
+    text-align: left;
+    position: relative;
+    padding: 10px 0 6px;
+    margin-bottom: 20px;
+}
+.button {
+    min-width: 150px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: initial;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    display: inline-block;
+    padding: 13px 20px 14px;
+    transition: all .2s ease;
+    position: relative;
+}
+.subtitle--actions {
+    position: absolute;
+    right: 0;
+    top: 0;
+    a{
+        color: #5e72e4;
+        text-align: right;
+    padding: 10px 20px 11px 0;
+    }
+}
+.games--card {
+    width: calc(20% - 40px);
+}
+
+.games--card:hover {
+    transform: translateY(-4px);
+   
+}
+.games--card-cover:hover {
+    box-shadow: 0 6px 30px black;
+}
+.games--card-platform-icon {
+    width: 30px;
+    height: 22px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+   .button span:hover {
+        color: #11cdef;
+        border-bottom: 5px solid #11cdef;
+        cursor: pointer;
+    }
+    .subtitle--actions .button:after {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 2px;
+        border-right: 2px solid #868c88;
+        border-bottom: 2px solid #868c88;
+        background-color: initial;
+        transform: rotate(
+    -45deg
+    );
+        display: inline-block;
+        position: absolute;
+        left: inherit;
+        right: 5px;
+        top: 50%;
+        margin-top: -6px;
+        opacity: 1;
+    }
+.games--card-platform-title {
+    width: calc(100% - 35px);
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    display: inline-block;
+    vertical-align: middle;
+}
+.games--card-cover {
+    img {
+        box-shadow: 0 4px 14px rgb(0 0 0 / 30%);
+        border-radius: 5px 5px 0 0;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        display: inline-block;
+    }
+}
+.games--card-platform {
+    text-align: left;
+    background-color: #000;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 8px 10px 9px;
+
+}
+.tiled-tournament--item:hover {
+    cursor: pointer;
+}
+.tiled-tournament--item {
+    min-height: 150px;
+    background-size: cover;
+    background-position: 50%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+    margin: 1.5%;
+}

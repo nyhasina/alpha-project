@@ -1,0 +1,15 @@
+<div class="viewport--content">
+    <section class="dashboard" id="Dashboard">
+        <div class="grid-wrapper">
+            <div class="subtitle">
+                <span>Nos tournois esport</span>
+                <p>Sélectionne un jeu et sa plateforme pour voir tous les tournois</p>
+            </div>
+            <div class="dashboard--tournaments row">
+                <div class=" col-md-4 col-sm-6 col-lg-2 col-10 tiled-tournament--item" *ngFor="let item of gameList">
+                    <nicecactus-platform-card-game [data]="item"></nicecactus-platform-card-game>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

@@ -1,1 +1,41 @@
-<p>tournament works!</p>
+<div class="viewport--content">
+    <section class="dashboard" id="Dashboard">
+        <div class="grid-wrapper">
+            <div class="subtitle">
+                <span>Nos jeux populaires</span>
+                <div class="subtitle--actions">
+                    <a class="button"  routerLink="/admin/tournament/games"><span>VOIR TOUS LES JEUX</span></a>
+                </div>
+            </div>
+            <section class="games--popular row">
+                <figure class="games--card col-md-3 col-lg-3 col-sm-6 col-6" *ngFor="let item of listingGame">
+                    <div class="games--card-cover">
+                        <img [src]="item.src" alt="" class="w-100" />
+                    </div>
+                    <figcaption class="games--card-platform">
+                        <span class="games--card-platform-icon"></span
+                        ><span class="games--card-platform-title text-center">{{ item.plateform }}</span>
+                    </figcaption>
+                </figure>
+            </section>
+        </div>
+        <div class="grid-wrapper">
+            <div class="subtitle">
+                <span>Ces tournois peuvent t'intéresser</span>
+                <div class="subtitle--actions">
+                    <a class="button"  routerLink="/admin/tournament/games"><span>VOIR TOUT</span></a>
+                </div>
+            </div>
+            <div class="dashboard--tournaments row">
+                <div class=" col-md-4 col-sm-6 col-lg-2 col-10 tiled-tournament--item" *ngFor="let item of tournament">
+                    <nicecactus-platform-card-game [data]="item"></nicecactus-platform-card-game>
+                </div>
+            </div>
+        </div>
+        <div class="grid-wrapper">
+            <div class="subtitle">
+                <span>Evénements</span>
+            </div>
+        </div>
+    </section>
+</div>

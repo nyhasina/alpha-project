@@ -1,4 +1,5 @@
 import { Field, Int, ObjectType } from '@nestjs/graphql';
+import { ProfileModel } from '../profile/profile.model';
 
 @ObjectType()
 export class UserModel {
@@ -10,4 +11,7 @@ export class UserModel {
 
     @Field({ nullable: true })
     password?: string;
+
+    @Field((type) => ProfileModel, { nullable: true })
+    profile?: ProfileModel;
 }

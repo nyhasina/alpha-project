@@ -50,11 +50,11 @@ export class CodeLabelService {
 
     loadAll(): Observable<CodeLabel[]> {
         return this.apolloService
-            .query<{ currencys: CodeLabel[] }>({
+            .query<{ currencies: CodeLabel[] }>({
                 query: LOAD_CURRENCIES,
                 fetchPolicy: 'no-cache',
             })
-            .pipe(map((response) => response.data.currencys));
+            .pipe(map((response) => response.data.currencies));
     }
 
     update(payload: CodeLabel): Observable<FetchResult<{ updateCurrency: CodeLabel }>> {
@@ -70,12 +70,12 @@ export class CodeLabelService {
 
     delete(id: number): Observable<CodeLabel> {
         return this.apolloService
-            .mutate<{ deleteCodeLabel: CodeLabel }>({
+            .mutate<{ deleteCurrency: CodeLabel }>({
                 mutation: DELETE_CURRENCY,
                 variables: {
                     id,
                 },
             })
-            .pipe(map((response) => response.data.deleteCodeLabel));
+            .pipe(map((response) => response.data.deleteCurrency));
     }
 }

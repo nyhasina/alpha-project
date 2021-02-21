@@ -1,0 +1,13 @@
+<div class="card border-0">
+    <div class="card-body">
+        <div class="row">
+            <div class="col">
+                <nicecactus-platform-user-form
+                    (save)="onSave($event)"
+                    [user]="user$ | async"
+                    [dependencies]="dependencies$ | async"
+                ></nicecactus-platform-user-form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -13,7 +13,7 @@ const routes: Routes = [
         component: ListingTournamentComponent,
     },
     {
-        path: 'detail-tournament',
+        path: 'detail-tournament/:idTournament',
         component: DetailTournamentComponent,
     },
 ];

@@ -20,5 +20,15 @@ export const SIDEBAR_ITEMS: NavItem[] = [
         icon: 'fas fa-gamepad',
         routerLink: ['/admin/game'],
     },
+    {
+        label: 'Langues',
+        icon: 'fa fa-language',
+        routerLink: ['/admin/language'],
+    },
+    {
+        label: 'Devises',
+        icon: 'fas fa-money-bill',
+        routerLink: ['/admin/currency'],
+    },
 ];
 export const ASIDE_SIDEBAR_ITEMS: NavItem[] = [];

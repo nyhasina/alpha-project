@@ -8,6 +8,7 @@ import { CurrencyModule } from './currency/currency.module';
 import { LanguageModule } from './language/language.module';
 import { ProfileModule } from './profile/profile.module';
 import { GqlAuthGuard } from './shared/decorators/gql-auth-guard.decorator';
+import { TeamModule } from './team/team.module';
 import { UserModule } from './user/user.module';
 import { PlatformModule } from './platform/platform.module';
 import { GameModule } from './game/game.module';
@@ -29,6 +30,7 @@ import { UploadModule } from './upload/upload.module';
         UploadModule,
         CurrencyModule,
         LanguageModule,
+        TeamModule,
     ],
     providers: [
         {

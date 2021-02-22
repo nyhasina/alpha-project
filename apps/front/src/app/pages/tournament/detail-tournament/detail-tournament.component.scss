@@ -1,0 +1,150 @@
+.viewport--content{
+    margin-bottom: 6%;
+}
+h1 {
+    font-size: 42px;
+    font-weight: 600;
+    color: black;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 30px 0;
+}
+.tournaments--game-header-featured-tournament {
+    width: 100%;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 3%;
+    background-color: #e6e6e6;
+}
+.tournaments--game-header-featured-tournament-when {
+    width: auto;
+    font-size: 20px;
+    font-weight: 600;
+    color: black;
+    text-transform: uppercase;
+    display: flex;
+}
+.tournaments--game-header-featured-tournament-when-date {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background-color:rgb(218 218 218 / 60%);
+    padding: 3px 14px 4px;
+}
+.tournaments--game-header-featured-tournament-when-time {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: rgb(218 218 218 / 60%);
+    padding: 3px 14px 4px;
+}
+.tournaments--game-header-featured-tournament-infos {
+    width: auto;
+    font-size: 16px;
+    font-weight: 500;
+    color: black;
+    flex-direction: row;
+    display: flex;
+    padding: 8px 0;
+    margin-bottom: 10px;
+}
+.button {
+    min-width: 150px;
+    font-size: 14px;
+    font-weight: 600;
+    color: black;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: initial;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    display: inline-block;
+    padding: 13px 20px 14px;
+    transition: all .2s ease;
+    position: relative;
+}
+.game-header-featured-tournament-cashprize {
+    font-size: 36px;
+    font-weight: 600;
+    color: black;
+    text-align: center;
+    padding: 10px 0 25px;
+}
+.tournaments--lists-day {
+    max-width: 360px;
+    font-size: 14px;
+    font-weight: 600;
+    color: black;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: #b2f617;
+    padding: 6px 12px;
+}
+table {
+    width: 100%;
+    display: table;
+}
+thead tr th {
+    font-size: 16px;
+    font-weight: 400;
+    color: #11cdef;
+    text-transform: none;
+    padding: 10px 20px;
+    width: 14.28%;
+}
+.tournaments--lists-day.featured-tournaments {
+    background: linear-gradient(
+90deg
+, rgb(255, 155, 82), rgb(255, 91, 81));
+}
+table tbody {
+    border-radius: 5px;
+}
+tbody tr td {
+   
+}
+.tournaments--game-header-featured-tournament-cashprize {
+    font-size: 36px;
+    font-weight: 600;
+    color: #233dd2;
+    text-align: center;
+    padding: 10px 0px 25px;
+}
+.button.secondary:hover {
+    border: 3px solid #11cdef;
+    color: white;
+    background-color: black;
+    font-weight: bold;
+    background-image: none;
+}
+.button.primary {
+    margin: 2% 0;
+}
+.button.primary:hover {
+    border: 3px solid #233dd2;
+    color: white;
+    background-color: black;
+    font-weight: bold;
+    background-image: none;
+}
+.tournaments--lists-table-rules span {
+    width: 20px;
+    height: 20px;
+    font-size: 15px;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+    background-color: #11cdef;
+    vertical-align: middle;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0px 14px;
+}
+.tournaments--lists-table-reward strong {
+    font-size: 24px;
+    font-weight: 700;
+}
+.tournaments--lists-table {
+    text-align: center;
+}

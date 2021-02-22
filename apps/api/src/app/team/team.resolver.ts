@@ -1,6 +1,7 @@
 import { Args, ArgsType, Field, Int, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
 import { GameCountModel, GameModel } from '../game/game.model';
 import { CountArgs, Pagination } from '../shared/models/criteria.model';
+import { TagService } from '../tag/tag.service';
 import { UserService } from '../user/user.service';
 import { TEAM_FILTERING } from './team.filters';
 import { TeamModel } from './team.model';
@@ -23,7 +24,13 @@ export class CreateTeamInput {
 
 @Resolver((of) => TeamModel)
 export class TeamResolver {
-    constructor(private teamService: TeamService, private userService: UserService) {}
+    constructor(private teamService: TeamService, private userService: UserService, private tagService: TagService) {}
+
+    @ResolveField()
+    async tag(@Parent() team: TeamModel) {
+        const { tagId } = team;
+        return this.tagService.loadTag({ id: tagId });
+    }
 
     @ResolveField()
     async owner(@Parent() team: TeamModel) {
@@ -80,7 +87,16 @@ export class TeamResolver {
         const { name, tag, owner, members } = input;
         return this.teamService.createTeam({
             name,
-            tag,
+            tag: {
+                connectOrCreate: {
+                    where: {
+                        name: tag.toLowerCase(),
+                    },
+                    create: {
+                        name: tag.toLowerCase(),
+                    },
+                },
+            },
             owner: {
                 connect: {
                     id: owner,
@@ -106,7 +122,16 @@ export class TeamResolver {
             },
             data: {
                 name,
-                tag,
+                tag: {
+                    connectOrCreate: {
+                        where: {
+                            name: tag.toLowerCase(),
+                        },
+                        create: {
+                            name: tag.toLowerCase(),
+                        },
+                    },
+                },
                 owner: {
                     update: {
                         id: owner,

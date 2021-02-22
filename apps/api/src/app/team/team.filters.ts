@@ -8,7 +8,9 @@ export const TEAM_FILTERING = (search: string) => [
     },
     {
         tag: {
-            contains: search,
+            name: {
+                contains: search,
+            },
         },
     },
     {

@@ -19,6 +19,8 @@ export class TeamModel {
 
     ownerId?: number;
 
+    tagId?: number;
+
     @Field((type) => [UserModel], { middleware: [emptyArrayMiddleware] })
     members?: UserModel[];
 }

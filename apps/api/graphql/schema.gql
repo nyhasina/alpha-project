@@ -62,6 +62,14 @@ type UserModel {
   profile: ProfileModel
 }
 
+type TeamModel {
+  id: Int!
+  name: String!
+  tag: String!
+  owner: UserModel!
+  members: [UserModel!]!
+}
+
 type Query {
   contact(id: Int!): ContactModel!
   contacts: [ContactModel!]!
@@ -79,6 +87,9 @@ type Query {
   currencies: [CurrencyModel!]!
   language(id: Int!): LanguageModel!
   languages: [LanguageModel!]!
+  teamCount(search: String): GameCountModel!
+  team(id: Int!): TeamModel!
+  teams(take: Int, skip: Int, by: String, direction: String, search: String): [TeamModel!]!
 }
 
 type Mutation {
@@ -104,4 +115,7 @@ type Mutation {
   createLanguage(code: String!, label: String): LanguageModel!
   updateLanguage(code: String!, label: String, id: Int!): LanguageModel!
   deleteLanguage(id: Int!): LanguageModel!
+  createTeam(name: String!, tag: String, members: [Int!], owner: Int): TeamModel!
+  updateTeam(name: String!, tag: String, members: [Int!], owner: Int, id: Int!): TeamModel!
+  deleteTeam(id: Int!): TeamModel!
 }

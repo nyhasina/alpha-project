@@ -4,6 +4,8 @@ import { PROFILE_FILTERING } from '../profile/profile.constants';
 import { ProfileModel } from '../profile/profile.model';
 import { ProfileService } from '../profile/profile.service';
 import { CountArgs, Pagination } from '../shared/models/criteria.model';
+import { TeamModel } from '../team/team.model';
+import { TeamService } from '../team/team.service';
 import { USER_FILTERING } from './user.filters';
 import { UserModel } from './user.model';
 import { UserService } from './user.service';
@@ -34,13 +36,23 @@ export class CreateUserInput {
 
 @Resolver((of) => UserModel)
 export class UserResolver {
-    constructor(private userService: UserService, private profileService: ProfileService) {}
+    constructor(private userService: UserService, private profileService: ProfileService, private teamService: TeamService) {}
 
     @ResolveField((type) => ProfileModel)
     async profile(@Parent() user: UserModel) {
         const { id } = user;
         return this.profileService.loadProfile({
             userId: id,
+        });
+    }
+
+    @ResolveField((type) => TeamModel)
+    async joinedTeams(@Parent() user: UserModel) {
+        const { id } = user;
+        return this.teamService.loadTeams({
+            where: {
+                ownerId: id,
+            },
         });
     }
 

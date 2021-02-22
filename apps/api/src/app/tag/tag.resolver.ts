@@ -1,7 +1,6 @@
 import { Args, ArgsType, Field, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { GameCountModel } from '../game/game.model';
 import { CountArgs, Pagination } from '../shared/models/criteria.model';
-import { UserService } from '../user/user.service';
 import { TAG_FILTERING } from './tag.filters';
 import { TagModel } from './tag.model';
 import { TagService } from './tag.service';
@@ -53,7 +52,6 @@ export class TagResolver {
         const { name } = input;
         return this.tagService.createTag({
             name,
-            tag,
         });
     }
 

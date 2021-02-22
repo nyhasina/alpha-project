@@ -1,34 +1,54 @@
 h1 {
     font-size: 42px;
     font-weight: 600;
-    color: #fff;
+    color: black;
     text-align: center;
     text-transform: uppercase;
-    text-shadow: 3px 3px 0 #323639;
+    text-shadow: 3px 3px 0 #9ba9ef;
     padding: 30px 0;
+}
+.tournaments--game-header-featured-tournament {
+    width: 100%;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 2;
 }
 .tournaments--game-header-featured-tournament-title {
     font-size: 48px;
     font-weight: 600;
-    color: #fff;
+    color: black;
     text-align: center;
     text-transform: uppercase;
-    text-shadow: 3px 3px 0 #323639;
+    text-shadow: 3px 3px 0 #9ba9ef;
     padding: 60px 0 15px;
 }
 .tournaments--game-header-featured-tournament-when {
     width: auto;
     font-size: 20px;
     font-weight: 600;
-    color: #fff;
+    color: black;
     text-transform: uppercase;
     display: flex;
+}
+.tournaments--game-header-featured-tournament-when-date {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background-color: rgba(0,0,0,.4);
+    padding: 3px 14px 4px;
+}
+.tournaments--game-header-featured-tournament-when-time {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: rgba(0,0,0,.6);
+    padding: 3px 14px 4px;
 }
 .tournaments--game-header-featured-tournament-infos {
     width: auto;
     font-size: 16px;
     font-weight: 500;
-    color: #fff;
+    color: black;
     flex-direction: row;
     display: flex;
     padding: 8px 0;
@@ -38,7 +58,7 @@ h1 {
     min-width: 150px;
     font-size: 14px;
     font-weight: 600;
-    color: #fff;
+    color: black;
     text-align: center;
     text-transform: uppercase;
     background-color: initial;
@@ -53,7 +73,7 @@ h1 {
 .game-header-featured-tournament-cashprize {
     font-size: 36px;
     font-weight: 600;
-    color: #fff;
+    color: black;
     text-align: center;
     padding: 10px 0 25px;
 }
@@ -61,7 +81,7 @@ h1 {
     max-width: 360px;
     font-size: 14px;
     font-weight: 600;
-    color: #fff;
+    color: black;
     text-align: center;
     text-transform: uppercase;
     background-color: #b2f617;
@@ -74,7 +94,7 @@ table {
 thead tr th {
     font-size: 16px;
     font-weight: 400;
-    color: #fff;
+    color: black;
     text-transform: none;
     background-color: #323639;
     padding: 10px 20px;

@@ -19,6 +19,24 @@ type CurrencyModel {
   label: String!
 }
 
+type PlatformModel {
+  id: Int!
+  name: String!
+  logo: String
+  deleted: Boolean
+}
+
+type GameModel {
+  id: Int!
+  name: String!
+  coverImage: String
+  platforms: [PlatformModel!]
+}
+
+type GameCountModel {
+  total: Int!
+}
+
 type LanguageModel {
   id: Int!
   code: String!
@@ -37,22 +55,9 @@ type ProfileModel {
   deleted: Boolean
 }
 
-type PlatformModel {
+type TagModel {
   id: Int!
   name: String!
-  logo: String
-  deleted: Boolean
-}
-
-type GameModel {
-  id: Int!
-  name: String!
-  coverImage: String
-  platforms: [PlatformModel!]
-}
-
-type GameCountModel {
-  total: Int!
 }
 
 type UserModel {
@@ -91,6 +96,9 @@ type Query {
   teamCount(search: String): GameCountModel!
   team(id: Int!): TeamModel!
   teams(take: Int, skip: Int, by: String, direction: String, search: String): [TeamModel!]!
+  tagCount(search: String): GameCountModel!
+  tag(id: Int!): TagModel!
+  tags(take: Int, skip: Int, by: String, direction: String, search: String): [TagModel!]!
 }
 
 type Mutation {
@@ -119,4 +127,7 @@ type Mutation {
   createTeam(name: String!, tag: String, members: [Int!], owner: Int): TeamModel!
   updateTeam(name: String!, tag: String, members: [Int!], owner: Int, id: Int!): TeamModel!
   deleteTeam(id: Int!): TeamModel!
+  createTag(name: String!): TagModel!
+  updateTag(name: String!, id: Int!): TagModel!
+  deleteTag(id: Int!): TagModel!
 }

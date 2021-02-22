@@ -14,7 +14,7 @@ export class CreateTagInput {
 
 @Resolver((of) => TagModel)
 export class TagResolver {
-    constructor(private tagService: TagService, private userService: UserService) {}
+    constructor(private tagService: TagService) {}
 
     @Query((returns) => GameCountModel)
     async tagCount(@Args() countArgs: CountArgs) {

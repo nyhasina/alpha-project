@@ -4,10 +4,7 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 const bcrypt = require('bcrypt');
 
-async function main() {
-    const saltOrRound = 10;
-    const hash = await bcrypt.hash('admin', saltOrRound);
-
+async function currencySeed() {
     const currencies = [
         {
             code: 'USD',
@@ -26,7 +23,9 @@ async function main() {
             create: { code: currency.code, label: currency.label },
         });
     }
+}
 
+async function languageSeed() {
     const languages = [
         {
             code: 'FR',
@@ -45,9 +44,14 @@ async function main() {
             create: { code: language.code, label: language.label },
         });
     }
+}
 
+async function adminUserSeed() {
     const fr = await prisma.language.findUnique({ where: { code: 'FR' } });
     const euro = await prisma.currency.findUnique({ where: { code: 'EUR' } });
+
+    const saltOrRound = 10;
+    const hash = await bcrypt.hash('admin', saltOrRound);
 
     const admin = await prisma.user.upsert({
         where: { email: 'admin@mailnesia.com' },
@@ -93,7 +97,9 @@ async function main() {
             },
         },
     });
+}
 
+async function platformSeed() {
     const platforms = [
         'Playstation 5',
         'Playstation 4',
@@ -114,7 +120,9 @@ async function main() {
             create: { name: platform },
         });
     }
+}
 
+async function gameSeed() {
     const ps5 = await prisma.platform.findUnique({ where: { name: 'Playstation 5' } });
     const games = [
         `Assassin's Creed Valhalla`,
@@ -146,6 +154,14 @@ async function main() {
             },
         });
     }
+}
+
+async function main() {
+    await currencySeed();
+    await languageSeed();
+    await adminUserSeed();
+    await platformSeed();
+    await gameSeed();
 }
 
 main()

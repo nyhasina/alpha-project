@@ -60,6 +60,7 @@ type UserModel {
   email: String!
   password: String
   profile: ProfileModel
+  joinedTeams: [TeamModel!]
 }
 
 type TeamModel {

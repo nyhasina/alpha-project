@@ -5,14 +5,15 @@ import { join } from 'path';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { ContactModule } from './contact/contact.module';
 import { CurrencyModule } from './currency/currency.module';
+import { GameModule } from './game/game.module';
 import { LanguageModule } from './language/language.module';
+import { PlatformModule } from './platform/platform.module';
 import { ProfileModule } from './profile/profile.module';
 import { GqlAuthGuard } from './shared/decorators/gql-auth-guard.decorator';
+import { TagModule } from './tag/tag.module';
 import { TeamModule } from './team/team.module';
-import { UserModule } from './user/user.module';
-import { PlatformModule } from './platform/platform.module';
-import { GameModule } from './game/game.module';
 import { UploadModule } from './upload/upload.module';
+import { UserModule } from './user/user.module';
 
 @Module({
     imports: [
@@ -31,6 +32,7 @@ import { UploadModule } from './upload/upload.module';
         CurrencyModule,
         LanguageModule,
         TeamModule,
+        TagModule,
     ],
     providers: [
         {

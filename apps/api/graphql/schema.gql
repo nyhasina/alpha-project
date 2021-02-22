@@ -71,7 +71,7 @@ type UserModel {
 type TeamModel {
   id: Int!
   name: String!
-  tag: String!
+  tag: TagModel
   owner: UserModel!
   members: [UserModel!]!
 }

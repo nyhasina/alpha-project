@@ -77,7 +77,7 @@ export class TeamResolver {
 
     @Mutation((returns) => TeamModel)
     async createTeam(@Args() input: CreateTeamInput) {
-        const { name, tag, owner } = input;
+        const { name, tag, owner, members } = input;
         return this.teamService.createTeam({
             name,
             tag,
@@ -91,6 +91,7 @@ export class TeamResolver {
                     {
                         id: owner,
                     },
+                    ...(members || []).map((item) => ({ id: item })),
                 ],
             },
         });

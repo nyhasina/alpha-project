@@ -4,6 +4,7 @@ import { PROFILE_FILTERING } from '../profile/profile.constants';
 import { ProfileModel } from '../profile/profile.model';
 import { ProfileService } from '../profile/profile.service';
 import { CountArgs, Pagination } from '../shared/models/criteria.model';
+import { USER_FILTERING } from './user.filters';
 import { UserModel } from './user.model';
 import { UserService } from './user.service';
 
@@ -47,18 +48,7 @@ export class UserResolver {
     async userCount(@Args() countArgs: CountArgs) {
         const { search } = countArgs;
         const total = await this.userService.count({
-            OR: [
-                {
-                    email: {
-                        contains: search,
-                    },
-                },
-                {
-                    profile: {
-                        OR: PROFILE_FILTERING(search),
-                    },
-                },
-            ],
+            OR: [...USER_FILTERING(search)],
         });
         const count = new GameCountModel(total);
         return count;
@@ -82,18 +72,7 @@ export class UserResolver {
             skip,
             take,
             where: {
-                OR: [
-                    {
-                        email: {
-                            contains: search,
-                        },
-                    },
-                    {
-                        profile: {
-                            OR: PROFILE_FILTERING(search),
-                        },
-                    },
-                ],
+                OR: USER_FILTERING(search),
             },
             orderBy,
         });

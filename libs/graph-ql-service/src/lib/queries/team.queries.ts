@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 export const LOAD_TEAM_BY_ID = gql`
-    query team($id: Int!) {
+    query team($id: Int!, $take: Int, $skip: Int, $by: String, $direction: String, $search: String) {
         team(id: $id) {
             id
             name
@@ -18,56 +18,34 @@ export const LOAD_TEAM_BY_ID = gql`
                     firstname
                     lastname
                     username
-                    currency {
-                        id
-                        code
-                        label
-                    }
-                    language {
-                        id
-                        code
-                        label
-                    }
-                    currencyId
-                    languageId
-                    deleted
-                }
-                joinedTeams {
-                    id
-                    name
-                    tag {
-                        id
-                        name
-                    }
-                    owner {
-                        id
-                        email
-                        password
-                    }
-                    members {
-                        id
-                        email
-                        password
-                        profile {
-                            id
-                            firstname
-                            lastname
-                            username
-                            currencyId
-                            languageId
-                            deleted
-                        }
-                        joinedTeams {
-                            id
-                            name
-                        }
-                    }
                 }
             }
             members {
                 id
                 email
                 password
+            }
+        }
+        users(take: $take, skip: $skip, by: $by, direction: $direction, search: $search) {
+            id
+            email
+            password
+            profile {
+                id
+                firstname
+                lastname
+                username
+                currency {
+                    id
+                    code
+                    label
+                }
+                language {
+                    id
+                    code
+                    label
+                }
+                deleted
             }
         }
     }
@@ -327,6 +305,33 @@ export const DELETE_TEAM = gql`
                 id
                 email
                 password
+            }
+        }
+    }
+`;
+
+export const LOAD_TEAM_DEPENDENCIES = gql`
+    query loadTeamDependencies($take: Int, $skip: Int, $by: String, $direction: String, $search: String) {
+        users(take: $take, skip: $skip, by: $by, direction: $direction, search: $search) {
+            id
+            email
+            password
+            profile {
+                id
+                firstname
+                lastname
+                username
+                currency {
+                    id
+                    code
+                    label
+                }
+                language {
+                    id
+                    code
+                    label
+                }
+                deleted
             }
         }
     }

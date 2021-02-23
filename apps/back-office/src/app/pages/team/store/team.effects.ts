@@ -29,6 +29,9 @@ import {
   loadTeamsFail,
   loadTeamsSuccess,
   loadTeamSuccess,
+  loadUsersAutocompletion,
+  loadUsersAutocompletionFail,
+  loadUsersAutocompletionSuccess,
   saveTeam,
   saveTeamFail,
   saveTeamSuccess
@@ -69,6 +72,18 @@ export class TeamEffects {
                 this.tagService.loadAll(criteria).pipe(
                     map(({ tags }) => loadTagsAutocompletionSuccess({ tags })),
                     catchError((error) => of(loadTagsAutocompletionFail({ error })))
+                )
+            )
+        )
+    );
+
+    loadUsersAutocompletion$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(loadUsersAutocompletion),
+            switchMap(({ criteria }) =>
+                this.userService.loadAll(criteria).pipe(
+                    map(({ users }) => loadUsersAutocompletionSuccess({ users })),
+                    catchError((error) => of(loadUsersAutocompletionFail({ error })))
                 )
             )
         )

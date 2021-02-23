@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { createAction, props } from '@ngrx/store';
-import { Count, Criteria, Tag, Team, TeamDependencies } from '@nicecactus-platform/graph-ql-service';
+import { Count, Criteria, Tag, Team, TeamDependencies, User } from '@nicecactus-platform/graph-ql-service';
 
 export const createTeam = createAction('[Team] Create team');
 export const createTeamFail = createAction('[Team] Create team fail', props<{ error: HttpErrorResponse }>());
@@ -33,3 +33,9 @@ export const loadTagsAutocompletionFail = createAction(
     props<{ error: HttpErrorResponse }>()
 );
 export const loadTagsAutocompletionSuccess = createAction('[Team] Load tags autocompletion success', props<{ tags: Tag[] }>());
+export const loadUsersAutocompletion = createAction(`[Team] Load users autocomletion`, props<{ criteria: Criteria<User> }>());
+export const loadUsersAutocompletionFail = createAction(
+    `[Team] Load users autocomletion fail`,
+    props<{ error: HttpErrorResponse }>()
+);
+export const loadUsersAutocompletionSuccess = createAction(`[Team] Load users autocomletion success`, props<{ users: User[] }>());

@@ -11,19 +11,15 @@ export const LOAD_TEAM_BY_ID = gql`
             }
             owner {
                 id
-                email
-                password
+            }
+            members {
+                id
                 profile {
                     id
                     firstname
                     lastname
                     username
                 }
-            }
-            members {
-                id
-                email
-                password
             }
         }
         users(take: $take, skip: $skip, by: $by, direction: $direction, search: $search) {

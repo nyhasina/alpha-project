@@ -4,6 +4,7 @@
             <div class="col">
                 <nicecactus-platform-team-form
                     (save)="onSave($event)"
+                    (searchTag)="onSearchTag($event)"
                     [team]="team$ | async"
                     [dependencies]="dependencies$ | async"
                 ></nicecactus-platform-team-form>

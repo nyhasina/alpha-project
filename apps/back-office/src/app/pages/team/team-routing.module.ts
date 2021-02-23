@@ -11,12 +11,12 @@ const routes: Routes = [
             {
                 path: 'edit/:teamId',
                 component: TeamFormRootComponent,
-                data: { breadcrumb: `Modification d'une étiquette` },
+                data: { breadcrumb: `Modification d'une équipe` },
             },
             {
                 path: 'new',
                 component: TeamFormRootComponent,
-                data: { breadcrumb: `Création d'une nouvelle étiquette` },
+                data: { breadcrumb: `Création d'une nouvelle équipe` },
             },
         ],
     },

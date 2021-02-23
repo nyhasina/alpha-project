@@ -1,0 +1,16 @@
+.tournament--participants-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #323639;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 30px 0 20px;
+}
+.tournament--participants-container ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+.tournament--participants-container ul li {
+    width: 100%;
+    max-width: 33%;
+}

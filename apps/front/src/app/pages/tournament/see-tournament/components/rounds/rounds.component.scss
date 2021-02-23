@@ -1,0 +1,45 @@
+.tournament--rounds {
+    max-width: 1320px;
+    margin: 40px auto;
+    background-color: #868c88;
+    padding: 26px 24px;
+}
+.tournament--rounds-title {
+    margin-bottom: 15px;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+.tournament--rounds-container {
+    box-shadow: 0 0 6px 0 rgb(0 0 0 / 50%);
+}
+.tournament--rounds-item:first-child {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+.tournament--rounds-item-head {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #323639;
+    cursor: auto;
+}
+.tournament--rounds-item-head-title {
+    padding: 0 24px;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    width: 180px;
+}
+.tournament--rounds-item-head-separate {
+    height: 25px;
+    width: 1px;
+    background-color: #323639;
+}
+.tournament--rounds-item-head-best-of {
+    padding: 0 24px;
+    color: #b2f617;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+}

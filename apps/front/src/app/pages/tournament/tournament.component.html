@@ -3,13 +3,13 @@
         <div class="grid-wrapper">
             <div class="subtitle">
                 <span>Nos jeux populaires</span>
-                <div class="subtitle--actions">
-                    <a class="button"  routerLink="/admin/tournament/games"><span>VOIR TOUS LES JEUX</span></a>
+                <div class="subtitle--actions" >
+                    <a class="button" [routerLink]="[ './games' ]" ><span>VOIR TOUS LES JEUX</span></a>
                 </div>
             </div>
             <section class="games--popular row">
                 <figure class="games--card col-md-3 col-lg-3 col-sm-6 col-6" *ngFor="let item of listingGame; index as i">
-                    <div class="games--card-cover"[routerLink]="[ '/admin/tournament/detail-tournament', i ]" >
+                    <div class="games--card-cover"[routerLink]="[ './detail-tournament', i ]" >
                         <img [src]="item.src" alt="" class="w-100" />
                     </div>
                     <figcaption class="games--card-platform">
@@ -23,7 +23,7 @@
             <div class="subtitle">
                 <span>Ces tournois peuvent t'intéresser</span>
                 <div class="subtitle--actions">
-                    <a class="button"  routerLink="/admin/tournament/games"><span>VOIR TOUT</span></a>
+                    <a class="button" [routerLink]="[ './games' ]"><span>VOIR TOUT</span></a>
                 </div>
             </div>
             <div class="dashboard--tournaments row">

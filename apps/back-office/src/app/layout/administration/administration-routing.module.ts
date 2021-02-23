@@ -56,6 +56,13 @@ const routes: Routes = [
                     breadcrumb: 'Liste des tags',
                 },
             },
+            {
+                path: 'team',
+                loadChildren: () => import('../../pages/team/team.module').then((m) => m.TeamModule),
+                data: {
+                    breadcrumb: 'Liste des équipes',
+                },
+            },
         ],
     },
 ];

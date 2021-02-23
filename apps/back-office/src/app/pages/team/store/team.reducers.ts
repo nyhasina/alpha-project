@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { createReducer, on } from '@ngrx/store';
-import { Criteria, EMPTY_TEAM, Team, Count, Platform, User } from '@nicecactus-platform/graph-ql-service';
+import { Count, Criteria, EMPTY_TEAM, Team, TeamDependencies } from '@nicecactus-platform/graph-ql-service';
 import { DEFAULT_CRITERIA } from '../../../../../../../libs/graph-ql-service/src/lib/constants/app.constants';
 import {
     createTeamSuccess,
@@ -14,10 +14,6 @@ import {
     saveTeamFail,
     saveTeamSuccess,
 } from './team.actions';
-
-export interface TeamDependencies {
-    paginatedUsers?: { users?: User[]; userCount?: Count };
-}
 
 export interface TeamState {
     teams: Team[];
@@ -43,12 +39,7 @@ export const initialState: TeamState = {
         total: 0,
     },
     dependencies: {
-        paginatedUsers: {
-            users: [],
-            userCount: {
-                total: 0,
-            },
-        },
+        users: [],
     },
     team: null,
     loadingTeams: false,
@@ -75,10 +66,10 @@ export const teamReducer = createReducer(
         teams,
         teamCount,
     })),
-    on(createTeamSuccess, (state, { team, paginatedUsers }) => ({
+    on(createTeamSuccess, (state, { team, dependencies }) => ({
         ...state,
         team,
-        dependencies: { ...state.dependencies, paginatedUsers },
+        dependencies,
     })),
     on(loadTeam, (state) => ({ ...state, loadingTeam: true })),
     on(loadTeamFail, (state, { error }) => ({
@@ -87,11 +78,12 @@ export const teamReducer = createReducer(
         teamLoaded: false,
         loadingTeamError: error,
     })),
-    on(loadTeamSuccess, (state, { team }) => ({
+    on(loadTeamSuccess, (state, { team, dependencies }) => ({
         ...state,
         loadingTeam: false,
         teamLoaded: true,
         team,
+        dependencies,
     })),
     on(saveTeam, (state) => ({ ...state, savingTeam: true })),
     on(saveTeamFail, (state, { error }) => ({

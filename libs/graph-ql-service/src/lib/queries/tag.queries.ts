@@ -33,8 +33,6 @@ export const LOAD_PAGINATED_TAG = gql`
             id
             name
         }
-    }
-    query tagCount($search: String) {
         tagCount(search: $search) {
             total
         }

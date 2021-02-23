@@ -9,7 +9,7 @@ const routes: Routes = [
         component: TeamListRootComponent,
         children: [
             {
-                path: 'edit/:tagId',
+                path: 'edit/:teamId',
                 component: TeamFormRootComponent,
                 data: { breadcrumb: `Modification d'une étiquette` },
             },

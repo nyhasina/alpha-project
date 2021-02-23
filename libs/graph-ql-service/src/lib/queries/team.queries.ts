@@ -48,6 +48,10 @@ export const LOAD_TEAM_BY_ID = gql`
                 deleted
             }
         }
+        tags(take: $take, skip: $skip, by: $by, direction: $direction, search: $search) {
+            id
+            name
+        }
     }
 `;
 
@@ -312,6 +316,10 @@ export const DELETE_TEAM = gql`
 
 export const LOAD_TEAM_DEPENDENCIES = gql`
     query loadTeamDependencies($take: Int, $skip: Int, $by: String, $direction: String, $search: String) {
+        tags(take: $take, skip: $skip, by: $by, direction: $direction, search: $search) {
+            id
+            name
+        }
         users(take: $take, skip: $skip, by: $by, direction: $direction, search: $search) {
             id
             email

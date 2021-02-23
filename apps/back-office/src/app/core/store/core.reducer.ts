@@ -2,12 +2,14 @@ import { HttpErrorResponse } from '@angular/common/http';
 import * as fromRouter from '@ngrx/router-store';
 import { routerReducer } from '@ngrx/router-store';
 import { ActionReducer, createReducer, MetaReducer, on } from '@ngrx/store';
+import { User } from '@nicecactus-platform/graph-ql-service';
 import { localStorageSync } from 'ngrx-store-localstorage';
 import { signIn, signInFail, signInSuccess, signOut } from './core.actions';
 
 export interface AuthState {
     accessToken: string;
     refreshToken: string;
+    currentUser: User;
     signing: boolean;
     signed: boolean;
     signingError: HttpErrorResponse;
@@ -21,6 +23,7 @@ export interface AppState {
 const initialAuthState: AuthState = {
     accessToken: null,
     refreshToken: null,
+    currentUser: null,
     signing: false,
     signed: false,
     signingError: null,
@@ -30,7 +33,12 @@ const authenticationReducer = createReducer(
     initialAuthState,
     on(signIn, (state) => ({ ...state, signing: true })),
     on(signInFail, (state, { error }) => ({ ...state, signing: false, signed: false, signingError: error })),
-    on(signInSuccess, (state, { refreshToken, accessToken }) => ({ ...state, accessToken, refreshToken })),
+    on(signInSuccess, (state, { refreshToken, accessToken, user }) => ({
+        ...state,
+        accessToken,
+        refreshToken,
+        currentUser: user,
+    })),
     on(signOut, (state) => ({
         ...state,
         accessToken: null,

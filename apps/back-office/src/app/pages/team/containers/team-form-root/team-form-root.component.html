@@ -5,6 +5,7 @@
                 <nicecactus-platform-team-form
                     (save)="onSave($event)"
                     (searchTag)="onSearchTag($event)"
+                    (searchUser)="onSearchUser($event)"
                     [dependencies]="dependencies$ | async"
                     [team]="team$ | async"
                     [users]="(dependencies$ | async).users"

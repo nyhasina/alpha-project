@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnDestroy, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Tag, Team, TeamDependencies, User } from '@nicecactus-platform/graph-ql-service';
 import { Subject, Subscription } from 'rxjs';
@@ -9,12 +9,13 @@ import { debounceTime } from 'rxjs/operators';
     templateUrl: './team-form.component.html',
     styleUrls: ['./team-form.component.scss'],
 })
-export class TeamFormComponent implements OnChanges, OnDestroy {
+export class TeamFormComponent implements OnChanges, OnInit, OnDestroy {
     @Input() team: Team;
     @Input() dependencies: TeamDependencies;
     @Input() users: User[];
     @Output() save: EventEmitter<Team> = new EventEmitter<Team>();
     @Output() searchTag: EventEmitter<string> = new EventEmitter<string>();
+    @Output() searchUser: EventEmitter<string> = new EventEmitter<string>();
     form: FormGroup;
     userTypeahead$: Subject<string> = new Subject<string>();
     private tagSubscription$: Subscription;
@@ -37,6 +38,12 @@ export class TeamFormComponent implements OnChanges, OnDestroy {
         if (changes.users && changes.users.currentValue) {
             this.userValuesHandler();
         }
+    }
+
+    ngOnInit(): void {
+        this.userTypeAheadSubscription$ = this.userTypeahead$
+            .pipe(debounceTime(1000))
+            .subscribe((term: string) => this.searchUser.emit(term));
     }
 
     private userValuesHandler() {

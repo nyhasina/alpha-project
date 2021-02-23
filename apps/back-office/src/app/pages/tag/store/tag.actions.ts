@@ -1,0 +1,20 @@
+import { HttpErrorResponse } from '@angular/common/http';
+import { createAction, props } from '@ngrx/store';
+import { Criteria, Tag, Count, Platform } from '@nicecactus-platform/graph-ql-service';
+
+export const createTag = createAction('[Tag] Create tag');
+export const createTagFail = createAction('[Tag] Create tag fail', props<{ error: HttpErrorResponse }>());
+export const createTagSuccess = createAction('[Tag] Create tag success', props<{ tag: Tag; platforms?: Platform[] }>());
+export const loadTags = createAction('[Tag] Load tags', props<{ criteria?: Criteria<Tag> }>());
+export const loadTagsFail = createAction('[Tag] Load tags fail', props<{ error: HttpErrorResponse }>());
+export const loadTagsSuccess = createAction('[Tag] Load tags success', props<{ tags: Tag[]; tagCount?: Count }>());
+export const loadTag = createAction('[Tag] Load tag', props<{ id: number }>());
+export const loadTagFail = createAction('[Tag] Load tag fail', props<{ error: HttpErrorResponse }>());
+export const loadTagSuccess = createAction('[Tag] Load tag success', props<{ tag: Tag; platforms?: Platform[] }>());
+export const saveTag = createAction('[Tag] Save tag', props<{ tag: Tag }>());
+export const saveTagFail = createAction('[Tag] Save tag fail', props<{ error: HttpErrorResponse }>());
+export const saveTagSuccess = createAction('[Tag] Save tag success', props<{ tag: Tag }>());
+export const confirmTagDeletion = createAction('[Tag] Confirm tag deletion', props<{ tag: Tag }>());
+export const deleteTag = createAction('[Tag] Delete tag', props<{ id: number }>());
+export const deleteTagFail = createAction('[Tag] Delete tag fail', props<{ error: HttpErrorResponse }>());
+export const deleteTagSuccess = createAction('[Tag] Delete tag success', props<{ tag: Tag }>());

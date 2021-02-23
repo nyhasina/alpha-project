@@ -1,0 +1,13 @@
+<div class="card border-0">
+    <div class="card-body">
+        <div class="row">
+            <div class="col">
+                <nicecactus-platform-tag-form
+                    (save)="onSave($event)"
+                    [tag]="tag$ | async"
+                    [dependencies]="dependencies$ | async"
+                ></nicecactus-platform-tag-form>
+            </div>
+        </div>
+    </div>
+</div>

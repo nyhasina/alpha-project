@@ -29,13 +29,19 @@ export class TeamResolver {
     @ResolveField()
     async tag(@Parent() team: TeamModel) {
         const { tagId } = team;
+        if (!tagId) {
+          return;
+        }
         return this.tagService.loadTag({ id: tagId });
     }
 
     @ResolveField()
     async owner(@Parent() team: TeamModel) {
         const { ownerId } = team;
-        return this.userService.loadUser({ id: ownerId });
+      if (!ownerId) {
+        return;
+      }
+      return this.userService.loadUser({ id: ownerId });
     }
 
     @ResolveField()

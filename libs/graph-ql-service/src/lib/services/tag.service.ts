@@ -31,9 +31,9 @@ export class TagService {
         });
     }
 
-    load(id: number): Observable<{ tagr: Tag; currencies?: CodeLabel[]; languages?: CodeLabel[] }> {
+    load(id: number): Observable<{ tag: Tag }> {
         return this.apolloService
-            .query<{ tagr: Tag; currencies?: CodeLabel[]; languages?: CodeLabel[] }>({
+            .query<{ tag: Tag }>({
                 query: LOAD_TAG_BY_ID,
                 variables: {
                     id,

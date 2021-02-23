@@ -6,8 +6,9 @@ import { TeamService, PlatformService, UserService } from '@nicecactus-platform/
 import { DialogService } from '@nicecactus-platform/shared';
 import { forkJoin, of } from 'rxjs';
 import { catchError, exhaustMap, map, switchMap, tap, withLatestFrom } from 'rxjs/operators';
-import { DEFAULT_CRITERIA } from '../../../../../../../libs/graph-ql-service/src/lib/constants/app.constants';
 import { discard } from '../../../core/store/core.actions';
+import { AppState } from '../../../core/store/core.reducer';
+import { selectCurrentUser } from '../../../core/store/core.selectors';
 import {
     confirmTeamDeletion,
     createTeam,
@@ -17,6 +18,9 @@ import {
     deleteTeamFail,
     deleteTeamSuccess,
     loadTeam,
+    loadTeamDependencies,
+    loadTeamDependenciesFail,
+    loadTeamDependenciesSuccess,
     loadTeamFail,
     loadTeams,
     loadTeamsFail,
@@ -31,6 +35,18 @@ import { selectTeamCriteria } from './team.selectors';
 
 @Injectable()
 export class TeamEffects {
+    loadTeamDependencies$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(loadTeamDependencies),
+            switchMap(() =>
+                this.teamService.loadDependencies().pipe(
+                    map(({ users }) => loadTeamDependenciesSuccess({ dependencies: { users } })),
+                    catchError((error) => of(loadTeamDependenciesFail({ error })))
+                )
+            )
+        )
+    );
+
     loadTeams$ = createEffect(() =>
         this.actions$.pipe(
             ofType(loadTeams),
@@ -48,7 +64,7 @@ export class TeamEffects {
             ofType(loadTeam),
             switchMap(({ id }) =>
                 this.teamService.load(id).pipe(
-                    map(({ team }) => loadTeamSuccess({ team })),
+                    map(({ team, users }) => loadTeamSuccess({ team, dependencies: { users } })),
                     catchError((error) => of(loadTeamFail({ error })))
                 )
             )
@@ -86,8 +102,9 @@ export class TeamEffects {
     saveTeam$ = createEffect(() =>
         this.actions$.pipe(
             ofType(saveTeam),
-            switchMap(({ team }) =>
-                this.teamService.save(team).pipe(
+            withLatestFrom(this.coreStore.pipe(select(selectCurrentUser))),
+            switchMap(([{ team }, user]) =>
+                this.teamService.save({ ...team, owner: user.id }).pipe(
                     map((response) => saveTeamSuccess({ team: response })),
                     catchError((error) => of(saveTeamFail({ error })))
                 )
@@ -108,11 +125,8 @@ export class TeamEffects {
         this.actions$.pipe(
             ofType(createTeam),
             switchMap(() =>
-                forkJoin([
-                    this.teamService.teamFactory(),
-                    this.userService.loadAll({ ...DEFAULT_CRITERIA, pagination: { ...DEFAULT_CRITERIA.pagination, take: 30 } }),
-                ]).pipe(
-                    map(([team, users]) => createTeamSuccess({ team, paginatedUsers: users })),
+                forkJoin([this.teamService.teamFactory(), this.teamService.loadDependencies()]).pipe(
+                    map(([team, dependencies]) => createTeamSuccess({ team, dependencies })),
                     catchError((error) => of(createTeamFail({ error })))
                 )
             )
@@ -125,6 +139,7 @@ export class TeamEffects {
         private userService: UserService,
         private router: Router,
         private teamStore: Store<TeamState>,
-        private dialogService: DialogService
+        private dialogService: DialogService,
+        private coreStore: Store<AppState>
     ) {}
 }

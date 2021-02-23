@@ -2,6 +2,7 @@ import { Location } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApolloQueryResult } from '@apollo/client';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { AuthenticationResponse, AuthenticationService } from '@nicecactus-platform/graph-ql-service';
 import { of } from 'rxjs';
@@ -47,7 +48,12 @@ export class CoreEffects {
             ofType(signIn),
             switchMap(({ email, password }) =>
                 this.authenticationService.signIn(email, password).pipe(
-                    map((response: ApolloQueryResult<AuthenticationResponse>) => signInSuccess({ ...response.data.login })),
+                    map((response: ApolloQueryResult<AuthenticationResponse>) => {
+                        const accessToken = response.data.login.accessToken;
+                        const jwtHelperService = new JwtHelperService();
+                        const user = jwtHelperService.decodeToken(accessToken);
+                        return signInSuccess({ ...response.data.login, user });
+                    }),
                     catchError((error) => of(signInFail({ error })))
                 )
             )

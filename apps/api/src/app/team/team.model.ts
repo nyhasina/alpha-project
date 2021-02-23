@@ -12,7 +12,7 @@ export class TeamModel {
     @Field()
     name: string;
 
-    @Field((type) => TagModel, { nullable: true })
+    @Field((type) => TagModel, { nullable: true, middleware: [emptyObjectMiddleware] })
     tag?: TagModel;
 
     @Field((type) => UserModel, { middleware: [emptyObjectMiddleware] })

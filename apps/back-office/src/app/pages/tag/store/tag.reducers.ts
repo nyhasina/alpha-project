@@ -82,15 +82,11 @@ export const tagReducer = createReducer(
         tagLoaded: false,
         loadingTagError: error,
     })),
-    on(loadTagSuccess, (state, { tag, platforms }) => ({
+    on(loadTagSuccess, (state, { tag}) => ({
         ...state,
         loadingTag: false,
         tagLoaded: true,
         tag,
-        dependencies: {
-            ...state.dependencies,
-            platforms,
-        },
     })),
     on(saveTag, (state) => ({ ...state, savingTag: true })),
     on(saveTagFail, (state, { error }) => ({

@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma, Team } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
+import { CreateTeamInput } from './team.resolver';
 
 @Injectable()
 export class TeamService {
@@ -45,7 +46,39 @@ export class TeamService {
         });
     }
 
-    async createTeam(data: Prisma.TeamCreateInput): Promise<Team> {
+    async createTeam(input: CreateTeamInput): Promise<Team> {
+        const { name, tag, owner, members } = input;
+        let data: Prisma.TeamCreateInput = {
+            name,
+            owner: {
+                connect: {
+                    id: owner,
+                },
+            },
+            members: {
+                connect: [
+                    {
+                        id: owner,
+                    },
+                    ...(members || []).map((item) => ({ id: item })),
+                ],
+            },
+        };
+        if (tag && tag.trim()) {
+            data = {
+                ...data,
+                tag: {
+                    connectOrCreate: {
+                        where: {
+                            name: tag.trim().toLowerCase(),
+                        },
+                        create: {
+                            name: tag.trim().toLowerCase(),
+                        },
+                    },
+                },
+            };
+        }
         return this.prisma.team.create({
             data,
             include: {

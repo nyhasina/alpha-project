@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, OnDestroy, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Tag, Team, TeamDependencies, User } from '@nicecactus-platform/graph-ql-service';
-import { Subscription } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
 @Component({
@@ -12,12 +12,17 @@ import { debounceTime } from 'rxjs/operators';
 export class TeamFormComponent implements OnChanges, OnDestroy {
     @Input() team: Team;
     @Input() dependencies: TeamDependencies;
+    @Input() users: User[];
     @Output() save: EventEmitter<Team> = new EventEmitter<Team>();
     @Output() searchTag: EventEmitter<string> = new EventEmitter<string>();
     form: FormGroup;
+    userTypeahead$: Subject<string> = new Subject<string>();
     private tagSubscription$: Subscription;
+    private userTypeAheadSubscription$: Subscription;
 
     constructor(private formBuilder: FormBuilder) {}
+
+    _users: User[] = [];
 
     ngOnChanges(changes: SimpleChanges): void {
         if (changes.team && changes.team.currentValue) {
@@ -29,10 +34,26 @@ export class TeamFormComponent implements OnChanges, OnDestroy {
                     this.searchTag.emit(tagSearchTerm);
                 });
         }
+        if (changes.users && changes.users.currentValue) {
+            this.userValuesHandler();
+        }
+    }
+
+    private userValuesHandler() {
+        this._users = [...this.users];
+        if (this.team && this.team.id) {
+            const ids = this._users.map((item) => item.id);
+            this.team.members.forEach((member) => {
+                if (!ids.includes(member.id)) {
+                    this._users.push(member);
+                }
+            });
+        }
     }
 
     ngOnDestroy(): void {
         this.tagSubscription$?.unsubscribe();
+        this._users = [];
     }
 
     onSubmit(): void {
@@ -40,6 +61,8 @@ export class TeamFormComponent implements OnChanges, OnDestroy {
             this.save.emit(this.form.value);
         }
     }
+
+    onUserScrollToEnd() {}
 
     private initForm(team: Team): FormGroup {
         return this.formBuilder.group({

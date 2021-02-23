@@ -18,7 +18,15 @@
     </div>
     <div class="form-group">
         <label class="form-control-label">Membres</label>
-        <ng-select formControlName="members" [items]="dependencies.users" bindValue="id" [multiple]="true">
+        <ng-select
+            formControlName="members"
+            (scrollToEnd)="onUserScrollToEnd()"
+            [items]="_users"
+            bindValue="id"
+            [multiple]="true"
+            [typeahead]="userTypeahead$"
+            [virtualScroll]="true"
+        >
             <ng-template ng-label-tmp let-item="item">
                 {{ item?.profile?.username }}
             </ng-template>

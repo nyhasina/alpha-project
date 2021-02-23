@@ -5,8 +5,9 @@
                 <nicecactus-platform-team-form
                     (save)="onSave($event)"
                     (searchTag)="onSearchTag($event)"
-                    [team]="team$ | async"
                     [dependencies]="dependencies$ | async"
+                    [team]="team$ | async"
+                    [users]="(dependencies$ | async).users"
                 ></nicecactus-platform-team-form>
             </div>
         </div>

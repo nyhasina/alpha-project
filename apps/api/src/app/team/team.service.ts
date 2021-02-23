@@ -12,6 +12,7 @@ export class TeamService {
             include: {
                 owner: true,
                 members: true,
+                tag: true,
             },
         });
     }
@@ -33,6 +34,7 @@ export class TeamService {
             include: {
                 owner: true,
                 members: true,
+                tag: true,
             },
         });
     }
@@ -49,6 +51,7 @@ export class TeamService {
             include: {
                 owner: true,
                 members: true,
+                tag: true,
             },
         });
     }
@@ -61,6 +64,7 @@ export class TeamService {
             include: {
                 owner: true,
                 members: true,
+                tag: true,
             },
         });
     }

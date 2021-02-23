@@ -11,6 +11,7 @@ import {
   loadTeamsFail,
   loadTeamsSuccess,
   loadTeamSuccess,
+  loadUsersAutocompletionSuccess,
   saveTeam,
   saveTeamFail,
   saveTeamSuccess
@@ -103,6 +104,12 @@ export const teamReducer = createReducer(
         ...state,
         dependencies: {
             tags,
+        },
+    })),
+    on(loadUsersAutocompletionSuccess, (state, { users }) => ({
+        ...state,
+        dependencies: {
+            users,
         },
     }))
 );

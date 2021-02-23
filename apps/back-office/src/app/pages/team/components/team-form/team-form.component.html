@@ -1,0 +1,30 @@
+<form (ngSubmit)="onSubmit()" *ngIf="form" [formGroup]="form">
+    <div class="form-group">
+        <label class="form-control-label">Nom</label>
+        <input class="form-control form-control-sm" formControlName="name" placeholder="Nom" type="text" />
+    </div>
+    <div class="form-group">
+        <label class="form-control-label">Tag</label>
+        <input class="form-control form-control-sm" formControlName="tag" placeholder="Tag" type="text" />
+    </div>
+    <div class="form-group">
+        <label class="form-control-label">Membres</label>
+        <ng-select formControlName="members" [items]="dependencies.paginatedUsers.users" bindValue="id" [multiple]="true">
+            <ng-template ng-label-tmp let-item="item">
+                {{ item?.profile?.username }}
+            </ng-template>
+            <ng-template ng-option-tmp let-item="item">
+                {{ item?.profile?.username }} - {{ item?.profile?.firstname | titlecase }}
+                {{ item?.profile?.lastname | titlecase }}
+            </ng-template>
+        </ng-select>
+    </div>
+    <div class="row">
+        <div class="col-auto">
+            <button class="btn btn-primary btn-sm btn-block">Sauvegarder</button>
+        </div>
+        <div class="col-auto">
+            <button [routerLink]="['/', 'admin', 'tag']" class="btn btn-default btn-sm btn-block" type="button">Annuler</button>
+        </div>
+    </div>
+</form>

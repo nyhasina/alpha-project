@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-xl-8 col-md-6">
+        <div class="card">
+            <div class="card-header border-0">
+                <div class="row">
+                    <div class="col-6"></div>
+                    <div class="col-6 text-right">
+                        <a
+                            [routerLink]="['/', 'admin', 'team', 'new']"
+                            class="btn btn-sm btn-neutral btn-round btn-icon"
+                            data-original-title="Edit product"
+                            data-toggle="tooltip"
+                        >
+                            <span class="btn-inner--icon"><i class="fas fa-user-edit"></i></span>
+                            <span class="btn-inner--text">Ajouter</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <nicecactus-platform-team-list
+                (delete)="onDelete($event)"
+                (paginate)="onPaginate($event)"
+                [count]="teamCount$ | async"
+                [criteria]="criteria$ | async"
+                [items]="teams$ | async"
+                [loading]="loadingTeams$ | async"
+            ></nicecactus-platform-team-list>
+        </div>
+    </div>
+    <div class="col-xl-4 col-md-6">
+        <router-outlet></router-outlet>
+    </div>
+</div>

@@ -3,11 +3,14 @@ import { FetchResult } from '@apollo/client';
 import { Apollo } from 'apollo-angular';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Count, Criteria } from '../..';
+import { Count, Criteria, LOAD_TEAM_DEPENDENCIES, User } from '../..';
 import { EMPTY_TEAM } from '../constants/team.constants';
-import { Platform } from '../interfaces/platform.interface';
 import { Team } from '../interfaces/team.interface';
 import { CREATE_TEAM, DELETE_TEAM, LOAD_PAGINATED_TEAMS, LOAD_TEAM_BY_ID, UPDATE_TEAM } from '../queries/team.queries';
+
+export interface TeamDependencies {
+    users?: User[];
+}
 
 @Injectable()
 export class TeamService {
@@ -35,12 +38,17 @@ export class TeamService {
         });
     }
 
-    load(id: number): Observable<{ team: Team; platforms?: Platform[] }> {
+    load(id: number): Observable<{ team: Team; users?: User[] }> {
         return this.apolloService
             .query<{ team: Team }>({
                 query: LOAD_TEAM_BY_ID,
                 variables: {
                     id,
+                    skip: 0,
+                    take: 30,
+                    by: 'id',
+                    direction: 'asc',
+                    search: '',
                 },
                 fetchPolicy: 'no-cache',
             })
@@ -86,5 +94,21 @@ export class TeamService {
                 },
             })
             .pipe(map((response) => response.data.deleteTeam));
+    }
+
+    loadDependencies(): Observable<TeamDependencies> {
+        return this.apolloService
+            .query<TeamDependencies>({
+                query: LOAD_TEAM_DEPENDENCIES,
+                fetchPolicy: 'no-cache',
+                variables: {
+                    skip: 0,
+                    take: 30,
+                    by: 'id',
+                    direction: 'asc',
+                    search: '',
+                },
+            })
+            .pipe(map((response) => response.data));
     }
 }

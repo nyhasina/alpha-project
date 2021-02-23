@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
-import { ProfileService } from '../profile/profile.service';
 import { TagService } from '../tag/tag.service';
 import { UserService } from '../user/user.service';
 import { TeamResolver } from './team.resolver';

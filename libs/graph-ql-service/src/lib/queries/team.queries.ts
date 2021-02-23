@@ -91,56 +91,20 @@ export const LOAD_PAGINATED_TEAMS = gql`
                     firstname
                     lastname
                     username
-                    currency {
-                        id
-                        code
-                        label
-                    }
-                    language {
-                        id
-                        code
-                        label
-                    }
-                    currencyId
-                    languageId
-                    deleted
                 }
                 joinedTeams {
                     id
                     name
-                    tag {
-                        id
-                        name
-                    }
-                    owner {
-                        id
-                        email
-                        password
-                    }
-                    members {
-                        id
-                        email
-                        password
-                        profile {
-                            id
-                            firstname
-                            lastname
-                            username
-                            currencyId
-                            languageId
-                            deleted
-                        }
-                        joinedTeams {
-                            id
-                            name
-                        }
-                    }
                 }
             }
             members {
                 id
-                email
-                password
+                profile {
+                    id
+                    firstname
+                    lastname
+                    username
+                }
             }
         }
         teamCount(search: $search) {

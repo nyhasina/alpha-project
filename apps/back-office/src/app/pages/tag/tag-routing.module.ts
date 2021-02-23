@@ -9,14 +9,14 @@ const routes: Routes = [
         component: TagListRootComponent,
         children: [
             {
-                path: 'edit/:gameId',
+                path: 'edit/:tagId',
                 component: TagFormRootComponent,
-                data: { breadcrumb: `Modification d'un jeu` },
+                data: { breadcrumb: `Modification d'une étiquette` },
             },
             {
                 path: 'new',
                 component: TagFormRootComponent,
-                data: { breadcrumb: `Création d'un nouveau jeu` },
+                data: { breadcrumb: `Création d'une nouvelle étiquette` },
             },
         ],
     },

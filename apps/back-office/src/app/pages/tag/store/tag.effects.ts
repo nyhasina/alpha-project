@@ -47,7 +47,7 @@ export class TagEffects {
             ofType(loadTag),
             switchMap(({ id }) =>
                 this.tagService.load(id).pipe(
-                    map(({ tag, platforms }) => loadTagSuccess({ tag, platforms })),
+                    map(({ tag }) => loadTagSuccess({ tag })),
                     catchError((error) => of(loadTagFail({ error })))
                 )
             )
@@ -58,7 +58,7 @@ export class TagEffects {
         this.actions$.pipe(
             ofType(confirmTagDeletion),
             exhaustMap(({ tag }) => this.dialogService.openConfirmationModal({ id: tag.id, entity: tag.name })),
-            map((id) => (!!id ? deleteTag({ id }) : discard()))
+            map((id) => (id ? deleteTag({ id }) : discard()))
         )
     );
 

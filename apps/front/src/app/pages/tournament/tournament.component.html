@@ -3,18 +3,19 @@
         <div class="grid-wrapper">
             <div class="subtitle">
                 <span>Nos jeux populaires</span>
-                <div class="subtitle--actions" >
-                    <a class="button" [routerLink]="[ './games' ]" ><span>VOIR TOUS LES JEUX</span></a>
+                <div class="subtitle--actions">
+                    <a class="button" [routerLink]="[ './games' ]"><span>VOIR TOUS LES JEUX</span></a>
                 </div>
             </div>
             <section class="games--popular row">
-                <figure class="games--card col-md-3 col-lg-3 col-sm-6 col-6" *ngFor="let item of listingGame; index as i">
-                    <div class="games--card-cover"[routerLink]="[ './detail-tournament', i ]" >
+                <figure class="games--card col-md-3 col-lg-3 col-sm-6 col-6"
+                    *ngFor="let item of listingGame; index as i">
+                    <div class="games--card-cover" [routerLink]="[ './detail-tournament', i ]">
                         <img [src]="item.src" alt="" class="w-100" />
                     </div>
                     <figcaption class="games--card-platform">
-                        <span class="games--card-platform-icon"></span
-                        ><span class="games--card-platform-title text-center">{{ item.plateform }}</span>
+                        <span class="games--card-platform-icon"></span><span
+                            class="games--card-platform-title text-center">{{ item.plateform }}</span>
                     </figcaption>
                 </figure>
             </section>

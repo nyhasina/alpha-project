@@ -8,12 +8,15 @@ import { CardGameComponent } from './card-game/card-game.component';
 import { GameListeComponent } from './game-liste/game-liste.component';
 import { SeeTournamentComponent } from './see-tournament/see-tournament.component';
 
-
 @NgModule({
-  declarations: [TournamentComponent, ListingTournamentComponent, DetailTournamentComponent, CardGameComponent, GameListeComponent, SeeTournamentComponent],
-  imports: [
-    CommonModule,
-    TournamentRoutingModule
-  ]
+    declarations: [
+        TournamentComponent,
+        ListingTournamentComponent,
+        DetailTournamentComponent,
+        CardGameComponent,
+        GameListeComponent,
+        SeeTournamentComponent,
+    ],
+    imports: [CommonModule, TournamentRoutingModule],
 })
-export class TournamentModule { }
+export class TournamentModule {}

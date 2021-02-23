@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
+import { Team, TeamDependencies } from '@nicecactus-platform/graph-ql-service';
 import { Observable } from 'rxjs';
-import { Team } from '@nicecactus-platform/graph-ql-service';
 import { saveTeam } from '../../store/team.actions';
-import { TeamDependencies, TeamState } from '../../store/team.reducers';
+import { TeamState } from '../../store/team.reducers';
 import { selectDependencies, selectTeam } from '../../store/team.selectors';
 
 @Component({

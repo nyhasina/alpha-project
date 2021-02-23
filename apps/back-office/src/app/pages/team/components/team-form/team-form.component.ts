@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Tag, Team, User } from '@nicecactus-platform/graph-ql-service';
-import { TeamDependencies } from '../../store/team.reducers';
+import { Tag, Team, TeamDependencies, User } from '@nicecactus-platform/graph-ql-service';
 
 @Component({
     selector: 'nicecactus-platform-team-form',

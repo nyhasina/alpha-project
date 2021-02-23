@@ -35,5 +35,10 @@ export const SIDEBAR_ITEMS: NavItem[] = [
         icon: 'fas fa-user',
         routerLink: ['/admin/user'],
     },
+    {
+        label: 'Tag',
+        icon: 'fas fa-tag',
+        routerLink: ['/admin/tag'],
+    },
 ];
 export const ASIDE_SIDEBAR_ITEMS: NavItem[] = [];

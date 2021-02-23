@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { select, Store } from '@ngrx/store';
-import { TeamService, PlatformService, UserService } from '@nicecactus-platform/graph-ql-service';
+import { TagService, TeamService, UserService } from '@nicecactus-platform/graph-ql-service';
 import { DialogService } from '@nicecactus-platform/shared';
 import { forkJoin, of } from 'rxjs';
 import { catchError, exhaustMap, map, switchMap, tap, withLatestFrom } from 'rxjs/operators';
@@ -10,25 +10,28 @@ import { discard } from '../../../core/store/core.actions';
 import { AppState } from '../../../core/store/core.reducer';
 import { selectCurrentUser } from '../../../core/store/core.selectors';
 import {
-    confirmTeamDeletion,
-    createTeam,
-    createTeamFail,
-    createTeamSuccess,
-    deleteTeam,
-    deleteTeamFail,
-    deleteTeamSuccess,
-    loadTeam,
-    loadTeamDependencies,
-    loadTeamDependenciesFail,
-    loadTeamDependenciesSuccess,
-    loadTeamFail,
-    loadTeams,
-    loadTeamsFail,
-    loadTeamsSuccess,
-    loadTeamSuccess,
-    saveTeam,
-    saveTeamFail,
-    saveTeamSuccess,
+  confirmTeamDeletion,
+  createTeam,
+  createTeamFail,
+  createTeamSuccess,
+  deleteTeam,
+  deleteTeamFail,
+  deleteTeamSuccess,
+  loadTagsAutocompletion,
+  loadTagsAutocompletionFail,
+  loadTagsAutocompletionSuccess,
+  loadTeam,
+  loadTeamDependencies,
+  loadTeamDependenciesFail,
+  loadTeamDependenciesSuccess,
+  loadTeamFail,
+  loadTeams,
+  loadTeamsFail,
+  loadTeamsSuccess,
+  loadTeamSuccess,
+  saveTeam,
+  saveTeamFail,
+  saveTeamSuccess
 } from './team.actions';
 import { TeamState } from './team.reducers';
 import { selectTeamCriteria } from './team.selectors';
@@ -59,12 +62,24 @@ export class TeamEffects {
         )
     );
 
+    loadTagsAutocompletion$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(loadTagsAutocompletion),
+            switchMap(({ criteria }) =>
+                this.tagService.loadAll(criteria).pipe(
+                    map(({ tags }) => loadTagsAutocompletionSuccess({ tags })),
+                    catchError((error) => of(loadTagsAutocompletionFail({ error })))
+                )
+            )
+        )
+    );
+
     loadTeam$ = createEffect(() =>
         this.actions$.pipe(
             ofType(loadTeam),
             switchMap(({ id }) =>
                 this.teamService.load(id).pipe(
-                    map(({ team, users }) => loadTeamSuccess({ team, dependencies: { users } })),
+                    map(({ team, users, tags }) => loadTeamSuccess({ team, dependencies: { users, tags } })),
                     catchError((error) => of(loadTeamFail({ error })))
                 )
             )
@@ -135,11 +150,12 @@ export class TeamEffects {
 
     constructor(
         private actions$: Actions,
-        private teamService: TeamService,
-        private userService: UserService,
         private router: Router,
+        private coreStore: Store<AppState>,
         private teamStore: Store<TeamState>,
         private dialogService: DialogService,
-        private coreStore: Store<AppState>
+        private tagService: TagService,
+        private teamService: TeamService,
+        private userService: UserService
     ) {}
 }

@@ -10,6 +10,7 @@ import { CurrencyService } from './services/currency.service';
 import { GameService } from './services/game.service';
 import { LanguageService } from './services/language.service';
 import { PlatformService } from './services/platform.service';
+import { TagService } from './services/tag.service';
 import { UserService } from './services/user.service';
 
 @NgModule({
@@ -26,6 +27,7 @@ import { UserService } from './services/user.service';
         CurrencyService,
         LanguageService,
         UserService,
+        TagService,
     ],
 })
 export class GraphQlServiceModule {}

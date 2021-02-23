@@ -16,12 +16,16 @@
                     <thead class="thead-light">
                         <tr role="row">
                             <th>Nom</th>
+                            <th>Tag</th>
+                            <th>Membres</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             <th>Nom</th>
+                            <th>Tag</th>
+                            <th>Membres</th>
                             <th></th>
                         </tr>
                     </tfoot>
@@ -36,6 +40,8 @@
                                 <td class="table-user">
                                     <b>{{ item.name }}</b>
                                 </td>
+                                <td>{{ item.tag?.name | titlecase }}</td>
+                                <td>{{ item.members | objectToString: 'profile.username' }}</td>
                                 <td class="table-actions">
                                     <a
                                         [routerLink]="['/', 'admin', 'team', 'edit', item.id]"

@@ -36,7 +36,6 @@
                                 <td class="table-user">
                                     <b>{{ item.name | titlecase }}</b>
                                 </td>
-                                <td>{{ item.platforms | objectToString: 'name' }}</td>
                                 <td class="table-actions">
                                     <a
                                         [routerLink]="['/', 'admin', 'tag', 'edit', item.id]"

@@ -3,16 +3,17 @@ import { createReducer, on } from '@ngrx/store';
 import { Count, Criteria, EMPTY_TEAM, Team, TeamDependencies } from '@nicecactus-platform/graph-ql-service';
 import { DEFAULT_CRITERIA } from '../../../../../../../libs/graph-ql-service/src/lib/constants/app.constants';
 import {
-    createTeamSuccess,
-    loadTeam,
-    loadTeamFail,
-    loadTeams,
-    loadTeamsFail,
-    loadTeamsSuccess,
-    loadTeamSuccess,
-    saveTeam,
-    saveTeamFail,
-    saveTeamSuccess,
+  createTeamSuccess,
+  loadTagsAutocompletionSuccess,
+  loadTeam,
+  loadTeamFail,
+  loadTeams,
+  loadTeamsFail,
+  loadTeamsSuccess,
+  loadTeamSuccess,
+  saveTeam,
+  saveTeamFail,
+  saveTeamSuccess
 } from './team.actions';
 
 export interface TeamState {
@@ -97,5 +98,11 @@ export const teamReducer = createReducer(
         savingTeam: false,
         teamSaved: false,
         team: EMPTY_TEAM,
+    })),
+    on(loadTagsAutocompletionSuccess, (state, { tags }) => ({
+        ...state,
+        dependencies: {
+            tags,
+        },
     }))
 );

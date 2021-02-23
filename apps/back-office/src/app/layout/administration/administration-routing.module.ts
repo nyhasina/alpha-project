@@ -49,6 +49,13 @@ const routes: Routes = [
                     breadcrumb: 'Liste des utilisateurs',
                 },
             },
+            {
+                path: 'tag',
+                loadChildren: () => import('../../pages/tag/tag.module').then((m) => m.TagModule),
+                data: {
+                    breadcrumb: 'Liste des tags',
+                },
+            },
         ],
     },
 ];

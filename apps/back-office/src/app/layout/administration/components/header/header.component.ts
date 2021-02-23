@@ -25,7 +25,6 @@ export class HeaderComponent implements OnDestroy {
             )
             .subscribe((_) => {
                 this.breadcrumbs = this.build(this.activatedRoute.root);
-                console.log(this.breadcrumbs);
             });
     }
 

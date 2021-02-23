@@ -27,7 +27,7 @@ export const DELETE_TAG = gql`
     }
 `;
 
-export const LOAD_PAGINATED_TAG = gql`
+export const LOAD_PAGINATED_TAGS = gql`
     query tags($take: Int, $skip: Int, $by: String, $direction: String, $search: String) {
         tags(take: $take, skip: $skip, by: $by, direction: $direction, search: $search) {
             id

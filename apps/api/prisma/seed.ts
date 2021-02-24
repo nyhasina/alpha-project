@@ -74,11 +74,11 @@ async function userSeed() {
 
     function simpleUserSeed() {
         return new Array(30).fill(null).map(async (item) => {
-            const email = faker.internet.email().toLowerCase();
-            const password = await bcrypt.hash('password', SALT_OR_ROUND);
-            const username = email.split('@')[0];
             const firstname = faker.name.firstName();
             const lastname = faker.name.lastName();
+            const email = `${firstname.toLowerCase()}.${lastname.toLowerCase()}@gmail.com`;
+            const password = await bcrypt.hash('password', SALT_OR_ROUND);
+            const username = `${firstname.toLowerCase()}.${lastname.toLowerCase()}`;
             const currency = euro.id;
             const language = fr.id;
             const user = {

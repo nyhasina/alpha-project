@@ -24,7 +24,7 @@ export class UserListComponent {
             ...this._criteria,
             pagination: {
                 ...pagination,
-                skip: (pagination.skip - 1) * pagination.take,
+                skip: pagination.skip,
             },
         };
         this.paginate.emit(this._criteria);

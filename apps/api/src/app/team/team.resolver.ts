@@ -79,7 +79,7 @@ export class TeamResolver {
             orderBy = { [by]: direction };
         }
         return this.teamService.loadTeams({
-            skip,
+            skip: (skip - 1) * take,
             take,
             where: {
                 OR: [...TEAM_FILTERING(search)],

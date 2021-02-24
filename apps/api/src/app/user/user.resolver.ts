@@ -81,7 +81,7 @@ export class UserResolver {
             orderBy = { [by]: direction };
         }
         return this.userService.loadUsers({
-            skip,
+            skip: (skip - 1) * take,
             take,
             where: {
                 OR: USER_FILTERING(search),

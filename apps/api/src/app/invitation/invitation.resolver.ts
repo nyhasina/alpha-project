@@ -83,7 +83,7 @@ export class InvitationResolver {
             orderBy = { [by]: direction };
         }
         return this.invitationService.loadInvitations({
-            skip,
+            skip: (skip - 1) * take,
             take,
             where: {
                 OR: INVITATION_FILTERING(search),

@@ -4,7 +4,7 @@ import { SortOrder } from '../interfaces/sort.interface';
 
 export const DEFAULT_CRITERIA: Criteria<any> = {
     pagination: {
-        skip: 0,
+        skip: 1,
         take: 10,
     },
     sort: {

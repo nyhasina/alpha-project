@@ -38,7 +38,7 @@ export class TagResolver {
             orderBy = { [by]: direction };
         }
         return this.tagService.loadTags({
-            skip,
+            skip: (skip - 1) * take,
             take,
             where: {
                 OR: [...TAG_FILTERING(search)],

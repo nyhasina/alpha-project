@@ -27,13 +27,15 @@ model User {
 }
 
 model Invitation {
-  id          Int     @id @default(autoincrement())
-  sender   User    @relation("UserIsInvitedByUser", fields: [senderId], references: [id])
-  senderId Int
-  receiver  User   @relation("UserIsInvitingUser", fields: [receiverId], references: [id])
+  id          Int       @id @default(autoincrement())
+  sender      User      @relation("UserIsInvitedByUser", fields: [senderId], references: [id])
+  senderId    Int
+  receiver    User      @relation("UserIsInvitingUser", fields: [receiverId], references: [id])
   receiverId  Int
-  date      DateTime  @default(now())
-  status    String    @default("PENDING")
+  team        Team      @relation("UserInviteToTeam", fields: [teamId], references: [id])
+  teamId      Int
+  date        DateTime  @default(now())
+  status      String    @default("PENDING")
 }
 
 model Team {
@@ -44,6 +46,7 @@ model Team {
   owner   User? @relation(fields: [ownerId], references: [id])
   ownerId Int?
   members User[] @relation("TeamMembers")
+  invitation  Invitation[] @relation("UserInviteToTeam")
 }
 
 model Tag {

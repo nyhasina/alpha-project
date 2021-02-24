@@ -17,6 +17,17 @@ export class InvitationService {
         });
     }
 
+    async loadFirst(where: Prisma.InvitationWhereInput): Promise<Invitation | null> {
+        return this.prisma.invitation.findFirst({
+            where,
+            include: {
+                sender: true,
+                receiver: true,
+                team: true,
+            },
+        });
+    }
+
     async loadInvitations(params: {
         skip?: number;
         take?: number;

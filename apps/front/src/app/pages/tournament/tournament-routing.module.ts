@@ -1,3 +1,4 @@
+import { MatchComponent } from './see-tournament/components/match/match.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DetailTournamentComponent } from './detail-tournament/detail-tournament.component';
@@ -6,6 +7,9 @@ import { ListingTournamentComponent } from './listing-tournament/listing-tournam
 import { BracketComponent } from './see-tournament/components/bracket/bracket.component';
 import { SeeTournamentComponent } from './see-tournament/see-tournament.component';
 import { TournamentComponent } from './tournament.component';
+import { ParticipantsComponent } from './see-tournament/components/participants/participants.component';
+import { RulesComponent } from './see-tournament/components/rules/rules.component';
+import { RoundsComponent } from './see-tournament/components/rounds/rounds.component';
 const routes: Routes = [
     {
         path: '',
@@ -26,7 +30,14 @@ const routes: Routes = [
     {
         path: ':idTournament',
         component: SeeTournamentComponent,
-
+        children: [
+            { path: '', redirectTo: 'match', pathMatch: 'full' },
+            { path: 'bracket', component: BracketComponent },
+            { path: 'match', component: MatchComponent },
+            { path: 'participants', component: ParticipantsComponent },
+            { path: 'rounds', component: RoundsComponent },
+            { path: 'rules', component: RulesComponent },
+        ],
     },
 ];
 

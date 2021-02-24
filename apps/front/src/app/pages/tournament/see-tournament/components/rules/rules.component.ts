@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 @Component({
   selector: 'nicecactus-platform-rules',
   templateUrl: './rules.component.html',

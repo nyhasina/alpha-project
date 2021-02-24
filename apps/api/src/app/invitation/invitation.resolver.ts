@@ -16,7 +16,7 @@ export class CreateInvitationInput {
     @Field()
     receiver: number;
 
-    @Field()
+    @Field((returns) => Int)
     team: number;
 
     @Field({ nullable: true })

@@ -6,6 +6,7 @@ import { AuthenticationModule } from './authentication/authentication.module';
 import { ContactModule } from './contact/contact.module';
 import { CurrencyModule } from './currency/currency.module';
 import { GameModule } from './game/game.module';
+import { InvitationModule } from './invitation/invitation.module';
 import { LanguageModule } from './language/language.module';
 import { PlatformModule } from './platform/platform.module';
 import { ProfileModule } from './profile/profile.module';
@@ -33,6 +34,7 @@ import { UserModule } from './user/user.module';
         LanguageModule,
         TeamModule,
         TagModule,
+        InvitationModule,
     ],
     providers: [
         {

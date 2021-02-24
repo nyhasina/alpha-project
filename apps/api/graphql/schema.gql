@@ -37,6 +37,11 @@ type GameCountModel {
   total: Int!
 }
 
+type TagModel {
+  id: Int!
+  name: String!
+}
+
 type LanguageModel {
   id: Int!
   code: String!
@@ -55,11 +60,6 @@ type ProfileModel {
   deleted: Boolean
 }
 
-type TagModel {
-  id: Int!
-  name: String!
-}
-
 type UserModel {
   id: Int!
   email: String!
@@ -74,6 +74,15 @@ type TeamModel {
   tag: TagModel
   owner: UserModel!
   members: [UserModel!]!
+}
+
+type InvitationModel {
+  id: Int!
+  sender: UserModel!
+  receiver: UserModel!
+  team: TeamModel!
+  date: String
+  status: String
 }
 
 type Query {
@@ -99,6 +108,9 @@ type Query {
   tagCount(search: String): GameCountModel!
   tag(id: Int!): TagModel!
   tags(take: Int, skip: Int, by: String, direction: String, search: String): [TagModel!]!
+  invitationCount(search: String): GameCountModel!
+  invitation(id: Int!): InvitationModel!
+  invitations(take: Int, skip: Int, by: String, direction: String, search: String): [InvitationModel!]!
 }
 
 type Mutation {
@@ -130,4 +142,7 @@ type Mutation {
   createTag(name: String!): TagModel!
   updateTag(name: String!, id: Int!): TagModel!
   deleteTag(id: Int!): TagModel!
+  createInvitation(sender: Float!, receiver: Float!, team: Float!, date: String, status: String): InvitationModel!
+  updateInvitation(sender: Float!, receiver: Float!, team: Float!, date: String, status: String, id: Int!): InvitationModel!
+  deleteInvitation(id: Int!): InvitationModel!
 }

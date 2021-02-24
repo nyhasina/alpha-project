@@ -1,8 +1,10 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { NavItem } from '@nicecactus-platform/graph-ql-service';
+import { Observable } from 'rxjs';
 import { signOut } from '../../core/store/core.actions';
 import { AppState } from '../../core/store/core.reducer';
+import { selectCurrentUser } from '../../core/store/core.selectors';
 import {
     ASIDE_SIDEBAR_ITEMS,
     SIDEBAR_ITEMS,
@@ -11,6 +13,7 @@ import {
     SIDENAV_PINNED,
     SIDENAV_SHOW,
 } from './administration.constants';
+import { User } from '@nicecactus-platform/graph-ql-service';
 
 @Component({
     selector: 'nicecactus-platform-administration',
@@ -20,12 +23,14 @@ import {
 export class AdministrationComponent implements OnInit {
     sidebarItems: NavItem[];
     asideSidebarItems: NavItem[];
+    currentUser$: Observable<User>;
 
     constructor(private renderer: Renderer2, private store: Store<AppState>) {}
 
     ngOnInit(): void {
         this.sidebarItems = SIDEBAR_ITEMS;
         this.asideSidebarItems = ASIDE_SIDEBAR_ITEMS;
+        this.currentUser$ = this.store.pipe(select(selectCurrentUser));
     }
 
     onMouseEnter() {

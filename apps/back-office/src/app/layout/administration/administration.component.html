@@ -1,20 +1,20 @@
 <nav
-    class="sidenav navbar navbar-vertical fixed-left navbar-expand-xs navbar-light bg-white"
-    id="sidenav-main"
+    #sidenav
     (mouseenter)="onMouseEnter()"
     (mouseleave)="onMouseLeave()"
-    #sidenav
+    class="sidenav navbar navbar-vertical fixed-left navbar-expand-xs navbar-light bg-white"
+    id="sidenav-main"
 >
     <div class="scrollbar-inner">
         <nicecactus-platform-sidebar
-            [sidebarItems]="sidebarItems"
             [asideSidebarItems]="asideSidebarItems"
+            [sidebarItems]="sidebarItems"
         ></nicecactus-platform-sidebar>
     </div>
 </nav>
 <!-- Main content -->
 <div class="main-content" id="panel">
-    <nicecactus-platform-navbar (signOut)="onSignOut()"></nicecactus-platform-navbar>
+    <nicecactus-platform-navbar (signOut)="onSignOut()" [currentUser]="currentUser$ | async"></nicecactus-platform-navbar>
     <nicecactus-platform-header></nicecactus-platform-header>
     <div class="container-fluid mt--6">
         <router-outlet></router-outlet>

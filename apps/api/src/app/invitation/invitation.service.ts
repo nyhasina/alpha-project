@@ -9,6 +9,11 @@ export class InvitationService {
     async loadInvitation(where: Prisma.InvitationWhereUniqueInput): Promise<Invitation | null> {
         return this.prisma.invitation.findUnique({
             where,
+            include: {
+                sender: true,
+                receiver: true,
+                team: true,
+            },
         });
     }
 
@@ -26,6 +31,11 @@ export class InvitationService {
             cursor,
             where,
             orderBy,
+            include: {
+                sender: true,
+                receiver: true,
+                team: true,
+            },
         });
     }
 
@@ -38,6 +48,11 @@ export class InvitationService {
     async createInvitation(data: Prisma.InvitationCreateInput): Promise<Invitation> {
         return this.prisma.invitation.create({
             data,
+            include: {
+                sender: true,
+                receiver: true,
+                team: true,
+            },
         });
     }
 
@@ -49,6 +64,11 @@ export class InvitationService {
         return this.prisma.invitation.update({
             where,
             data,
+            include: {
+                sender: true,
+                receiver: true,
+                team: true,
+            },
         });
     }
 

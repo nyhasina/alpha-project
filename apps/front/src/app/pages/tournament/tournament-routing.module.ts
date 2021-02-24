@@ -23,7 +23,7 @@ const routes: Routes = [
         component: GameListeComponent,
     },
     {
-        path: 'tournament/:idTournament',
+        path: ':idTournament',
         component: SeeTournamentComponent,
     },
 ];

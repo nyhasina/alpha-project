@@ -7,6 +7,7 @@ import { DetailTournamentComponent } from './detail-tournament/detail-tournament
 import { CardGameComponent } from './card-game/card-game.component';
 import { GameListeComponent } from './game-liste/game-liste.component';
 import { SeeTournamentComponent } from './see-tournament/see-tournament.component';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
     declarations: [
@@ -17,6 +18,6 @@ import { SeeTournamentComponent } from './see-tournament/see-tournament.componen
         GameListeComponent,
         SeeTournamentComponent,
     ],
-    imports: [CommonModule, TournamentRoutingModule],
+    imports: [CommonModule, TournamentRoutingModule, MatExpansionModule],
 })
 export class TournamentModule {}

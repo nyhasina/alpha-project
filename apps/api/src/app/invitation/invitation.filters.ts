@@ -12,9 +12,6 @@ export const INVITATION_FILTERING = (search: string) => [
         team: {
             OR: [...TEAM_FILTERING(search)],
         },
-        date: {
-            in: search,
-        },
         status: {
             contains: search,
         },

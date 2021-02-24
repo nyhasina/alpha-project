@@ -142,7 +142,7 @@ type Mutation {
   createTag(name: String!): TagModel!
   updateTag(name: String!, id: Int!): TagModel!
   deleteTag(id: Int!): TagModel!
-  createInvitation(sender: Float!, receiver: Float!, team: Int!, date: String, status: String): InvitationModel!
-  updateInvitation(sender: Float!, receiver: Float!, team: Int!, date: String, status: String, id: Int!): InvitationModel!
+  createInvitation(sender: Int!, receiver: Int!, team: Int!, date: String, status: String): InvitationModel!
+  updateInvitation(sender: Int!, receiver: Int!, team: Int!, date: String, status: String, id: Int!): InvitationModel!
   deleteInvitation(id: Int!): InvitationModel!
 }

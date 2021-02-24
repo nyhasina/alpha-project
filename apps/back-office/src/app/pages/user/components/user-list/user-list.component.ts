@@ -48,7 +48,7 @@ export class UserListComponent {
             search,
             pagination: {
                 ...this._criteria.pagination,
-                skip: 0,
+                skip: 1,
             },
         };
         this.paginate.emit(this._criteria);

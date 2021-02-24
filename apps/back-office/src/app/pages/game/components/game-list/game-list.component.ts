@@ -36,7 +36,7 @@ export class GameListComponent {
             pagination: {
                 ...this._criteria.pagination,
                 take: page,
-                skip: 0,
+                skip: 1,
             },
         };
         this.paginate.emit(this._criteria);

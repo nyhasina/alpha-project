@@ -1,8 +1,10 @@
 import * as fromRouter from '@ngrx/router-store';
-import { createFeatureSelector } from '@ngrx/store';
-import { AppState } from './core.reducer';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { AppState, AuthState } from './core.reducer';
 
 export const selectRouter = createFeatureSelector<AppState, fromRouter.RouterReducerState<any>>('router');
+export const selectAuthState = (state: AppState) => state.auth;
+export const selectCurrentUser = createSelector(selectAuthState, (state: AuthState) => state.currentUser);
 
 export const {
     selectCurrentRoute, // select the current route

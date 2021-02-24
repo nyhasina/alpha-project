@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
@@ -25,6 +26,7 @@ import { TeamRoutingModule } from './team-routing.module';
         ReactiveFormsModule,
         NgSelectModule,
         SharedModule,
+        MatAutocompleteModule,
     ],
 })
 export class TeamModule {}

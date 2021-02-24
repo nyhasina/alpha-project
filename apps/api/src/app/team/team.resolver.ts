@@ -30,7 +30,7 @@ export class TeamResolver {
     async tag(@Parent() team: TeamModel) {
         const { tagId } = team;
         if (!tagId) {
-          return;
+            return;
         }
         return this.tagService.loadTag({ id: tagId });
     }
@@ -38,10 +38,10 @@ export class TeamResolver {
     @ResolveField()
     async owner(@Parent() team: TeamModel) {
         const { ownerId } = team;
-      if (!ownerId) {
-        return;
-      }
-      return this.userService.loadUser({ id: ownerId });
+        if (!ownerId) {
+            return;
+        }
+        return this.userService.loadUser({ id: ownerId });
     }
 
     @ResolveField()
@@ -93,29 +93,9 @@ export class TeamResolver {
         const { name, tag, owner, members } = input;
         return this.teamService.createTeam({
             name,
-            tag: {
-                connectOrCreate: {
-                    where: {
-                        name: tag.toLowerCase(),
-                    },
-                    create: {
-                        name: tag.toLowerCase(),
-                    },
-                },
-            },
-            owner: {
-                connect: {
-                    id: owner,
-                },
-            },
-            members: {
-                connect: [
-                    {
-                        id: owner,
-                    },
-                    ...(members || []).map((item) => ({ id: item })),
-                ],
-            },
+            tag,
+            owner,
+            members,
         });
     }
 

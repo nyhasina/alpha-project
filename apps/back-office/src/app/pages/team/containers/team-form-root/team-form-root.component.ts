@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
+import { Team, TeamDependencies } from '@nicecactus-platform/graph-ql-service';
 import { Observable } from 'rxjs';
-import { Team } from '@nicecactus-platform/graph-ql-service';
-import { saveTeam } from '../../store/team.actions';
-import { TeamDependencies, TeamState } from '../../store/team.reducers';
+import { DEFAULT_CRITERIA } from '../../../../../../../../libs/graph-ql-service/src/lib/constants/app.constants';
+import { loadTagsAutocompletion, loadUsersAutocompletion, saveTeam } from '../../store/team.actions';
+import { TeamState } from '../../store/team.reducers';
 import { selectDependencies, selectTeam } from '../../store/team.selectors';
 
 @Component({
@@ -24,5 +25,13 @@ export class TeamFormRootComponent implements OnInit {
 
     onSave(payload: Team) {
         this.store.dispatch(saveTeam({ team: payload }));
+    }
+
+    onSearchTag(term: string) {
+        this.store.dispatch(loadTagsAutocompletion({ criteria: { ...DEFAULT_CRITERIA, search: term } }));
+    }
+
+    onSearchUser(term: string) {
+        this.store.dispatch(loadUsersAutocompletion({ criteria: { ...DEFAULT_CRITERIA, search: term } }));
     }
 }

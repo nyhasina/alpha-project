@@ -1,8 +1,10 @@
 /* eslint-disable */
 const { PrismaClient } = require('@prisma/client');
-
 const prisma = new PrismaClient();
 const bcrypt = require('bcrypt');
+const faker = require('faker');
+
+const SALT_OR_ROUND = 10;
 
 async function currencySeed() {
     const currencies = [
@@ -46,57 +48,100 @@ async function languageSeed() {
     }
 }
 
-async function adminUserSeed() {
+async function userSeed() {
     const fr = await prisma.language.findUnique({ where: { code: 'FR' } });
     const euro = await prisma.currency.findUnique({ where: { code: 'EUR' } });
 
     const saltOrRound = 10;
     const hash = await bcrypt.hash('admin', saltOrRound);
 
-    const admin = await prisma.user.upsert({
-        where: { email: 'admin@mailnesia.com' },
-        update: {
-            password: hash,
-            profile: {
-                create: {
-                    username: 'admin',
-                    firstname: 'Thierry',
-                    lastname: 'Houssein',
-                    currency: {
-                        connect: {
-                            id: euro.id,
+    const email = 'admin@mailnesia.com';
+    const password = await bcrypt.hash('admin', saltOrRound);
+    const username = 'admin';
+    const firstname = 'Thierry';
+    const lastname = 'Houssein';
+    const currency = euro.id;
+    const language = fr.id;
+    const admin = {
+        email,
+        password,
+        username,
+        firstname,
+        lastname,
+        currency,
+        language,
+    };
+
+    function simpleUserSeed() {
+        return new Array(30).fill(null).map(async (item) => {
+            const email = faker.internet.email().toLowerCase();
+            const password = await bcrypt.hash('password', SALT_OR_ROUND);
+            const username = email.split('@')[0];
+            const firstname = faker.name.firstName();
+            const lastname = faker.name.lastName();
+            const currency = euro.id;
+            const language = fr.id;
+            const user = {
+                email,
+                password,
+                username,
+                firstname,
+                lastname,
+                currency,
+                language,
+            };
+            return user;
+        });
+    }
+
+    const users = await Promise.all([admin, ...simpleUserSeed()]);
+
+    for (const item of users) {
+        await prisma.user.upsert({
+            where: { email: item.email },
+            update: {
+                password: item.password,
+                profile: {
+                    create: {
+                        username: item.username,
+                        firstname: item.firstname,
+                        lastname: item.lastname,
+                        currency: {
+                            connect: {
+                                id: item.currency,
+                            },
                         },
-                    },
-                    language: {
-                        connect: {
-                            id: fr.id,
+                        language: {
+                            connect: {
+                                id: item.language,
+                            },
                         },
                     },
                 },
             },
-        },
-        create: {
-            email: 'admin@mailnesia.com',
-            password: hash,
-            profile: {
-                create: {
-                    username: 'admin',
-                    firstname: 'Thierry',
-                    lastname: 'Houssein',
-                    currency: {
-                        connect: {
-                            id: euro.id,
+            create: {
+                email: item.email,
+                password: item.password,
+                profile: {
+                    create: {
+                        username: item.username,
+                        firstname: item.firstname,
+                        lastname: item.lastname,
+                        currency: {
+                            connect: {
+                                id: item.currency,
+                            },
                         },
-                    },
-                    language: {
-                        connect: {
-                            id: fr.id,
+                        language: {
+                            connect: {
+                                id: item.language,
+                            },
                         },
                     },
                 },
             },
-        },
-    });
+        });
+    }
 }
 
 async function platformSeed() {
@@ -159,7 +204,7 @@ async function gameSeed() {
 async function main() {
     await currencySeed();
     await languageSeed();
-    await adminUserSeed();
+    await userSeed();
     await platformSeed();
     await gameSeed();
 }

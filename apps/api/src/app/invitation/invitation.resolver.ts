@@ -10,10 +10,10 @@ import { InvitationService } from './invitation.service';
 
 @ArgsType()
 export class CreateInvitationInput {
-    @Field()
+    @Field((returns) => Int)
     sender: number;
 
-    @Field()
+    @Field((returns) => Int)
     receiver: number;
 
     @Field((returns) => Int)

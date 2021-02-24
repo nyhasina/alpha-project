@@ -95,6 +95,14 @@ export class InvitationResolver {
     @Mutation((returns) => InvitationModel)
     async createInvitation(@Args() input: CreateInvitationInput) {
         const { sender, receiver, team, date, status } = input;
+        const duplicate = await this.invitationService.loadFirst({
+            sender: { id: sender },
+            receiver: { id: receiver },
+            team: { id: team },
+        });
+        if (duplicate) {
+            return duplicate;
+        }
         return this.invitationService.createInvitation({
             sender: {
                 connect: {

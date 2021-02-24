@@ -22,6 +22,18 @@ model User {
   password  String?
   profile   Profile?
   joinedTeams Team[] @relation("TeamMembers")
+  invitedBy   Invitation[] @relation("UserIsInvitedByUser")
+  inviting    Invitation[] @relation("UserIsInvitingUser")
+}
+
+model Invitation {
+  id          Int     @id @default(autoincrement())
+  sender   User    @relation("UserIsInvitedByUser", fields: [senderId], references: [id])
+  senderId Int
+  receiver  User   @relation("UserIsInvitingUser", fields: [receiverId], references: [id])
+  receiverId  Int
+  date      DateTime  @default(now())
+  status    String    @default("PENDING")
 }
 
 model Team {

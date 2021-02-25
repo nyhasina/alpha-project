@@ -1,4 +1,5 @@
 import { Field, Int, ObjectType } from '@nestjs/graphql';
+import { dateTimeConverterMiddleware } from '../shared/middlewares/date-time.middleware';
 import { TeamModel } from '../team/team.model';
 import { UserModel } from '../user/user.model';
 
@@ -22,7 +23,7 @@ export class InvitationModel {
 
     teamId?: number;
 
-    @Field((type) => String, { nullable: true })
+    @Field((type) => String, { nullable: true, middleware: [dateTimeConverterMiddleware] })
     date?: string;
 
     @Field((type) => String, { nullable: true })

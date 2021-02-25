@@ -87,6 +87,10 @@
     border: none;
     position: relative;
 }
+.tournament--tabs-list button:not(.is-disabled):hover::after {
+    right: 4px;
+    left: 4px;
+}
 .tournament--tabs-list button:not(.is-disabled):hover {
     color: rgb(178, 246, 23);
 }

@@ -8,6 +8,7 @@ import { createApollo } from './graph-ql.factory';
 import { AuthenticationService } from './services/authentication.service';
 import { CurrencyService } from './services/currency.service';
 import { GameService } from './services/game.service';
+import { InvitationService } from './services/invitation.service';
 import { LanguageService } from './services/language.service';
 import { PlatformService } from './services/platform.service';
 import { TagService } from './services/tag.service';
@@ -30,6 +31,7 @@ import { UserService } from './services/user.service';
         UserService,
         TagService,
         TeamService,
+        InvitationService,
     ],
 })
 export class GraphQlServiceModule {}

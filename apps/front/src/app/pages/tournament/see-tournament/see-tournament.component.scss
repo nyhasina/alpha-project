@@ -88,12 +88,12 @@
     left: 4px;
 }
 .tournament--tabs-list button:not(.is-disabled):hover {
-    color: rgb(178, 246, 23);
+    color: #11cdef
 }
 .tournament--tabs-list button::after {
     content: "";
     height: 3px;
-    background-color: rgb(178, 246, 23);
+    background-color: #11cdef;
     transition: all 0.2s ease 0s;
     border-radius: 3px;
     display: block;

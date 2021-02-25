@@ -27,10 +27,6 @@
     display: flex;
     padding: 0 10px;
 }
-.tournament--header-tournament-infos {
-    background-color: #1a1a1a;
-    border-bottom: 1px solid #000;
-}
 
 .tournament--header-tournament-infos-title {
     font-size: 24px;
@@ -72,7 +68,7 @@
     transition-property: transform;
     box-sizing: initial;
 }
-.tournament--tabs-list button {
+ button {
     width: 150px;
     font-size: 18px;
     font-weight: 600;

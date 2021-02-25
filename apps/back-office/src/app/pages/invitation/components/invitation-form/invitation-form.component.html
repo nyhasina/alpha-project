@@ -1,0 +1,83 @@
+<form (ngSubmit)="onSubmit()" *ngIf="form" [formGroup]="form">
+    <div class="form-group">
+        <label class="form-control-label">Date</label>
+        <input class="form-control form-control-sm" formControlName="date" placeholder="Date" type="date" />
+    </div>
+    <div class="form-group">
+        <label class="form-control-label">Équipe:</label>
+        <ng-select
+            formControlName="team"
+            (scrollToEnd)="onTeamScrollToEnd()"
+            [items]="_teams"
+            bindValue="id"
+            [typeahead]="teamTypeahead$"
+            [virtualScroll]="true"
+        >
+            <ng-template ng-label-tmp let-item="item">
+                {{ item?.name }}
+            </ng-template>
+            <ng-template ng-option-tmp let-item="item">
+                {{ item?.name }}
+            </ng-template>
+        </ng-select>
+    </div>
+    <div class="form-group">
+        <label class="form-control-label">Envoyé par:</label>
+        <ng-select
+            formControlName="sender"
+            (scrollToEnd)="onSenderScrollToEnd()"
+            [items]="_senders"
+            bindValue="id"
+            [typeahead]="senderTypeahead$"
+            [virtualScroll]="true"
+        >
+            <ng-template ng-label-tmp let-item="item">
+                {{ item?.profile?.username }}
+            </ng-template>
+            <ng-template ng-option-tmp let-item="item">
+                {{ item?.profile?.username }} - {{ item?.profile?.firstname | titlecase }}
+                {{ item?.profile?.lastname | titlecase }}
+            </ng-template>
+        </ng-select>
+    </div>
+    <div class="form-group">
+        <label class="form-control-label">Envoyé à:</label>
+        <ng-select
+            formControlName="receiver"
+            (scrollToEnd)="onReceiverScrollToEnd()"
+            [items]="_receivers"
+            bindValue="id"
+            [typeahead]="receiverTypeahead$"
+            [virtualScroll]="true"
+        >
+            <ng-template ng-label-tmp let-item="item">
+                {{ item?.profile?.username }}
+            </ng-template>
+            <ng-template ng-option-tmp let-item="item">
+                {{ item?.profile?.username }} - {{ item?.profile?.firstname | titlecase }}
+                {{ item?.profile?.lastname | titlecase }}
+            </ng-template>
+        </ng-select>
+    </div>
+    <div class="form-group">
+        <label class="form-control-label">Statut:</label>
+        <ng-select formControlName="status" [items]="status">
+            <ng-template ng-label-tmp let-item="item">
+                {{ InvitationStatusLabel[item] }}
+            </ng-template>
+            <ng-template ng-option-tmp let-item="item">
+                {{ InvitationStatusLabel[item] }}
+            </ng-template>
+        </ng-select>
+    </div>
+    <div class="row">
+        <div class="col-auto">
+            <button class="btn btn-primary btn-sm btn-block">Sauvegarder</button>
+        </div>
+        <div class="col-auto">
+            <button [routerLink]="['/', 'admin', 'invitation']" class="btn btn-default btn-sm btn-block" type="button">
+                Annuler
+            </button>
+        </div>
+    </div>
+</form>

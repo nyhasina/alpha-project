@@ -29,3 +29,8 @@ export * from './lib/services/tag.service';
 export * from './lib/services/team.service';
 export * from './lib/queries/tag.queries';
 export * from './lib/queries/team.queries';
+export * from './lib/interfaces/invitation.interface';
+export * from './lib/queries/invitation.queries';
+export * from './lib/services/invitation.service';
+export * from './lib/constants/invitation.constants';
+export * from './lib/constants/app.constants';

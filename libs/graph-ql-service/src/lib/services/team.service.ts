@@ -3,10 +3,20 @@ import { FetchResult } from '@apollo/client';
 import { Apollo } from 'apollo-angular';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Count, Criteria, LOAD_TEAM_DEPENDENCIES, Tag, User } from '../..';
 import { EMPTY_TEAM } from '../constants/team.constants';
+import { Criteria } from '../interfaces/criteria.interface';
+import { Count } from '../interfaces/game.interface';
+import { Tag } from '../interfaces/tag.interface';
 import { Team } from '../interfaces/team.interface';
-import { CREATE_TEAM, DELETE_TEAM, LOAD_PAGINATED_TEAMS, LOAD_TEAM_BY_ID, UPDATE_TEAM } from '../queries/team.queries';
+import { User } from '../interfaces/user.interface';
+import {
+  CREATE_TEAM,
+  DELETE_TEAM,
+  LOAD_PAGINATED_TEAMS,
+  LOAD_TEAM_BY_ID,
+  LOAD_TEAM_DEPENDENCIES,
+  UPDATE_TEAM
+} from '../queries/team.queries';
 
 export interface TeamDependencies {
     users?: User[];
@@ -41,11 +51,11 @@ export class TeamService {
 
     load(id: number): Observable<{ team: Team; users?: User[]; tags?: Tag[] }> {
         return this.apolloService
-            .query<{ team: Team, users?: User[]; tags?: Tag[] }>({
+            .query<{ team: Team; users?: User[]; tags?: Tag[] }>({
                 query: LOAD_TEAM_BY_ID,
                 variables: {
                     id,
-                    skip: 0,
+                    skip: 1,
                     take: 30,
                     by: 'id',
                     direction: 'asc',
@@ -103,7 +113,7 @@ export class TeamService {
                 query: LOAD_TEAM_DEPENDENCIES,
                 fetchPolicy: 'no-cache',
                 variables: {
-                    skip: 0,
+                    skip: 1,
                     take: 30,
                     by: 'id',
                     direction: 'asc',

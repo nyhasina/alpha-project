@@ -1,0 +1,18 @@
+<div class="card border-0">
+    <div class="card-body">
+        <div class="row">
+            <div class="col">
+                <nicecactus-platform-invitation-form
+                    (save)="onSave($event)"
+                    (searchSender)="onSearchSender($event)"
+                    (searchReceiver)="onSearchReceiver($event)"
+                    (searchTeam)="onSearchTeam($event)"
+                    [invitation]="invitation$ | async"
+                    [senders]="(dependencies$ | async).senders"
+                    [receivers]="(dependencies$ | async).receivers"
+                    [teams]="(dependencies$ | async).teams"
+                ></nicecactus-platform-invitation-form>
+            </div>
+        </div>
+    </div>
+</div>

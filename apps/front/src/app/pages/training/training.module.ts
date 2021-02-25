@@ -6,9 +6,9 @@ import { TrainingRoutingModule } from './training-routing.module';
 import { ProgramRootComponent } from './containers/program-root/program-root.component';
 import { SkillGamesRootComponent } from './containers/skill-games-root/skill-games-root.component';
 import { InputProgramComponent } from './containers/input-program/input-program.component';
-
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 @NgModule({
     declarations: [ProgramRootComponent, StatisticRootComponent, SkillGamesRootComponent, InputProgramComponent],
-    imports: [CommonModule, TrainingRoutingModule],
+    imports: [CommonModule, TrainingRoutingModule, MatProgressBarModule],
 })
 export class TrainingModule {}

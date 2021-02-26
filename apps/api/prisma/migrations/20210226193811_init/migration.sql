@@ -1,0 +1,7 @@
+-- CreateTable
+CREATE TABLE "Statement" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "name" TEXT NOT NULL,
+    "ruleId" INTEGER NOT NULL,
+    FOREIGN KEY ("ruleId") REFERENCES "Rule" ("id") ON DELETE CASCADE ON UPDATE CASCADE
+);

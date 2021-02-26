@@ -47,6 +47,7 @@ model Team {
   ownerId Int?
   members User[] @relation("TeamMembers")
   invitation  Invitation[] @relation("UserInviteToTeam")
+  tournaments      Tournament[]     @relation("TeamParticipateToTournaments")
 }
 
 model Tag {
@@ -89,6 +90,52 @@ model Platform {
   logo    String?
   games   Game[]
   deleted Boolean @default(false)
+}
+
+model Tournament {
+  id         Int        @id @default(autoincrement())
+  name       String     @unique
+  date       DateTime
+  tournamentType       TournamentType @relation(fields: [tournamentTypeId], references: [id])
+  tournamentTypeId     Int
+  rule       Rule       @relation(fields: [ruleId], references: [id])
+  ruleId     Int
+  format     Format     @relation(fields: [formatId], references: [id])
+  formatId   Int
+  teams      Team[]     @relation("TeamParticipateToTournaments")
+}
+
+model TournamentType {
+  id          Int           @id @default(autoincrement())
+  name        String        @unique
+  rewards       TournamentReward[] @relation("TournamentTypeHasRewards")
+}
+
+model TournamentReward {
+  id          Int           @id @default(autoincrement())
+  name        String        @unique
+  types       TournamentType[] @relation("TournamentTypeHasRewards")
+}
+
+model Rule {
+  id          Int           @id @default(autoincrement())
+  name        String        @unique
+  tournaments Tournament[]
+  statements  Statement[]
+}
+
+model Statement {
+  id          Int           @id @default(autoincrement())
+  name        String
+  content     String
+  rule        Rule          @relation(fields: [ruleId], references: [id])
+  ruleId      Int
+}
+
+model Format {
+  id          Int           @id @default(autoincrement())
+  name        String        @unique
+  tournaments Tournament[]
 }
 
 model Game {

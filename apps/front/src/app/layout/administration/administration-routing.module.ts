@@ -12,6 +12,10 @@ const routes: Routes = [
                 loadChildren: () => import('../../pages/dashboard/dashboard.module').then((m) => m.DashboardModule),
             },
             {
+                path: 'my-account',
+                loadChildren: () => import('../../pages/my-account/my-account.module').then((m) => m.MyAccountModule),
+            },
+            {
                 path: 'faq',
                 loadChildren: () => import('../../pages/faq/faq.module').then((m) => m.FaqModule),
             },

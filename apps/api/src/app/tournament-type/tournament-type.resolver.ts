@@ -7,8 +7,14 @@ import { TournamentTypeService } from './tournament-type.service';
 
 @ArgsType()
 export class CreateTournamentTypeInput {
+    @Field((returns) => Int, { nullable: true })
+    id: number;
+
     @Field()
     name: string;
+
+    @Field((returns) => Int, { nullable: true })
+    reward: number;
 }
 
 @Resolver((of) => TournamentTypeModel)
@@ -51,21 +57,31 @@ export class TournamentTypeResolver {
 
     @Mutation((returns) => TournamentTypeModel)
     async createTournamentType(@Args() input: CreateTournamentTypeInput) {
-        const { name } = input;
+        const { name, reward } = input;
         return this.tournamentTypeService.createTournamentType({
             name,
+            reward: {
+                connect: {
+                    id: reward,
+                },
+            },
         });
     }
 
     @Mutation((returns) => TournamentTypeModel)
     async updateTournamentType(@Args('id', { type: () => Int }) id: number, @Args() input: CreateTournamentTypeInput) {
-        const { name } = input;
+        const { name, reward } = input;
         return this.tournamentTypeService.updateTournamentType({
             where: {
                 id,
             },
             data: {
                 name,
+                reward: {
+                    connect: {
+                        id: reward,
+                    },
+                },
             },
         });
     }

@@ -1,6 +1,8 @@
-import { Args, ArgsType, Field, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { GameCountModel } from '../game/game.model';
+import { Args, ArgsType, Field, Int, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
+import { GameCountModel, GameModel } from '../game/game.model';
 import { CountArgs, Pagination } from '../shared/models/criteria.model';
+import { TournamentRewardModel } from '../tournament-reward/tournament-reward.model';
+import { TournamentRewardService } from '../tournament-reward/tournament-reward.service';
 import { TOURNAMENT_TYPE_FILTERING } from './tournament-type.filters';
 import { TournamentTypeModel } from './tournament-type.model';
 import { TournamentTypeService } from './tournament-type.service';
@@ -19,7 +21,13 @@ export class CreateTournamentTypeInput {
 
 @Resolver((of) => TournamentTypeModel)
 export class TournamentTypeResolver {
-    constructor(private tournamentTypeService: TournamentTypeService) {}
+    constructor(private tournamentTypeService: TournamentTypeService, private tournamentRewardService: TournamentRewardService) {}
+
+    @ResolveField((returns) => TournamentRewardModel)
+    async reward(@Parent() tournamentType: TournamentTypeModel) {
+        const { id } = tournamentType;
+        return this.tournamentRewardService.loadTournamentReward({ id });
+    }
 
     @Query((returns) => GameCountModel)
     async tournamentTypeCount(@Args() countArgs: CountArgs) {

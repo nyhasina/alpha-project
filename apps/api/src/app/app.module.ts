@@ -11,6 +11,7 @@ import { LanguageModule } from './language/language.module';
 import { PlatformModule } from './platform/platform.module';
 import { ProfileModule } from './profile/profile.module';
 import { GqlAuthGuard } from './shared/decorators/gql-auth-guard.decorator';
+import { StatementModule } from './statement/statement.module';
 import { TagModule } from './tag/tag.module';
 import { TeamModule } from './team/team.module';
 import { TournamentRewardModule } from './tournament-reward/tournament-reward.module';
@@ -39,6 +40,7 @@ import { UserModule } from './user/user.module';
         InvitationModule,
         TournamentRewardModule,
         TournamentTypeModule,
+        StatementModule,
     ],
     providers: [
         {

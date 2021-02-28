@@ -1,4 +1,5 @@
 import { Field, Int, ObjectType } from '@nestjs/graphql';
+import { TournamentRewardModel } from '../tournament-reward/tournament-reward.model';
 
 @ObjectType()
 export class TournamentTypeModel {
@@ -7,4 +8,7 @@ export class TournamentTypeModel {
 
     @Field()
     name: string;
+
+    @Field((returns) => TournamentRewardModel, { nullable: true })
+    reward?: TournamentRewardModel;
 }

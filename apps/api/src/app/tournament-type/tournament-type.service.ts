@@ -9,6 +9,9 @@ export class TournamentTypeService {
     async loadTournamentType(where: Prisma.TournamentTypeWhereUniqueInput): Promise<TournamentType | null> {
         return this.prisma.tournamentType.findUnique({
             where,
+            include: {
+                reward: true,
+            },
         });
     }
 
@@ -26,6 +29,9 @@ export class TournamentTypeService {
             cursor,
             where,
             orderBy,
+            include: {
+                reward: true,
+            },
         });
     }
 
@@ -38,6 +44,9 @@ export class TournamentTypeService {
     async createTournamentType(data: Prisma.TournamentTypeCreateInput): Promise<TournamentType> {
         return this.prisma.tournamentType.create({
             data,
+            include: {
+                reward: true,
+            },
         });
     }
 
@@ -49,12 +58,18 @@ export class TournamentTypeService {
         return this.prisma.tournamentType.update({
             data,
             where,
+            include: {
+                reward: true,
+            },
         });
     }
 
     async deleteTournamentType(where: Prisma.TournamentTypeWhereUniqueInput): Promise<TournamentType> {
         return this.prisma.tournamentType.delete({
             where,
+            include: {
+                reward: true,
+            },
         });
     }
 }

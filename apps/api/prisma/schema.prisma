@@ -129,8 +129,8 @@ model Statement {
   id          Int           @id @default(autoincrement())
   name        String
   content     String
-  rule        Rule          @relation(fields: [ruleId], references: [id])
-  ruleId      Int
+  rule        Rule?          @relation(fields: [ruleId], references: [id])
+  ruleId      Int?
 }
 
 model Format {

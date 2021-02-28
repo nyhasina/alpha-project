@@ -85,6 +85,17 @@ type InvitationModel {
   status: String
 }
 
+type TournamentRewardModel {
+  id: Int!
+  name: String!
+}
+
+type TournamentTypeModel {
+  id: Int!
+  name: String!
+  reward: TournamentRewardModel
+}
+
 type Query {
   contact(id: Int!): ContactModel!
   contacts: [ContactModel!]!
@@ -111,6 +122,12 @@ type Query {
   invitationCount(search: String): GameCountModel!
   invitation(id: Int!): InvitationModel!
   invitations(take: Int, skip: Int, by: String, direction: String, search: String): [InvitationModel!]!
+  tournamentRewardCount(search: String): GameCountModel!
+  tournamentReward(id: Int!): TournamentRewardModel!
+  tournamentRewards(take: Int, skip: Int, by: String, direction: String, search: String): [TournamentRewardModel!]!
+  tournamentTypeCount(search: String): GameCountModel!
+  tournamentType(id: Int!): TournamentTypeModel!
+  tournamentTypes(take: Int, skip: Int, by: String, direction: String, search: String): [TournamentTypeModel!]!
 }
 
 type Mutation {
@@ -145,4 +162,10 @@ type Mutation {
   createInvitation(sender: Int!, receiver: Int!, team: Int!, date: String, status: String): InvitationModel!
   updateInvitation(sender: Int!, receiver: Int!, team: Int!, date: String, status: String, id: Int!): InvitationModel!
   deleteInvitation(id: Int!): InvitationModel!
+  createTournamentReward(name: String!): TournamentRewardModel!
+  updateTournamentReward(name: String!, id: Int!): TournamentRewardModel!
+  deleteTournamentReward(id: Int!): TournamentRewardModel!
+  createTournamentType(id: Int, name: String!, reward: Int): TournamentTypeModel!
+  updateTournamentType(id: Int!, name: String!, reward: Int): TournamentTypeModel!
+  deleteTournamentType(id: Int!): TournamentTypeModel!
 }

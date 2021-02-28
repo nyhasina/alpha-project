@@ -10,7 +10,7 @@ export class TournamentRewardService {
         return this.prisma.tournamentReward.findUnique({
             where,
             include: {
-                types: true,
+                tournamentType: true,
             },
         });
     }
@@ -30,7 +30,7 @@ export class TournamentRewardService {
             where,
             orderBy,
             include: {
-                types: true,
+                tournamentType: true,
             },
         });
     }
@@ -45,7 +45,7 @@ export class TournamentRewardService {
         return this.prisma.tournamentReward.create({
             data,
             include: {
-                types: true,
+                tournamentType: true,
             },
         });
     }
@@ -59,7 +59,7 @@ export class TournamentRewardService {
             data,
             where,
             include: {
-                types: true,
+                tournamentType: true,
             },
         });
     }
@@ -68,7 +68,7 @@ export class TournamentRewardService {
         return this.prisma.tournamentReward.delete({
             where,
             include: {
-                types: true,
+                tournamentType: true,
             },
         });
     }

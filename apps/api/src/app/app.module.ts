@@ -13,6 +13,7 @@ import { ProfileModule } from './profile/profile.module';
 import { GqlAuthGuard } from './shared/decorators/gql-auth-guard.decorator';
 import { TagModule } from './tag/tag.module';
 import { TeamModule } from './team/team.module';
+import { TournamentRewardModule } from './tournament-reward/tournament-reward.module';
 import { UploadModule } from './upload/upload.module';
 import { UserModule } from './user/user.module';
 
@@ -35,6 +36,7 @@ import { UserModule } from './user/user.module';
         TeamModule,
         TagModule,
         InvitationModule,
+        TournamentRewardModule,
     ],
     providers: [
         {

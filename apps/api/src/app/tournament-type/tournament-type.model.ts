@@ -11,4 +11,6 @@ export class TournamentTypeModel {
 
     @Field((returns) => TournamentRewardModel, { nullable: true })
     reward?: TournamentRewardModel;
+
+    rewardId?: number;
 }

@@ -108,13 +108,14 @@ model Tournament {
 model TournamentType {
   id          Int           @id @default(autoincrement())
   name        String        @unique
-  rewards       TournamentReward[] @relation("TournamentTypeHasRewards")
+  reward       TournamentReward? @relation(fields: [rewardId], references: [id])
+  rewardId     Int?
 }
 
 model TournamentReward {
-  id          Int           @id @default(autoincrement())
-  name        String        @unique
-  types       TournamentType[] @relation("TournamentTypeHasRewards")
+  id                Int           @id @default(autoincrement())
+  name              String        @unique
+  tournamentType    TournamentType[]
 }
 
 model Rule {

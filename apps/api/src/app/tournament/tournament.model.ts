@@ -12,8 +12,8 @@ export class TournamentModel {
     @Field()
     name: string;
 
-    @Field((returns) => GraphQLISODateTime)
-    date: Date;
+    @Field((returns) => GraphQLISODateTime, { nullable: true })
+    date?: Date;
 
     @Field((returns) => TournamentTypeModel)
     tournamentType: TournamentTypeModel;

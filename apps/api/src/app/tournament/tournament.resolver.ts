@@ -16,7 +16,7 @@ export class CreateTournamentInput {
     name: string;
 
     @Field()
-    date: string;
+    date?: string;
 
     @Field((returns) => Int)
     tournamentType: number;
@@ -107,7 +107,7 @@ export class TournamentResolver {
                 connect: (rules || []).map((id) => ({ id })),
             },
             teams: {
-                connect: (rules || []).map((id) => ({ id })),
+                connect: (teams || []).map((id) => ({ id })),
             },
         });
     }

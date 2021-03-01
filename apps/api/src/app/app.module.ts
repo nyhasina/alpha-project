@@ -5,6 +5,7 @@ import { join } from 'path';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { ContactModule } from './contact/contact.module';
 import { CurrencyModule } from './currency/currency.module';
+import { FormatModule } from './format/format.module';
 import { GameModule } from './game/game.module';
 import { InvitationModule } from './invitation/invitation.module';
 import { LanguageModule } from './language/language.module';
@@ -41,6 +42,7 @@ import { UserModule } from './user/user.module';
         TournamentRewardModule,
         TournamentTypeModule,
         RuleModule,
+        FormatModule,
     ],
     providers: [
         {

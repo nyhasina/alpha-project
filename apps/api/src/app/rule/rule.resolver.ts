@@ -12,9 +12,6 @@ export class CreateRuleInput {
 
     @Field({ nullable: true })
     content?: string;
-
-    @Field((returns) => Int)
-    rule: number;
 }
 
 @Resolver((of) => RuleModel)
@@ -57,21 +54,16 @@ export class RuleResolver {
 
     @Mutation((returns) => RuleModel)
     async createRule(@Args() input: CreateRuleInput) {
-        const { name, content, rule } = input;
+        const { name, content } = input;
         return this.ruleService.createRule({
             name,
             content,
-            rule: {
-                connect: {
-                    id: rule,
-                },
-            },
         });
     }
 
     @Mutation((returns) => RuleModel)
     async updateRule(@Args('id', { type: () => Int }) id: number, @Args() input: CreateRuleInput) {
-        const { name, content, rule } = input;
+        const { name, content } = input;
         return this.ruleService.updateRule({
             where: {
                 id,
@@ -79,11 +71,6 @@ export class RuleResolver {
             data: {
                 name,
                 content,
-                rule: {
-                    connect: {
-                        id: rule,
-                    },
-                },
             },
         });
     }

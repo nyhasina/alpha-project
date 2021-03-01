@@ -1,4 +1,4 @@
-export const STATEMENT_FILTERING = (search: string) => [
+export const RULE_FILTERING = (search: string) => [
     {
         name: {
             contains: search,

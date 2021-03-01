@@ -10,6 +10,4 @@ export class RuleModel {
 
     @Field({ nullable: true })
     content?: string;
-
-    ruleId?: number
 }

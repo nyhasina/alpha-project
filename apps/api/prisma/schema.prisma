@@ -98,7 +98,7 @@ model Tournament {
   date       DateTime
   tournamentType       TournamentType @relation(fields: [tournamentTypeId], references: [id])
   tournamentTypeId     Int
-  rule       Rule       @relation(fields: [ruleId], references: [id])
+  rules      Rule[]       @relation("TournamentHaveRules")
   ruleId     Int
   format     Format     @relation(fields: [formatId], references: [id])
   formatId   Int
@@ -120,17 +120,11 @@ model TournamentReward {
 
 model Rule {
   id          Int           @id @default(autoincrement())
-  name        String        @unique
-  tournaments Tournament[]
-  statements  Statement[]
-}
-
-model Statement {
-  id          Int           @id @default(autoincrement())
   name        String
   content     String
   rule        Rule?          @relation(fields: [ruleId], references: [id])
   ruleId      Int?
+  tournaments Tournament[]   @relation("TournamentHaveRules")
 }
 
 model Format {

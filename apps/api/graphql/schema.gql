@@ -37,6 +37,11 @@ type GameCountModel {
   total: Int!
 }
 
+type FormatModel {
+  id: Int!
+  name: String!
+}
+
 type TagModel {
   id: Int!
   name: String!
@@ -134,9 +139,12 @@ type Query {
   tournamentTypeCount(search: String): GameCountModel!
   tournamentType(id: Int!): TournamentTypeModel!
   tournamentTypes(take: Int, skip: Int, by: String, direction: String, search: String): [TournamentTypeModel!]!
-  statementCount(search: String): GameCountModel!
-  statement(id: Int!): RuleModel!
-  statements(take: Int, skip: Int, by: String, direction: String, search: String): [RuleModel!]!
+  ruleCount(search: String): GameCountModel!
+  rule(id: Int!): RuleModel!
+  rules(take: Int, skip: Int, by: String, direction: String, search: String): [RuleModel!]!
+  formatCount(search: String): GameCountModel!
+  format(id: Int!): FormatModel!
+  formats(take: Int, skip: Int, by: String, direction: String, search: String): [FormatModel!]!
 }
 
 type Mutation {
@@ -177,7 +185,10 @@ type Mutation {
   createTournamentType(id: Int, name: String!, reward: Int): TournamentTypeModel!
   updateTournamentType(id: Int!, name: String!, reward: Int): TournamentTypeModel!
   deleteTournamentType(id: Int!): TournamentTypeModel!
-  createStatement(name: String!, content: String, rule: Int!): RuleModel!
-  updateStatement(name: String!, content: String, rule: Int!, id: Int!): RuleModel!
-  deleteStatement(id: Int!): RuleModel!
+  createRule(name: String!, content: String, rule: Int!): RuleModel!
+  updateRule(name: String!, content: String, rule: Int!, id: Int!): RuleModel!
+  deleteRule(id: Int!): RuleModel!
+  createFormat(name: String!): FormatModel!
+  updateFormat(name: String!, id: Int!): FormatModel!
+  deleteFormat(id: Int!): FormatModel!
 }

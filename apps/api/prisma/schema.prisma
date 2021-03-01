@@ -99,7 +99,6 @@ model Tournament {
   tournamentType       TournamentType @relation(fields: [tournamentTypeId], references: [id])
   tournamentTypeId     Int
   rules      Rule[]       @relation("TournamentHaveRules")
-  ruleId     Int
   format     Format     @relation(fields: [formatId], references: [id])
   formatId   Int
   teams      Team[]     @relation("TeamParticipateToTournaments")

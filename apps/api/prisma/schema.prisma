@@ -95,11 +95,10 @@ model Platform {
 model Tournament {
   id         Int        @id @default(autoincrement())
   name       String     @unique
-  date       DateTime
+  date       DateTime   @default(now())
   tournamentType       TournamentType @relation(fields: [tournamentTypeId], references: [id])
   tournamentTypeId     Int
-  rule       Rule       @relation(fields: [ruleId], references: [id])
-  ruleId     Int
+  rules      Rule[]       @relation("TournamentHaveRules")
   format     Format     @relation(fields: [formatId], references: [id])
   formatId   Int
   teams      Team[]     @relation("TeamParticipateToTournaments")
@@ -108,28 +107,21 @@ model Tournament {
 model TournamentType {
   id          Int           @id @default(autoincrement())
   name        String        @unique
-  rewards       TournamentReward[] @relation("TournamentTypeHasRewards")
+  reward       TournamentReward? @relation(fields: [rewardId], references: [id])
+  rewardId     Int?
 }
 
 model TournamentReward {
-  id          Int           @id @default(autoincrement())
-  name        String        @unique
-  types       TournamentType[] @relation("TournamentTypeHasRewards")
+  id                Int           @id @default(autoincrement())
+  name              String        @unique
+  tournamentType    TournamentType[]
 }
 
 model Rule {
   id          Int           @id @default(autoincrement())
-  name        String        @unique
-  tournaments Tournament[]
-  statements  Statement[]
-}
-
-model Statement {
-  id          Int           @id @default(autoincrement())
   name        String
   content     String
-  rule        Rule          @relation(fields: [ruleId], references: [id])
-  ruleId      Int
+  tournaments Tournament[]   @relation("TournamentHaveRules")
 }
 
 model Format {

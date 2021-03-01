@@ -37,6 +37,11 @@ type GameCountModel {
   total: Int!
 }
 
+type FormatModel {
+  id: Int!
+  name: String!
+}
+
 type TagModel {
   id: Int!
   name: String!
@@ -85,6 +90,38 @@ type InvitationModel {
   status: String
 }
 
+type RuleModel {
+  id: Int!
+  name: String!
+  content: String
+}
+
+type TournamentRewardModel {
+  id: Int!
+  name: String!
+}
+
+type TournamentTypeModel {
+  id: Int!
+  name: String!
+  reward: TournamentRewardModel
+}
+
+type TournamentModel {
+  id: Int!
+  name: String!
+  date: DateTime
+  tournamentType: TournamentTypeModel!
+  rules: [RuleModel!]
+  format: FormatModel!
+  teams: [TeamModel!]
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
 type Query {
   contact(id: Int!): ContactModel!
   contacts: [ContactModel!]!
@@ -111,6 +148,21 @@ type Query {
   invitationCount(search: String): GameCountModel!
   invitation(id: Int!): InvitationModel!
   invitations(take: Int, skip: Int, by: String, direction: String, search: String): [InvitationModel!]!
+  tournamentRewardCount(search: String): GameCountModel!
+  tournamentReward(id: Int!): TournamentRewardModel!
+  tournamentRewards(take: Int, skip: Int, by: String, direction: String, search: String): [TournamentRewardModel!]!
+  tournamentTypeCount(search: String): GameCountModel!
+  tournamentType(id: Int!): TournamentTypeModel!
+  tournamentTypes(take: Int, skip: Int, by: String, direction: String, search: String): [TournamentTypeModel!]!
+  ruleCount(search: String): GameCountModel!
+  rule(id: Int!): RuleModel!
+  rules(take: Int, skip: Int, by: String, direction: String, search: String): [RuleModel!]!
+  formatCount(search: String): GameCountModel!
+  format(id: Int!): FormatModel!
+  formats(take: Int, skip: Int, by: String, direction: String, search: String): [FormatModel!]!
+  tournamentCount(search: String): GameCountModel!
+  tournament(id: Int!): TournamentModel!
+  tournaments(take: Int, skip: Int, by: String, direction: String, search: String): [TournamentModel!]!
 }
 
 type Mutation {
@@ -145,4 +197,19 @@ type Mutation {
   createInvitation(sender: Int!, receiver: Int!, team: Int!, date: String, status: String): InvitationModel!
   updateInvitation(sender: Int!, receiver: Int!, team: Int!, date: String, status: String, id: Int!): InvitationModel!
   deleteInvitation(id: Int!): InvitationModel!
+  createTournamentReward(name: String!): TournamentRewardModel!
+  updateTournamentReward(name: String!, id: Int!): TournamentRewardModel!
+  deleteTournamentReward(id: Int!): TournamentRewardModel!
+  createTournamentType(id: Int, name: String!, reward: Int): TournamentTypeModel!
+  updateTournamentType(id: Int!, name: String!, reward: Int): TournamentTypeModel!
+  deleteTournamentType(id: Int!): TournamentTypeModel!
+  createRule(name: String!, content: String): RuleModel!
+  updateRule(name: String!, content: String, id: Int!): RuleModel!
+  deleteRule(id: Int!): RuleModel!
+  createFormat(name: String!): FormatModel!
+  updateFormat(name: String!, id: Int!): FormatModel!
+  deleteFormat(id: Int!): FormatModel!
+  createTournament(name: String!, date: String!, tournamentType: Int!, rules: [Int!], format: Int!, teams: [Int!]): TournamentModel!
+  updateTournament(name: String!, date: String!, tournamentType: Int!, rules: [Int!], format: Int!, teams: [Int!], id: Int!): TournamentModel!
+  deleteTournament(id: Int!): TournamentModel!
 }

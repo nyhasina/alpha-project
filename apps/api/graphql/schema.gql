@@ -85,6 +85,12 @@ type InvitationModel {
   status: String
 }
 
+type RuleModel {
+  id: Int!
+  name: String!
+  content: String
+}
+
 type TournamentRewardModel {
   id: Int!
   name: String!
@@ -128,6 +134,9 @@ type Query {
   tournamentTypeCount(search: String): GameCountModel!
   tournamentType(id: Int!): TournamentTypeModel!
   tournamentTypes(take: Int, skip: Int, by: String, direction: String, search: String): [TournamentTypeModel!]!
+  statementCount(search: String): GameCountModel!
+  statement(id: Int!): RuleModel!
+  statements(take: Int, skip: Int, by: String, direction: String, search: String): [RuleModel!]!
 }
 
 type Mutation {
@@ -168,4 +177,7 @@ type Mutation {
   createTournamentType(id: Int, name: String!, reward: Int): TournamentTypeModel!
   updateTournamentType(id: Int!, name: String!, reward: Int): TournamentTypeModel!
   deleteTournamentType(id: Int!): TournamentTypeModel!
+  createStatement(name: String!, content: String, rule: Int!): RuleModel!
+  updateStatement(name: String!, content: String, rule: Int!, id: Int!): RuleModel!
+  deleteStatement(id: Int!): RuleModel!
 }

@@ -95,7 +95,7 @@ model Platform {
 model Tournament {
   id         Int        @id @default(autoincrement())
   name       String     @unique
-  date       DateTime
+  date       DateTime   @default(now())
   tournamentType       TournamentType @relation(fields: [tournamentTypeId], references: [id])
   tournamentTypeId     Int
   rules      Rule[]       @relation("TournamentHaveRules")

@@ -1,12 +1,12 @@
 import { Args, ArgsType, Field, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { GameCountModel } from '../game/game.model';
 import { CountArgs, Pagination } from '../shared/models/criteria.model';
-import { STATEMENT_FILTERING } from './statement.filters';
-import { StatementModel } from './statement.model';
-import { StatementService } from './statement.service';
+import { RULE_FILTERING } from './rule.filters';
+import { RuleModel } from './rule.model';
+import { RuleService } from './rule.service';
 
 @ArgsType()
-export class CreateStatementInput {
+export class CreateRuleInput {
     @Field()
     name: string;
 
@@ -17,48 +17,48 @@ export class CreateStatementInput {
     rule: number;
 }
 
-@Resolver((of) => StatementModel)
-export class StatementResolver {
-    constructor(private statementService: StatementService) {}
+@Resolver((of) => RuleModel)
+export class RuleResolver {
+    constructor(private ruleService: RuleService) {}
 
     @Query((returns) => GameCountModel)
-    async statementCount(@Args() countArgs: CountArgs) {
+    async ruleCount(@Args() countArgs: CountArgs) {
         const { search } = countArgs;
-        const total = await this.statementService.count({
-            OR: [...STATEMENT_FILTERING(search)],
+        const total = await this.ruleService.count({
+            OR: [...RULE_FILTERING(search)],
         });
         const count = new GameCountModel(total);
         return count;
     }
 
-    @Query((returns) => StatementModel)
-    async statement(@Args('id', { type: () => Int }) id: number) {
-        return this.statementService.loadStatement({
+    @Query((returns) => RuleModel)
+    async rule(@Args('id', { type: () => Int }) id: number) {
+        return this.ruleService.loadRule({
             id,
         });
     }
 
-    @Query((returns) => [StatementModel])
-    async statements(@Args() pagination: Pagination) {
+    @Query((returns) => [RuleModel])
+    async rules(@Args() pagination: Pagination) {
         const { take, skip, by, direction, search } = pagination;
         let orderBy = {};
         if (by && direction) {
             orderBy = { [by]: direction };
         }
-        return this.statementService.loadStatements({
+        return this.ruleService.loadRules({
             skip: (skip - 1) * take,
             take,
             where: {
-                OR: STATEMENT_FILTERING(search),
+                OR: RULE_FILTERING(search),
             },
             orderBy,
         });
     }
 
-    @Mutation((returns) => StatementModel)
-    async createStatement(@Args() input: CreateStatementInput) {
+    @Mutation((returns) => RuleModel)
+    async createRule(@Args() input: CreateRuleInput) {
         const { name, content, rule } = input;
-        return this.statementService.createStatement({
+        return this.ruleService.createRule({
             name,
             content,
             rule: {
@@ -69,10 +69,10 @@ export class StatementResolver {
         });
     }
 
-    @Mutation((returns) => StatementModel)
-    async updateStatement(@Args('id', { type: () => Int }) id: number, @Args() input: CreateStatementInput) {
+    @Mutation((returns) => RuleModel)
+    async updateRule(@Args('id', { type: () => Int }) id: number, @Args() input: CreateRuleInput) {
         const { name, content, rule } = input;
-        return this.statementService.updateStatement({
+        return this.ruleService.updateRule({
             where: {
                 id,
             },
@@ -88,8 +88,8 @@ export class StatementResolver {
         });
     }
 
-    @Mutation((returns) => StatementModel)
-    async deleteStatement(@Args('id', { type: () => Int }) id: number) {
-        return this.statementService.deleteStatement({ id });
+    @Mutation((returns) => RuleModel)
+    async deleteRule(@Args('id', { type: () => Int }) id: number) {
+        return this.ruleService.deleteRule({ id });
     }
 }

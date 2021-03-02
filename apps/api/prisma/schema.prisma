@@ -126,6 +126,7 @@ model Rule {
 
 model Format {
   id          Int           @id @default(autoincrement())
+  code        String        @unique
   name        String        @unique
   tournaments Tournament[]
 }

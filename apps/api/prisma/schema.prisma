@@ -17,73 +17,75 @@ model Contact {
 }
 
 model User {
-  id        Int     @id @default(autoincrement())
-  email     String  @unique
-  password  String?
-  profile   Profile?
-  joinedTeams Team[] @relation("TeamMembers")
+  id          Int          @id @default(autoincrement())
+  email       String       @unique
+  password    String?
+  profile     Profile?
+  joinedTeams Team[]       @relation("TeamMembers")
   invitedBy   Invitation[] @relation("UserIsInvitedByUser")
   inviting    Invitation[] @relation("UserIsInvitingUser")
+  Team        Team[]
 }
 
 model Invitation {
-  id          Int       @id @default(autoincrement())
-  sender      User      @relation("UserIsInvitedByUser", fields: [senderId], references: [id])
-  senderId    Int
-  receiver    User      @relation("UserIsInvitingUser", fields: [receiverId], references: [id])
-  receiverId  Int
-  team        Team      @relation("UserInviteToTeam", fields: [teamId], references: [id])
-  teamId      Int
-  date        DateTime  @default(now())
-  status      String    @default("PENDING")
+  id         Int      @id @default(autoincrement())
+  sender     User     @relation("UserIsInvitedByUser", fields: [senderId], references: [id])
+  senderId   Int
+  receiver   User     @relation("UserIsInvitingUser", fields: [receiverId], references: [id])
+  receiverId Int
+  team       Team     @relation("UserInviteToTeam", fields: [teamId], references: [id])
+  teamId     Int
+  date       DateTime @default(now())
+  status     String   @default("PENDING")
 }
 
 model Team {
-  id      Int     @id @default(autoincrement())
-  name    String  @unique
-  tag     Tag?  @relation(fields: [tagId], references: [id])
-  tagId   Int?
-  owner   User? @relation(fields: [ownerId], references: [id])
-  ownerId Int?
-  members User[] @relation("TeamMembers")
-  invitation  Invitation[] @relation("UserInviteToTeam")
-  tournaments      Tournament[]     @relation("TeamParticipateToTournaments")
-  matchAsTeamA  Match[] @relation("HaveTeamA")
-  matchAsTeamB  Match[] @relation("HaveTeamB")
+  id           Int          @id @default(autoincrement())
+  name         String       @unique
+  tag          Tag?         @relation(fields: [tagId], references: [id])
+  tagId        Int?
+  owner        User?        @relation(fields: [ownerId], references: [id])
+  ownerId      Int?
+  members      User[]       @relation("TeamMembers")
+  invitation   Invitation[] @relation("UserInviteToTeam")
+  tournaments  Tournament[] @relation("TeamParticipateToTournaments")
+  matchAsTeamA Match[]      @relation("HaveTeamA")
+  matchAsTeamB Match[]      @relation("HaveTeamB")
 }
 
 model Tag {
-  id      Int     @id @default(autoincrement())
-  name    String  @unique
+  id   Int    @id @default(autoincrement())
+  name String @unique
+  Team Team[]
 }
 
 model Profile {
-  id            Int         @id @default(autoincrement())
-  firstname     String?
-  lastname      String?
-  username      String?
-  user          User        @relation(fields: [userId], references: [id])
-  userId        Int
-  currency      Currency?   @relation(fields: [currencyId], references: [id])
-  currencyId    Int?
-  language      Language?   @relation(fields: [languageId], references: [id])
-  languageId    Int?
+  id         Int       @id @default(autoincrement())
+  firstname  String?
+  lastname   String?
+  username   String?
+  user       User      @relation(fields: [userId], references: [id])
+  userId     Int
+  currency   Currency? @relation(fields: [currencyId], references: [id])
+  currencyId Int?
+  language   Language? @relation(fields: [languageId], references: [id])
+  languageId Int?
 }
 
 model Currency {
-  id      Int     @id @default(autoincrement())
-  code    String  @unique
-  label   String  @unique
+  id       Int       @id @default(autoincrement())
+  code     String    @unique
+  label    String    @unique
   profiles Profile[]
-  deleted Boolean @default(false)
+  deleted  Boolean   @default(false)
 }
 
 model Language {
-  id      Int     @id @default(autoincrement())
-  code    String  @unique
-  label   String  @unique
+  id       Int       @id @default(autoincrement())
+  code     String    @unique
+  label    String    @unique
   profiles Profile[]
-  deleted Boolean @default(false)
+  deleted  Boolean   @default(false)
 }
 
 model Platform {
@@ -95,60 +97,61 @@ model Platform {
 }
 
 model Round {
-  id         Int        @id @default(autoincrement())
-  rank       Int
-  tournament    Tournament  @relation("RoundOfTournament", fields: [tournamentId], references: [id])
-  tournamentId  Int
-  matchs     Match[]    @relation("MatchOfRound")
+  id           Int        @id @default(autoincrement())
+  rank         Int
+  tournament   Tournament @relation("RoundOfTournament", fields: [tournamentId], references: [id])
+  tournamentId Int
+  matchs       Match[]    @relation("MatchOfRound")
 }
 
 model Match {
-  id         Int        @id @default(autoincrement())
-  teamA      Team       @relation("HaveTeamA", fields: [teamAId], references: [id])
-  teamAId    Int
-  teamB      Team       @relation("HaveTeamB", fields: [teamBId], references: [id])
-  teamBId    Int
-  round      Round      @relation("MatchOfRound", fields: [roundId], references: [id])
-  roundId    Int
+  id      Int   @id @default(autoincrement())
+  teamA   Team  @relation("HaveTeamA", fields: [teamAId], references: [id])
+  teamAId Int
+  teamB   Team  @relation("HaveTeamB", fields: [teamBId], references: [id])
+  teamBId Int
+  round   Round @relation("MatchOfRound", fields: [roundId], references: [id])
+  roundId Int
 }
 
 model Tournament {
-  id         Int        @id @default(autoincrement())
-  name       String     @unique
-  date       DateTime   @default(now())
-  tournamentType       TournamentType @relation(fields: [tournamentTypeId], references: [id])
-  tournamentTypeId     Int
-  rules      Rule[]       @relation("TournamentHaveRules")
-  format     Format     @relation(fields: [formatId], references: [id])
-  formatId   Int
-  teams      Team[]     @relation("TeamParticipateToTournaments")
-  rounds     Round[]    @relation("RoundOfTournament")
+  id               Int            @id @default(autoincrement())
+  name             String         @unique
+  date             DateTime       @default(now())
+  tournamentType   TournamentType @relation(fields: [tournamentTypeId], references: [id])
+  tournamentTypeId Int
+  rules            Rule[]         @relation("TournamentHaveRules")
+  format           Format         @relation(fields: [formatId], references: [id])
+  formatId         Int
+  teams            Team[]         @relation("TeamParticipateToTournaments")
+  rounds           Round[]        @relation("RoundOfTournament")
 }
 
 model TournamentType {
-  id          Int           @id @default(autoincrement())
-  name        String        @unique
-  reward       TournamentReward? @relation(fields: [rewardId], references: [id])
-  rewardId     Int?
+  id         Int               @id @default(autoincrement())
+  name       String            @unique
+  reward     TournamentReward? @relation(fields: [rewardId], references: [id])
+  rewardId   Int?
+  Tournament Tournament[]
 }
 
 model TournamentReward {
-  id                Int           @id @default(autoincrement())
-  name              String        @unique
-  tournamentType    TournamentType[]
+  id             Int              @id @default(autoincrement())
+  name           String           @unique
+  tournamentType TournamentType[]
 }
 
 model Rule {
-  id          Int           @id @default(autoincrement())
+  id          Int          @id @default(autoincrement())
   name        String
   content     String
-  tournaments Tournament[]   @relation("TournamentHaveRules")
+  tournaments Tournament[] @relation("TournamentHaveRules")
 }
 
 model Format {
-  id          Int           @id @default(autoincrement())
-  code        String        @unique
-  name        String        @unique
+  id          Int          @id @default(autoincrement())
+  code        String       @unique
+  name        String       @unique
   tournaments Tournament[]
 }
 
@@ -168,10 +171,10 @@ model Politic {
 }
 
 model Blog {
-  id      Int     @id @default(autoincrement())
-  name    String
-  content String?
-  cover String?
-  video String?
+  id        Int     @id @default(autoincrement())
+  name      String
+  content   String?
+  cover     String?
+  video     String?
   isRemoved Boolean @default(false)
 }

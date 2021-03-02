@@ -1,0 +1,20 @@
+import { HttpErrorResponse } from '@angular/common/http';
+import { createAction, props } from '@ngrx/store';
+import { Politic, Count, Platform } from '@nicecactus-platform/graph-ql-service';
+
+export const createPolitic = createAction('[Politic] Create politic');
+export const createPoliticFail = createAction('[Politic] Create politicfail', props<{ error: HttpErrorResponse }>());
+export const createPoliticSuccess = createAction('[Politic] Create politicsuccess', props<{ politic: Politic; platforms?: Platform[] }>());
+export const loadPolitics = createAction('[Politic] Load Politics');
+export const loadPoliticsFail = createAction('[Politic] Load Politics fail', props<{ error: HttpErrorResponse }>());
+export const loadPoliticsSuccess = createAction('[Politic] Load Politics success', props<{ politics: Politic[]; politicCount?: Count }>());
+export const loadPolitic = createAction('[Politic] Load politic', props<{ id: number }>());
+export const loadPoliticFail = createAction('[Politic] Load politicfail', props<{ error: HttpErrorResponse }>());
+export const loadPoliticSuccess = createAction('[Politic] Load politicsuccess', props<{ politic: Politic; platforms?: Platform[] }>());
+export const savePolitic = createAction('[Politic] Save politic', props<{ politic: Politic }>());
+export const savePoliticFail = createAction('[Politic] Save politicfail', props<{ error: HttpErrorResponse }>());
+export const savePoliticSuccess = createAction('[Politic] Save politicsuccess', props<{ politic: Politic }>());
+export const confirmPoliticDeletion = createAction('[Politic] Confirm politicdeletion', props<{ politic: Politic }>());
+export const deletePolitic = createAction('[Politic] Delete politic', props<{ id: number }>());
+export const deletePoliticFail = createAction('[Politic] Delete politicfail', props<{ error: HttpErrorResponse }>());
+export const deletePoliticSuccess = createAction('[Politic] Delete politicsuccess', props<{ politic: Politic }>());

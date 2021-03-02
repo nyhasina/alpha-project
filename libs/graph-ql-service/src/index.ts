@@ -18,6 +18,7 @@ export { createApollo } from './lib/graph-ql.factory';
 export * from './lib/interfaces/code-label.interface';
 export * from './lib/interfaces/user.interface';
 export * from './lib/interfaces/profile.interface';
+export * from './lib/interfaces/politic.interface';
 export * from './lib/services/currency.service';
 export * from './lib/services/language.service';
 export * from './lib/services/user.service';

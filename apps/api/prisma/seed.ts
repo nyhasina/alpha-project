@@ -31,22 +31,22 @@ async function formatSeed() {
     const formats = [
         {
             code: 'SINGLE_ELIMINATION',
-            label: 'Élimination directe',
+            name: 'Élimination directe',
         },
         {
             code: 'DOUBLE_ELIMINATION',
-            label: 'Double élimination',
+            name: 'Double élimination',
         },
         {
             code: 'ROUND_ROBIN',
-            label: 'Toutes rondes',
+            name: 'Toutes rondes',
         },
     ];
     for (const format of formats) {
         await prisma.format.upsert({
             where: { code: format.code },
-            update: { code: format.code, label: format.label },
-            create: { code: format.code, label: format.label },
+            update: { code: format.code, name: format.name },
+            create: { code: format.code, name: format.name },
         });
     }
 }

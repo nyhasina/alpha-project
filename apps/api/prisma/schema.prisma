@@ -97,6 +97,8 @@ model Platform {
 model Round {
   id         Int        @id @default(autoincrement())
   rank       Int
+  tournament    Tournament  @relation("RoundOfTournament", fields: [tournamentId], references: [id])
+  tournamentId  Int
 }
 
 model Match {
@@ -117,6 +119,7 @@ model Tournament {
   format     Format     @relation(fields: [formatId], references: [id])
   formatId   Int
   teams      Team[]     @relation("TeamParticipateToTournaments")
+  rounds     Round[]    @relation("RoundOfTournament")
 }
 
 model TournamentType {

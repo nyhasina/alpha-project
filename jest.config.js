@@ -10,5 +10,7 @@ module.exports = {
         '<rootDir>/libs/graph-ql-service',
         '<rootDir>/libs/guards',
         '<rootDir>/libs/shared',
+        '<rootDir>/libs/politic',
+        '<rootDir>/libs/politicmodul',
     ],
 };

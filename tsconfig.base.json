@@ -21,7 +21,9 @@
             "@nicecactus-platform/graphql-layer": ["libs/graphql-layer/src/index.ts"],
             "@nicecactus-platform/graph-ql-service": ["libs/graph-ql-service/src/index.ts"],
             "@nicecactus-platform/guards": ["libs/guards/src/index.ts"],
-            "@nicecactus-platform/shared": ["libs/shared/src/index.ts"]
+            "@nicecactus-platform/shared": ["libs/shared/src/index.ts"],
+            "@nicecactus-platform/politic": ["libs/politic/src/index.ts"],
+            "@nicecactus-platform/politicmodul": ["libs/politicmodul/src/index.ts"]
         }
     },
     "exclude": ["node_modules", "tmp"]

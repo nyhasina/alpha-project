@@ -1,27 +1,20 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { createAction, props } from '@ngrx/store';
-import { Criteria, User, Count, Platform } from '@nicecactus-platform/graph-ql-service';
-import { UserDependencies } from './user.reducers';
+import { Criteria, Politic, Count, Platform } from '@nicecactus-platform/graph-ql-service';
 
-export const createUser = createAction('[User] Create user');
-export const createUserFail = createAction('[User] Create user fail', props<{ error: HttpErrorResponse }>());
-export const createUserSuccess = createAction(
-    '[User] Create user success',
-    props<{ user: User; userDependencies?: UserDependencies }>()
-);
-export const loadUsers = createAction('[User] Load users', props<{ criteria?: Criteria<User> }>());
-export const loadUsersFail = createAction('[User] Load users fail', props<{ error: HttpErrorResponse }>());
-export const loadUsersSuccess = createAction('[User] Load users success', props<{ users: User[]; userCount?: Count }>());
-export const loadUser = createAction('[User] Load user', props<{ id: number }>());
-export const loadUserFail = createAction('[User] Load user fail', props<{ error: HttpErrorResponse }>());
-export const loadUserSuccess = createAction(
-    '[User] Load user success',
-    props<{ user: User; userDependencies?: UserDependencies }>()
-);
-export const saveUser = createAction('[User] Save user', props<{ user: User }>());
-export const saveUserFail = createAction('[User] Save user fail', props<{ error: HttpErrorResponse }>());
-export const saveUserSuccess = createAction('[User] Save user success', props<{ user: User }>());
-export const confirmUserDeletion = createAction('[User] Confirm user deletion', props<{ user: User }>());
-export const deleteUser = createAction('[User] Delete user', props<{ id: number }>());
-export const deleteUserFail = createAction('[User] Delete user fail', props<{ error: HttpErrorResponse }>());
-export const deleteUserSuccess = createAction('[User] Delete user success', props<{ user: User }>());
+export const createGame = createAction('[Game] Create game');
+export const createGameFail = createAction('[Game] Create game fail', props<{ error: HttpErrorResponse }>());
+export const createGameSuccess = createAction('[Game] Create game success', props<{ politic: Politic; platforms?: Platform[] }>());
+export const loadGames = createAction('[Game] Load games', props<{ criteria?: Criteria<Politic> }>());
+export const loadGamesFail = createAction('[Game] Load games fail', props<{ error: HttpErrorResponse }>());
+export const loadGamesSuccess = createAction('[Game] Load games success', props<{ games: Politic[]; politicCount?: Count }>());
+export const loadGame = createAction('[Game] Load game', props<{ id: number }>());
+export const loadGameFail = createAction('[Game] Load game fail', props<{ error: HttpErrorResponse }>());
+export const loadGameSuccess = createAction('[Game] Load game success', props<{ politic: Politic; platforms?: Platform[] }>());
+export const saveGame = createAction('[Game] Save game', props<{ politic: Politic }>());
+export const saveGameFail = createAction('[Game] Save game fail', props<{ error: HttpErrorResponse }>());
+export const saveGameSuccess = createAction('[Game] Save game success', props<{ politic: Politic }>());
+export const confirmGameDeletion = createAction('[Game] Confirm game deletion', props<{ politic: Politic }>());
+export const deleteGame = createAction('[Game] Delete game', props<{ id: number }>());
+export const deleteGameFail = createAction('[Game] Delete game fail', props<{ error: HttpErrorResponse }>());
+export const deleteGameSuccess = createAction('[Game] Delete game success', props<{ politic: Politic }>());

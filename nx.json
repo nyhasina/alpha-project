@@ -27,6 +27,8 @@
         "graphql-layer": { "tags": [] },
         "graph-ql-service": { "tags": [] },
         "guards": { "tags": [] },
-        "shared": { "tags": [] }
+        "shared": { "tags": [] },
+        "politic": { "tags": [] },
+        "politicmodul": { "tags": [] }
     }
 }

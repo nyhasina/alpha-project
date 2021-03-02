@@ -49,9 +49,7 @@
                         "tsConfig": "apps/back-office/tsconfig.app.json",
                         "aot": true,
                         "assets": ["apps/back-office/src/favicon.ico", "apps/back-office/src/assets"],
-                        "styles": [
-                            "apps/back-office/src/styles.scss"
-                        ],
+                        "styles": ["apps/back-office/src/styles.scss"],
                         "scripts": [
                             "apps/front/src/assets/vendors/jquery/dist/jquery.min.js",
                             "apps/front/src/assets/vendors/bootstrap/dist/js/bootstrap.bundle.min.js",
@@ -505,6 +503,50 @@
                     "outputs": ["coverage/libs/shared"],
                     "options": {
                         "jestConfig": "libs/shared/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                }
+            }
+        },
+        "politic": {
+            "projectType": "library",
+            "root": "libs/politic",
+            "sourceRoot": "libs/politic/src",
+            "prefix": "nicecactus-platform",
+            "architect": {
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": ["libs/politic/src/**/*.ts", "libs/politic/src/**/*.html"]
+                    }
+                },
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/politic"],
+                    "options": {
+                        "jestConfig": "libs/politic/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                }
+            }
+        },
+        "politicmodul": {
+            "projectType": "library",
+            "root": "libs/politicmodul",
+            "sourceRoot": "libs/politicmodul/src",
+            "prefix": "nicecactus-platform",
+            "architect": {
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": ["libs/politicmodul/src/**/*.ts", "libs/politicmodul/src/**/*.html"]
+                    }
+                },
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/politicmodul"],
+                    "options": {
+                        "jestConfig": "libs/politicmodul/jest.config.js",
                         "passWithNoTests": true
                     }
                 }

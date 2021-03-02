@@ -1,11 +1,11 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { createAction, props } from '@ngrx/store';
-import { Criteria, Politic, Count, Platform } from '@nicecactus-platform/graph-ql-service';
+import { Politic, Count, Platform } from '@nicecactus-platform/graph-ql-service';
 
 export const createPolitic = createAction('[Politic] Create politic');
 export const createPoliticFail = createAction('[Politic] Create politicfail', props<{ error: HttpErrorResponse }>());
 export const createPoliticSuccess = createAction('[Politic] Create politicsuccess', props<{ politic: Politic; platforms?: Platform[] }>());
-export const loadPolitics = createAction('[Politic] Load Politics', props<{ criteria?: Criteria<Politic> }>());
+export const loadPolitics = createAction('[Politic] Load Politics');
 export const loadPoliticsFail = createAction('[Politic] Load Politics fail', props<{ error: HttpErrorResponse }>());
 export const loadPoliticsSuccess = createAction('[Politic] Load Politics success', props<{ politics: Politic[]; politicCount?: Count }>());
 export const loadPolitic = createAction('[Politic] Load politic', props<{ id: number }>());

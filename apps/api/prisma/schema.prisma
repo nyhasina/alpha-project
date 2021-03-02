@@ -97,6 +97,14 @@ model Round {
   rank       Int
 }
 
+model Match {
+  id         Int        @id @default(autoincrement())
+  teamA      Team       @relation(fields: [teamAId], references: [id])
+  teamAId    Int
+  teamB      Team       @relation(fields: [teamABd], references: [id])
+  teamBId    Int
+}
+
 model Tournament {
   id         Int        @id @default(autoincrement())
   name       String     @unique

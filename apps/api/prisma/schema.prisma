@@ -99,6 +99,7 @@ model Round {
   rank       Int
   tournament    Tournament  @relation("RoundOfTournament", fields: [tournamentId], references: [id])
   tournamentId  Int
+  matchs     Match[]
 }
 
 model Match {
@@ -107,6 +108,8 @@ model Match {
   teamAId    Int
   teamB      Team       @relation("HaveTeamB", fields: [teamBId], references: [id])
   teamBId    Int
+  round      Round      @relation("MatchOfRound", fields: [roundId], references: [id])
+  roundId    Int
 }
 
 model Tournament {

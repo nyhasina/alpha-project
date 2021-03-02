@@ -27,6 +27,30 @@ async function currencySeed() {
     }
 }
 
+async function formatSeed() {
+    const formats = [
+        {
+            code: 'SINGLE_ELIMINATION',
+            label: 'Élimination directe',
+        },
+        {
+            code: 'DOUBLE_ELIMINATION',
+            label: 'Double élimination',
+        },
+        {
+            code: 'ROUND_ROBIN',
+            label: 'Toutes rondes',
+        },
+    ];
+    for (const format of formats) {
+        await prisma.format.upsert({
+            where: { code: format.code },
+            update: { code: format.code, label: format.label },
+            create: { code: format.code, label: format.label },
+        });
+    }
+}
+
 async function languageSeed() {
     const languages = [
         {
@@ -207,6 +231,7 @@ async function main() {
     await userSeed();
     await platformSeed();
     await gameSeed();
+    await formatSeed();
 }
 
 main()

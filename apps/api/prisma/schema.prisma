@@ -92,6 +92,11 @@ model Platform {
   deleted Boolean @default(false)
 }
 
+model Round {
+  id         Int        @id @default(autoincrement())
+  rank       Int
+}
+
 model Tournament {
   id         Int        @id @default(autoincrement())
   name       String     @unique

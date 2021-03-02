@@ -1,133 +1,87 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { createReducer, on } from '@ngrx/store';
+import {EMPTY_POLITIC, Politic} from '@nicecactus-platform/graph-ql-service';
 import {
-  Count,
-  Criteria,
-  DEFAULT_CRITERIA,
-  EMPTY_politic,
-  politic,
-  politicDependencies
-} from '@nicecactus-platform/graph-ql-service';
-import {
-  createpoliticSuccess,
-  loadpolitic,
-  loadpoliticFail,
-  loadpolitics,
-  loadpoliticsFail,
-  loadpoliticsSuccess,
-  loadpoliticSuccess,
-  loadReceiversSuccess,
-  loadSendersSuccess,
-  loadTeamsAutocompletionSuccess,
-  savepolitic,
-  savepoliticFail,
-  savepoliticSuccess
-} from './politic.actions';
+    createPoliticSuccess,
+    loadPolitic,
+    loadPoliticFail,
+    loadPolitics,
+    loadPoliticsFail,
+    loadPoliticsSuccess,
+    loadPoliticSuccess,
+    savePolitic,
+    savePoliticFail,
+    savePoliticSuccess,
+} from './Politic.actions';
 
 export interface PoliticState {
-    politics: politic[];
-    criteria: Criteria<politic>;
-    politicCount: Count;
-    dependencies: politicDependencies;
-    loadingpolitics: boolean;
+    politics: Politic[];
+    loadingPolitics: boolean;
     politicsLoaded: boolean;
-    loadingpoliticsError?: HttpErrorResponse;
-    politic: politic;
-    loadingpolitic: boolean;
+    loadingPoliticsError?: HttpErrorResponse;
+    politic: Politic;
+    loadingPolitic: boolean;
     politicLoaded: boolean;
-    loadingpoliticError?: HttpErrorResponse;
-    savingpolitic: boolean;
+    loadingPoliticError?: HttpErrorResponse;
+    savingPolitic: boolean;
     politicSaved: boolean;
-    savingpoliticError?: HttpErrorResponse;
+    savingPoliticError?: HttpErrorResponse;
 }
 
-export const initialState: politicState = {
+export const initialState: PoliticState = {
     politics: [],
-    criteria: { ...DEFAULT_CRITERIA },
-    politicCount: {
-        total: 0,
-    },
-    dependencies: {
-        teams: [],
-        receivers: [],
-        senders: [],
-    },
-    politic: null,
-    loadingpolitics: false,
+    politic: {},
+    loadingPolitics: false,
     politicsLoaded: false,
-    loadingpolitic: false,
+    loadingPolitic: false,
     politicLoaded: false,
-    savingpolitic: false,
+    savingPolitic: false,
     politicSaved: false,
 };
 
 export const politicReducer = createReducer(
     initialState,
-    on(loadpolitics, (state, { criteria }) => ({ ...state, loadingpolitics: true, criteria })),
-    on(loadpoliticsFail, (state, { error }) => ({
+    on(loadPolitics, (state) => ({ ...state, loadingPolitics: true })),
+    on(loadPoliticsFail, (state, { error }) => ({
         ...state,
-        loadingpolitics: false,
+        loadingPolitics: false,
         politicsLoaded: false,
-        loadingpoliticsError: error,
+        loadingPoliticsError: error,
     })),
-    on(loadpoliticsSuccess, (state, { politics, politicCount }) => ({
+    on(loadPoliticsSuccess, (state, { politics }) => ({
         ...state,
-        loadingpolitics: false,
+        loadingPolitics: false,
         politicsLoaded: true,
         politics,
-        politicCount,
     })),
-    on(createpoliticSuccess, (state, { politic, dependencies }) => ({
+    on(createPoliticSuccess, (state, { politic }) => ({
         ...state,
         politic,
-        dependencies,
     })),
-    on(loadpolitic, (state) => ({ ...state, loadingpolitic: true })),
-    on(loadpoliticFail, (state, { error }) => ({
+    on(loadPolitic, (state) => ({ ...state, loadingPolitic: true })),
+    on(loadPoliticFail, (state, { error }) => ({
         ...state,
-        loadingpolitic: false,
+        loadingPolitic: false,
         politicLoaded: false,
-        loadingpoliticError: error,
+        loadingPoliticError: error,
     })),
-    on(loadpoliticSuccess, (state, { politic, dependencies }) => ({
+    on(loadPoliticSuccess, (state, { politic }) => ({
         ...state,
-        loadingpolitic: false,
+        loadingPolitic: false,
         politicLoaded: true,
         politic,
-        dependencies,
     })),
-    on(savepolitic, (state) => ({ ...state, savingpolitic: true })),
-    on(savepoliticFail, (state, { error }) => ({
+    on(savePolitic, (state) => ({ ...state, savingPolitic: true })),
+    on(savePoliticFail, (state, { error }) => ({
         ...state,
-        savingpolitic: false,
-        politicSaved: false,
-        savingpoliticError: error,
+        savingPolitic: false,
+        PoliticSaved: false,
+        savingPoliticError: error,
     })),
-    on(savepoliticSuccess, (state, { politic }) => ({
+    on(savePoliticSuccess, (state, { politic }) => ({
         ...state,
-        savingpolitic: false,
-        politicSaved: false,
-        politic: EMPTY_politic,
-    })),
-    on(loadSendersSuccess, (state, { senders }) => ({
-        ...state,
-        dependencies: {
-            ...state.dependencies,
-            senders,
-        },
-    })),
-    on(loadReceiversSuccess, (state, { receivers }) => ({
-        ...state,
-        dependencies: {
-            ...state.dependencies,
-            receivers,
-        },
-    })),
-    on(loadTeamsAutocompletionSuccess, (state, { teams }) => ({
-        ...state,
-        dependencies: {
-            ...state.dependencies,
-            teams,
-        },
+        savingPolitic: false,
+        PoliticSaved: false,
+        Politic: EMPTY_POLITIC,
     }))
 );

@@ -48,6 +48,8 @@ model Team {
   members User[] @relation("TeamMembers")
   invitation  Invitation[] @relation("UserInviteToTeam")
   tournaments      Tournament[]     @relation("TeamParticipateToTournaments")
+  matchAsTeamA  Match[] @relation("HaveTeamA")
+  matchAsTeamB  Match[] @relation("HaveTeamB")
 }
 
 model Tag {
@@ -99,9 +101,9 @@ model Round {
 
 model Match {
   id         Int        @id @default(autoincrement())
-  teamA      Team       @relation(fields: [teamAId], references: [id])
+  teamA      Team       @relation("HaveTeamA", fields: [teamAId], references: [id])
   teamAId    Int
-  teamB      Team       @relation(fields: [teamABd], references: [id])
+  teamB      Team       @relation("HaveTeamB", fields: [teamBId], references: [id])
   teamBId    Int
 }
 

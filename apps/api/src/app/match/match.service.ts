@@ -9,6 +9,11 @@ export class MatchService {
     async loadMatch(where: Prisma.MatchWhereUniqueInput): Promise<Match | null> {
         return this.prisma.match.findUnique({
             where,
+            include: {
+                round: true,
+                teamA: true,
+                teamB: true,
+            },
         });
     }
 
@@ -26,6 +31,11 @@ export class MatchService {
             cursor,
             where,
             orderBy,
+            include: {
+                round: true,
+                teamA: true,
+                teamB: true,
+            },
         });
     }
 
@@ -38,6 +48,11 @@ export class MatchService {
     async createMatch(data: Prisma.MatchCreateInput): Promise<Match> {
         return this.prisma.match.create({
             data,
+            include: {
+                round: true,
+                teamA: true,
+                teamB: true,
+            },
         });
     }
 
@@ -46,12 +61,22 @@ export class MatchService {
         return this.prisma.match.update({
             data,
             where,
+            include: {
+                round: true,
+                teamA: true,
+                teamB: true,
+            },
         });
     }
 
     async deleteMatch(where: Prisma.MatchWhereUniqueInput): Promise<Match> {
         return this.prisma.match.delete({
             where,
+            include: {
+                round: true,
+                teamA: true,
+                teamB: true,
+            },
         });
     }
 }

@@ -71,6 +71,18 @@ export class TournamentResolver {
         });
     }
 
+    @ResolveField((returns) => [TeamModel])
+    async rounds(@Parent() tournament: TournamentModel) {
+        const { id } = tournament;
+        return this.roundService.loadRounds({
+            where: {
+                tournament: {
+                    id,
+                },
+            },
+        });
+    }
+
     @Query((returns) => GameCountModel)
     async tournamentCount(@Args() countArgs: CountArgs) {
         const { search } = countArgs;

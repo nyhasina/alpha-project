@@ -1,8 +1,10 @@
 import { Args, ArgsType, Field, Int, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
 import { FormatService } from '../format/format.service';
 import { GameCountModel } from '../game/game.model';
+import { RoundService } from '../round/round.service';
 import { RuleService } from '../rule/rule.service';
 import { CountArgs, Pagination } from '../shared/models/criteria.model';
+import { TeamModel } from '../team/team.model';
 import { TeamService } from '../team/team.service';
 import { TournamentRewardModel } from '../tournament-reward/tournament-reward.model';
 import { TournamentTypeService } from '../tournament-type/tournament-type.service';
@@ -41,7 +43,8 @@ export class TournamentResolver {
         private tournamentTypeService: TournamentTypeService,
         private ruleService: RuleService,
         private formatService: FormatService,
-        private teamService: TeamService
+        private teamService: TeamService,
+        private roundService: RoundService
     ) {}
 
     @ResolveField((returns) => TournamentRewardModel)
@@ -54,6 +57,18 @@ export class TournamentResolver {
     async format(@Parent() tournament: TournamentModel) {
         const { formatId } = tournament;
         return this.formatService.loadFormat({ id: formatId });
+    }
+
+    @ResolveField((returns) => [TeamModel])
+    async teams(@Parent() tournament: TournamentModel) {
+        const { id } = tournament;
+        return this.teamService.loadTeams({
+            where: {
+                tournaments: {
+                    some: {},
+                },
+            },
+        });
     }
 
     @Query((returns) => GameCountModel)

@@ -21,7 +21,7 @@ export class CreateTournamentInput {
     date?: string;
 
     @Field({ nullable: true })
-    closed?: string;
+    closed?: boolean;
 
     @Field((returns) => Int)
     tournamentType: number;

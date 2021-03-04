@@ -118,6 +118,7 @@ model Tournament {
   id               Int            @id @default(autoincrement())
   name             String         @unique
   date             DateTime       @default(now())
+  closed           Boolean        @default(false)
   tournamentType   TournamentType @relation(fields: [tournamentTypeId], references: [id])
   tournamentTypeId Int
   rules            Rule[]         @relation("TournamentHaveRules")

@@ -6,6 +6,10 @@ const faker = require('faker');
 
 const SALT_OR_ROUND = 10;
 
+function getRandomInt(max, min) {
+    return Math.floor(Math.random() * (max - min)) + min;
+}
+
 async function currencySeed() {
     const currencies = [
         {
@@ -97,7 +101,7 @@ async function userSeed() {
     };
 
     function simpleUserSeed() {
-        return new Array(30).fill(null).map(async (item) => {
+        return new Array(150).fill(null).map(async (item) => {
             const firstname = faker.name.firstName();
             const lastname = faker.name.lastName();
             const email = `${firstname.toLowerCase()}.${lastname.toLowerCase()}@gmail.com`;
@@ -225,6 +229,83 @@ async function gameSeed() {
     }
 }
 
+async function tagSeed() {
+    const tags = new Array(20).fill({}).map((item) => ({
+        name: faker.lorem.word(),
+    }));
+    for (const tag of tags) {
+        await prisma.tag.upsert({
+            where: {
+                name: tag.name,
+            },
+            update: {
+                name: tag.name,
+            },
+            create: {
+                name: tag.name,
+            },
+        });
+    }
+}
+
+async function teamSeed() {
+    const users = await prisma.user.findMany({});
+    const tags = await prisma.tag.findMany({});
+    let members;
+    const teams = new Array(32).fill({}).map((item) => {
+        const membersNb = getRandomInt(5, 2);
+        members = new Array(membersNb).fill({}).map((item) => users[getRandomInt(users.length - 1, 0)]);
+        for (let i = 0; i < membersNb; i++) {
+            members.push(users[getRandomInt(users.length - 1, 0)]);
+        }
+        return {
+            name: faker.company.companyName(),
+            tag: tags[getRandomInt(tags.length, 0)].id,
+            owner: members[0].id,
+            members,
+        };
+    });
+    for (const team of teams) {
+        await prisma.team.upsert({
+            where: {
+                name: team.name,
+            },
+            update: {
+                name: team.name,
+                tag: {
+                    connect: {
+                        id: team.tag,
+                    },
+                },
+                owner: {
+                    connect: {
+                        id: team.owner,
+                    },
+                },
+                members: {
+                    connect: team.members.map((item) => ({ id: item.id })),
+                },
+            },
+            create: {
+                name: team.name,
+                tag: {
+                    connect: {
+                        id: team.tag,
+                    },
+                },
+                owner: {
+                    connect: {
+                        id: team.owner,
+                    },
+                },
+                members: {
+                    connect: team.members.map((item) => ({ id: item.id })),
+                },
+            },
+        });
+    }
+}
+
 async function main() {
     await currencySeed();
     await languageSeed();
@@ -232,6 +313,8 @@ async function main() {
     await platformSeed();
     await gameSeed();
     await formatSeed();
+    await tagSeed();
+    await teamSeed();
 }
 
 main()

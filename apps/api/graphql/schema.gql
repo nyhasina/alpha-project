@@ -225,7 +225,7 @@ type Mutation {
   createFormat(code: String!, name: String!): FormatModel!
   updateFormat(code: String!, name: String!, id: Int!): FormatModel!
   deleteFormat(id: Int!): FormatModel!
-  createTournament(name: String!, date: String, closed: String, tournamentType: Int!, rules: [Int!], format: Int!, teams: [Int!], rounds: [Int!]): TournamentModel!
-  updateTournament(name: String!, date: String, closed: String, tournamentType: Int!, rules: [Int!], format: Int!, teams: [Int!], rounds: [Int!], id: Int!): TournamentModel!
+  createTournament(name: String!, date: String, closed: Boolean, tournamentType: Int!, rules: [Int!], format: Int!, teams: [Int!], rounds: [Int!]): TournamentModel!
+  updateTournament(name: String!, date: String, closed: Boolean, tournamentType: Int!, rules: [Int!], format: Int!, teams: [Int!], rounds: [Int!], id: Int!): TournamentModel!
   deleteTournament(id: Int!): TournamentModel!
 }

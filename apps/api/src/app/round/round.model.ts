@@ -10,9 +10,6 @@ export class RoundModel {
     @Field((returns) => Int)
     rank: number;
 
-    @Field((returns) => TournamentModel)
-    tournament: TournamentModel;
-
     tournamentId?: number;
 
     @Field((returns) => [MatchModel])

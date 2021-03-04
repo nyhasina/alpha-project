@@ -8,6 +8,9 @@ import { FormatService } from './format.service';
 @ArgsType()
 export class CreateFormatInput {
     @Field()
+    code: string;
+
+    @Field()
     name: string;
 }
 
@@ -51,21 +54,23 @@ export class FormatResolver {
 
     @Mutation((returns) => FormatModel)
     async createFormat(@Args() input: CreateFormatInput) {
-        const { name } = input;
+        const { name, code } = input;
         return this.formatService.createFormat({
             name,
+            code,
         });
     }
 
     @Mutation((returns) => FormatModel)
     async updateFormat(@Args('id', { type: () => Int }) id: number, @Args() input: CreateFormatInput) {
-        const { name } = input;
+        const { name, code } = input;
         return this.formatService.updateFormat({
             where: {
                 id,
             },
             data: {
                 name,
+                code,
             },
         });
     }

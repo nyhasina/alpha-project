@@ -126,6 +126,7 @@ export class TournamentResolver {
         return this.tournamentService.createTournament({
             name,
             date,
+            closed,
             tournamentType: {
                 connect: {
                     id: tournamentType,
@@ -147,7 +148,7 @@ export class TournamentResolver {
 
     @Mutation((returns) => TournamentModel)
     async updateTournament(@Args('id', { type: () => Int }) id: number, @Args() input: CreateTournamentInput) {
-        const { name, date, tournamentType, rules, format, teams } = input;
+        const { name, date, tournamentType, rules, format, teams, closed } = input;
         return this.tournamentService.updateTournament({
             where: {
                 id,
@@ -155,6 +156,7 @@ export class TournamentResolver {
             data: {
                 name,
                 date,
+                closed,
                 tournamentType: {
                     connect: {
                         id: tournamentType,

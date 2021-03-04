@@ -1,5 +1,6 @@
 import { Field, GraphQLISODateTime, Int, ObjectType } from '@nestjs/graphql';
 import { FormatModel } from '../format/format.model';
+import { RoundModel } from '../round/round.model';
 import { RuleModel } from '../rule/rule.model';
 import { TeamModel } from '../team/team.model';
 import { TournamentTypeModel } from '../tournament-type/tournament-type.model';
@@ -30,4 +31,7 @@ export class TournamentModel {
 
     @Field((returns) => [TeamModel], { nullable: true })
     teams: TeamModel[];
+
+    @Field((returns) => [RoundModel], { nullable: true })
+    rounds: RoundModel[];
 }

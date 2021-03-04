@@ -9,6 +9,7 @@ import { FormatModule } from './format/format.module';
 import { GameModule } from './game/game.module';
 import { InvitationModule } from './invitation/invitation.module';
 import { LanguageModule } from './language/language.module';
+import { MatchModule } from './match/match.module';
 import { PlatformModule } from './platform/platform.module';
 import { ProfileModule } from './profile/profile.module';
 import { RuleModule } from './rule/rule.module';
@@ -45,6 +46,7 @@ import { UserModule } from './user/user.module';
         RuleModule,
         FormatModule,
         TournamentModule,
+        MatchModule,
     ],
     providers: [
         {

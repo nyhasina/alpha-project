@@ -16,6 +16,9 @@ export class TournamentModel {
     @Field((returns) => GraphQLISODateTime, { nullable: true })
     date?: Date;
 
+    @Field({ nullable: true })
+    closed?: boolean;
+
     @Field((returns) => TournamentTypeModel)
     tournamentType: TournamentTypeModel;
 

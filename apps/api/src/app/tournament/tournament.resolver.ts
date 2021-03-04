@@ -17,8 +17,11 @@ export class CreateTournamentInput {
     @Field()
     name: string;
 
-    @Field()
+    @Field({ nullable: true })
     date?: string;
+
+    @Field({ nullable: true })
+    closed?: string;
 
     @Field((returns) => Int)
     tournamentType: number;
@@ -119,7 +122,7 @@ export class TournamentResolver {
 
     @Mutation((returns) => TournamentModel)
     async createTournament(@Args() input: CreateTournamentInput) {
-        const { name, date, tournamentType, rules, format, teams } = input;
+        const { name, date, tournamentType, rules, format, teams, closed } = input;
         return this.tournamentService.createTournament({
             name,
             date,

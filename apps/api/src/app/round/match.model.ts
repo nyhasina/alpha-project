@@ -1,5 +1,4 @@
 import { Field, Int, ObjectType } from '@nestjs/graphql';
-import { TeamModel } from '../team/team.model';
 import { TournamentModel } from '../tournament/tournament.model';
 
 @ObjectType()
@@ -10,13 +9,11 @@ export class MatchModel {
     @Field((returns) => Int)
     rank: number;
 
-    @Field((returns) => TeamModel)
-    teamA: TeamModel;
+    @Field((returns) => TournamentModel)
+    tournament: TournamentModel;
 
-    teamAId?: number;
+    tournamentId?: number;
 
-    @Field((returns) => TeamModel)
-    teamB: TeamModel;
-
-    teamBId?: number;
+    @Field((returns) => [MatchModel])
+    matchs: MatchModel[];
 }

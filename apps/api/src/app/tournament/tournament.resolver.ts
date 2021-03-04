@@ -29,6 +29,9 @@ export class CreateTournamentInput {
 
     @Field((returns) => [Int], { nullable: true })
     teams: number[];
+
+    @Field((returns) => [Int], { nullable: true })
+    rounds: number[];
 }
 
 @Resolver((of) => TournamentModel)

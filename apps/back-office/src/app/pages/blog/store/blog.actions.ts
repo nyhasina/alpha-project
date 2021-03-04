@@ -1,0 +1,20 @@
+import { HttpErrorResponse } from '@angular/common/http';
+import { createAction, props } from '@ngrx/store';
+import { Blog, Count, Platform } from '@nicecactus-platform/graph-ql-service';
+
+export const createBlog = createAction('[Blog] Create blog');
+export const createBlogFail = createAction('[Blog] Create blogfail', props<{ error: HttpErrorResponse }>());
+export const createBlogSuccess = createAction('[Blog] Create blogsuccess', props<{ blog: Blog[]; platforms?: Platform[] }>());
+export const loadBlogs = createAction('[Blog] Load blogs');
+export const loadBlogsFail = createAction('[Blog] Load blogs fail', props<{ error: HttpErrorResponse }>());
+export const loadBlogsSuccess = createAction('[Blog] Load blogs success', props<{ blogs: Blog[]; blogCount?: Count }>());
+export const loadBlog = createAction('[Blog] Load blog', props<{ id: number }>());
+export const loadBlogFail = createAction('[Blog] Load blogfail', props<{ error: HttpErrorResponse }>());
+export const loadBlogSuccess = createAction('[Blog] Load blogsuccess', props<{ blog: Blog[]; platforms?: Platform[] }>());
+export const saveBlog = createAction('[Blog] Save blog', props<{ blog: Blog}>());
+export const saveBlogFail = createAction('[Blog] Save blogfail', props<{ error: HttpErrorResponse }>());
+export const saveBlogSuccess = createAction('[Blog] Save blogsuccess', props<{ blog: Blog}>());
+export const confirmBlogDeletion = createAction('[Blog] Confirm blogdeletion', props<{ blog: Blog}>());
+export const deleteBlog = createAction('[Blog] Delete blog', props<{ id: number }>());
+export const deleteBlogFail = createAction('[Blog] Delete blogfail', props<{ error: HttpErrorResponse }>());
+export const deleteBlogSuccess = createAction('[Blog] Delete blogsuccess', props<{ blog: Blog}>());

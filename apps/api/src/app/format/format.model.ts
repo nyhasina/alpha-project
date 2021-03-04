@@ -7,4 +7,7 @@ export class FormatModel {
 
     @Field()
     name: string;
+
+    @Field()
+    code: string;
 }

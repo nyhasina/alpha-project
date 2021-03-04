@@ -220,8 +220,8 @@ type Mutation {
   createRule(name: String!, content: String): RuleModel!
   updateRule(name: String!, content: String, id: Int!): RuleModel!
   deleteRule(id: Int!): RuleModel!
-  createFormat(name: String!): FormatModel!
-  updateFormat(name: String!, id: Int!): FormatModel!
+  createFormat(code: String!, name: String!): FormatModel!
+  updateFormat(code: String!, name: String!, id: Int!): FormatModel!
   deleteFormat(id: Int!): FormatModel!
   createTournament(name: String!, date: String!, tournamentType: Int!, rules: [Int!], format: Int!, teams: [Int!], rounds: [Int!]): TournamentModel!
   updateTournament(name: String!, date: String!, tournamentType: Int!, rules: [Int!], format: Int!, teams: [Int!], rounds: [Int!], id: Int!): TournamentModel!

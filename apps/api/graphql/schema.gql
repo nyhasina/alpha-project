@@ -107,6 +107,19 @@ type TournamentTypeModel {
   reward: TournamentRewardModel
 }
 
+type MatchModel {
+  id: Int!
+  rank: Int!
+  teamA: TeamModel!
+  teamB: TeamModel!
+}
+
+type RoundModel {
+  id: Int!
+  rank: Int!
+  matchs: [MatchModel!]!
+}
+
 type TournamentModel {
   id: Int!
   name: String!
@@ -115,6 +128,7 @@ type TournamentModel {
   rules: [RuleModel!]
   format: FormatModel!
   teams: [TeamModel!]
+  rounds: [RoundModel!]
 }
 
 """
@@ -209,7 +223,7 @@ type Mutation {
   createFormat(name: String!): FormatModel!
   updateFormat(name: String!, id: Int!): FormatModel!
   deleteFormat(id: Int!): FormatModel!
-  createTournament(name: String!, date: String!, tournamentType: Int!, rules: [Int!], format: Int!, teams: [Int!]): TournamentModel!
-  updateTournament(name: String!, date: String!, tournamentType: Int!, rules: [Int!], format: Int!, teams: [Int!], id: Int!): TournamentModel!
+  createTournament(name: String!, date: String!, tournamentType: Int!, rules: [Int!], format: Int!, teams: [Int!], rounds: [Int!]): TournamentModel!
+  updateTournament(name: String!, date: String!, tournamentType: Int!, rules: [Int!], format: Int!, teams: [Int!], rounds: [Int!], id: Int!): TournamentModel!
   deleteTournament(id: Int!): TournamentModel!
 }

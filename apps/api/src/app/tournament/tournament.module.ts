@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { FormatService } from '../format/format.service';
 import { PrismaService } from '../prisma/prisma.service';
+import { RoundService } from '../round/round.service';
 import { RuleService } from '../rule/rule.service';
 import { TeamService } from '../team/team.service';
 import { TournamentRewardService } from '../tournament-reward/tournament-reward.service';
@@ -18,6 +19,7 @@ import { TournamentService } from './tournament.service';
         TournamentTypeService,
         RuleService,
         TeamService,
+        RoundService,
     ],
 })
 export class TournamentModule {}

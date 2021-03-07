@@ -4,6 +4,8 @@ export * from './lib/queries/authentication.queries';
 export * from './lib/queries/platform.queries';
 export * from './lib/services/platform.service';
 export * from './lib/interfaces/blog.interface';
+export * from './lib/services/blog.service';
+export * from './lib/constants/blog.constants';
 export * from './lib/interfaces/contact.interface';
 export * from './lib/interfaces/nav-item.interface';
 export * from './lib/interfaces/authentication-response.interface';

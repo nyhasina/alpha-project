@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { createReducer, on } from '@ngrx/store';
-import { Criteria, EMPTY_BLOG, Blog } from '@nicecactus-platform/graph-ql-service';
+import { EMPTY_BLOG, Blog } from '@nicecactus-platform/graph-ql-service';
 import {
     createBlogSuccess,
     loadBlog,
@@ -31,7 +31,7 @@ export interface BlogState {
 
 export const initialState: BlogState = {
     blogs: [],
-    blog: null,
+    blog: {},
     loadingBlogs: false,
     blogsLoaded: false,
     loadingBlog: false,
@@ -62,11 +62,11 @@ export const gameReducer = createReducer(
        blogLoaded: false,
         loadingBlogError: error,
     })),
-    on(loadBlogsSuccess, (state, { blogs}) => ({
+    on(loadBlogSuccess, (state, { blog }) => ({
         ...state,
-        loadingBlog: false,
-        gameLoaded: true,
-        blogs,
+        loadingPolitic: false,
+        politicLoaded: true,
+        blog,
     })),
     on(saveBlog, (state) => ({ ...state, savingBlog: true })),
     on(saveBlogFail, (state, { error }) => ({
@@ -75,20 +75,14 @@ export const gameReducer = createReducer(
         blogSaved: false,
         savingBlogError: error,
     })),
-    on(saveBlogSuccess, (state, { blog }) => ({
+    on(saveBlogSuccess, (state,  blog) => ({
         ...state,
         savingBlog: false,
         blogSaved: false,
         blog: EMPTY_BLOG,
-    }))
-    on(loadBlogSuccess, (state, { blog }) => ({
-        ...state,
-        loadingBlog: false,
-        blogLoaded: true,
-        blog,
     })),
     on(createBlogSuccess, (state, { blog }) => ({
-        ...state
+        ...state,
         blog,
         
     })),

@@ -82,6 +82,6 @@ export const politicReducer = createReducer(
         ...state,
         savingPolitic: false,
         PoliticSaved: false,
-        Politic: EMPTY_POLITIC,
+        politic: EMPTY_POLITIC,
     }))
 );

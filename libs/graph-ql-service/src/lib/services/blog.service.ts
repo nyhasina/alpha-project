@@ -11,6 +11,7 @@ import {
     UPDATE_BLOG,
     DELETE_BLOG,
     LOAD_BLOG,
+    LOAD_BLOGS
 } from '../queries/blog.queries';
 
 @Injectable()
@@ -51,7 +52,22 @@ export class BlogService {
             })
             .pipe(map((response) => response.data));
     }
-
+    loadAll(criteria: Criteria<Blog>): Observable<{ blogs: Blog[]; blogCount: Count }> {
+        const { pagination, search, sort } = criteria;
+        return this.apolloService
+            .query<{ blogs: Blog[]; blogCount: Count }>({
+                query: LOAD_BLOGS,
+                fetchPolicy: 'no-cache',
+                variables: {
+                    skip: pagination.skip,
+                    take: pagination.take,
+                    by: sort.by,
+                    direction: sort.direction,
+                    search,
+                },
+            })
+            .pipe(map((response) => response.data));
+    }
     update(payload: Blog): Observable<FetchResult<{ updateBlog: Blog }>> {
         return this.apolloService.mutate<{ updateBlog: Blog }>({
             mutation: UPDATE_BLOG,

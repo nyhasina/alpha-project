@@ -40,3 +40,17 @@ export const LOAD_BLOG = gql`
         }
     }
 `;
+export const LOAD_BLOGS = gql`
+    query blogs($take: Int, $skip: Int, $by: String, $direction: String, $search: String) {
+        blogs(take: $take, skip: $skip, by: $by, direction: $direction, search: $search) {
+            id
+            name
+            content
+            cover
+            video
+        }
+        blogCount(search: $search) {
+            total
+        }
+    }
+`;

@@ -23,6 +23,7 @@ import {
     saveBlog,
     saveBlogFail,
     saveBlogSuccess,
+    confirmBlogDeletion
 } from './blog.actions';
 import { BlogState } from './blog.reducer';
 
@@ -39,7 +40,7 @@ export class BlogEffects {
             )
         )
     );
-    loadGame$ = createEffect(() =>
+    loadBlog$ = createEffect(() =>
         this.actions$.pipe(
             ofType(loadBlog),
             switchMap(({ id }) =>
@@ -50,6 +51,13 @@ export class BlogEffects {
             )
         )
     );
+    confirmBlogDeletion$ = createEffect(() =>
+    this.actions$.pipe(
+        ofType(confirmBlogDeletion),
+        exhaustMap(({ blog }) => this.dialogService.openConfirmationModal({ id: blog.id, entity: blog.name })),
+        map((id) => (!!id ? deleteBlog({ id }) : discard()))
+    )
+);
     constructor(
         private actions$: Actions,
         private blogService: BlogService,

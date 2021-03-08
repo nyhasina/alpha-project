@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { createReducer, on } from '@ngrx/store';
-import { EMPTY_BLOG, Blog } from '@nicecactus-platform/graph-ql-service';
+import { EMPTY_BLOG, Blog, Criteria, Count, DEFAULT_CRITERIA } from '@nicecactus-platform/graph-ql-service';
 import {
     createBlogSuccess,
     loadBlog,
@@ -19,6 +19,8 @@ export interface BlogState {
     blogs: Blog[];
     loadingBlogs: boolean;
     blogsLoaded: boolean;
+    criteria: Criteria<Blog>;
+    blogCount: Count;
     loadingBlogsError?: HttpErrorResponse;
     blog: Blog;
     loadingBlog: boolean;
@@ -32,6 +34,10 @@ export interface BlogState {
 export const initialState: BlogState = {
     blogs: [],
     blog: {},
+    criteria: { ...DEFAULT_CRITERIA },
+    blogCount: {
+        total: 0,
+    },
     loadingBlogs: false,
     blogsLoaded: false,
     loadingBlog: false,

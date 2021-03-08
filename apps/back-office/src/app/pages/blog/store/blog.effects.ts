@@ -31,10 +31,10 @@ export class BlogEffects {
     loadBlogs$ = createEffect(() =>
         this.actions$.pipe(
             ofType(loadBlogs),
-            switchMap(() =>
-                this.blogService.load().pipe(
-                    map((response) => loadBlogsSuccess({ blogs: response })),
-                    catchError((error) => of(loadCurrenciesFail({ error })))
+            switchMap(({criteria}) =>
+                this.blogService.loadAll(criteria).pipe(
+                    map(({blogs, blogCount}) => loadBlogsSuccess({ blogs, blogCount })),
+                    catchError((error) => of(loadBlogsFail({ error })))
                 )
             )
         )

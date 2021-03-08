@@ -54,8 +54,7 @@ export class GameService {
 
     loadAll(criteria: Criteria<Game>): Observable<{ games: Game[]; gameCount: Count }> {
         const { pagination, search, sort } = criteria;
-        return this.apolloService
-            .query<{ games: Game[]; gameCount: Count }>({
+        return this.apolloService.query<{ games: Game[]; gameCount: Count }>({
                 query: LOAD_GAMES,
                 fetchPolicy: 'no-cache',
                 variables: {

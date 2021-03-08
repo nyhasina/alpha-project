@@ -1,13 +1,13 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { createAction, props } from '@ngrx/store';
-import { Blog } from '@nicecactus-platform/graph-ql-service';
+import { Blog, Criteria, Count } from '@nicecactus-platform/graph-ql-service';
 
 export const createBlog = createAction('[Blog] Create blog');
 export const createBlogFail = createAction('[Blog] Create blogfail', props<{ error: HttpErrorResponse }>());
 export const createBlogSuccess = createAction('[Blog] Create blogsuccess', props<{ blog: Blog }>());
-export const loadBlogs = createAction('[Blog] Load blogs');
+export const loadBlogs = createAction('[Blog] Load blogs', props<{ criteria?: Criteria<Blog> }>());
 export const loadBlogsFail = createAction('[Blog] Load blogs fail', props<{ error: HttpErrorResponse }>());
-export const loadBlogsSuccess = createAction('[Blog] Load blogs success', props<{ blogs: Blog[]}>());
+export const loadBlogsSuccess = createAction('[Blog] Load blogs success', props<{ blogs: Blog[]; blogCount?: Count }>());
 export const loadBlog = createAction('[Blog] Load blog', props<{ id: number }>());
 export const loadBlogFail = createAction('[Blog] Load blogfail', props<{ error: HttpErrorResponse }>());
 export const loadBlogSuccess = createAction('[Blog] Load blogsuccess', props<{ blog: Blog}>());

@@ -63,13 +63,20 @@ const routes: Routes = [
                     breadcrumb: 'Liste des équipes',
                 },
             },
-          {
-            path: 'invitation',
-            loadChildren: () => import('../../pages/invitation/invitation.module').then((m) => m.InvitationModule),
-            data: {
-              breadcrumb: 'Liste des invitations',
+            {
+                path: 'invitation',
+                loadChildren: () => import('../../pages/invitation/invitation.module').then((m) => m.InvitationModule),
+                data: {
+                    breadcrumb: 'Liste des invitations',
+                },
             },
-          },
+            {
+                path: 'format',
+                loadChildren: () => import('../../pages/format/format.module').then((m) => m.FormatModule),
+                data: {
+                    breadcrumb: 'Liste des formats',
+                },
+            },
         ],
     },
 ];

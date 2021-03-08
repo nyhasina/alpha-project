@@ -41,9 +41,9 @@ export class BlogService {
         });
     }
 
-    load(id: number): Observable<{ Blog: Blog; currencies?: CodeLabel[]; languages?: CodeLabel[] }> {
+    load(id: number): Observable<{ blog: Blog; currencies?: CodeLabel[]; languages?: CodeLabel[] }> {
         return this.apolloService
-            .query<{ Blog: Blog; currencies?: CodeLabel[]; languages?: CodeLabel[] }>({
+            .query<{ blog: Blog; currencies?: CodeLabel[]; languages?: CodeLabel[] }>({
                 query: LOAD_BLOG,
                 variables: {
                     id,

@@ -39,7 +39,17 @@ export class BlogEffects {
             )
         )
     );
-
+    loadGame$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(loadBlog),
+            switchMap(({ id }) =>
+                this.blogService.load(id).pipe(
+                    map(({ blog }) => loadBlogSuccess({ blog })),
+                    catchError((error) => of(loadBlogFail({ error })))
+                )
+            )
+        )
+    );
     constructor(
         private actions$: Actions,
         private blogService: BlogService,

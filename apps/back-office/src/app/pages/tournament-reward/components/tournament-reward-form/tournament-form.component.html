@@ -1,0 +1,16 @@
+<form (ngSubmit)="onSubmit()" *ngIf="form" [formGroup]="form">
+    <div class="form-group">
+        <label class="form-control-label">Nom</label>
+        <input class="form-control form-control-sm" formControlName="name" placeholder="Nom" type="text" />
+    </div>
+    <div class="row">
+        <div class="col-auto">
+            <button class="btn btn-primary btn-sm btn-block">Sauvegarder</button>
+        </div>
+        <div class="col-auto">
+            <button [routerLink]="['/', 'admin', 'tournamentReward']" class="btn btn-default btn-sm btn-block" type="button">
+                Annuler
+            </button>
+        </div>
+    </div>
+</form>

@@ -50,5 +50,10 @@ export const SIDEBAR_ITEMS: NavItem[] = [
         icon: 'fas fa-users',
         routerLink: ['/admin/invitation'],
     },
+    {
+        label: 'Format',
+        icon: 'fas fa-text-width',
+        routerLink: ['/admin/format'],
+    },
 ];
 export const ASIDE_SIDEBAR_ITEMS: NavItem[] = [];

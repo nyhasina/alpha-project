@@ -28,6 +28,7 @@ export class FormatService {
             mutation: CREATE_FORMAT,
             variables: {
                 name: payload.name,
+                code: payload.code,
             },
         });
     }
@@ -67,6 +68,7 @@ export class FormatService {
             variables: {
                 id: payload.id,
                 name: payload.name,
+                code: payload.code,
             },
         });
     }

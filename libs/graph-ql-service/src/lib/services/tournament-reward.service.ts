@@ -5,7 +5,6 @@ import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Count, Criteria } from '../..';
 import { EMPTY_TOURNAMENT_REWARD } from '../constants/tournament-reward.constants';
-import { Platform } from '../interfaces/platform.interface';
 import { TournamentReward } from '../interfaces/tournament-reward.interface';
 import {
   CREATE_TOURNAMENT_REWARD,
@@ -38,9 +37,9 @@ export class TournamentRewardService {
         });
     }
 
-    load(id: number): Observable<{ tournamentReward: TournamentReward; platforms?: Platform[] }> {
+    load(id: number): Observable<{ tournamentReward: TournamentReward }> {
         return this.apolloService
-            .query<{ tournamentReward: TournamentReward; platforms?: Platform[] }>({
+            .query<{ tournamentReward: TournamentReward }>({
                 query: LOAD_TOURNAMENT_REWARD,
                 variables: {
                     id,

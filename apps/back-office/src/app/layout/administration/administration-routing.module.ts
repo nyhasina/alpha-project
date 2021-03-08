@@ -77,6 +77,14 @@ const routes: Routes = [
                     breadcrumb: 'Liste des formats',
                 },
             },
+            {
+                path: 'tournament-reward',
+                loadChildren: () =>
+                    import('../../pages/tournament-reward/tournament-reward.module').then((m) => m.TournamentRewardModule),
+                data: {
+                    breadcrumb: 'Liste des prix',
+                },
+            },
         ],
     },
 ];

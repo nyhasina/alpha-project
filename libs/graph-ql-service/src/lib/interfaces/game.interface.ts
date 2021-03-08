@@ -7,6 +7,3 @@ export interface Game {
     platforms?: Platform[] | number[];
 }
 
-export interface Count {
-    total?: number;
-}

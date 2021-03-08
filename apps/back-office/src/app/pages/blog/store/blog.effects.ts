@@ -67,7 +67,7 @@ export class BlogEffects {
         this.actions$.pipe(
             ofType(confirmBlogDeletion),
             exhaustMap(({ blog }) => this.dialogService.openConfirmationModal({ id: blog.id, entity: blog.name })),
-            map((id) => (!!id ? deleteBlog({ id }) : discard()))
+            map((id) => (id ? deleteBlog({ id }) : discard()))
         )
     );
 

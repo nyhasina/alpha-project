@@ -43,3 +43,6 @@ export { Count } from './lib/interfaces/count.interface';
 export * from './lib/constants/format.constants';
 export * from './lib/interfaces/format.interface';
 export * from './lib/services/format.service';
+export * from './lib/interfaces/tournament-reward.interface';
+export * from './lib/constants/tournament-reward.constants';
+export * from './lib/services/tournament-reward.service';

@@ -85,6 +85,14 @@ const routes: Routes = [
                     breadcrumb: 'Liste des prix',
                 },
             },
+            {
+                path: 'tournament-type',
+                loadChildren: () =>
+                    import('../../pages/tournament-type/tournament-type.module').then((m) => m.TournamentTypeModule),
+                data: {
+                    breadcrumb: 'Liste des types tournoi',
+                },
+            },
         ],
     },
 ];

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 @Component({
   selector: 'nicecactus-platform-see-tournament',
   templateUrl: './see-tournament.component.html',
@@ -6,11 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SeeTournamentComponent implements OnInit {
   menuList: Array <String> = ['Matchs', 'Règles', 'Rounds', 'Bracket', 'Participants'];
-  selected: string = 'Matchs';
-  constructor() { }
+  selected: string;
+  constructor(private route: Router) { }
 
   ngOnInit(): void {
-    console.log(this.menuList)
+    this.selected = this.route.url.split('/').pop()
   }
 
 }

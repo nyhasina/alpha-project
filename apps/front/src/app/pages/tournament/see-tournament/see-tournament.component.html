@@ -55,7 +55,7 @@
     <div class="tournament--tabs-list">
         <div class="swiper-container swiper-container-initialized swiper-container-horizontal">
             <div class="swiper-wrapper text-center">
-                <button type="button" class="swiper-slide" [ngClass]="{active: selected === item}" (click)="selected = item"  *ngFor="let item of menuList" [routerLink]="[ './' + item.toLowerCase() ]"><span>{{item}}</span></button>
+                <button type="button" class="swiper-slide" [ngClass]="{active: selected === item.toLowerCase()}" (click)="selected = item.toLowerCase()"  *ngFor="let item of menuList" [routerLink]="[ './' + item.toLowerCase() ]"><span>{{item}}</span></button>
         </div>
     </div>
 </div>

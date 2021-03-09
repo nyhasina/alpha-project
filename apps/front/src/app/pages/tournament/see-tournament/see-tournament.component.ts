@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./see-tournament.component.scss']
 })
 export class SeeTournamentComponent implements OnInit {
-  menuList: Array <String> = ['Matchs', 'Règles', 'Rounds', 'Bracket', 'Participants']
+  menuList: Array <String> = ['Matchs', 'Règles', 'Rounds', 'Bracket', 'Participants'];
+  selected: string = 'Matchs';
   constructor() { }
 
   ngOnInit(): void {

@@ -37,6 +37,7 @@ const routes: Routes = [
             { path: 'participants', component: ParticipantsComponent },
             { path: 'rounds', component: RoundsComponent },
             { path: 'règles', component: RulesComponent },
+            {path: '**', redirectTo: 'matchs', pathMatch: 'full'}
         ],
     },
 ];

@@ -58,10 +58,10 @@ export class TournamentRewardService {
                 query: LOAD_TOURNAMENT_REWARDS,
                 fetchPolicy: 'no-cache',
                 variables: {
-                    skip: pagination.skip,
-                    take: pagination.take,
-                    by: sort.by,
-                    direction: sort.direction,
+                    skip: pagination?.skip,
+                    take: pagination?.take,
+                    by: sort?.by,
+                    direction: sort?.direction,
                     search,
                 },
             })

@@ -54,13 +54,8 @@
 <div class="tournament--tabs ">
     <div class="tournament--tabs-list">
         <div class="swiper-container swiper-container-initialized swiper-container-horizontal">
-            <div class="swiper-wrapper"><button type="button"
-                    class="swiper-slide is-active swiper-slide-active"><span>Matchs</span></button><button type="button"
-                    class="swiper-slide swiper-slide-next"><span>Règles</span></button><button type="button"
-                    class="swiper-slide"><span>Rounds</span></button><button type="button"
-                    class="swiper-slide"><span>Bracket</span></button><button type="button"
-                    class="swiper-slide"><span>Participants</span></button></div><span class="swiper-notification"
-                aria-live="assertive" aria-atomic="true"></span>
+            <div class="swiper-wrapper">
+                <button type="button"class="swiper-slide" *ngFor="let item of menuList" [routerLink]="[ './' + item.toLowerCase() ]"><span>{{item}}</span></button>
         </div>
     </div>
 </div>

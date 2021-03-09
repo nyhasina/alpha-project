@@ -31,12 +31,12 @@ const routes: Routes = [
         path: ':idTournament',
         component: SeeTournamentComponent,
         children: [
-            { path: '', redirectTo: 'match', pathMatch: 'full' },
+            { path: '', redirectTo: 'matchs', pathMatch: 'full' },
             { path: 'bracket', component: BracketComponent },
-            { path: 'match', component: MatchComponent },
+            { path: 'matchs', component: MatchComponent },
             { path: 'participants', component: ParticipantsComponent },
             { path: 'rounds', component: RoundsComponent },
-            { path: 'rules', component: RulesComponent },
+            { path: 'règles', component: RulesComponent },
         ],
     },
 ];

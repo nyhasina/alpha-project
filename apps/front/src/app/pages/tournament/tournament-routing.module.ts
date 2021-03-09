@@ -36,7 +36,8 @@ const routes: Routes = [
             { path: 'matchs', component: MatchComponent },
             { path: 'participants', component: ParticipantsComponent },
             { path: 'rounds', component: RoundsComponent },
-            { path: 'règles', component: RulesComponent },
+            { path: 'règles', component: RulesComponent,
+            loadChildren: () => import('../../pages/tournament/see-tournament/components/rules/rules.module').then((m) => m.RulesModule), },
             {path: '**', redirectTo: 'matchs', pathMatch: 'full'}
         ],
     },

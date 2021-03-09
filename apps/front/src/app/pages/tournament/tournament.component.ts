@@ -58,7 +58,7 @@ export class TournamentComponent implements OnInit {
   date: 'Aujourd\'hui à 21:00:00',
   name: 'Clash Royal'
 }]
-
+panelOpenState = false;
   constructor() { }
 
   ngOnInit(): void {

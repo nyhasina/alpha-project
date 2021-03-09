@@ -46,3 +46,6 @@ export * from './lib/services/format.service';
 export * from './lib/interfaces/tournament-reward.interface';
 export * from './lib/constants/tournament-reward.constants';
 export * from './lib/services/tournament-reward.service';
+export * from './lib/interfaces/tournament-type.interface';
+export * from './lib/constants/tournament-type.constants';
+export * from './lib/services/tournament-type.service';

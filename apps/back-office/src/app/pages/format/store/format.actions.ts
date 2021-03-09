@@ -1,0 +1,20 @@
+import { HttpErrorResponse } from '@angular/common/http';
+import { createAction, props } from '@ngrx/store';
+import { Count, Criteria, Format, Platform } from '@nicecactus-platform/graph-ql-service';
+
+export const createFormat = createAction('[Format] Create format');
+export const createFormatFail = createAction('[Format] Create format fail', props<{ error: HttpErrorResponse }>());
+export const createFormatSuccess = createAction('[Format] Create format success', props<{ format: Format; platforms?: Platform[] }>());
+export const loadFormats = createAction('[Format] Load formats', props<{ criteria?: Criteria<Format> }>());
+export const loadFormatsFail = createAction('[Format] Load formats fail', props<{ error: HttpErrorResponse }>());
+export const loadFormatsSuccess = createAction('[Format] Load formats success', props<{ formats: Format[]; formatCount?: Count }>());
+export const loadFormat = createAction('[Format] Load format', props<{ id: number }>());
+export const loadFormatFail = createAction('[Format] Load format fail', props<{ error: HttpErrorResponse }>());
+export const loadFormatSuccess = createAction('[Format] Load format success', props<{ format: Format; platforms?: Platform[] }>());
+export const saveFormat = createAction('[Format] Save format', props<{ format: Format }>());
+export const saveFormatFail = createAction('[Format] Save format fail', props<{ error: HttpErrorResponse }>());
+export const saveFormatSuccess = createAction('[Format] Save format success', props<{ format: Format }>());
+export const confirmFormatDeletion = createAction('[Format] Confirm format deletion', props<{ format: Format }>());
+export const deleteFormat = createAction('[Format] Delete format', props<{ id: number }>());
+export const deleteFormatFail = createAction('[Format] Delete format fail', props<{ error: HttpErrorResponse }>());
+export const deleteFormatSuccess = createAction('[Format] Delete format success', props<{ format: Format }>());

@@ -7,12 +7,14 @@ import { HttpLink } from 'apollo-angular/http';
 import { createApollo } from './graph-ql.factory';
 import { AuthenticationService } from './services/authentication.service';
 import { CurrencyService } from './services/currency.service';
+import { FormatService } from './services/format.service';
 import { GameService } from './services/game.service';
 import { InvitationService } from './services/invitation.service';
 import { LanguageService } from './services/language.service';
 import { PlatformService } from './services/platform.service';
 import { TagService } from './services/tag.service';
 import { TeamService } from './services/team.service';
+import { TournamentRewardService } from './services/tournament-reward.service';
 import { UserService } from './services/user.service';
 
 @NgModule({
@@ -32,6 +34,8 @@ import { UserService } from './services/user.service';
         TagService,
         TeamService,
         InvitationService,
+        FormatService,
+        TournamentRewardService,
     ],
 })
 export class GraphQlServiceModule {}

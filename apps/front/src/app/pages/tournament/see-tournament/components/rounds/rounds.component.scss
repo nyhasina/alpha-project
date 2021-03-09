@@ -1,17 +1,16 @@
 .tournament--rounds {
     max-width: 1320px;
     margin: 40px auto;
-    background-color: #868c88;
     padding: 26px 24px;
 }
 .tournament--rounds-title {
-    margin-bottom: 15px;
-    font-size: 14px;
+    margin-bottom: 5%;
+    font-size: 20px;
     text-transform: uppercase;
     font-weight: 700;
 }
 .tournament--rounds-container {
-    box-shadow: 0 0 6px 0 rgb(0 0 0 / 50%);
+    box-shadow: 2px 0 25px 25px rgb(11 66 113);
 }
 .tournament--rounds-item:first-child {
     border-top-left-radius: 3px;
@@ -38,7 +37,7 @@
 }
 .tournament--rounds-item-head-best-of {
     padding: 0 24px;
-    color: #b2f617;
+    color: #11cdef;
     font-size: 16px;
     font-weight: 700;
     text-transform: uppercase;

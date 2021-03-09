@@ -116,3 +116,15 @@
     border-radius: 5px;
     margin: 1.5%;
 }
+.subtitle:before {
+    background-color: #233dd2;
+    box-shadow: 0 -2px 4px #233dd2;
+}
+.subtitle:before {
+    content: "";
+    width: 70px;
+    height: 2px;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+}

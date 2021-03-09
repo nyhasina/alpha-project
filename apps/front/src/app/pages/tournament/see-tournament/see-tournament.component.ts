@@ -10,7 +10,7 @@ export class SeeTournamentComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-
+    console.log(this.menuList)
   }
 
 }

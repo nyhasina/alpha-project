@@ -15,7 +15,7 @@
             </div>
         </div>
     </div>
-    <div class="tournament--header-tournament-infos">
+    <div class="tournament--header-tournament-infos mb-5">
         <div class="grid-wrapper row">
             <div class="tournament--header-tournament-infos-left col-4">
                 <div class="tournament--header-tournament-infos-title">Clash 4 Glory</div>
@@ -54,7 +54,7 @@
 <div class="tournament--tabs ">
     <div class="tournament--tabs-list">
         <div class="swiper-container swiper-container-initialized swiper-container-horizontal">
-            <div class="swiper-wrapper">
+            <div class="swiper-wrapper text-center">
                 <button type="button" class="swiper-slide" [ngClass]="{active: selected === item}" (click)="selected = item"  *ngFor="let item of menuList" [routerLink]="[ './' + item.toLowerCase() ]"><span>{{item}}</span></button>
         </div>
     </div>

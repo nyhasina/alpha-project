@@ -12,7 +12,6 @@ export class CardGameComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    console.log(this.data)
   }
 
 }

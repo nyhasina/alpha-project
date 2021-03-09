@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TournamentRoutingModule } from './tournament-routing.module';
+import {MatExpansionModule} from '@angular/material/expansion';
 import { TournamentComponent } from './tournament.component';
 import { ListingTournamentComponent } from './listing-tournament/listing-tournament.component';
 import { DetailTournamentComponent } from './detail-tournament/detail-tournament.component';
 import { CardGameComponent } from './card-game/card-game.component';
 import { GameListeComponent } from './game-liste/game-liste.component';
 import { SeeTournamentComponent } from './see-tournament/see-tournament.component';
-import {MatExpansionModule} from '@angular/material/expansion';
-
+import { ParticipantsComponent } from './see-tournament/components/participants/participants.component';
 @NgModule({
     declarations: [
         TournamentComponent,
@@ -17,6 +17,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
         CardGameComponent,
         GameListeComponent,
         SeeTournamentComponent,
+        ParticipantsComponent
     ],
     imports: [CommonModule, TournamentRoutingModule, MatExpansionModule],
 })

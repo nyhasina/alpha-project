@@ -1,0 +1,73 @@
+<div class="table-responsive py-4">
+    <div class="dataTables_wrapper dt-bootstrap4" id="datatable-basic_wrapper">
+        <nicecactus-platform-search-bar
+            (pageChange)="onPageChange($event)"
+            (search)="onSearch($event)"
+            [initialValue]="_criteria.pagination"
+        ></nicecactus-platform-search-bar>
+        <div class="row">
+            <div class="col-sm-12">
+                <table
+                    aria-describedby="datatable-basic_info"
+                    class="table table-flush dataTable"
+                    id="datatable-basic"
+                    role="grid"
+                >
+                    <thead class="thead-light">
+                        <tr role="row">
+                            <th>Nom</th>
+                            <th>Prix</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Prix</th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        <nicecactus-platform-skeleton-list
+                            *ngIf="loading"
+                            [columns]="3"
+                            [rows]="_criteria.pagination.take"
+                        ></nicecactus-platform-skeleton-list>
+                        <ng-container *ngIf="!loading">
+                            <tr *ngFor="let item of items">
+                                <td class="table-user">
+                                    <b>{{ item.name | titlecase }}</b>
+                                </td>
+                                <td>{{ item?.reward?.name | titlecase }}</td>
+                                <td class="table-actions">
+                                    <a
+                                        [routerLink]="['/', 'admin', 'tournament-type', 'edit', item.id]"
+                                        class="table-action"
+                                        data-original-title="Edit product"
+                                        data-toggle="tooltip"
+                                    >
+                                        <i class="fas fa-user-edit"></i>
+                                    </a>
+                                    <a
+                                        (click)="delete.emit(item)"
+                                        class="table-action table-action-delete"
+                                        data-original-title="Delete product"
+                                        data-toggle="tooltip"
+                                    >
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </ng-container>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <nicecactus-platform-paginator
+            [initialValue]="_criteria.pagination"
+            [length]="count.total"
+            [pageSize]="10"
+            (paginate)="onPaginate($event)"
+        ></nicecactus-platform-paginator>
+    </div>
+</div>

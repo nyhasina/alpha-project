@@ -1,0 +1,13 @@
+<div class="card border-0">
+    <div class="card-body">
+        <div class="row">
+            <div class="col">
+                <nicecactus-platform-tournament-type-form
+                    (save)="onSave($event)"
+                    [tournamentType]="tournamentType$ | async"
+                    [dependencies]="tournamentTypeDependencies$ | async"
+                ></nicecactus-platform-tournament-type-form>
+            </div>
+        </div>
+    </div>
+</div>

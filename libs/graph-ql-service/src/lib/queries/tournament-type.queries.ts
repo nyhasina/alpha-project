@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 export const CREATE_TOURNAMENT_TYPE = gql`
-    mutation createTournamentType($name: String!) {
-        createTournamentType(name: $name) {
+    mutation createTournamentType($name: String!, $reward: Int!) {
+        createTournamentType(name: $name, reward: $reward) {
             id
             name
             reward {
@@ -14,8 +14,8 @@ export const CREATE_TOURNAMENT_TYPE = gql`
 `;
 
 export const UPDATE_TOURNAMENT_TYPE = gql`
-    mutation updateTournamentType($name: String!, $id: Int!) {
-        updateTournamentType(name: $name, id: $id) {
+    mutation updateTournamentType($name: String!, $reward: Int!, $id: Int!) {
+        updateTournamentType(name: $name, reward: $reward, id: $id) {
             id
             name
             reward {
@@ -35,7 +35,7 @@ export const DELETE_TOURNAMENT_TYPE = gql`
 `;
 
 export const LOAD_TOURNAMENT_TYPE = gql`
-    query loadTournamentTypeAndDependencies($id: Int, $take: Int, $skip: Int, $by: String, $direction: String, $search: String) {
+    query tournamentTypeAndDependencies($id: Int!, $take: Int, $skip: Int, $by: String, $direction: String, $search: String) {
         tournamentType(id: $id) {
             id
             name

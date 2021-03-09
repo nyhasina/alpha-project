@@ -3,15 +3,16 @@ import { FetchResult } from '@apollo/client';
 import { Apollo } from 'apollo-angular';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Count, Criteria } from '../..';
+import { Count, Criteria, TournamentReward } from '../..';
+import { SortDirection } from '../../../../../../intercamsp/[angular]intercamsp/src/app/shared/interfaces/criteria.interface';
 import { EMPTY_TOURNAMENT_TYPE } from '../constants/tournament-type.constants';
 import { TournamentType } from '../interfaces/tournament-type.interface';
 import {
-    CREATE_TOURNAMENT_TYPE,
-    DELETE_TOURNAMENT_TYPE,
-    LOAD_TOURNAMENT_TYPE,
-    LOAD_TOURNAMENT_TYPES,
-    UPDATE_TOURNAMENT_TYPE,
+  CREATE_TOURNAMENT_TYPE,
+  DELETE_TOURNAMENT_TYPE,
+  LOAD_TOURNAMENT_TYPE,
+  LOAD_TOURNAMENT_TYPES,
+  UPDATE_TOURNAMENT_TYPE
 } from '../queries/tournament-type.queries';
 
 @Injectable()
@@ -38,16 +39,25 @@ export class TournamentTypeService {
         });
     }
 
-    load(id: number): Observable<{ tournamentType: TournamentType }> {
+    load(id: number): Observable<{ tournamentType: TournamentType; tournamentRewards?: TournamentReward[] }> {
         return this.apolloService
-            .query<{ tournamentType: TournamentType }>({
+            .query<{ tournamentType: TournamentType; tournamentRewards?: TournamentReward[] }>({
                 query: LOAD_TOURNAMENT_TYPE,
                 variables: {
                     id,
+                    skip: 1,
+                    take: 15,
+                    by: 'id',
+                    direction: SortDirection.ASC,
+                    search: '',
                 },
                 fetchPolicy: 'no-cache',
             })
-            .pipe(map((response) => response.data));
+            .pipe(
+                map((response) => {
+                    return response.data;
+                })
+            );
     }
 
     loadAll(criteria: Criteria<TournamentType>): Observable<{ tournamentTypes: TournamentType[]; tournamentTypeCount: Count }> {

@@ -11,7 +11,7 @@ import { TournamentTypeService } from '../tournament-type/tournament-type.servic
 import { TOURNAMENT_FILTERING } from './tournament.filters';
 import { TournamentModel } from './tournament.model';
 import { TournamentService } from './tournament.service';
-import { CreateTournamentInput } from './tournament.types';
+import { AddParticipantsInput, CreateTournamentInput } from './tournament.types';
 
 @Resolver((of) => TournamentModel)
 export class TournamentResolver {
@@ -151,6 +151,12 @@ export class TournamentResolver {
                 },
             },
         });
+    }
+
+    @Mutation((returns) => TournamentModel)
+    async addParticipants(@Args() input: AddParticipantsInput) {
+        const { tournament, participants } = input;
+        return this.tournamentService.addParticipants(tournament, participants);
     }
 
     @Mutation((returns) => TournamentModel)

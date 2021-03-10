@@ -78,15 +78,6 @@ export class TournamentService {
 
     async addParticipants(tournamentId: number, participants: number[]): Promise<Tournament> {
         const tournament = await this.loadTournament({ id: tournamentId });
-        if (!tournament) {
-            throw new HttpException(
-                {
-                    status: HttpStatus.NOT_FOUND,
-                    error: `Tournament ${ tournamentId } not found`,
-                },
-                HttpStatus.NOT_FOUND
-            );
-        }
         if (tournament && tournament.closed) {
             throw new HttpException(
                 {
@@ -101,6 +92,27 @@ export class TournamentService {
                 teams: {
                     connect: participants.map((id) => ({ id })),
                 },
+            },
+            where: {
+                id: tournamentId,
+            },
+        });
+    }
+
+    async closeRegistration(tournamentId: number): Promise<Tournament> {
+        const tournament = await this.loadTournament({ id: tournamentId });
+        if (!tournament) {
+            throw new HttpException(
+                {
+                    status: HttpStatus.NOT_FOUND,
+                    error: `Tournament ${tournamentId} not found`,
+                },
+                HttpStatus.NOT_FOUND
+            );
+        }
+        return this.updateTournament({
+            data: {
+                closed: true,
             },
             where: {
                 id: tournamentId,

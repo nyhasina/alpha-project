@@ -48,7 +48,7 @@ export class TournamentTypeService {
                     skip: 1,
                     take: 15,
                     by: 'id',
-                    direction: SortDirection.ASC,
+                    //direction: SortDirection.ASC,
                     search: '',
                 },
                 fetchPolicy: 'no-cache',

@@ -18,3 +18,14 @@
     padding: 10px 0 6px;
     margin-bottom: 20px;
 }
+
+::ng-deep mat-expansion-panel.mat-expanded{
+    border-left: 20px solid #000202;
+}
+::ng-deep mat-expansion-panel-header {
+    min-height: 70px;
+    font-weight: 600;
+    color: #323639;
+    text-transform: uppercase;
+    line-height: normal;
+}

@@ -52,22 +52,22 @@ export const SIDEBAR_ITEMS: NavItem[] = [
     },
     {
         label: 'Format',
-        icon: 'fas fa-text-width',
+        icon: 'fas fa-bold',
         routerLink: ['/admin/format'],
     },
     {
         label: 'Prix',
-        icon: 'fas fa-text-width',
+        icon: 'fas fa-award',
         routerLink: ['/admin/tournament-reward'],
     },
     {
         label: 'Type tournoi',
-        icon: 'fas fa-text-width',
+        icon: 'fas fa-i-cursor',
         routerLink: ['/admin/tournament-type'],
     },
     {
         label: 'Règle',
-        icon: 'fas fa-text-width',
+        icon: 'fas fa-gavel',
         routerLink: ['/admin/rule'],
     },
 ];

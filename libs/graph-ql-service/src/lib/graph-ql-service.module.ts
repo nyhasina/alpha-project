@@ -12,6 +12,7 @@ import { GameService } from './services/game.service';
 import { InvitationService } from './services/invitation.service';
 import { LanguageService } from './services/language.service';
 import { PlatformService } from './services/platform.service';
+import { RuleService } from './services/rule.service';
 import { TagService } from './services/tag.service';
 import { TeamService } from './services/team.service';
 import { TournamentRewardService } from './services/tournament-reward.service';
@@ -38,6 +39,7 @@ import { UserService } from './services/user.service';
         FormatService,
         TournamentRewardService,
         TournamentTypeService,
+        RuleService,
     ],
 })
 export class GraphQlServiceModule {}

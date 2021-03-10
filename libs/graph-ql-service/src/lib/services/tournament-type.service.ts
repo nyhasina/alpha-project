@@ -4,15 +4,14 @@ import { Apollo } from 'apollo-angular';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Count, Criteria, TournamentReward } from '../..';
-//import { SortDirection } from '../../../../../../intercamsp/[angular]intercamsp/src/app/shared/interfaces/criteria.interface';
-import { EMPTY_TOURNAMENT_TYPE } from '../constants/tournament-type.constants';
-import { TournamentType } from '../interfaces/tournament-type.interface';
+import { EMPTY_TOURNAMENT_TYPE } from '../..';
+import { TournamentType } from '../..';
 import {
-  CREATE_TOURNAMENT_TYPE,
-  DELETE_TOURNAMENT_TYPE,
-  LOAD_TOURNAMENT_TYPE,
-  LOAD_TOURNAMENT_TYPES,
-  UPDATE_TOURNAMENT_TYPE
+    CREATE_TOURNAMENT_TYPE,
+    DELETE_TOURNAMENT_TYPE,
+    LOAD_TOURNAMENT_TYPE,
+    LOAD_TOURNAMENT_TYPES,
+    UPDATE_TOURNAMENT_TYPE,
 } from '../queries/tournament-type.queries';
 
 @Injectable()
@@ -48,7 +47,7 @@ export class TournamentTypeService {
                     skip: 1,
                     take: 15,
                     by: 'id',
-                    //direction: SortDirection.ASC,
+                    direction: 'asc',
                     search: '',
                 },
                 fetchPolicy: 'no-cache',

@@ -117,7 +117,7 @@ export class TournamentService {
                     status: HttpStatus.UNPROCESSABLE_ENTITY,
                     error: 'Participants number must be even',
                 },
-                HttpStatus.NOT_FOUND
+                HttpStatus.UNPROCESSABLE_ENTITY
             );
         }
         return this.updateTournament({

@@ -1,12 +1,10 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'ellipsis'
+    name: 'ellipsis',
 })
 export class EllipsisPipe implements PipeTransform {
-
-  transform(value: unknown, ...args: unknown[]): unknown {
-    return null;
-  }
-
+    transform(value: string): unknown {
+        return value.slice(0, 50);
+    }
 }

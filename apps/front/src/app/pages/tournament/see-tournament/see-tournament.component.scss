@@ -1,9 +1,14 @@
 
-
+.grid-wrapper {
+    padding: 3%;
+}
+.header-container {
+    background: rgba(242,245,245,0.8);
+    padding: 10px;
+}
 .tournament--header-game {
     width: 100px;
     height: 100px;
-    background-color: #fff;
     cursor: pointer;
     padding: 8px;
     margin-top: -50px;
@@ -26,6 +31,7 @@
     align-items: center;
     display: flex;
     padding: 0 10px;
+    margin-left: 7%;
 }
 
 .tournament--header-tournament-infos-title {
@@ -39,7 +45,6 @@
 .tournament--header-tournament-infos .tag {
     min-width: 136px;
     margin: 14px auto 0px;
-    text-align: center;
 }
 .tournament--header-tournament-infos-middle {
     flex-shrink: 0;
@@ -83,6 +88,26 @@
     border: none;
     position: relative;
 }
+.is-register-to-tournament {
+    border: 1px solid;
+    min-width: 150px;
+    font-size: 14px;
+    text-align: center;
+    text-transform: uppercase;
+    border-radius: 5px;
+    outline: none;
+    display: inline-block;
+    padding: 13px 20px 14px;
+    margin: 4% auto;
+    color: white;
+}
+.is-register-to-tournament:hover {
+    border: 3px solid #11cdef;
+    color: white;
+    background-color: black;
+    font-weight: bold;
+    background-image: none;
+}
 .tournament--tabs-list button:not(.is-disabled):hover::after {
     right: 4px;
     left: 4px;
@@ -108,7 +133,19 @@ button.active{
 .background {
     height: 240px;
     background-color: #323639;
-    display: table;
-    position: relative;
     object-fit: cover;
+}
+.round-circle>img{
+    position: absolute;
+    left: 50%;
+    max-width: 130px;
+    transform: translate(-50%, -30%);
+    border-radius: 50%;
+}
+.header--tournament {
+    background: #292D30;
+    color: #eae1e1;
+}
+a>span {
+    color: #11cdef;
 }

@@ -14,3 +14,24 @@
     color: #818797;
     padding: 4px 0;
 }
+button {
+    width: 150px;
+    font-size: 18px;
+    font-weight: 600;
+    background-color: initial;
+    color: rgb(50, 54, 57);
+    text-align: center;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.2s ease 0s;
+    padding: 16px 24px;
+    display: inline-block;
+    position: relative;
+}
+button:hover {
+    border: 3px solid #11cdef;
+    color: white;
+    background-color: black;
+    font-weight: bold;
+    background-image: none;
+}

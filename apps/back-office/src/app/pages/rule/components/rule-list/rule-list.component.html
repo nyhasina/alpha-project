@@ -38,7 +38,7 @@
                                 <td class="table-user">
                                     <b>{{ item.name | titlecase }}</b>
                                 </td>
-                                <td>{{ item.content }}</td>
+                                <td>{{ item.content | ellipsis }}</td>
                                 <td class="table-actions">
                                     <a
                                         [routerLink]="['/', 'admin', 'rule', 'edit', item.id]"

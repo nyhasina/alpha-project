@@ -10,7 +10,7 @@ h5 {
     font-size: 19px;
 }
 .participant-list {
-    background: #ffffff;
+    background: #e6e6e6;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -91,8 +91,6 @@ h5 {
 .participant-grid .participant-list-details {
     text-align: center;
     padding: 20px;
-    border: 1px solid #eeeeee;
-    border-top: none;
 }
 .participant-grid .participant-list-details ul {
     -webkit-box-pack: center;
@@ -101,4 +99,7 @@ h5 {
 }
 .participant-grid .participant-list-details ul li {
     margin: 2px 5px;
+}
+.tournament--participants-container {
+background: #e6e6e6;
 }

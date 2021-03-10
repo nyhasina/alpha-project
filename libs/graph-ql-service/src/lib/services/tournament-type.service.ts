@@ -4,7 +4,7 @@ import { Apollo } from 'apollo-angular';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Count, Criteria, TournamentReward } from '../..';
-import { SortDirection } from '../../../../../../intercamsp/[angular]intercamsp/src/app/shared/interfaces/criteria.interface';
+//import { SortDirection } from '../../../../../../intercamsp/[angular]intercamsp/src/app/shared/interfaces/criteria.interface';
 import { EMPTY_TOURNAMENT_TYPE } from '../constants/tournament-type.constants';
 import { TournamentType } from '../interfaces/tournament-type.interface';
 import {

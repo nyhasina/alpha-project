@@ -65,5 +65,10 @@ export const SIDEBAR_ITEMS: NavItem[] = [
         icon: 'fas fa-text-width',
         routerLink: ['/admin/tournament-type'],
     },
+    {
+        label: 'Règle',
+        icon: 'fas fa-text-width',
+        routerLink: ['/admin/rule'],
+    },
 ];
 export const ASIDE_SIDEBAR_ITEMS: NavItem[] = [];

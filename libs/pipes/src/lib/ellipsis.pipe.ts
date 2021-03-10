@@ -5,6 +5,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class EllipsisPipe implements PipeTransform {
     transform(value: string): unknown {
-        return value.slice(0, 50);
+        if (value.length <= 50) {
+            return value;
+        }
+        return `${value.slice(0, 50)}...`;
     }
 }

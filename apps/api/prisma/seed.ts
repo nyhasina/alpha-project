@@ -327,6 +327,23 @@ async function ruleSeed() {
     }
 }
 
+async function tournamentRewardSeed() {
+    const tournamentRewards = new Array(16).fill({}).map((item) => ({ name: faker.lorem.words() }));
+    for (const reward of tournamentRewards) {
+        await prisma.tournamentReward.upsert({
+            where: {
+                name: reward.name,
+            },
+            update: {
+                name: reward.name,
+            },
+            create: {
+                name: reward.name,
+            },
+        });
+    }
+}
+
 async function main() {
     await currencySeed();
     await languageSeed();
@@ -337,6 +354,7 @@ async function main() {
     await tagSeed();
     await teamSeed();
     await ruleSeed();
+    await tournamentRewardSeed();
 }
 
 main()

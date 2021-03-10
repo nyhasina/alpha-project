@@ -1,6 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { Prisma, Tournament } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
+import { TournamentModel } from './tournament.model';
 
 @Injectable()
 export class TournamentService {
@@ -100,12 +101,21 @@ export class TournamentService {
     }
 
     async closeRegistration(tournamentId: number): Promise<Tournament> {
-        const tournament = await this.loadTournament({ id: tournamentId });
+        const tournament: Partial<TournamentModel> = await this.loadTournament({ id: tournamentId });
         if (!tournament) {
             throw new HttpException(
                 {
                     status: HttpStatus.NOT_FOUND,
                     error: `Tournament ${tournamentId} not found`,
+                },
+                HttpStatus.NOT_FOUND
+            );
+        }
+        if (tournament.teams.length % 2 !== 0) {
+            throw new HttpException(
+                {
+                    status: HttpStatus.UNPROCESSABLE_ENTITY,
+                    error: 'Participants number must be even',
                 },
                 HttpStatus.NOT_FOUND
             );

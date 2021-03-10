@@ -228,5 +228,6 @@ type Mutation {
   createTournament(name: String!, date: String, closed: Boolean, tournamentType: Int!, rules: [Int!], format: Int!, teams: [Int!], rounds: [Int!]): TournamentModel!
   updateTournament(name: String!, date: String, closed: Boolean, tournamentType: Int!, rules: [Int!], format: Int!, teams: [Int!], rounds: [Int!], id: Int!): TournamentModel!
   addParticipants(tournament: Int!, participants: [Int!]!): TournamentModel!
+  closeRegistration(id: Int!): TournamentModel!
   deleteTournament(id: Int!): TournamentModel!
 }

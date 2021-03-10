@@ -160,6 +160,11 @@ export class TournamentResolver {
     }
 
     @Mutation((returns) => TournamentModel)
+    async closeRegistration(@Args('id', { type: () => Int }) id: number) {
+        return this.tournamentService.closeRegistration(id);
+    }
+
+    @Mutation((returns) => TournamentModel)
     async deleteTournament(@Args('id', { type: () => Int }) id: number) {
         return this.tournamentService.deleteTournament({ id });
     }

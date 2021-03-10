@@ -105,3 +105,10 @@
 button.active{
     color: #11cdef;
 }
+.background {
+    height: 240px;
+    background-color: #323639;
+    display: table;
+    position: relative;
+    object-fit: cover;
+}

@@ -306,6 +306,27 @@ async function teamSeed() {
     }
 }
 
+async function ruleSeed() {
+    const rules = new Array(16)
+        .fill({})
+        .map((item, i) => ({ id: i + 1, name: faker.lorem.words(), content: faker.lorem.paragraph() }));
+    for (const rule of rules) {
+        await prisma.rule.upsert({
+            where: {
+                id: rule.id,
+            },
+            update: {
+                name: rule.name,
+                content: rule.content,
+            },
+            create: {
+                name: rule.name,
+                content: rule.content,
+            },
+        });
+    }
+}
+
 async function main() {
     await currencySeed();
     await languageSeed();
@@ -315,6 +336,7 @@ async function main() {
     await formatSeed();
     await tagSeed();
     await teamSeed();
+    await ruleSeed();
 }
 
 main()

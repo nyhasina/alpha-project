@@ -29,3 +29,6 @@
     text-transform: uppercase;
     line-height: normal;
 }
+::ng-deep.mat-expansion-indicator::after {
+    padding: 10px;
+}

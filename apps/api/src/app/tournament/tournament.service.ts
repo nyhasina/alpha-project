@@ -82,7 +82,7 @@ export class TournamentService {
             throw new HttpException(
                 {
                     status: HttpStatus.NOT_FOUND,
-                    error: `Tournament ${{ tournamentId }} not found`,
+                    error: `Tournament ${ tournamentId } not found`,
                 },
                 HttpStatus.NOT_FOUND
             );

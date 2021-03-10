@@ -1,0 +1,20 @@
+import { HttpErrorResponse } from '@angular/common/http';
+import { createAction, props } from '@ngrx/store';
+import { Count, Criteria, Rule } from '@nicecactus-platform/graph-ql-service';
+
+export const createRule = createAction('[Rule] Create rule');
+export const createRuleFail = createAction('[Rule] Create rule fail', props<{ error: HttpErrorResponse }>());
+export const createRuleSuccess = createAction('[Rule] Create rule success', props<{ rule: Rule }>());
+export const loadRules = createAction('[Rule] Load rules', props<{ criteria?: Criteria<Rule> }>());
+export const loadRulesFail = createAction('[Rule] Load rules fail', props<{ error: HttpErrorResponse }>());
+export const loadRulesSuccess = createAction('[Rule] Load rules success', props<{ rules: Rule[]; ruleCount?: Count }>());
+export const loadRule = createAction('[Rule] Load rule', props<{ id: number }>());
+export const loadRuleFail = createAction('[Rule] Load rule fail', props<{ error: HttpErrorResponse }>());
+export const loadRuleSuccess = createAction('[Rule] Load rule success', props<{ rule: Rule }>());
+export const saveRule = createAction('[Rule] Save rule', props<{ rule: Rule }>());
+export const saveRuleFail = createAction('[Rule] Save rule fail', props<{ error: HttpErrorResponse }>());
+export const saveRuleSuccess = createAction('[Rule] Save rule success', props<{ rule: Rule }>());
+export const confirmRuleDeletion = createAction('[Rule] Confirm rule deletion', props<{ rule: Rule }>());
+export const deleteRule = createAction('[Rule] Delete rule', props<{ id: number }>());
+export const deleteRuleFail = createAction('[Rule] Delete rule fail', props<{ error: HttpErrorResponse }>());
+export const deleteRuleSuccess = createAction('[Rule] Delete rule success', props<{ rule: Rule }>());

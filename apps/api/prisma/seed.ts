@@ -252,7 +252,7 @@ async function teamSeed() {
     const users = await prisma.user.findMany({});
     const tags = await prisma.tag.findMany({});
     let members;
-    const teams = new Array(32).fill({}).map((item) => {
+    const teams = new Array(100).fill({}).map((item) => {
         const membersNb = getRandomInt(5, 2);
         members = new Array(membersNb).fill({}).map((item) => users[getRandomInt(users.length - 1, 0)]);
         for (let i = 0; i < membersNb; i++) {
@@ -328,7 +328,7 @@ async function ruleSeed() {
 }
 
 async function tournamentRewardSeed() {
-    const tournamentRewards = new Array(16).fill({}).map((item) => ({ name: faker.lorem.words() }));
+    const tournamentRewards = new Array(32).fill({}).map((item) => ({ name: faker.lorem.words() }));
     for (const reward of tournamentRewards) {
         await prisma.tournamentReward.upsert({
             where: {
@@ -339,6 +339,37 @@ async function tournamentRewardSeed() {
             },
             create: {
                 name: reward.name,
+            },
+        });
+    }
+}
+
+async function tournamentTypeSeed() {
+    const tournamentRewards = await prisma.tournamentReward.findMany({});
+    const tournamentTypes = new Array(12).fill({}).map((item) => ({
+        name: faker.lorem.words(),
+        reward: tournamentRewards[getRandomInt(tournamentRewards.length - 1, 0)].id,
+    }));
+    for (const tournamentType of tournamentTypes) {
+        await prisma.tournamentType.upsert({
+            where: {
+                name: tournamentType.name,
+            },
+            update: {
+                name: tournamentType.name,
+                reward: {
+                    connect: {
+                        id: tournamentType.reward,
+                    },
+                },
+            },
+            create: {
+                name: tournamentType.name,
+                reward: {
+                    connect: {
+                        id: tournamentType.reward,
+                    },
+                },
             },
         });
     }
@@ -355,6 +386,7 @@ async function main() {
     await teamSeed();
     await ruleSeed();
     await tournamentRewardSeed();
+    await tournamentTypeSeed();
 }
 
 main()

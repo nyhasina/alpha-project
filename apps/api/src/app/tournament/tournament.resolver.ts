@@ -1,4 +1,4 @@
-import { Args, ArgsType, Field, Int, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
+import { Args, Int, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
 import { FormatService } from '../format/format.service';
 import { GameCountModel } from '../game/game.model';
 import { RoundService } from '../round/round.service';
@@ -11,33 +11,7 @@ import { TournamentTypeService } from '../tournament-type/tournament-type.servic
 import { TOURNAMENT_FILTERING } from './tournament.filters';
 import { TournamentModel } from './tournament.model';
 import { TournamentService } from './tournament.service';
-
-@ArgsType()
-export class CreateTournamentInput {
-    @Field()
-    name: string;
-
-    @Field({ nullable: true })
-    date?: string;
-
-    @Field({ nullable: true })
-    closed?: boolean;
-
-    @Field((returns) => Int)
-    tournamentType: number;
-
-    @Field((returns) => [Int], { nullable: true })
-    rules: number[];
-
-    @Field((returns) => Int)
-    format: number;
-
-    @Field((returns) => [Int], { nullable: true })
-    teams: number[];
-
-    @Field((returns) => [Int], { nullable: true })
-    rounds: number[];
-}
+import { CreateTournamentInput } from './tournament.types';
 
 @Resolver((of) => TournamentModel)
 export class TournamentResolver {

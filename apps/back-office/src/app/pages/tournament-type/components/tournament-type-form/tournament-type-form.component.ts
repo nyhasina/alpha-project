@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { TournamentType } from '@nicecactus-platform/graph-ql-service';
+import { TournamentReward, TournamentType } from '@nicecactus-platform/graph-ql-service';
 import { TournamentTypeDependencies } from '../../interfaces/tournament-type-dependencies.interface';
 
 @Component({
@@ -26,7 +26,7 @@ export class TournamentTypeFormComponent implements OnChanges {
         return this.formBuilder.group({
             id: [tournamentType?.id],
             name: [tournamentType?.name, Validators.required],
-            reward: [tournamentType?.reward?.id, Validators.required],
+            reward: [(tournamentType?.reward as TournamentReward)?.id, Validators.required],
         });
     }
 

@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { Prisma, Tournament } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
 
@@ -72,6 +72,38 @@ export class TournamentService {
                 rules: true,
                 teams: true,
                 tournamentType: true,
+            },
+        });
+    }
+
+    async addParticipants(tournamentId: number, participants: number[]): Promise<Tournament> {
+        const tournament = await this.loadTournament({ id: tournamentId });
+        if (!tournament) {
+            throw new HttpException(
+                {
+                    status: HttpStatus.NOT_FOUND,
+                    error: `Tournament ${{ tournamentId }} not found`,
+                },
+                HttpStatus.NOT_FOUND
+            );
+        }
+        if (tournament && tournament.closed) {
+            throw new HttpException(
+                {
+                    status: HttpStatus.UNPROCESSABLE_ENTITY,
+                    error: 'This tournament is already closed',
+                },
+                HttpStatus.UNPROCESSABLE_ENTITY
+            );
+        }
+        return this.updateTournament({
+            data: {
+                teams: {
+                    connect: participants.map((id) => ({ id })),
+                },
+            },
+            where: {
+                id: tournamentId,
             },
         });
     }

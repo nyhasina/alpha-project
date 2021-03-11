@@ -1,0 +1,37 @@
+.tournament--match-empty {
+    font-size: 14px;
+    font-weight: 600;
+    color: #c0c3cb;
+    text-align: center;
+    padding: 70px 0;
+}
+.tournament--match-empty svg {
+    max-width: 36px;
+    height: auto;
+    fill: #323639;
+}
+.tournament--match-empty-title {
+    color: #818797;
+    padding: 4px 0;
+}
+button {
+    width: 150px;
+    font-size: 18px;
+    font-weight: 600;
+    background-color: initial;
+    color: rgb(50, 54, 57);
+    text-align: center;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.2s ease 0s;
+    padding: 16px 24px;
+    display: inline-block;
+    position: relative;
+}
+button:hover {
+    border: 3px solid #11cdef;
+    color: white;
+    background-color: black;
+    font-weight: bold;
+    background-image: none;
+}

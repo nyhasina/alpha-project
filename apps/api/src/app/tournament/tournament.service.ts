@@ -111,6 +111,7 @@ export class TournamentService {
                 HttpStatus.NOT_FOUND
             );
         }
+        console.log(tournament.teams);
         if (tournament.teams.length % 2 !== 0) {
             throw new HttpException(
                 {

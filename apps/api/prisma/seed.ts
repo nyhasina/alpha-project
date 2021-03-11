@@ -375,6 +375,79 @@ async function tournamentTypeSeed() {
     }
 }
 
+async function tournamentSeed() {
+    const participantsNumber = getRandomInt(16, 2) * 2;
+    const teams = await prisma.team.findMany({});
+    const tournamentTypes = await prisma.tournamentType.findMany({});
+    const rules = await prisma.rule.findMany({});
+    const directEliminationFormat = await prisma.format.findFirst({ where: { code: 'SINGLE_ELIMINATION' } });
+    const directEliminationTournaments = new Array(10).fill({}).map((item, i) => {
+        const year = getRandomInt(2000, 2021);
+        const month = getRandomInt(12, 1);
+        const day = getRandomInt(30, 1);
+        const tournamentType = tournamentTypes[getRandomInt(tournamentTypes.length - 1, 0)];
+        let participants = [];
+        for (let i = 0; i < participantsNumber; i++) {
+            participants.push(teams[getRandomInt(teams.length - 1, 0)]);
+        }
+        return {
+            id: i + 1,
+            name: faker.internet.domainName(),
+            date: new Date(`${year}-${month}-${day}`).toISOString(),
+            closed: false,
+            rules,
+            teams: participants,
+            format: directEliminationFormat.id,
+            tournamentType: tournamentType.id,
+        };
+    });
+    for (const tournament of directEliminationTournaments) {
+        await prisma.tournament.upsert({
+            where: {
+                id: tournament.id,
+            },
+            update: {
+                name: tournament.name,
+                date: tournament.date,
+                closed: tournament.closed,
+                rules: {
+                    connect: tournament.rules.map((item) => ({ id: item.id })),
+                },
+                format: {
+                    connect: {
+                        id: tournament.format,
+                    },
+                },
+                teams: {
+                    disconnect: [],
+                    connect: tournament.teams.map((item) => ({ id: item.id })),
+                },
+            },
+            create: {
+                name: tournament.name,
+                date: tournament.date,
+                closed: tournament.closed,
+                rules: {
+                    connect: tournament.rules.map((item) => ({ id: item.id })),
+                },
+                tournamentType: {
+                    connect: {
+                      id: tournament.tournamentType
+                    },
+                },
+                format: {
+                    connect: {
+                        id: tournament.format,
+                    },
+                },
+                teams: {
+                    connect: tournament.teams.map((item) => ({ id: item.id })),
+                },
+            },
+        });
+    }
+}
+
 async function main() {
     await currencySeed();
     await languageSeed();
@@ -387,6 +460,7 @@ async function main() {
     await ruleSeed();
     await tournamentRewardSeed();
     await tournamentTypeSeed();
+    await tournamentSeed();
 }
 
 main()

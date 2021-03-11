@@ -376,12 +376,12 @@ async function tournamentTypeSeed() {
 }
 
 async function tournamentSeed() {
-    const participantsNumber = getRandomInt(16, 2) * 2;
     const teams = await prisma.team.findMany({});
     const tournamentTypes = await prisma.tournamentType.findMany({});
     const rules = await prisma.rule.findMany({});
     const directEliminationFormat = await prisma.format.findFirst({ where: { code: 'SINGLE_ELIMINATION' } });
     const directEliminationTournaments = new Array(10).fill({}).map((item, i) => {
+        const participantsNumber = getRandomInt(32, 0) * 2;
         const year = getRandomInt(2000, 2021);
         const month = getRandomInt(12, 1);
         const day = getRandomInt(30, 1);
@@ -432,7 +432,7 @@ async function tournamentSeed() {
                 },
                 tournamentType: {
                     connect: {
-                      id: tournament.tournamentType
+                        id: tournament.tournamentType,
                     },
                 },
                 format: {

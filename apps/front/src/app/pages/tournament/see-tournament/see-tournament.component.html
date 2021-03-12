@@ -1,11 +1,15 @@
+<div class="tournaments--slide-actions"><button type="button" class="button secondary"><span
+            class="see-more"><span></span></span></button>
+</div>
 <div class="tournament--header-container">
     <img src="assets/img/avatars/background.png" class="w-100 background" alt="Clash Royale">
     <div class="header--tournament">
         <div class="grid-wrapper">
             <div class="tournament--header-game">
-               
+
                 <div class="round-circle">
-                  <img src="https://demos.creative-tim.com/argon-dashboard/assets/img/theme/team-4.jpg" class="" alt=""> 
+                    <img src="https://demos.creative-tim.com/argon-dashboard/assets/img/theme/team-4.jpg" class=""
+                        alt="">
                 </div>
             </div>
             <div class="tournament--header-infos">
@@ -26,9 +30,11 @@
                 <div class="tournament--header-tournament-infos-middle col-4">
                     <div class="tournament--header-tournament-infos-cashprize">
                         <div class="tournament--header-tournament-infos-cashprize-cash">
-                            <div class="tournament--header-tournament-infos-cashprize-cash-amount"><span>100 €</span> cash
+                            <div class="tournament--header-tournament-infos-cashprize-cash-amount"><span>100 €</span>
+                                cash
                                 prize</div>
-                            <div class="tournament--header-tournament-infos-cashprize-cash-text"><span>Gains total distribué
+                            <div class="tournament--header-tournament-infos-cashprize-cash-text"><span>Gains total
+                                    distribué
                                     entre les 3 premières places</span></div>
                         </div>
                     </div>
@@ -36,7 +42,14 @@
                 <div class="tournament--header-tournament-infos-right col-4">
                     <div class="tournament--header-tournament-infos-registration">
                         <div class="tournament--header-tournament-infos-registration-participants">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="15"  style="color: #11cdef;" viewBox="0 0 14 11"><g fill-rule="evenodd" stroke="none" stroke-width="1"><g transform="translate(-5 -6)"><path d="M10 17L5 12 6.41 10.59 10 14.17 17.59 6.58 19 8z"></path></g></g></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="15" style="color: #11cdef;"
+                                viewBox="0 0 14 11">
+                                <g fill-rule="evenodd" stroke="none" stroke-width="1">
+                                    <g transform="translate(-5 -6)">
+                                        <path d="M10 17L5 12 6.41 10.59 10 14.17 17.59 6.58 19 8z"></path>
+                                    </g>
+                                </g>
+                            </svg>
                             <span style="color: #11cdef;">Inscriptions ouvertes</span>
                             <div class="tooltip">
                                 <div class="tooltip--icon"></div>
@@ -48,7 +61,8 @@
                             class="button primary is-register-to-tournament"
                             disabled=""><span>S'inscrire</span></button></div>
                     <div class="tournament--registration-actions-upgrade"><span class="float-right"><span>You need to
-                                confirm your email before signing up to a tournament</span>&nbsp;<a href="#"><span>Resend
+                                confirm your email before signing up to a tournament</span>&nbsp;<a
+                                href="#"><span>Resend
                                     confirmation request</span></a></span></div>
                 </div>
             </div>
@@ -59,8 +73,10 @@
     <div class="tournament--tabs-list">
         <div class="swiper-container swiper-container-initialized swiper-container-horizontal">
             <div class="swiper-wrapper text-center">
-                <button type="button" class="swiper-slide" [ngClass]="{active: selected === item.toLowerCase()}" (click)="selected = item.toLowerCase()"  *ngFor="let item of menuList" [routerLink]="[ './' + item.toLowerCase() ]"><span>{{item}}</span></button>
+                <button type="button" class="swiper-slide" [ngClass]="{active: selected === item.toLowerCase()}"
+                    (click)="selected = item.toLowerCase()" *ngFor="let item of menuList"
+                    [routerLink]="[ './' + item.toLowerCase() ]"><span>{{item}}</span></button>
+            </div>
         </div>
     </div>
-</div>
-<router-outlet></router-outlet>
+    <router-outlet></router-outlet>

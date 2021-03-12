@@ -100,6 +100,13 @@ const routes: Routes = [
                     breadcrumb: 'Liste des règles',
                 },
             },
+            {
+                path: 'tournament',
+                loadChildren: () => import('../../pages/tournament/tournament.module').then((m) => m.TournamentModule),
+                data: {
+                    breadcrumb: 'Liste des tournois',
+                },
+            },
         ],
     },
 ];

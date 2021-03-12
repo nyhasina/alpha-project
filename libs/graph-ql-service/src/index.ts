@@ -52,3 +52,6 @@ export * from './lib/services/tournament-type.service';
 export * from './lib/constants/rule.constants';
 export * from './lib/interfaces/rule.interface';
 export * from './lib/services/rule.service';
+export * from './lib/constants/tournament.constants';
+export * from './lib/interfaces/tournament.interface';
+export * from './lib/services/tournament.service';

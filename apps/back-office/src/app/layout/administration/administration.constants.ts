@@ -70,5 +70,10 @@ export const SIDEBAR_ITEMS: NavItem[] = [
         icon: 'fas fa-gavel',
         routerLink: ['/admin/rule'],
     },
+    {
+        label: 'Tournoi',
+        icon: 'fas fa-i-cursor',
+        routerLink: ['/admin/tournament'],
+    },
 ];
 export const ASIDE_SIDEBAR_ITEMS: NavItem[] = [];

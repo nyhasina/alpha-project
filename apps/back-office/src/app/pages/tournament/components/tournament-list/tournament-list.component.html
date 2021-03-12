@@ -15,13 +15,25 @@
                 >
                     <thead class="thead-light">
                         <tr role="row">
+                            <th>Date</th>
                             <th>Nom</th>
+                            <th>Type</th>
+                            <th>Lot</th>
+                            <th>Format</th>
+                            <th>Equipes</th>
+                            <th>Statut</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
+                            <th>Date</th>
                             <th>Nom</th>
+                            <th>Type</th>
+                            <th>Lot</th>
+                            <th>Format</th>
+                            <th>Equipes</th>
+                            <th>Statut</th>
                             <th></th>
                         </tr>
                     </tfoot>
@@ -33,12 +45,26 @@
                         ></nicecactus-platform-skeleton-list>
                         <ng-container *ngIf="!loading">
                             <tr *ngFor="let item of items">
+                                <td class="table-user">{{ item?.date | date: 'dd/MM/yyyy' }}</td>
                                 <td class="table-user">
                                     <b>{{ item.name | titlecase }}</b>
                                 </td>
+                                <td class="table-user">
+                                    {{ item?.tournamentType?.name }}
+                                </td>
+                                <td class="table-user">
+                                    {{ item?.tournamentType?.reward?.name }}
+                                </td>
+                                <td class="table-user">
+                                    {{ item?.format?.name }}
+                                </td>
+                                <td class="table-user">
+                                    {{ item?.teams?.length }}
+                                </td>
+                                <td>{{ item?.closed ? 'Clôturée' : 'Ouvert' }}</td>
                                 <td class="table-actions">
                                     <a
-                                        [routerLink]="['/', 'admin', 'format', 'edit', item.id]"
+                                        [routerLink]="['/', 'admin', 'tournament', 'edit', item.id]"
                                         class="table-action"
                                         data-original-title="Edit product"
                                         data-toggle="tooltip"

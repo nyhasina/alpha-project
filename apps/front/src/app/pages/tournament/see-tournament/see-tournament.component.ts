@@ -12,6 +12,9 @@ export class SeeTournamentComponent implements OnInit {
 
   ngOnInit(): void {
     this.selected = this.route.url.split('/').pop()
+    if(this.selected === 'r%C3%A8gles'){
+      this.selected = 'règles'
+    }
     console.log(this.selected)
   }
 

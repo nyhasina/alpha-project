@@ -31,14 +31,14 @@ const routes: Routes = [
         path: ':idTournament',
         component: SeeTournamentComponent,
         children: [
-            { path: '', redirectTo: 'matchs', pathMatch: 'full' },
+            { path: '', redirectTo: 'règles', pathMatch: 'full' },
             { path: 'bracket', component: BracketComponent },
             { path: 'matchs', component: MatchComponent },
             { path: 'participants', component: ParticipantsComponent },
             { path: 'rounds', component: RoundsComponent },
             { path: 'règles', component: RulesComponent,
             loadChildren: () => import('../../pages/tournament/see-tournament/components/rules/rules.module').then((m) => m.RulesModule), },
-            {path: '**', redirectTo: 'matchs', pathMatch: 'full'}
+            {path: '**', redirectTo: 'règles', pathMatch: 'full'}
         ],
     },
 ];

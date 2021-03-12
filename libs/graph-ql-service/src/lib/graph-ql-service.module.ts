@@ -17,6 +17,7 @@ import { TagService } from './services/tag.service';
 import { TeamService } from './services/team.service';
 import { TournamentRewardService } from './services/tournament-reward.service';
 import { TournamentTypeService } from './services/tournament-type.service';
+import { TournamentService } from './services/tournament.service';
 import { UserService } from './services/user.service';
 
 @NgModule({
@@ -40,6 +41,7 @@ import { UserService } from './services/user.service';
         TournamentRewardService,
         TournamentTypeService,
         RuleService,
+        TournamentService,
     ],
 })
 export class GraphQlServiceModule {}

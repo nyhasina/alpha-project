@@ -280,5 +280,8 @@ export const LOAD_TOURNAMENTS = gql`
                 }
             }
         }
+        tournamentCount(search: $search) {
+            total
+        }
     }
 `;

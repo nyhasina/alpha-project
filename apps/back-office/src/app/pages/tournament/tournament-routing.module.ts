@@ -9,14 +9,14 @@ const routes: Routes = [
         component: TournamentListRootComponent,
         children: [
             {
-                path: 'edit/:formatId',
+                path: 'edit/:tournamentId',
                 component: TournamentFormRootComponent,
-                data: { breadcrumb: `Modification d'un format de tournoi` },
+                data: { breadcrumb: `Modification d'un tournament de tournoi` },
             },
             {
                 path: 'new',
                 component: TournamentFormRootComponent,
-                data: { breadcrumb: `Création d'un nouveau format de tournoi` },
+                data: { breadcrumb: `Création d'un nouveau tournament de tournoi` },
             },
         ],
     },

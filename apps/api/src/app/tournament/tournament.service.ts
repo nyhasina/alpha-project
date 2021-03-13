@@ -123,8 +123,6 @@ export class TournamentService {
         return participants - perfectParticipantsNumber / 2;
     }
 
-    compute
-
     async closeRegistration(tournamentId: number): Promise<Tournament> {
         const tournament: Partial<TournamentModel> = await this.loadTournament({ id: tournamentId });
         if (!tournament) {

@@ -134,10 +134,12 @@ export class TournamentService {
                 HttpStatus.NOT_FOUND
             );
         }
-        const perfectParticipantsNumber = this.computeNearestPowerOf2(tournament.teams.length);
-        const firstRoundParticipants = this.computeRoundParticipants(tournament.teams.length, perfectParticipantsNumber);
-        const firstRoundMatchs = this.computeRoundMatchs(tournament.teams.length, perfectParticipantsNumber);
-        console.log(firstRoundParticipants, firstRoundMatchs);
+        const perfectParticipants = this.computeNearestPowerOf2(tournament.teams.length);
+        const firstRoundParticipants = this.computeRoundParticipants(tournament.teams.length, perfectParticipants);
+        const firstRoundRest = perfectParticipants - tournament.teams.length;
+        const firstRoundMatchs = this.computeRoundMatchs(tournament.teams.length, perfectParticipants);
+        const nextRoundParticipants = perfectParticipants / 2;
+        console.log(`First round participants: ${firstRoundParticipants}, Rest: ${firstRoundRest}, First round match: ${firstRoundMatchs}, Next round participants: ${nextRoundParticipants}`);
         return this.updateTournament({
             data: {
                 closed: true,

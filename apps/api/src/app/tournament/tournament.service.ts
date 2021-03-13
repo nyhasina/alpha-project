@@ -100,14 +100,6 @@ export class TournamentService {
         });
     }
 
-    private async computeRounds(teams: number, teamPerMatch: number): Promise<number> {
-        if (teams <= 1) {
-            return 0;
-        }
-        teams = Math.trunc(teams / teamPerMatch);
-        return teams + await this.computeRounds(teams, teamPerMatch);
-    }
-
     private computeNearestPowerOf2(x: number) {
         if (x <= 0) {
             // If x <= 0, directly return 2 to the 0 power
@@ -123,6 +115,16 @@ export class TournamentService {
         }
     }
 
+    private computeRoundParticipants(participants: number, perfectParticipantsNumber: number): number {
+        return 2 * participants - perfectParticipantsNumber;
+    }
+
+    private computeRoundMatchs(participants: number, perfectParticipantsNumber: number): number {
+        return participants - perfectParticipantsNumber / 2;
+    }
+
+    compute
+
     async closeRegistration(tournamentId: number): Promise<Tournament> {
         const tournament: Partial<TournamentModel> = await this.loadTournament({ id: tournamentId });
         if (!tournament) {
@@ -134,10 +136,10 @@ export class TournamentService {
                 HttpStatus.NOT_FOUND
             );
         }
-        console.log(`${tournament.teams.map((item) => item.id).join(',')}: ${tournament.teams.length}`);
-        const nextPowerOf2 = this.computeNearestPowerOf2(tournament.teams.length);
-        console.log(nextPowerOf2 - tournament.teams.length);
-        console.log(await this.computeRounds(tournament.teams.length, 2));
+        const perfectParticipantsNumber = this.computeNearestPowerOf2(tournament.teams.length);
+        const firstRoundParticipants = this.computeRoundParticipants(tournament.teams.length, perfectParticipantsNumber);
+        const firstRoundMatchs = this.computeRoundMatchs(tournament.teams.length, perfectParticipantsNumber);
+        console.log(firstRoundParticipants, firstRoundMatchs);
         return this.updateTournament({
             data: {
                 closed: true,

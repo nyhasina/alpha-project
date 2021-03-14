@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl} from '@angular/forms';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
-
+interface iGames {
+  name: string;
+  imageURL: string;
+}
 @Component({
     selector: 'app-dashboard',
     templateUrl: './dashboard.component.html',

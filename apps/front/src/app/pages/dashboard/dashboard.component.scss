@@ -24,13 +24,19 @@
     transform: translate(-50%,-50%);
     padding: 10px;
 }
-.game-content-container .game-content:hover {
+.game-content-container .game-content:hover,
+.active {
     cursor: pointer;
     border: 2px solid #11cdef ;
     filter: drop-shadow(0 0 .75rem #11cdef );
 }
-.game-content-container .game-content:hover {
+.game-content-container .game-content:hover,
+.active {
     transform: translateY(-5px);
     transition: .3s;
     box-shadow: 0 10px 13px -6px rgb(0 0 0 / 20%), 0 20px 31px 3px rgb(0 0 0 / 14%), 0 8px 38px 7px rgb(0 0 0 / 12%);
+}
+.game-content>img:hover {
+    
+    opacity: 1;
 }

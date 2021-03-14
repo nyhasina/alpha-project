@@ -19,7 +19,7 @@ export class DashboardComponent implements OnInit {
       config.keyboard = false;
     }
     open(content) {
-      this.modalService.open(content);
+      this.modalService.open(content, { size: 'lg' });
     }
     addTab(selectAfterAdding: boolean) {
         this.tabs.push('New');

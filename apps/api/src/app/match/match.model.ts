@@ -1,4 +1,5 @@
 import { Field, Int, ObjectType } from '@nestjs/graphql';
+import { RoundModel } from '../round/round.model';
 import { TeamModel } from '../team/team.model';
 
 export class CreateMatchInput {
@@ -23,8 +24,8 @@ export class MatchModel {
     @Field((returns) => Int)
     id: number;
 
-    @Field((returns) => Int)
-    round: number;
+    @Field((returns) => RoundModel)
+    round: RoundModel;
 
     roundId?: number;
 

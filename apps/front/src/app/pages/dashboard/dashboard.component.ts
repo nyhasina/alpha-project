@@ -14,7 +14,7 @@ interface iGames {
 export class DashboardComponent implements OnInit {
     tabs = ['First', 'Second', 'Third'];
     selected = new FormControl(1);
-    // eslint-disable-next-line max-len
+    selectedGame: string;
     games: Array<iGames> = [{
       name: 'Apex legends',
       imageURL: 'https://esm-prod-public.s3.amazonaws.com/game/5ed66c5d747d4c4c6ec5b866/medias/CarrouselImage'
@@ -77,7 +77,10 @@ export class DashboardComponent implements OnInit {
           this.selected.setValue(this.tabs.length - 1);
         }
       }
-    
+      selectGame(game) {
+        this.selectedGame = game.name
+        console.log(game)
+      }
       removeTab(index: number) {
         this.tabs.splice(index, 1);
       }

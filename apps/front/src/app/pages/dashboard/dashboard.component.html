@@ -11,7 +11,7 @@
 </mat-tab-group>
 <ng-template #content let-c="close" let-d="dismiss">
     <div class="modal-header">
-        <h2 class="text-center">Gérez vos jeux préférés</h2>
+        <h2>Gérez vos jeux préférés</h2>
         <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -37,6 +37,6 @@
         </div>
     </div>
     <div class="modal-footer" *ngIf="selectedGame">
-        <button type="button" class="btn btn-outline-dark" (click)="confirm()">Save</button>
+        <button type="button" class="btn btn-outline-dark confirm-btn" (click)="confirm()">Save</button>
     </div>
 </ng-template>

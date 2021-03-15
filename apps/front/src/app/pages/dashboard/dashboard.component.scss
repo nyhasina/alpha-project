@@ -49,11 +49,36 @@
     background-color: #0c0c0c;
     border-radius: 8px 8px 0 0;
     height: 42px;
-    color: #fff;
+    color: #5e72e4;
     margin-bottom: 5px;
-    font-size: 16px;
+    font-size: 18px;
+    font-weight: bold;
 }
 ::ng-deep.mat-tab-group.mat-primary .mat-ink-bar {
     background-color: #5e72e4;
 }
 .fa-trash{color: red;}
+.confirm-btn {
+    min-width: 150px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: initial;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    display: inline-block;
+    padding: 13px 20px 14px;
+    transition: all 0.2s ease;
+    position: relative;
+    display: block;
+    margin: 4% auto;
+}
+.confirm-btn:hover {
+    border: 3px solid #11cdef;
+    color: white;
+    background-color: black;
+    font-weight: bold;
+    background-image: none;
+}

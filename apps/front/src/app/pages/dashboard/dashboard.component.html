@@ -3,7 +3,109 @@
 </button>
 <mat-tab-group [selectedIndex]="selected.value" (selectedIndexChange)="selected.setValue($event)">
     <mat-tab *ngFor="let tab of gameTabs; let index = index" [label]="tab.name">
-        Contents for {{ tab.name }} tab
+        <div  class="tournament-board board-transparency">
+            <div  title="Tournois
+            " color="tournament" link="/tournament" _activitycategory="Tournament"
+                  class="ng-star-inserted">
+                <div  class="title-board d-flex align-items-baseline">
+                    <div  class="title-badge position-absolute background-tournament"></div><span
+                         class="big-text text-capitalize title-txt">Tournois
+                    </span><a   class="ml-2"
+                        href="/fr/tournament">voir plus</a>
+                    
+                    
+                    
+                </div>
+            </div>
+            
+            <div  class="row no-gutters board-horizontal">
+                <div
+                    class="branded col-md-4 row no-gutters transparency-content" tabindex="0">
+                    <div  class="position-absolute w-100 h-100">
+                        <div  class="info position-absolute d-flex flex-column">
+                            <div  class="top d-flex justify-content-between">
+                                <h4 class="title">Cold War R&amp;D 2v2
+                                    (Manettes)</h4>
+                                <div >
+                                    <div  class="icon"
+                                        style="-webkit-mask: url(&quot;/assets/img/platform/pc.svg&quot;) center center / contain no-repeat;">
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <div  class="font-weight-bold">
+                                <div  class="prize icon"></div> 20€ <span 
+                                     class="text-uppercase">de cash prize</span>
+                            </div>
+                            
+                            <div  class="d-flex">
+                                <div  class="calendar icon"></div> 20/03 · 20:00
+                            </div>
+                            <div  class="d-flex">
+                                <div  class="teams icon"></div> 1 / 64
+                            </div>
+                        </div>
+                        <div  class="premium position-absolute text-uppercase">
+                            <button  
+                             
+                                class="mat-button  background-tournament-gradient font-weight-bold text-uppercase"
+                                tabindex="0"><span class="mat-button-wrapper">Inscription gratuite</span><span
+                                     class=" mat-button-ripple"></span><span
+                                    class="button-focus"></span></button>
+                            
+                        </div>
+                    </div><img  alt="" class="ml-auto"
+                        src="https://esm-prod-public.s3.amazonaws.com/game/5fc4b522d3e5b7716c685a4c/medias/ChampionImage">
+                </div>
+                
+                
+                <div  class="content-board row no-gutters col-md-8 flex-full">
+                    <div  
+                        class="col-sm-6 col-xl-6 col-xls-4">
+                        <div class="tournament-card card justify-content-between">
+                            <div class="card-content">
+                                <div class="title d-flex justify-content-between"><span
+                                      >Cold War 4v4 Esport
+                                        (Manettes)</span>
+                                    <div class="d-flex">
+                                        <div class="platform"
+                                            style="-webkit-mask: url(&quot;/assets/img/platform/pc.svg&quot;) center center / contain no-repeat;">
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="info d-flex flex-column">
+                                    <div 
+                                        class="d-flex align-items-center mr-auto font-weight-bold">
+                                        <div class="prize icon"></div><span
+                                             class="ml-2 mr-1"> 28€
+                                        </span><span >de cash
+                                            prize</span>
+                                    </div>
+                                    
+                                    <div class="d-flex align-items-center mr-auto">
+                                        <div class="calendar icon"></div><span
+                                             class="ml-2">14/03 ·
+                                            22:00</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sign-up position-absolute"><button 
+                                    
+                                    activitycategory="Tournament"
+                                    
+                                    class="p-0 mat-button  background-tournament-gradient font-weight-bold text-uppercase"
+                                    tabindex="0"><span class="mat-button-wrapper">Inscription gratuite</span><span
+                                         class=" mat-button-ripple"></span><span
+                                        class="button-focus"></span></button></div>
+                        </div>
+                    </div>
+                 
+                    
+                    
+                </div>
+            </div>
+        </div>
         <i class="fa fa-trash fa-2x" *ngIf="gameTabs.length > 1" (click)="removeTab(index)"></i>
     </mat-tab>
 </mat-tab-group>

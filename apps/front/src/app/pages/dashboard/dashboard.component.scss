@@ -82,3 +82,106 @@
     font-weight: bold;
     background-image: none;
 }
+.board, .board-transparency {
+    box-shadow: 0 15px 25px rgb(0 0 0 / 45%);
+    width: 100%;
+    margin-bottom: 32px;
+    border-radius: 24px;
+}
+.tournament-board .branded{
+    box-shadow: inset 0 -1px 1px hsl(0deg 0% 100% / 25%), inset 0 2px 8px rgb(0 0 0 / 25%);
+    cursor: pointer;
+    z-index: 0;
+    position: relative;
+    min-height: 200px;
+    min-width: 100px;
+    width: 100%;
+}
+.board-transparency .transparency-content:after, .board-transparency .transparency-content:before {
+    display: block;
+    content: "";
+    background-color: #323639;
+    width: 32px;
+    height: calc(100% + 64px);
+    position: absolute;
+    top: -32px;
+}
+.board-transparency .transparency-content:after {
+    right: -32px;
+}
+.board-transparency .transparency-content {
+    min-height: 200px;
+    width: 100%;
+    border: 32px solid #323639;
+    border-radius: 34px;
+}
+.tournament-board .branded .info{
+    font-weight: 400;
+    padding: 18px;
+    width: 100%;
+}
+h4 {
+    font-size: 36px;
+    line-height: 112%;
+}
+.tournament-card {
+    margin-bottom: 67px;
+}
+.tournament-board .branded .premium{
+    left: 45px;
+    right: 0;
+    bottom: 15px;
+    text-align: left;
+    z-index: 1;
+}
+.tournament-board .branded img{
+    border-radius: 4px;
+    padding: 2px;
+    max-height: 396px;
+    max-width: 100%;
+    -o-object-fit: contain;
+    object-fit: contain;
+    -o-object-position: bottom;
+    object-position: bottom;
+}
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+}
+.tournament-card .sign-up {
+    bottom: -35px;
+    left: 0;
+    text-align: center;
+    width: 100%;
+}
+.mat-button-ripple , .button-focus {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    pointer-events: none;
+    border-radius: inherit;
+}
+.tournament-card .sign-up button {
+    width: 181px;
+    height: 48px;
+}
+.background-team-gradient, .background-tournament-gradient {
+    background: linear-gradient(
+90deg
+,#ff9b52,#ff5b51);
+    color: #fff;
+}
+@media (min-width: 1200px){
+.tournament-board.board-horizontal.branded{
+    max-width: 490px;
+}
+}

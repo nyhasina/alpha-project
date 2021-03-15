@@ -1,11 +1,14 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { Prisma, Tournament } from '@prisma/client';
+import { CreateMatchInput } from '../match/match.model';
+import { MatchService } from '../match/match.service';
 import { PrismaService } from '../prisma/prisma.service';
+import { getRandomInt } from '../shared/helpers/get-random-int.helper';
 import { TournamentModel } from './tournament.model';
 
 @Injectable()
 export class TournamentService {
-    constructor(private prisma: PrismaService) {}
+    constructor(private prisma: PrismaService, private matchService: MatchService) {}
 
     async loadTournament(where: Prisma.TournamentWhereUniqueInput): Promise<Tournament | null> {
         return this.prisma.tournament.findUnique({
@@ -134,22 +137,44 @@ export class TournamentService {
                 HttpStatus.NOT_FOUND
             );
         }
-        const perfectParticipants = this.computeNearestPowerOf2(tournament.teams.length);
-        const firstRoundParticipants = this.computeRoundParticipants(tournament.teams.length, perfectParticipants);
-        const firstRoundRest = perfectParticipants - tournament.teams.length;
-        const firstRoundMatchs = this.computeRoundMatchs(tournament.teams.length, perfectParticipants);
-        const nextRoundParticipants = perfectParticipants / 2;
-        console.log(`First round participants: ${firstRoundParticipants}, Rest: ${firstRoundRest}, First round match: ${firstRoundMatchs}, Next round participants: ${nextRoundParticipants}`);
-        const round = this.prisma.round.create({
+        const perfectParticipantsNumber = this.computeNearestPowerOf2(tournament.teams.length);
+        const firstRoundParticipantsNumber = this.computeRoundParticipants(tournament.teams.length, perfectParticipantsNumber);
+        const firstRoundRestNumber = perfectParticipantsNumber - tournament.teams.length;
+        const firstRoundMatchsNumber = this.computeRoundMatchs(tournament.teams.length, perfectParticipantsNumber);
+        const nextRoundParticipantsNumber = perfectParticipantsNumber / 2;
+        const firstRoundParticipants = [];
+        const pool = tournament.teams;
+        for (let i = 0; i < firstRoundParticipantsNumber; i++) {
+            const [team] = pool.splice(getRandomInt(pool.length - 1, 0), 1);
+            firstRoundParticipants.push(team);
+        }
+        const round = await this.prisma.round.create({
             data: {
                 rank: 1,
                 tournament: {
                     connect: {
-                        id: tournament.id
-                    }
-                }
-            }
+                        id: tournament.id,
+                    },
+                },
+            },
         });
+        const firstRoundMatchs = [];
+        let match: CreateMatchInput = new CreateMatchInput(null, null, null);
+        for (let i = 0; i < firstRoundMatchsNumber; i++) {
+            const [teamA] = firstRoundParticipants.splice(getRandomInt(firstRoundParticipants.length - 1, 0), 1);
+            const [teamB] = firstRoundParticipants.splice(getRandomInt(firstRoundParticipants.length - 1, 0), 1);
+            match = new CreateMatchInput(teamA.id, teamB.id, round.id);
+            firstRoundMatchs.push(match);
+        }
+        for (const match of firstRoundMatchs) {
+            await this.matchService.createMatch({
+                round: { connect: { id: match.round } },
+                teamA: { connect: { id: match.teamA } },
+                teamB: { connect: { id: match.teamB } },
+            });
+        }
+        const createdMatchs = await this.prisma.match.findMany({ where: { round: { id: round.id } } });
+        console.log(createdMatchs);
         return this.updateTournament({
             data: {
                 closed: true,

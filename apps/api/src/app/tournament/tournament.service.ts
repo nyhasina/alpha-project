@@ -186,7 +186,6 @@ export class TournamentService {
             firstRoundMatch = new CreateMatchInput(teamA.id, teamB.id, firstRound.id);
             firstRoundMatchs.push(firstRoundMatch);
         }
-        console.log(firstRoundMatchs);
         await this.saveMatch(firstRoundMatchs);
         if (!pool.length) {
             return;

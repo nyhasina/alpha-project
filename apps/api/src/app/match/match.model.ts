@@ -1,6 +1,22 @@
 import { Field, Int, ObjectType } from '@nestjs/graphql';
 import { TeamModel } from '../team/team.model';
-import { TournamentModel } from '../tournament/tournament.model';
+
+export class CreateMatchInput {
+    @Field((returns) => Int)
+    teamA: number;
+
+    @Field((returns) => Int)
+    teamB: number;
+
+    @Field((returns) => Int)
+    round: number;
+
+    constructor(teamA: number, teamB: number, round: number) {
+        this.teamA = teamA;
+        this.teamB = teamB;
+        this.round = round;
+    }
+}
 
 @ObjectType()
 export class MatchModel {
@@ -8,7 +24,9 @@ export class MatchModel {
     id: number;
 
     @Field((returns) => Int)
-    rank: number;
+    round: number;
+
+    roundId?: number;
 
     @Field((returns) => TeamModel)
     teamA: TeamModel;

@@ -12,9 +12,20 @@ interface iGames {
     providers: [NgbModalConfig, NgbModal]
 })
 export class DashboardComponent implements OnInit {
-    tabs = ['Dota 2', 'Auto Chess'];
-    selected = new FormControl(1);
-    selectedGame: string;
+    gameTabs: Array<iGames> = [{
+      name: 'Rogue Company',
+      imageURL: 'https://esm-prod-public.s3.amazonaws.com/game/5fb4f10f3817ac75c9012e5c/medias/CarrouselImage'
+    },
+    {
+      name: 'Valorant',
+      imageURL: 'https://esm-prod-public.s3.amazonaws.com/game/5ee2000cca2d921b383b5c94/medias/CarrouselImage'
+    },
+    {
+      name: 'Super Smash Bros. Ultimate',
+      imageURL: 'https://esm-prod-public.s3.amazonaws.com/game/5cee8f0964b0737b6aa1e7ef/medias/CarrouselImage'
+    }];
+    selected = new FormControl(0);
+    selectedGame: iGames;
     modalGames = null;
     games: Array<iGames> = [{
       name: 'Apex legends',
@@ -72,16 +83,14 @@ export class DashboardComponent implements OnInit {
      this.modalGames = this.modalService.open(content, { size: 'lg' });
     }
       selectGame(game) {
-        this.selectedGame = game.name;
+        this.selectedGame = game;
       }
       removeTab(index: number) {
-        console.log(this.tabs.length)
-        this.tabs.splice(index, 1);
-        console.log(this.tabs.length)
+        this.gameTabs.splice(index, 1);
       }
       confirm() {
-        this.tabs.push(this.selectedGame);
-        this.selected.setValue(this.tabs.length - 1);
+        this.gameTabs.push(this.selectedGame);
+        this.selected.setValue(this.gameTabs.length - 1);
         this.modalGames.close();
         this.selectedGame = null
       }

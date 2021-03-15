@@ -1,14 +1,14 @@
 <button class="btn  btn-outline-primary" (click)="open(content)">
     <i class="fa fa-plus-circle fa-2x"></i>
-    </button>
+</button>
 <mat-tab-group [selectedIndex]="selected.value" (selectedIndexChange)="selected.setValue($event)">
-    <mat-tab *ngFor="let tab of tabs; let index = index" [label]="tab">
-        Contents for {{ tab }} tab
-        <i class="fa fa-trash fa-2x" *ngIf="tabs.length > 1"
-            (click)="removeTab(index)"></i>
-        <!--  -->
+    <mat-tab *ngFor="let tab of gameTabs; let index = index" [label]="tab.name">
+        Contents for {{ tab.name }} tab
+        <i class="fa fa-trash fa-2x" *ngIf="gameTabs.length > 1" (click)="removeTab(index)"></i>
     </mat-tab>
 </mat-tab-group>
+
+<!-- MODAL LISTE GAME -->
 <ng-template #content let-c="close" let-d="dismiss">
     <div class="modal-header">
         <h2>Gérez vos jeux préférés</h2>
@@ -40,3 +40,4 @@
         <button type="button" class="btn btn-outline-dark confirm-btn" (click)="confirm()">Save</button>
     </div>
 </ng-template>
+<!-- END OF MODAL LISTE GAME -->

@@ -12,9 +12,10 @@ interface iGames {
     providers: [NgbModalConfig, NgbModal]
 })
 export class DashboardComponent implements OnInit {
-    tabs = ['First', 'Second', 'Third'];
+    tabs = ['Dota 2', 'Auto Chess'];
     selected = new FormControl(1);
     selectedGame: string;
+    modalGames = null;
     games: Array<iGames> = [{
       name: 'Apex legends',
       imageURL: 'https://esm-prod-public.s3.amazonaws.com/game/5ed66c5d747d4c4c6ec5b866/medias/CarrouselImage'
@@ -66,23 +67,21 @@ export class DashboardComponent implements OnInit {
     constructor(config: NgbModalConfig, private modalService: NgbModal) {
       config.backdrop = 'static';
       config.keyboard = false;
+      console.log(config)
     }
     open(content) {
-      this.modalService.open(content, { size: 'lg' });
+     this.modalGames = this.modalService.open(content, { size: 'lg' });
     }
-    addTab(selectAfterAdding: boolean) {
-        this.tabs.push('New');
-      console.log(this.selected.setValue)
-        if (selectAfterAdding) {
-          this.selected.setValue(this.tabs.length - 1);
-        }
-      }
       selectGame(game) {
-        this.selectedGame = game.name
-        console.log(game)
+        this.selectedGame = game.name;
       }
       removeTab(index: number) {
         this.tabs.splice(index, 1);
+      }
+      confirm() {
+        this.tabs.push(this.selectedGame);
+        this.selected.setValue(this.tabs.length - 1);
+        this.modalGames.close();
       }
     ngOnInit(): void {}
 }

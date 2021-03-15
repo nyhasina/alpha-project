@@ -4,6 +4,7 @@ import { CreateMatchInput } from '../match/match.model';
 import { MatchService } from '../match/match.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { getRandomInt } from '../shared/helpers/get-random-int.helper';
+import { TeamModel } from '../team/team.model';
 import { TournamentModel } from './tournament.model';
 
 @Injectable()
@@ -144,6 +145,30 @@ export class TournamentService {
         const nextRoundParticipantsNumber = perfectParticipantsNumber / 2;
         const firstRoundParticipants = [];
         const pool = tournament.teams;
+        await this.createFirstRound(
+            firstRoundParticipantsNumber,
+            pool,
+            firstRoundParticipants,
+            tournament,
+            firstRoundMatchsNumber
+        );
+        return this.updateTournament({
+            data: {
+                closed: true,
+            },
+            where: {
+                id: tournamentId,
+            },
+        });
+    }
+
+    private async createFirstRound(
+        firstRoundParticipantsNumber: number,
+        pool: TeamModel[],
+        firstRoundParticipants: Partial<TeamModel>[],
+        tournament: Partial<TournamentModel>,
+        firstRoundMatchsNumber: number
+    ) {
         for (let i = 0; i < firstRoundParticipantsNumber; i++) {
             const [team] = pool.splice(getRandomInt(pool.length - 1, 0), 1);
             firstRoundParticipants.push(team);
@@ -173,14 +198,6 @@ export class TournamentService {
                 teamB: { connect: { id: match.teamB } },
             });
         }
-        return this.updateTournament({
-            data: {
-                closed: true,
-            },
-            where: {
-                id: tournamentId,
-            },
-        });
     }
 
     async deleteTournament(where: Prisma.TournamentWhereUniqueInput): Promise<Tournament> {

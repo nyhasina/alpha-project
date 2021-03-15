@@ -67,7 +67,6 @@ export class DashboardComponent implements OnInit {
     constructor(config: NgbModalConfig, private modalService: NgbModal) {
       config.backdrop = 'static';
       config.keyboard = false;
-      console.log(config)
     }
     open(content) {
      this.modalGames = this.modalService.open(content, { size: 'lg' });
@@ -76,12 +75,15 @@ export class DashboardComponent implements OnInit {
         this.selectedGame = game.name;
       }
       removeTab(index: number) {
+        console.log(this.tabs.length)
         this.tabs.splice(index, 1);
+        console.log(this.tabs.length)
       }
       confirm() {
         this.tabs.push(this.selectedGame);
         this.selected.setValue(this.tabs.length - 1);
         this.modalGames.close();
+        this.selectedGame = null
       }
     ngOnInit(): void {}
 }

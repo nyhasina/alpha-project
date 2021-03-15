@@ -1,14 +1,14 @@
-
+<button class="btn  btn-outline-primary" (click)="open(content)">
+    <i class="fa fa-plus-circle fa-2x"></i>
+    </button>
 <mat-tab-group [selectedIndex]="selected.value" (selectedIndexChange)="selected.setValue($event)">
     <mat-tab *ngFor="let tab of tabs; let index = index" [label]="tab">
         Contents for {{ tab }} tab
-
-        <button mat-raised-button class="example-delete-tab-button" [disabled]="tabs.length === 1" (click)="removeTab(index)">
-            Delete Tab
-        </button>
+        <i class="fa fa-trash fa-2x" *ngIf="tabs.length > 1"
+            (click)="removeTab(index)"></i>
+        <!--  -->
     </mat-tab>
 </mat-tab-group>
-<button class="btn btn-lg btn-outline-primary" (click)="open(content)">+</button>
 <ng-template #content let-c="close" let-d="dismiss">
     <div class="modal-header">
         <h2 class="text-center">Gérez vos jeux préférés</h2>
@@ -18,21 +18,22 @@
     </div>
     <div class="modal-body">
         <p>Personnalise ton expérience en sélectionnant tes jeux préférées</p>
-        <div class="game-content-container" >
-            <div class="row w-100 flex-md-wrap justify-content-left mx-auto my-3">                                      
-                <div class="col-12 col-md-6 col-lg-3 game-item p-2 d-md-inline d-block mb-2" *ngFor="let item of games; index as ind">
-                    <div class="game-content selected-game" [ngClass]="{active: selectedGame === item.name}" (click)="selectGame(item)">
+        <div class="game-content-container">
+            <div class="row w-100 flex-md-wrap justify-content-left mx-auto my-3">
+                <div class="col-12 col-md-6 col-lg-3 game-item p-2 d-md-inline d-block mb-2"
+                    *ngFor="let item of games; index as ind">
+                    <div class="game-content selected-game" [ngClass]="{active: selectedGame === item.name}"
+                        (click)="selectGame(item)">
                         <img class="carrousel-image" [src]="item?.imageURL" />
                         <div class="apis px-md-0 px-5 py-1">
-                          <span  class="tournaments"></span
-                            >
+                            <span class="tournaments"></span>
                         </div>
                     </div>
                     <div class="pl-1 mt-2 game-name">{{item?.name}} </div>
                 </div>
-              
+
             </div>
-          
+
         </div>
     </div>
     <div class="modal-footer" *ngIf="selectedGame">

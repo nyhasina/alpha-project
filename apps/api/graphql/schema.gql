@@ -91,34 +91,34 @@ type InvitationModel {
   status: String
 }
 
-type RuleModel {
-  id: Int!
-  name: String!
-  content: String
-}
-
 type TournamentRewardModel {
   id: Int!
   name: String!
-}
-
-type TournamentTypeModel {
-  id: Int!
-  name: String!
-  reward: TournamentRewardModel
-}
-
-type MatchModel {
-  id: Int!
-  round: Int!
-  teamA: TeamModel!
-  teamB: TeamModel!
 }
 
 type RoundModel {
   id: Int!
   rank: Int!
   matchs: [MatchModel!]!
+}
+
+type MatchModel {
+  id: Int!
+  round: RoundModel!
+  teamA: TeamModel!
+  teamB: TeamModel!
+}
+
+type RuleModel {
+  id: Int!
+  name: String!
+  content: String
+}
+
+type TournamentTypeModel {
+  id: Int!
+  name: String!
+  reward: TournamentRewardModel
 }
 
 type TournamentModel {
@@ -179,6 +179,9 @@ type Query {
   tournamentCount(search: String): GameCountModel!
   tournament(id: Int!): TournamentModel!
   tournaments(take: Int, skip: Int, by: String, direction: String, search: String): [TournamentModel!]!
+  matchCount(search: String): GameCountModel!
+  match(id: Int!): MatchModel!
+  matchs(take: Int, skip: Int, by: String, direction: String, search: String): [MatchModel!]!
 }
 
 type Mutation {
@@ -230,4 +233,7 @@ type Mutation {
   addParticipants(tournament: Int!, participants: [Int!]!): TournamentModel!
   closeRegistration(id: Int!): TournamentModel!
   deleteTournament(id: Int!): TournamentModel!
+  createMatch(teamA: Int!, teamB: Int!, round: Int!): MatchModel!
+  updateMatch(teamA: Int!, teamB: Int!, round: Int!, id: Int!): MatchModel!
+  deleteMatch(id: Int!): MatchModel!
 }

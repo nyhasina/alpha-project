@@ -140,6 +140,16 @@ export class TournamentService {
         const firstRoundMatchs = this.computeRoundMatchs(tournament.teams.length, perfectParticipants);
         const nextRoundParticipants = perfectParticipants / 2;
         console.log(`First round participants: ${firstRoundParticipants}, Rest: ${firstRoundRest}, First round match: ${firstRoundMatchs}, Next round participants: ${nextRoundParticipants}`);
+        const round = this.prisma.round.create({
+            data: {
+                rank: 1,
+                tournament: {
+                    connect: {
+                        id: tournament.id
+                    }
+                }
+            }
+        });
         return this.updateTournament({
             data: {
                 closed: true,

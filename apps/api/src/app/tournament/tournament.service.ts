@@ -155,7 +155,6 @@ export class TournamentService {
             firstRoundMatchsNumber,
             perfectParticipantsNumber
         );
-        const nextRoundPerfectParticipants = this.computeNearestPowerOf2(pool.length);
         return this.updateTournament({
             data: {
                 closed: true,
@@ -187,24 +186,23 @@ export class TournamentService {
             firstRoundMatch = new CreateMatchInput(teamA.id, teamB.id, firstRound.id);
             firstRoundMatchs.push(firstRoundMatch);
         }
+        console.log(firstRoundMatchs);
         await this.saveMatch(firstRoundMatchs);
         if (!pool.length) {
             return;
         }
-        const secondRoundMatchNumber = perfectParticipantsNumber / 2;
+        const secondRoundParticipantsNumber = perfectParticipantsNumber / 2;
+        const secondRoundMatchNumber = secondRoundParticipantsNumber / 2;
         const secondRound = await this.roundService.createRound({ rank: 2, tournament: { connect: { id: tournament.id } } });
         const secondRoundMatchs = [];
         let secondRoundMatch = null;
-        for (let i = 0; i < pool.length; i++) {
-            const [team] = pool.splice(i, 1);
-            secondRoundMatch = new CreateMatchInput(team?.id, undefined, secondRound.id);
+        for (let i = 0; i < secondRoundMatchNumber; i++) {
+            const [teamA] = pool.splice(getRandomInt(pool.length - 1, 0), 1);
+            const [teamB] = pool.splice(getRandomInt(pool.length - 1, 0), 1);
+            secondRoundMatch = new CreateMatchInput(teamA?.id, teamB?.id, secondRound.id);
             secondRoundMatchs.push(secondRoundMatch);
         }
-        for (let i = 0; i < secondRoundMatchNumber - pool.length; i++) {
-            secondRoundMatch = new CreateMatchInput(undefined, undefined, secondRound.id);
-            secondRoundMatchs.push(secondRoundMatch);
-        }
-      await this.saveMatch(secondRoundMatchs);
+        await this.saveMatch(secondRoundMatchs);
     }
 
     private async saveMatch(matchs: CreateMatchInput[]) {

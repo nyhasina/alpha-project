@@ -27,13 +27,19 @@ export class MatchResolver {
     @ResolveField((returns) => TournamentRewardModel)
     async teamA(@Parent() match: MatchModel) {
         const { teamAId } = match;
+        if (!teamAId) {
+          return;
+        }
         return this.teamService.loadTeam({ id: teamAId });
     }
 
     @ResolveField((returns) => TournamentRewardModel)
     async teamB(@Parent() match: MatchModel) {
         const { teamBId } = match;
-        return this.teamService.loadTeam({ id: teamBId });
+      if (!teamBId) {
+        return;
+      }
+      return this.teamService.loadTeam({ id: teamBId });
     }
 
     @ResolveField((returns) => TournamentRewardModel)

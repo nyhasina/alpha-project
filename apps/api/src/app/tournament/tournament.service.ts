@@ -174,7 +174,6 @@ export class TournamentService {
             });
         }
         const createdMatchs = await this.prisma.match.findMany({ where: { round: { id: round.id } } });
-        console.log(createdMatchs);
         return this.updateTournament({
             data: {
                 closed: true,

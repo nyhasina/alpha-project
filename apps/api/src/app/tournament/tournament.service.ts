@@ -3,13 +3,14 @@ import { Prisma, Tournament } from '@prisma/client';
 import { CreateMatchInput } from '../match/match.model';
 import { MatchService } from '../match/match.service';
 import { PrismaService } from '../prisma/prisma.service';
+import { RoundService } from '../round/round.service';
 import { getRandomInt } from '../shared/helpers/get-random-int.helper';
 import { TeamModel } from '../team/team.model';
 import { TournamentModel } from './tournament.model';
 
 @Injectable()
 export class TournamentService {
-    constructor(private prisma: PrismaService, private matchService: MatchService) {}
+    constructor(private prisma: PrismaService, private matchService: MatchService, private roundService: RoundService) {}
 
     async loadTournament(where: Prisma.TournamentWhereUniqueInput): Promise<Tournament | null> {
         return this.prisma.tournament.findUnique({
@@ -143,15 +144,18 @@ export class TournamentService {
         const firstRoundRestNumber = perfectParticipantsNumber - tournament.teams.length;
         const firstRoundMatchsNumber = this.computeRoundMatchs(tournament.teams.length, perfectParticipantsNumber);
         const nextRoundParticipantsNumber = perfectParticipantsNumber / 2;
+        const nextRoundMatchsNumber = Math.trunc(firstRoundMatchsNumber / 2) + Math.trunc(nextRoundParticipantsNumber / 2);
         const firstRoundParticipants = [];
         const pool = tournament.teams;
-        await this.createFirstRound(
+        await this.scheduleMatchs(
             firstRoundParticipantsNumber,
             pool,
             firstRoundParticipants,
             tournament,
-            firstRoundMatchsNumber
+            firstRoundMatchsNumber,
+            perfectParticipantsNumber
         );
+        const nextRoundPerfectParticipants = this.computeNearestPowerOf2(pool.length);
         return this.updateTournament({
             data: {
                 closed: true,
@@ -162,40 +166,53 @@ export class TournamentService {
         });
     }
 
-    private async createFirstRound(
+    private async scheduleMatchs(
         firstRoundParticipantsNumber: number,
         pool: TeamModel[],
         firstRoundParticipants: Partial<TeamModel>[],
         tournament: Partial<TournamentModel>,
-        firstRoundMatchsNumber: number
+        firstRoundMatchsNumber: number,
+        perfectParticipantsNumber: number
     ) {
         for (let i = 0; i < firstRoundParticipantsNumber; i++) {
             const [team] = pool.splice(getRandomInt(pool.length - 1, 0), 1);
             firstRoundParticipants.push(team);
         }
-        const round = await this.prisma.round.create({
-            data: {
-                rank: 1,
-                tournament: {
-                    connect: {
-                        id: tournament.id,
-                    },
-                },
-            },
-        });
+        const firstRound = await this.roundService.createRound({ rank: 1, tournament: { connect: { id: tournament.id } } });
         const firstRoundMatchs = [];
-        let match: CreateMatchInput = new CreateMatchInput(null, null, null);
+        let firstRoundMatch: CreateMatchInput = new CreateMatchInput(null, null, null);
         for (let i = 0; i < firstRoundMatchsNumber; i++) {
             const [teamA] = firstRoundParticipants.splice(getRandomInt(firstRoundParticipants.length - 1, 0), 1);
             const [teamB] = firstRoundParticipants.splice(getRandomInt(firstRoundParticipants.length - 1, 0), 1);
-            match = new CreateMatchInput(teamA.id, teamB.id, round.id);
-            firstRoundMatchs.push(match);
+            firstRoundMatch = new CreateMatchInput(teamA.id, teamB.id, firstRound.id);
+            firstRoundMatchs.push(firstRoundMatch);
         }
-        for (const match of firstRoundMatchs) {
+        await this.saveMatch(firstRoundMatchs);
+        if (!pool.length) {
+            return;
+        }
+        const secondRoundMatchNumber = perfectParticipantsNumber / 2;
+        const secondRound = await this.roundService.createRound({ rank: 2, tournament: { connect: { id: tournament.id } } });
+        const secondRoundMatchs = [];
+        let secondRoundMatch = null;
+        for (let i = 0; i < pool.length; i++) {
+            const [team] = pool.splice(i, 1);
+            secondRoundMatch = new CreateMatchInput(team?.id, undefined, secondRound.id);
+            secondRoundMatchs.push(secondRoundMatch);
+        }
+        for (let i = 0; i < secondRoundMatchNumber - pool.length; i++) {
+            secondRoundMatch = new CreateMatchInput(undefined, undefined, secondRound.id);
+            secondRoundMatchs.push(secondRoundMatch);
+        }
+      await this.saveMatch(secondRoundMatchs);
+    }
+
+    private async saveMatch(matchs: CreateMatchInput[]) {
+        for (const match of matchs) {
             await this.matchService.createMatch({
-                round: { connect: { id: match.round } },
-                teamA: { connect: { id: match.teamA } },
-                teamB: { connect: { id: match.teamB } },
+                round: match.round ? { connect: { id: match.round } } : {},
+                teamA: match.teamA ? { connect: { id: match?.teamA } } : {},
+                teamB: match?.teamB ? { connect: { id: match?.teamB } } : {},
             });
         }
     }

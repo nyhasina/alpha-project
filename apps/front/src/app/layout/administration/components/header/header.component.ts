@@ -13,7 +13,6 @@ export class HeaderComponent implements OnInit {
     this.route.events.pipe(
       filter(event => event instanceof NavigationEnd)  
     ).subscribe((event: NavigationEnd) => {
-      console.log(event.url);
       this.selected = event.url.split('/').pop()
       if(this.selected === 'r%C3%A8gles'){
         this.selected = 'règles'

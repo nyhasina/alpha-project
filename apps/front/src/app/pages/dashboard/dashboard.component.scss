@@ -1,0 +1,187 @@
+.btn {
+
+    margin: 5px;
+
+}
+.game-content {
+    border-radius: 8px;
+    position: relative;
+    height: 210px;
+    overflow: hidden;
+    margin: 2px;
+    border: 2px solid transparent;
+}
+.game-content .carrousel-image {
+    position: absolute;
+    -o-object-fit: cover;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    opacity: .5;
+}
+
+.game-content-container .game-content .select-image {
+    position: absolute;
+    max-width: 150px;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 10px;
+}
+.game-content-container .game-content:hover,
+.active {
+    cursor: pointer;
+    border: 2px solid #11cdef ;
+    filter: drop-shadow(0 0 .75rem #11cdef );
+}
+.game-content-container .game-content:hover,
+.active {
+    transform: translateY(-5px);
+    transition: .3s;
+    box-shadow: 0 10px 13px -6px rgb(0 0 0 / 20%), 0 20px 31px 3px rgb(0 0 0 / 14%), 0 8px 38px 7px rgb(0 0 0 / 12%);
+}
+.game-content>img:hover {
+    
+    opacity: 1;
+}
+::ng-deep.mat-tab-label-active{
+    background-color: #0c0c0c;
+    border-radius: 8px 8px 0 0;
+    height: 42px;
+    color: #5e72e4;
+    margin-bottom: 5px;
+    font-size: 18px;
+    font-weight: bold;
+}
+::ng-deep.mat-tab-group.mat-primary .mat-ink-bar {
+    background-color: #5e72e4;
+}
+.fa-trash{color: red;}
+.confirm-btn {
+    min-width: 150px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: initial;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    display: inline-block;
+    padding: 13px 20px 14px;
+    transition: all 0.2s ease;
+    position: relative;
+    display: block;
+    margin: 0 auto;
+}
+.confirm-btn:hover {
+    border: 3px solid #11cdef;
+    color: white;
+    background-color: black;
+    font-weight: bold;
+    background-image: none;
+}
+.board, .board-transparency {
+    box-shadow: 0 15px 25px rgb(0 0 0 / 45%);
+    width: 100%;
+    margin-bottom: 32px;
+    border-radius: 24px;
+}
+.tournament-board .branded{
+    box-shadow: inset 0 -1px 1px hsl(0deg 0% 100% / 25%), inset 0 2px 8px rgb(0 0 0 / 25%);
+    cursor: pointer;
+    z-index: 0;
+    position: relative;
+    min-height: 200px;
+    min-width: 100px;
+    width: 100%;
+}
+.board-transparency .transparency-content:after, .board-transparency .transparency-content:before {
+    display: block;
+    content: "";
+    background-color: #323639;
+    width: 32px;
+    height: calc(100% + 64px);
+    position: absolute;
+    top: -32px;
+}
+.board-transparency .transparency-content:after {
+    right: -32px;
+}
+.board-transparency .transparency-content {
+    min-height: 200px;
+    width: 100%;
+    border: 32px solid #323639;
+    border-radius: 34px;
+}
+.tournament-board .branded .info{
+    font-weight: 400;
+    padding: 18px;
+    width: 100%;
+}
+h4 {
+    font-size: 36px;
+    line-height: 112%;
+}
+.tournament-card {
+    margin-bottom: 67px;
+}
+.tournament-board .branded .premium{
+    left: 45px;
+    right: 0;
+    bottom: 15px;
+    text-align: left;
+    z-index: 1;
+}
+.tournament-board .branded img{
+    border-radius: 4px;
+    padding: 2px;
+    max-height: 396px;
+    max-width: 100%;
+    -o-object-fit: contain;
+    object-fit: contain;
+    -o-object-position: bottom;
+    object-position: bottom;
+}
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+}
+.tournament-card .sign-up {
+    bottom: -35px;
+    left: 0;
+    text-align: center;
+    width: 100%;
+}
+.mat-button-ripple , .button-focus {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    pointer-events: none;
+    border-radius: inherit;
+}
+.tournament-card .sign-up button {
+    width: 181px;
+    height: 48px;
+}
+.background-team-gradient, .background-tournament-gradient {
+    background: linear-gradient(
+90deg
+,#ff9b52,#ff5b51);
+    color: #fff;
+}
+@media (min-width: 1200px){
+.tournament-board.board-horizontal.branded{
+    max-width: 490px;
+}
+}

@@ -10,7 +10,7 @@
                 <a [routerLink]="['/']"><i class="fas fa-home"></i></a>
               </li>
               <li class="breadcrumb-item"><a  [routerLink]="['/', 'admin', 'dashboard']">Dashboards</a></li>
-              <li class="breadcrumb-item active" aria-current="page">{{selected | titlecase}}</li>
+              <li class="breadcrumb-item active" aria-current="page" *ngIf="selected !== 'admin' && selected !== 'dashboard'">{{selected | titlecase}}</li>
             </ol>
           </nav>
         </div>

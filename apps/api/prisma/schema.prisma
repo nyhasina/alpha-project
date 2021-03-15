@@ -106,10 +106,10 @@ model Round {
 
 model Match {
   id      Int   @id @default(autoincrement())
-  teamA   Team  @relation("HaveTeamA", fields: [teamAId], references: [id])
-  teamAId Int
-  teamB   Team  @relation("HaveTeamB", fields: [teamBId], references: [id])
-  teamBId Int
+  teamA   Team?  @relation("HaveTeamA", fields: [teamAId], references: [id])
+  teamAId Int?
+  teamB   Team?  @relation("HaveTeamB", fields: [teamBId], references: [id])
+  teamBId Int?
   round   Round @relation("MatchOfRound", fields: [roundId], references: [id])
   roundId Int
 }

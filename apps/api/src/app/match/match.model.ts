@@ -3,11 +3,11 @@ import { RoundModel } from '../round/round.model';
 import { TeamModel } from '../team/team.model';
 
 export class CreateMatchInput {
-    @Field((returns) => Int)
-    teamA: number;
+    @Field((returns) => Int, { nullable: true })
+    teamA?: number;
 
-    @Field((returns) => Int)
-    teamB: number;
+    @Field((returns) => Int, { nullable: true })
+    teamB?: number;
 
     @Field((returns) => Int)
     round: number;
@@ -29,13 +29,13 @@ export class MatchModel {
 
     roundId?: number;
 
-    @Field((returns) => TeamModel)
-    teamA: TeamModel;
+    @Field((returns) => TeamModel, { nullable: true })
+    teamA?: TeamModel;
 
     teamAId?: number;
 
-    @Field((returns) => TeamModel)
-    teamB: TeamModel;
+    @Field((returns) => TeamModel, { nullable: true })
+    teamB?: TeamModel;
 
     teamBId?: number;
 }

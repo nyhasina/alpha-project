@@ -105,8 +105,8 @@ type RoundModel {
 type MatchModel {
   id: Int!
   round: RoundModel!
-  teamA: TeamModel!
-  teamB: TeamModel!
+  teamA: TeamModel
+  teamB: TeamModel
 }
 
 type RuleModel {

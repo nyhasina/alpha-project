@@ -110,7 +110,7 @@ type TournamentTypeModel {
 
 type MatchModel {
   id: Int!
-  rank: Int!
+  round: Int!
   teamA: TeamModel!
   teamB: TeamModel!
 }

@@ -1,12 +1,27 @@
 
 
-# NicecactusPlatform
+# Alfa Platform
 
 This project was generated using [Nx](https://nx.dev).
 
 <p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
 
 🔎 **Nx is a set of Extensible Dev Tools for Monorepos.**
+
+# Install dependencies
+
+To install application dependencies, you just need to run once on the root of the folder the following command: `npm install`. 
+
+## Development server
+
+Run `ng serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+
+Below are available applications:
+
+- back-office
+- front
+- api
+
 
 ## Quick Start & Documentation
 
@@ -54,10 +69,6 @@ Run `ng g @nrwl/angular:lib my-lib` to generate a library.
 > You can also use any of the plugins above to generate libraries as well.
 
 Libraries are shareable across libraries and applications. They can be imported from `@nicecactus-platform/mylib`.
-
-## Development server
-
-Run `ng serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 

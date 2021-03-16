@@ -1,7 +1,5 @@
 .btn {
-
     margin: 5px;
-
 }
 .game-content {
     border-radius: 8px;
@@ -17,7 +15,7 @@
     object-fit: cover;
     width: 100%;
     height: 100%;
-    opacity: .5;
+    opacity: 0.5;
 }
 
 .game-content-container .game-content .select-image {
@@ -26,26 +24,25 @@
     width: 100%;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     padding: 10px;
 }
 .game-content-container .game-content:hover,
 .active {
     cursor: pointer;
-    border: 2px solid #11cdef ;
-    filter: drop-shadow(0 0 .75rem #11cdef );
+    border: 2px solid #11cdef;
+    filter: drop-shadow(0 0 0.75rem #11cdef);
 }
 .game-content-container .game-content:hover,
 .active {
     transform: translateY(-5px);
-    transition: .3s;
+    transition: 0.3s;
     box-shadow: 0 10px 13px -6px rgb(0 0 0 / 20%), 0 20px 31px 3px rgb(0 0 0 / 14%), 0 8px 38px 7px rgb(0 0 0 / 12%);
 }
-.game-content>img:hover {
-    
+.game-content > img:hover {
     opacity: 1;
 }
-::ng-deep.mat-tab-label-active{
+::ng-deep.mat-tab-label-active {
     background-color: #0c0c0c;
     border-radius: 8px 8px 0 0;
     height: 42px;
@@ -57,7 +54,20 @@
 ::ng-deep.mat-tab-group.mat-primary .mat-ink-bar {
     background-color: #5e72e4;
 }
-.fa-trash{color: red;}
+.fa-window-close {
+    margin: 7px;
+    float: right;
+    cursor: pointer;
+}
+.pulse:hover, 
+.pulse:focus {
+  animation: pulse 1s;
+  box-shadow: 0 0 0 2em rgba(#fff,0);
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 var(--hover); }
+}
 .confirm-btn {
     min-width: 150px;
     font-size: 14px;
@@ -82,13 +92,14 @@
     font-weight: bold;
     background-image: none;
 }
-.board, .board-transparency {
+.board,
+.board-transparency {
     box-shadow: 0 15px 25px rgb(0 0 0 / 45%);
     width: 100%;
     margin-bottom: 32px;
     border-radius: 24px;
 }
-.tournament-board .branded{
+.tournament-board .branded {
     box-shadow: inset 0 -1px 1px hsl(0deg 0% 100% / 25%), inset 0 2px 8px rgb(0 0 0 / 25%);
     cursor: pointer;
     z-index: 0;
@@ -97,9 +108,10 @@
     min-width: 100px;
     width: 100%;
 }
-.board-transparency .transparency-content:after, .board-transparency .transparency-content:before {
+.board-transparency .transparency-content:after,
+.board-transparency .transparency-content:before {
     display: block;
-    content: "";
+    content: '';
     background-color: #323639;
     width: 32px;
     height: calc(100% + 64px);
@@ -115,7 +127,7 @@
     border: 32px solid #323639;
     border-radius: 34px;
 }
-.tournament-board .branded .info{
+.tournament-board .branded .info {
     font-weight: 400;
     padding: 18px;
     width: 100%;
@@ -125,24 +137,25 @@ h4 {
     line-height: 112%;
 }
 .tournament-card {
-    margin-bottom: 67px;
+    margin: 0 15px 67px 15px;
 }
-.tournament-board .branded .premium{
+.tournament-board .branded .premium {
     left: 45px;
     right: 0;
     bottom: 15px;
     text-align: left;
     z-index: 1;
 }
-.tournament-board .branded img{
+.tournament-board .branded img {
     border-radius: 4px;
     padding: 2px;
     max-height: 396px;
     max-width: 100%;
-    -o-object-fit: contain;
-    object-fit: contain;
     -o-object-position: bottom;
     object-position: bottom;
+    background: #292d30;
+    -o-object-fit: cover;
+    object-fit: cover;
 }
 .card {
     position: relative;
@@ -152,8 +165,9 @@ h4 {
     word-wrap: break-word;
     background-color: #fff;
     background-clip: border-box;
-    border: 1px solid rgba(0,0,0,.125);
-    border-radius: .25rem;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+    background: #292d30;
 }
 .tournament-card .sign-up {
     bottom: -35px;
@@ -161,7 +175,8 @@ h4 {
     text-align: center;
     width: 100%;
 }
-.mat-button-ripple , .button-focus {
+.mat-button-ripple,
+.button-focus {
     top: 0;
     left: 0;
     right: 0;
@@ -174,14 +189,68 @@ h4 {
     width: 181px;
     height: 48px;
 }
-.background-team-gradient, .background-tournament-gradient {
-    background: linear-gradient(
-90deg
-,#ff9b52,#ff5b51);
+.title span {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.background-team-gradient,
+.background-tournament-gradient {
+    background: linear-gradient(90deg, #ff9b52, #ff5b51);
     color: #fff;
 }
-@media (min-width: 1200px){
-.tournament-board.board-horizontal.branded{
-    max-width: 490px;
+.tournament-board {
+    background: #323639;
+    color: white;
+    h4 {
+        color: white;
+    }
 }
+.mat-button {
+    outline: none;
+    border: none;
+    -webkit-tap-highlight-color: transparent;
+    display: block;
+    white-space: nowrap;
+    text-decoration: none;
+    vertical-align: baseline;
+    text-align: center;
+    margin: 0 auto;
+    min-width: 64px;
+    line-height: 36px;
+    padding: 0 16px;
+    border-radius: 4px;
+    overflow: visible;
+}
+.title-txt{
+    margin-left: 12px;
+}
+.title-board{    background-color: #323639;
+    padding: 23px 32px 0;
+    margin-bottom: 0;}
+.title-board .title-badge {
+    width: 4px;
+    height: 16px;
+}
+.background-tournament {
+    background: #ff5b51;
+    color: #fff;
+}
+
+.tournament-board .content-board {
+    z-index: 1;
+    padding-top: 30px;
+    display: flex;
+    padding-bottom: .5rem;
+}
+.card .title span {
+    font-size: 22px;
+}
+.info{
+    i {color: #5e72e4; margin-right: 5px;}
+}
+@media (min-width: 1200px) {
+    .tournament-board.board-horizontal.branded {
+        max-width: 490px;
+    }
 }

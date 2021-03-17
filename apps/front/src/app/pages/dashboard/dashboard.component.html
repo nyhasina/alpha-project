@@ -402,7 +402,7 @@
         </div> 
         <div class="card-body">
           <h5>Il semblerait que tu n'aies pas encore fait de tournois...</h5>
-          <h6>Consulte la page <span>tournois</span> pour en savoir plus.</h6>
+          <h6>Consulte la page <span class="text-underline" [routerLink]="['/', 'admin', 'tournament']">tournois</span> pour en savoir plus.</h6>
 <!--             <ul class="list-group list-group-flush list my--3">
                 <li class="list-group-item px-0">
                     <div class="row align-items-center">
@@ -475,7 +475,7 @@
         </div> 
         <div class="card-body">
             <h5>Pas encore d'équipe :(</h5>
-            <h6>C'est parti ! <span>Crée ta première équie et invite tes amis</span></h6>
+            <h6>C'est parti ! <span class="text-underline"  [routerLink]="['/', 'admin', 'team']">Crée ta première équie et invite tes amis</span></h6>
 <!--             <ul class="list-group list-group-flush list my--3">
                 <li class="list-group-item px-0">
                     <div class="row align-items-center">

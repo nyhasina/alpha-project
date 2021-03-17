@@ -243,6 +243,9 @@ h4 {
 .info{
     i { margin-right: 5px;}
 }
+.text-underline {
+    cursor: pointer;
+}
 @media (min-width: 1200px) {
     .tournament-board.board-horizontal.branded {
         max-width: 490px;

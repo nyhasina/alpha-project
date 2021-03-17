@@ -21,6 +21,9 @@ export class CreateMatchInput {
 
 @ObjectType()
 export class MatchModel {
+    @Field({ nullable: true })
+    uuid?: string;
+
     @Field((returns) => Int)
     id: number;
 
@@ -38,4 +41,35 @@ export class MatchModel {
     teamB?: TeamModel;
 
     teamBId?: number;
+
+    @Field((returns) => MatchModel, { nullable: true })
+    next?: MatchModel;
+
+    nextId?: string;
+
+    constructor(uuid: string = null) {
+        this.roundId = null;
+        this.teamAId = null;
+        this.teamBId = null;
+        this.nextId = null;
+        this.uuid = uuid;
+        this.next = null;
+    }
+
+    public toString(): string {
+      return this.uuid;
+    }
+
+    setUuid(v: string) {
+      console.log(v);
+        this.uuid = v;
+    }
+
+    setNext(v: string) {
+        this.nextId = v;
+    }
+
+    getUuid(): string {
+      return this.uuid;
+    }
 }

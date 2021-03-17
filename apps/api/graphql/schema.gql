@@ -103,10 +103,12 @@ type RoundModel {
 }
 
 type MatchModel {
+  uuid: String
   id: Int!
   round: RoundModel!
   teamA: TeamModel
   teamB: TeamModel
+  next: MatchModel
 }
 
 type RuleModel {

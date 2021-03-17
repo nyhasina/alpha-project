@@ -1,5 +1,6 @@
 import { Field, GraphQLISODateTime, Int, ObjectType } from '@nestjs/graphql';
 import { FormatModel } from '../format/format.model';
+import { CreateMatchInput, MatchModel } from '../match/match.model';
 import { RoundModel } from '../round/round.model';
 import { RuleModel } from '../rule/rule.model';
 import { TeamModel } from '../team/team.model';
@@ -38,3 +39,19 @@ export class TournamentModel {
     @Field((returns) => [RoundModel], { nullable: true })
     rounds: RoundModel[];
 }
+
+export class TournamentNode {
+    data: Partial<MatchModel>;
+    left: TournamentNode;
+    right: TournamentNode;
+
+    constructor(data: Partial<MatchModel>) {
+        this.data = data;
+    }
+
+    toString(): string {
+        return this.data.uuid;
+    }
+}
+
+export class TournamentTree {}

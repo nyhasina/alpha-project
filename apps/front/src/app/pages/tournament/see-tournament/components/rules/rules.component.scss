@@ -10,6 +10,84 @@
 .tournament--description--text {
     color: black;
 }
+.tournament--rewards {
+    margin: 20px auto 40px;
+    padding: 24px;
+    background: rgba(0,0,0,.04);
+}
+.tournament--rewards--list {
+    display: flex;
+    justify-content: center;
+    padding: 35px 0;
+    width: 100%;
+}
+.swiper-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    transition-property: transform;
+    box-sizing: initial;
+}
+.swiper-container {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    overflow: hidden;
+    list-style: none;
+    padding: 0;
+    z-index: 1;
+}
+.tournament--rewards--list--item:first-child {
+
+    border-right: 1px solid #323639;
+}
+.tournament--rewards--list--item {
+    flex-grow: 1;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 101%;
+    box-sizing: border-box;
+    text-align: center;
+}
+.tournament--rewards--list--item--reward-value.is-cash {
+    color: #11cdef;
+    font-size: 24px;
+}
+.tournament--rewards--list--item--rank {
+    text-align: center;
+    color: black;
+    font-size: 24px;
+    text-transform: uppercase;
+    position: relative;
+}
+.tournament--rewards--list--item-sponsor-sponsored-by {
+    font-size: 14px;
+    color: grey;
+    flex-grow: 1;
+    padding-top: 10px;
+}
+.tournament--rewards--list--item-sponsor {
+    font-size: 16px;
+    font-weight: 700;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-top: 6px;
+}
+.tournament--rewards--list--item--reward-value {
+    padding: 0 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.tournament--rewards--list .swiper-container .swiper-slide {
+    padding: 0 10px;
+}
 .subtitle:before {
     content: "";
     width: 70px;

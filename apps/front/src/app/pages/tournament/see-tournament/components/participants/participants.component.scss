@@ -10,7 +10,6 @@ h5 {
     font-size: 19px;
 }
 .participant-list {
-    background: #e6e6e6;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -23,9 +22,10 @@ h5 {
     transition: all 0.3s ease-in-out;
 }
 .participant-list:hover {
-    -webkit-box-shadow: 0px 0px 34px 4px rgba(33, 37, 41, 0.06);
-    box-shadow: 0px 0px 34px 4px rgba(33, 37, 41, 0.06);
+    -webkit-box-shadow: 0px 0px 34px 4px rgba(33, 37, 41, 0.8);
+    box-shadow: 0px 0px 34px 4px rgba(33, 37, 41, 0.8);
     position: relative;
+    border-radius: 5px;
     z-index: 99;
 }
 .participant-list:hover a.participant-list-favourite {
@@ -44,6 +44,7 @@ h5 {
 .participant-list .participant-list-image img {
     width: 80px;
     height: 80px;
+    border-radius: 50%;
     -o-object-fit: cover;
     object-fit: cover;
 }
@@ -83,10 +84,6 @@ h5 {
     text-align: center;
     margin-right: 0px;
 }
-.participant-grid .participant-list-image img {
-    height: 150px;
-    width: 100%;
-}
 
 .participant-grid .participant-list-details {
     text-align: center;
@@ -101,5 +98,5 @@ h5 {
     margin: 2px 5px;
 }
 .tournament--participants-container {
-background: #e6e6e6;
+background: white;
 }

@@ -1,1 +1,36 @@
-<p>team works!</p>
+<div id="MyTeams" class="my-teams">
+    <div class="grid-wrapper">
+        <div class="teams--container">
+            <div class="teams--title"><span>Mes équipes</span></div>
+            <div class="teams--list is-empty">
+                <strong><span>Tu ne fais partie d’aucune équipe :/</span></strong
+                ><span><span>Si tu reçois une invitation elle apparaitra ici</span></span
+                ><button type="button" class="button is-cta" (click)="open(content)">Créer une nouvelle équipe</button>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h2>CRÉATION D'ÉQUIPE</h2>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p>Donne un nom à ton équipe :</p>
+        <div class="example-container">
+              <mat-form-field>
+                <input matInput name="amount"  [formControl]="name" placeholder="Nom de l'équipe">
+                <mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error>
+             </mat-form-field>
+             <mat-form-field>
+                <input matInput name="tag"  [formControl]="tag" placeholder="Tag de l'équipe">
+                <mat-error *ngIf="tag.invalid">{{getErrorTag()}}</mat-error>
+             </mat-form-field>
+          </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark confirm-btn" (click)="confirm()">Créer l'équipe</button>
+    </div>
+</ng-template>

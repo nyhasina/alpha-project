@@ -1,21 +1,27 @@
-<button class="btn  btn-outline-primary" (click)="open(content)">
-    <i class="fa fa-plus-circle fa-2x"></i>
-</button>
+<a class="btn btn-sm btn-neutral btn-outline-primary"  (click)="open(content)">New Tab</a>
 <mat-tab-group [selectedIndex]="selected.value" (selectedIndexChange)="selected.setValue($event)">
     <mat-tab *ngFor="let tab of gameTabs; let index = index" [label]="tab.name">
         <div class="tournament-board board-transparency">
             <div class="tournois">
-                <div class="col-auto" *ngIf="gameTabs.length > 1"> <button type="button" class="btn btn-sm btn-neutral mr-0"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i
-                        class="fas fa-ellipsis-h"></i> </button>
-                <div class="dropdown-menu dropdown-menu-right"> <a class="dropdown-item" [routerLink]="['/', 'admin', 'tournament']">Voir plus(Tournois)</a> <a class="dropdown-item" (click)="removeTab(index)">Supprimer</a>
-                        </div>
-            </div>
-                <div class="title-board d-flex align-items-baseline">
-                    <div class="title-badge position-absolute background-tournament"></div><span
-                        class="big-text text-capitalize title-txt">Tournois</span>
+                <div class="col-auto" *ngIf="gameTabs.length > 1">
+                    <button
+                        type="button"
+                        class="btn btn-sm btn-neutral mr-0"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                    >
+                        <i class="fas fa-ellipsis-h"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" [routerLink]="['/', 'admin', 'tournament']">Voir plus(Tournois)</a>
+                        <a class="dropdown-item" (click)="removeTab(index)">Supprimer</a>
+                    </div>
                 </div>
-
+                <div class="title-board d-flex align-items-baseline">
+                    <div class="title-badge position-absolute background-tournament"></div>
+                    <span class="big-text text-capitalize title-txt">Tournois</span>
+                </div>
             </div>
 
             <div class="row no-gutters board-horizontal">
@@ -23,367 +29,401 @@
                     <div class="position-absolute w-100 h-100">
                         <div class="info position-absolute d-flex flex-column">
                             <div class="top text-center">
-                                <h4 class="title">{{tab.name}}</h4>
+                                <h4 class="title">{{ tab.name }}</h4>
                             </div>
                             <div class="font-weight-bold">
                                 <div class="d-flex align-items-center mr-auto">
-                                    <div class="prize icon"></div><span class="ml-2" class="text-uppercase"><i
-                                            class="fa fa-trophy"></i> 20€ de cash prize</span>
+                                    <div class="prize icon"></div>
+                                    <span class="ml-2" class="text-uppercase"
+                                        ><i class="fa fa-trophy"></i> 20€ de cash prize</span
+                                    >
                                 </div>
                             </div>
                             <div class="d-flex text-center">
                                 <div class="d-flex align-items-center mr-auto">
-                                    <div class="prize icon"></div><span class="ml-2" class="text-uppercase"><i
-                                            class="fa fa-calendar"></i> 20/03 · 20:00</span>
+                                    <div class="prize icon"></div>
+                                    <span class="ml-2" class="text-uppercase"><i class="fa fa-calendar"></i> 20/03 · 20:00</span>
                                 </div>
                                 <div class="d-flex align-items-center mr-auto">
-                                    <div class="prize icon"></div><span class="ml-2" class="text-uppercase"><i
-                                            class="fa fa-users"></i> 1 / 64</span>
+                                    <div class="prize icon"></div>
+                                    <span class="ml-2" class="text-uppercase"><i class="fa fa-users"></i> 1 / 64</span>
                                 </div>
                             </div>
                         </div>
                         <div class="premium position-absolute text-uppercase">
-                            <button class="mat-button background-tournament-gradient font-weight-bold text-uppercase"
-                                tabindex="0"><span class="mat-button-wrapper">Inscription gratuite</span><span
-                                    class=" mat-button-ripple"></span><span class="button-focus"></span></button>
-
+                            <button
+                                class="mat-button background-tournament-gradient font-weight-bold text-uppercase"
+                                tabindex="0"
+                            >
+                                <span class="mat-button-wrapper">Inscription gratuite</span><span class="mat-button-ripple"></span
+                                ><span class="button-focus"></span>
+                            </button>
                         </div>
-                    </div><img alt="" class="w-100 ml-auto" [src]="tab.imageURL">
+                    </div>
+                    <img alt="" class="w-100 ml-auto" [src]="tab.imageURL" />
                 </div>
-
 
                 <div class="content-board row no-gutters col-md-8 flex-full">
                     <div class="col-sm-6 col-xl-4 col-xls-4">
                         <div class="tournament-card card justify-content-between">
-                            
                             <div class="card-content">
                                 <div class="bg-gradient-info border-0">
-                                    <div class="col-auto"> <button type="button" class="btn btn-sm btn-neutral mr-0"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i
-                                            class="fas fa-ellipsis-h"></i> </button>
-                                    <div class="dropdown-menu dropdown-menu-right"> <a class="dropdown-item"><span class="mat-button-wrapper">Inscription gratuite</span></a>
-                                            </div>
-                                </div>
-                                    
+                                    <div class="col-auto">
+                                        <button
+                                            type="button"
+                                            class="btn btn-sm btn-neutral mr-0"
+                                            data-toggle="dropdown"
+                                            aria-haspopup="true"
+                                            aria-expanded="false"
+                                        >
+                                            <i class="fas fa-ellipsis-h"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item"
+                                                ><span class="mat-button-wrapper">Inscription gratuite</span></a
+                                            >
+                                        </div>
+                                    </div>
+
                                     <div class="row">
                                         <div class="col">
-                                            <div class="title d-flex justify-content-between"><span>Cold War 4v4
-                                                    Esport
-                                                    (Manettes)</span>
-                                                <div class="d-flex">
-
-                                                </div>
+                                            <div class="title d-flex justify-content-between">
+                                                <span>Cold War 4v4 Esport (Manettes)</span>
+                                                <div class="d-flex"></div>
                                             </div>
                                             <div class="info d-flex flex-column">
                                                 <div class="d-flex align-items-center mr-auto font-weight-bold">
-                                                    <div class="prize icon"></div><span class="ml-2 mr-1"> <i
-                                                            class="fa fa-trophy"></i>28€
-                                                    </span><span>de cash
-                                                        prize</span>
+                                                    <div class="prize icon"></div>
+                                                    <span class="ml-2 mr-1"> <i class="fa fa-trophy"></i>28€ </span
+                                                    ><span>de cash prize</span>
                                                 </div>
 
                                                 <div class="d-flex align-items-center mr-auto">
-                                                    <div class="calendar icon"></div><span class="ml-2"><i
-                                                            class="fa fa-calendar"></i> 14/03 ·
-                                                        22:00</span>
+                                                    <div class="calendar icon"></div>
+                                                    <span class="ml-2"><i class="fa fa-calendar"></i> 14/03 · 22:00</span>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                     <div class="col-sm-6 col-xl-4 col-xls-4">
                         <div class="tournament-card card justify-content-between">
-                            
                             <div class="card-content">
                                 <div class="bg-gradient-info border-0">
-                                    <div class="col-auto"> <button type="button" class="btn btn-sm btn-neutral mr-0"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i
-                                            class="fas fa-ellipsis-h"></i> </button>
-                                    <div class="dropdown-menu dropdown-menu-right"> <a class="dropdown-item"><span class="mat-button-wrapper">Inscription gratuite</span></a>
-                                            </div>
-                                </div>
-                                    
+                                    <div class="col-auto">
+                                        <button
+                                            type="button"
+                                            class="btn btn-sm btn-neutral mr-0"
+                                            data-toggle="dropdown"
+                                            aria-haspopup="true"
+                                            aria-expanded="false"
+                                        >
+                                            <i class="fas fa-ellipsis-h"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item"
+                                                ><span class="mat-button-wrapper">Inscription gratuite</span></a
+                                            >
+                                        </div>
+                                    </div>
+
                                     <div class="row">
                                         <div class="col">
-                                            <div class="title d-flex justify-content-between"><span>Cold War 4v4
-                                                    Esport
-                                                    (Manettes)</span>
-                                                <div class="d-flex">
-
-                                                </div>
+                                            <div class="title d-flex justify-content-between">
+                                                <span>Cold War 4v4 Esport (Manettes)</span>
+                                                <div class="d-flex"></div>
                                             </div>
                                             <div class="info d-flex flex-column">
                                                 <div class="d-flex align-items-center mr-auto font-weight-bold">
-                                                    <div class="prize icon"></div><span class="ml-2 mr-1"> <i
-                                                            class="fa fa-trophy"></i>28€
-                                                    </span><span>de cash
-                                                        prize</span>
+                                                    <div class="prize icon"></div>
+                                                    <span class="ml-2 mr-1"> <i class="fa fa-trophy"></i>28€ </span
+                                                    ><span>de cash prize</span>
                                                 </div>
 
                                                 <div class="d-flex align-items-center mr-auto">
-                                                    <div class="calendar icon"></div><span class="ml-2"><i
-                                                            class="fa fa-calendar"></i> 14/03 ·
-                                                        22:00</span>
+                                                    <div class="calendar icon"></div>
+                                                    <span class="ml-2"><i class="fa fa-calendar"></i> 14/03 · 22:00</span>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-                        </div>
-                    </div><div class="col-sm-6 col-xl-4 col-xls-4">
-                        <div class="tournament-card card justify-content-between">
-                            
-                            <div class="card-content">
-                                <div class="bg-gradient-info border-0">
-                                    <div class="col-auto"> <button type="button" class="btn btn-sm btn-neutral mr-0"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i
-                                            class="fas fa-ellipsis-h"></i> </button>
-                                    <div class="dropdown-menu dropdown-menu-right"> <a class="dropdown-item"><span class="mat-button-wrapper">Inscription gratuite</span></a>
-                                            </div>
-                                </div>
-                                    
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="title d-flex justify-content-between"><span>Cold War 4v4
-                                                    Esport
-                                                    (Manettes)</span>
-                                                <div class="d-flex">
-
-                                                </div>
-                                            </div>
-                                            <div class="info d-flex flex-column">
-                                                <div class="d-flex align-items-center mr-auto font-weight-bold">
-                                                    <div class="prize icon"></div><span class="ml-2 mr-1"> <i
-                                                            class="fa fa-trophy"></i>28€
-                                                    </span><span>de cash
-                                                        prize</span>
-                                                </div>
-
-                                                <div class="d-flex align-items-center mr-auto">
-                                                    <div class="calendar icon"></div><span class="ml-2"><i
-                                                            class="fa fa-calendar"></i> 14/03 ·
-                                                        22:00</span>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div><div class="col-sm-6 col-xl-4 col-xls-4">
-                        <div class="tournament-card card justify-content-between">
-                            
-                            <div class="card-content">
-                                <div class="bg-gradient-info border-0">
-                                    <div class="col-auto"> <button type="button" class="btn btn-sm btn-neutral mr-0"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i
-                                            class="fas fa-ellipsis-h"></i> </button>
-                                    <div class="dropdown-menu dropdown-menu-right"> <a class="dropdown-item"><span class="mat-button-wrapper">Inscription gratuite</span></a>
-                                            </div>
-                                </div>
-                                    
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="title d-flex justify-content-between"><span>Cold War 4v4
-                                                    Esport
-                                                    (Manettes)</span>
-                                                <div class="d-flex">
-
-                                                </div>
-                                            </div>
-                                            <div class="info d-flex flex-column">
-                                                <div class="d-flex align-items-center mr-auto font-weight-bold">
-                                                    <div class="prize icon"></div><span class="ml-2 mr-1"> <i
-                                                            class="fa fa-trophy"></i>28€
-                                                    </span><span>de cash
-                                                        prize</span>
-                                                </div>
-
-                                                <div class="d-flex align-items-center mr-auto">
-                                                    <div class="calendar icon"></div><span class="ml-2"><i
-                                                            class="fa fa-calendar"></i> 14/03 ·
-                                                        22:00</span>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div><div class="col-sm-6 col-xl-4 col-xls-4">
-                        <div class="tournament-card card justify-content-between">
-                            
-                            <div class="card-content">
-                                <div class="bg-gradient-info border-0">
-                                    <div class="col-auto"> <button type="button" class="btn btn-sm btn-neutral mr-0"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i
-                                            class="fas fa-ellipsis-h"></i> </button>
-                                    <div class="dropdown-menu dropdown-menu-right"> <a class="dropdown-item"><span class="mat-button-wrapper">Inscription gratuite</span></a>
-                                            </div>
-                                </div>
-                                    
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="title d-flex justify-content-between"><span>Cold War 4v4
-                                                    Esport
-                                                    (Manettes)</span>
-                                                <div class="d-flex">
-
-                                                </div>
-                                            </div>
-                                            <div class="info d-flex flex-column">
-                                                <div class="d-flex align-items-center mr-auto font-weight-bold">
-                                                    <div class="prize icon"></div><span class="ml-2 mr-1"> <i
-                                                            class="fa fa-trophy"></i>28€
-                                                    </span><span>de cash
-                                                        prize</span>
-                                                </div>
-
-                                                <div class="d-flex align-items-center mr-auto">
-                                                    <div class="calendar icon"></div><span class="ml-2"><i
-                                                            class="fa fa-calendar"></i> 14/03 ·
-                                                        22:00</span>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div><div class="col-sm-6 col-xl-4 col-xls-4">
-                        <div class="tournament-card card justify-content-between">
-                            
-                            <div class="card-content">
-                                <div class="bg-gradient-info border-0">
-                                    <div class="col-auto"> <button type="button" class="btn btn-sm btn-neutral mr-0"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i
-                                            class="fas fa-ellipsis-h"></i> </button>
-                                    <div class="dropdown-menu dropdown-menu-right"> <a class="dropdown-item"><span class="mat-button-wrapper">Inscription gratuite</span></a>
-                                            </div>
-                                </div>
-                                    
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="title d-flex justify-content-between"><span>Cold War 4v4
-                                                    Esport
-                                                    (Manettes)</span>
-                                                <div class="d-flex">
-
-                                                </div>
-                                            </div>
-                                            <div class="info d-flex flex-column">
-                                                <div class="d-flex align-items-center mr-auto font-weight-bold">
-                                                    <div class="prize icon"></div><span class="ml-2 mr-1"> <i
-                                                            class="fa fa-trophy"></i>28€
-                                                    </span><span>de cash
-                                                        prize</span>
-                                                </div>
-
-                                                <div class="d-flex align-items-center mr-auto">
-                                                    <div class="calendar icon"></div><span class="ml-2"><i
-                                                            class="fa fa-calendar"></i> 14/03 ·
-                                                        22:00</span>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
                         </div>
                     </div>
+                    <div class="col-sm-6 col-xl-4 col-xls-4">
+                        <div class="tournament-card card justify-content-between">
+                            <div class="card-content">
+                                <div class="bg-gradient-info border-0">
+                                    <div class="col-auto">
+                                        <button
+                                            type="button"
+                                            class="btn btn-sm btn-neutral mr-0"
+                                            data-toggle="dropdown"
+                                            aria-haspopup="true"
+                                            aria-expanded="false"
+                                        >
+                                            <i class="fas fa-ellipsis-h"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item"
+                                                ><span class="mat-button-wrapper">Inscription gratuite</span></a
+                                            >
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="title d-flex justify-content-between">
+                                                <span>Cold War 4v4 Esport (Manettes)</span>
+                                                <div class="d-flex"></div>
+                                            </div>
+                                            <div class="info d-flex flex-column">
+                                                <div class="d-flex align-items-center mr-auto font-weight-bold">
+                                                    <div class="prize icon"></div>
+                                                    <span class="ml-2 mr-1"> <i class="fa fa-trophy"></i>28€ </span
+                                                    ><span>de cash prize</span>
+                                                </div>
+
+                                                <div class="d-flex align-items-center mr-auto">
+                                                    <div class="calendar icon"></div>
+                                                    <span class="ml-2"><i class="fa fa-calendar"></i> 14/03 · 22:00</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-4 col-xls-4">
+                        <div class="tournament-card card justify-content-between">
+                            <div class="card-content">
+                                <div class="bg-gradient-info border-0">
+                                    <div class="col-auto">
+                                        <button
+                                            type="button"
+                                            class="btn btn-sm btn-neutral mr-0"
+                                            data-toggle="dropdown"
+                                            aria-haspopup="true"
+                                            aria-expanded="false"
+                                        >
+                                            <i class="fas fa-ellipsis-h"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item"
+                                                ><span class="mat-button-wrapper">Inscription gratuite</span></a
+                                            >
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="title d-flex justify-content-between">
+                                                <span>Cold War 4v4 Esport (Manettes)</span>
+                                                <div class="d-flex"></div>
+                                            </div>
+                                            <div class="info d-flex flex-column">
+                                                <div class="d-flex align-items-center mr-auto font-weight-bold">
+                                                    <div class="prize icon"></div>
+                                                    <span class="ml-2 mr-1"> <i class="fa fa-trophy"></i>28€ </span
+                                                    ><span>de cash prize</span>
+                                                </div>
+
+                                                <div class="d-flex align-items-center mr-auto">
+                                                    <div class="calendar icon"></div>
+                                                    <span class="ml-2"><i class="fa fa-calendar"></i> 14/03 · 22:00</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-4 col-xls-4">
+                        <div class="tournament-card card justify-content-between">
+                            <div class="card-content">
+                                <div class="bg-gradient-info border-0">
+                                    <div class="col-auto">
+                                        <button
+                                            type="button"
+                                            class="btn btn-sm btn-neutral mr-0"
+                                            data-toggle="dropdown"
+                                            aria-haspopup="true"
+                                            aria-expanded="false"
+                                        >
+                                            <i class="fas fa-ellipsis-h"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item"
+                                                ><span class="mat-button-wrapper">Inscription gratuite</span></a
+                                            >
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="title d-flex justify-content-between">
+                                                <span>Cold War 4v4 Esport (Manettes)</span>
+                                                <div class="d-flex"></div>
+                                            </div>
+                                            <div class="info d-flex flex-column">
+                                                <div class="d-flex align-items-center mr-auto font-weight-bold">
+                                                    <div class="prize icon"></div>
+                                                    <span class="ml-2 mr-1"> <i class="fa fa-trophy"></i>28€ </span
+                                                    ><span>de cash prize</span>
+                                                </div>
+
+                                                <div class="d-flex align-items-center mr-auto">
+                                                    <div class="calendar icon"></div>
+                                                    <span class="ml-2"><i class="fa fa-calendar"></i> 14/03 · 22:00</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-4 col-xls-4">
+                        <div class="tournament-card card justify-content-between">
+                            <div class="card-content">
+                                <div class="bg-gradient-info border-0">
+                                    <div class="col-auto">
+                                        <button
+                                            type="button"
+                                            class="btn btn-sm btn-neutral mr-0"
+                                            data-toggle="dropdown"
+                                            aria-haspopup="true"
+                                            aria-expanded="false"
+                                        >
+                                            <i class="fas fa-ellipsis-h"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item"
+                                                ><span class="mat-button-wrapper">Inscription gratuite</span></a
+                                            >
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="title d-flex justify-content-between">
+                                                <span>Cold War 4v4 Esport (Manettes)</span>
+                                                <div class="d-flex"></div>
+                                            </div>
+                                            <div class="info d-flex flex-column">
+                                                <div class="d-flex align-items-center mr-auto font-weight-bold">
+                                                    <div class="prize icon"></div>
+                                                    <span class="ml-2 mr-1"> <i class="fa fa-trophy"></i>28€ </span
+                                                    ><span>de cash prize</span>
+                                                </div>
+
+                                                <div class="d-flex align-items-center mr-auto">
+                                                    <div class="calendar icon"></div>
+                                                    <span class="ml-2"><i class="fa fa-calendar"></i> 14/03 · 22:00</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
     </mat-tab>
 </mat-tab-group>
 <div class="row">
     <div class="col-xl-4 col-md-6">
         <div class="card bg-gradient-primary border-0">
-            
             <div class="card-body">
                 <div class="row">
                     <div class="col">
-                        <h5 class="card-title text-uppercase text-muted mb-0 text-white">Historique</h5> <span
-                            class="h2 font-weight-bold mb-0 text-white">8/24</span>
+                        <h5 class="card-title text-uppercase text-muted mb-0 text-white">Historique</h5>
+                        <span class="h2 font-weight-bold mb-0 text-white">8/24</span>
                         <div class="progress progress-xs mt-3 mb-0">
-                            <div class="progress-bar bg-success" role="progressbar" aria-valuenow="30" aria-valuemin="0"
-                                aria-valuemax="100" style="width: 30%"></div>
+                            <div
+                                class="progress-bar bg-success"
+                                role="progressbar"
+                                aria-valuenow="30"
+                                aria-valuemin="0"
+                                aria-valuemax="100"
+                                style="width: 30%"
+                            ></div>
                         </div>
                     </div>
                 </div>
-                <p class="mt-3 mb-0 text-sm"> <a href="#!" class="text-nowrap text-white font-weight-600">See
-                        details</a> </p>
+                <p class="mt-3 mb-0 text-sm"><a href="#!" class="text-nowrap text-white font-weight-600">See details</a></p>
             </div>
         </div>
     </div>
     <div class="col-xl-4 col-md-6">
         <div class="card bg-gradient-danger border-0">
-            
             <div class="card-body">
                 <div class="row">
                     <div class="col">
-                        <h5 class="card-title text-uppercase text-muted mb-0 text-white">Equipes</h5> <span
-                            class="h2 font-weight-bold mb-0 text-white">200/300</span>
+                        <h5 class="card-title text-uppercase text-muted mb-0 text-white">Equipes</h5>
+                        <span class="h2 font-weight-bold mb-0 text-white">200/300</span>
                         <div class="progress progress-xs mt-3 mb-0">
-                            <div class="progress-bar bg-success" role="progressbar" aria-valuenow="80" aria-valuemin="0"
-                                aria-valuemax="100" style="width: 80%"></div>
+                            <div
+                                class="progress-bar bg-success"
+                                role="progressbar"
+                                aria-valuenow="80"
+                                aria-valuemin="0"
+                                aria-valuemax="100"
+                                style="width: 80%"
+                            ></div>
                         </div>
                     </div>
                 </div>
-                <p class="mt-3 mb-0 text-sm"> <a href="#!" class="text-nowrap text-white font-weight-600">See
-                        details</a> </p>
+                <p class="mt-3 mb-0 text-sm"><a href="#!" class="text-nowrap text-white font-weight-600">See details</a></p>
             </div>
         </div>
     </div>
-    
+
     <div class="col-xl-4 col-md-6">
         <div class="card bg-gradient-default border-0">
-            
             <div class="card-body">
                 <div class="row">
                     <div class="col">
-                        <h5 class="card-title text-uppercase text-muted mb-0 text-white">Liste tournois</h5> <span
-                            class="h2 font-weight-bold mb-0 text-white">50/62</span>
+                        <h5 class="card-title text-uppercase text-muted mb-0 text-white">Liste tournois</h5>
+                        <span class="h2 font-weight-bold mb-0 text-white">50/62</span>
                         <div class="progress progress-xs mt-3 mb-0">
-                            <div class="progress-bar bg-success" role="progressbar" aria-valuenow="90" aria-valuemin="0"
-                                aria-valuemax="100" style="width: 90%"></div>
+                            <div
+                                class="progress-bar bg-success"
+                                role="progressbar"
+                                aria-valuenow="90"
+                                aria-valuemin="0"
+                                aria-valuemax="100"
+                                style="width: 90%"
+                            ></div>
                         </div>
                     </div>
                 </div>
-                <p class="mt-3 mb-0 text-sm"> <a href="#!" class="text-nowrap text-white font-weight-600">See
-                        details</a> </p>
+                <p class="mt-3 mb-0 text-sm"><a href="#!" class="text-nowrap text-white font-weight-600">See details</a></p>
             </div>
         </div>
     </div>
 </div>
 
-
 <div class="card-deck flex-column flex-xl-row">
     <div class="card">
-        
         <div class="card-header">
             <h5 class="h3 mb-0">Historique des tournois</h5>
-        </div> 
+        </div>
         <div class="card-body">
-          <h5>Il semblerait que tu n'aies pas encore fait de tournois...</h5>
-          <h6>Consulte la page <span class="text-underline" [routerLink]="['/', 'admin', 'tournament']">tournois</span> pour en savoir plus.</h6>
-<!--             <ul class="list-group list-group-flush list my--3">
+            <h5>Il semblerait que tu n'aies pas encore fait de tournois...</h5>
+            <h6>
+                Consulte la page <span class="text-underline" [routerLink]="['/', 'admin', 'tournament']">tournois</span> pour en
+                savoir plus.
+            </h6>
+            <!--             <ul class="list-group list-group-flush list my--3">
                 <li class="list-group-item px-0">
                     <div class="row align-items-center">
                         <div class="col-auto">
@@ -448,15 +488,19 @@
         </div>
     </div>
     <div class="card">
-        
         <div class="card-header">
             <!-- Title -->
             <h5 class="h3 mb-0">Equipes</h5>
-        </div> 
+        </div>
         <div class="card-body">
             <h5>Pas encore d'équipe :(</h5>
-            <h6>C'est parti ! <span class="text-underline"  [routerLink]="['/', 'admin', 'team']">Crée ta première équie et invite tes amis</span></h6>
-<!--             <ul class="list-group list-group-flush list my--3">
+            <h6>
+                C'est parti !
+                <span class="text-underline" [routerLink]="['/', 'admin', 'team']"
+                    >Crée ta première équie et invite tes amis</span
+                >
+            </h6>
+            <!--             <ul class="list-group list-group-flush list my--3">
                 <li class="list-group-item px-0">
                     <div class="row align-items-center">
                         <div class="col-auto">
@@ -511,8 +555,8 @@
                 </li>
             </ul> -->
         </div>
-    </div> <!-- Checklist -->
-
+    </div>
+    <!-- Checklist -->
 </div>
 <!-- MODAL LISTE GAME -->
 <ng-template #content let-c="close" let-d="dismiss">
@@ -526,20 +570,23 @@
         <p>Personnalise ton expérience en sélectionnant tes jeux préférées</p>
         <div class="game-content-container">
             <div class="row w-100 flex-md-wrap justify-content-left mx-auto my-3">
-                <div class="col-12 col-md-6 col-lg-3 game-item p-2 d-md-inline d-block mb-2"
-                    *ngFor="let item of games; index as ind">
-                    <div class="game-content selected-game" [ngClass]="{active: selectedGame === item}"
-                        (click)="selectGame(item)">
+                <div
+                    class="col-12 col-md-6 col-lg-3 game-item p-2 d-md-inline d-block mb-2"
+                    *ngFor="let item of games; index as ind"
+                >
+                    <div
+                        class="game-content selected-game"
+                        [ngClass]="{ active: selectedGame === item }"
+                        (click)="selectGame(item)"
+                    >
                         <img class="carrousel-image" [src]="item?.imageURL" />
                         <div class="apis px-md-0 px-5 py-1">
                             <span class="tournaments"></span>
                         </div>
                     </div>
-                    <div class="pl-1 mt-2 game-name">{{item?.name}} </div>
+                    <div class="pl-1 mt-2 game-name">{{ item?.name }}</div>
                 </div>
-
             </div>
-
         </div>
     </div>
     <div class="modal-footer" *ngIf="selectedGame">

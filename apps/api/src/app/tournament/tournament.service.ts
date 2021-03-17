@@ -1,12 +1,15 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { Prisma, Tournament } from '@prisma/client';
-import { CreateMatchInput } from '../match/match.model';
+import { CreateMatchInput, MatchModel } from '../match/match.model';
 import { MatchService } from '../match/match.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { RoundService } from '../round/round.service';
+import { computePowerOf2 } from '../shared/helpers/compute-power-of-2.helper';
+import { generateUuid } from '../shared/helpers/generate-unique-serial.helper';
 import { getRandomInt } from '../shared/helpers/get-random-int.helper';
 import { TeamModel } from '../team/team.model';
-import { TournamentModel } from './tournament.model';
+import { TournamentModel, TournamentNode } from './tournament.model';
+import { v4 as uuid } from 'uuid';
 
 @Injectable()
 export class TournamentService {
@@ -105,29 +108,6 @@ export class TournamentService {
         });
     }
 
-    private computeNearestPowerOf2(x: number) {
-        if (x <= 0) {
-            // If x <= 0, directly return 2 to the 0 power
-            return 1;
-        } else if ((x & (x - 1)) == 0) {
-            // Judging by the "bitwise AND" operation, if x is a power of 2, directly return x
-            return x;
-        } else {
-            // Calculate the smallest integer greater than the logarithm of x with base 2
-            // For example, x = 25, the logarithm of 25 with 2 as the base is 4.643..., the result of forcibly converting to int and adding 1 is 5
-            const n = Math.trunc(Math.log(x) / Math.log(2)) + 1;
-            return Math.pow(2, n);
-        }
-    }
-
-    private computeRoundParticipants(participants: number, perfectParticipantsNumber: number): number {
-        return 2 * participants - perfectParticipantsNumber;
-    }
-
-    private computeRoundMatchs(participants: number, perfectParticipantsNumber: number): number {
-        return participants - perfectParticipantsNumber / 2;
-    }
-
     async closeRegistration(tournamentId: number): Promise<Tournament> {
         const tournament: Partial<TournamentModel> = await this.loadTournament({ id: tournamentId });
         if (!tournament) {
@@ -139,22 +119,24 @@ export class TournamentService {
                 HttpStatus.NOT_FOUND
             );
         }
-        const perfectParticipantsNumber = this.computeNearestPowerOf2(tournament.teams.length);
-        const firstRoundParticipantsNumber = this.computeRoundParticipants(tournament.teams.length, perfectParticipantsNumber);
-        const firstRoundRestNumber = perfectParticipantsNumber - tournament.teams.length;
-        const firstRoundMatchsNumber = this.computeRoundMatchs(tournament.teams.length, perfectParticipantsNumber);
-        const nextRoundParticipantsNumber = perfectParticipantsNumber / 2;
-        const nextRoundMatchsNumber = Math.trunc(firstRoundMatchsNumber / 2) + Math.trunc(nextRoundParticipantsNumber / 2);
-        const firstRoundParticipants = [];
-        const pool = tournament.teams;
-        await this.scheduleMatchs(
-            firstRoundParticipantsNumber,
-            pool,
-            firstRoundParticipants,
-            tournament,
-            firstRoundMatchsNumber,
-            perfectParticipantsNumber
-        );
+        // const perfectParticipantsNumber = computePowerOf2(tournament.teams.length);
+        // const firstRoundParticipantsNumber = this.computeRoundParticipants(tournament.teams.length, perfectParticipantsNumber);
+        // const firstRoundRestNumber = perfectParticipantsNumber - tournament.teams.length;
+        // const firstRoundMatchsNumber = this.computeRoundMatchs(tournament.teams.length, perfectParticipantsNumber);
+        // const nextRoundParticipantsNumber = perfectParticipantsNumber / 2;
+        // const nextRoundMatchsNumber = Math.trunc(firstRoundMatchsNumber / 2) + Math.trunc(nextRoundParticipantsNumber / 2);
+        // const firstRoundParticipants = [];
+        // const pool = tournament.teams;
+        // await this.scheduleMatchs(
+        //     firstRoundParticipantsNumber,
+        //     pool,
+        //     firstRoundParticipants,
+        //     tournament,
+        //     firstRoundMatchsNumber,
+        //     perfectParticipantsNumber
+        // );
+        const tree = this.generateTournamentTree(tournament);
+        console.log(tree);
         return this.updateTournament({
             data: {
                 closed: true,
@@ -163,6 +145,43 @@ export class TournamentService {
                 id: tournamentId,
             },
         });
+    }
+
+    async deleteTournament(where: Prisma.TournamentWhereUniqueInput): Promise<Tournament> {
+        return this.prisma.tournament.delete({
+            where,
+            include: {
+                format: true,
+                rules: true,
+                teams: true,
+                tournamentType: true,
+            },
+        });
+    }
+
+    private generateTournamentTree(tournament: Partial<TournamentModel>): TournamentNode {
+        const n = tournament?.teams.length; // the number of participants of the tournament
+        const p = computePowerOf2(n); // The smallest power of 2 at least as large as
+        const eliminatoryRoundParticipantsNumber = 2 * n - p;
+        const eliminatoryRoundMatchsNumber = n - p / 2;
+        const firstRoundParticipantsNumber = p / 2;
+        const firstRoundMatchsNumber = firstRoundParticipantsNumber / 2;
+        const tournamentMatchsNumber = firstRoundParticipantsNumber - 1 + eliminatoryRoundMatchsNumber;
+        const tournamentMatchs: MatchModel[] = [];
+        for (let i = 0; i < tournamentMatchsNumber; i++) {
+            tournamentMatchs.push(new MatchModel(uuid()));
+        }
+        tournamentMatchs.sort((a, b) => (a.getUuid() < b.getUuid() ? -1 : 1));
+        const tree = this.matchArrayToBST(tournamentMatchs);
+        return tree;
+    }
+
+    private computeRoundParticipants(participants: number, perfectParticipantsNumber: number): number {
+        return 2 * participants - perfectParticipantsNumber;
+    }
+
+    private computeRoundMatchs(participants: number, perfectParticipantsNumber: number): number {
+        return participants - perfectParticipantsNumber / 2;
     }
 
     private async scheduleMatchs(
@@ -192,7 +211,10 @@ export class TournamentService {
         }
         const secondRoundParticipantsNumber = perfectParticipantsNumber / 2;
         const secondRoundMatchNumber = secondRoundParticipantsNumber / 2;
-        const secondRound = await this.roundService.createRound({ rank: 2, tournament: { connect: { id: tournament.id } } });
+        const secondRound = await this.roundService.createRound({
+            rank: 2,
+            tournament: { connect: { id: tournament.id } },
+        });
         const secondRoundMatchs = [];
         let secondRoundMatch = null;
         for (let i = 0; i < secondRoundMatchNumber; i++) {
@@ -214,15 +236,18 @@ export class TournamentService {
         }
     }
 
-    async deleteTournament(where: Prisma.TournamentWhereUniqueInput): Promise<Tournament> {
-        return this.prisma.tournament.delete({
-            where,
-            include: {
-                format: true,
-                rules: true,
-                teams: true,
-                tournamentType: true,
-            },
-        });
+    private traverse(values: MatchModel[], start: number, end: number): TournamentNode {
+        if (start > end) {
+            return null;
+        }
+        const middle = Math.floor((start + end) / 2);
+        const root = new TournamentNode(values[middle]);
+        root.left = this.traverse(values, start, middle - 1);
+        root.right = this.traverse(values, middle + 1, end);
+        return root;
+    }
+
+    private matchArrayToBST(values: MatchModel[]) {
+        return this.traverse(values, 0, values.length - 1);
     }
 }

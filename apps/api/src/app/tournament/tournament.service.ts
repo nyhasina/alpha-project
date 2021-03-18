@@ -1,13 +1,10 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { Prisma, Tournament } from '@prisma/client';
-import { CreateMatchInput, MatchModel } from '../match/match.model';
+import { MatchModel } from '../match/match.model';
 import { MatchService } from '../match/match.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { RoundService } from '../round/round.service';
 import { computePowerOf2 } from '../shared/helpers/compute-power-of-2.helper';
-import { generateUuid } from '../shared/helpers/generate-unique-serial.helper';
-import { getRandomInt } from '../shared/helpers/get-random-int.helper';
-import { TeamModel } from '../team/team.model';
 import { TournamentModel, TournamentNode } from './tournament.model';
 import { v4 as uuid } from 'uuid';
 
@@ -119,24 +116,8 @@ export class TournamentService {
                 HttpStatus.NOT_FOUND
             );
         }
-        // const perfectParticipantsNumber = computePowerOf2(tournament.teams.length);
-        // const firstRoundParticipantsNumber = this.computeRoundParticipants(tournament.teams.length, perfectParticipantsNumber);
-        // const firstRoundRestNumber = perfectParticipantsNumber - tournament.teams.length;
-        // const firstRoundMatchsNumber = this.computeRoundMatchs(tournament.teams.length, perfectParticipantsNumber);
-        // const nextRoundParticipantsNumber = perfectParticipantsNumber / 2;
-        // const nextRoundMatchsNumber = Math.trunc(firstRoundMatchsNumber / 2) + Math.trunc(nextRoundParticipantsNumber / 2);
-        // const firstRoundParticipants = [];
-        // const pool = tournament.teams;
-        // await this.scheduleMatchs(
-        //     firstRoundParticipantsNumber,
-        //     pool,
-        //     firstRoundParticipants,
-        //     tournament,
-        //     firstRoundMatchsNumber,
-        //     perfectParticipantsNumber
-        // );
-        const tree = this.generateTournamentTree(tournament);
-        console.log(tree);
+        const root = this.scheduleTournament(tournament);
+        this.printAllNodes(root);
         return this.updateTournament({
             data: {
                 closed: true,
@@ -159,95 +140,54 @@ export class TournamentService {
         });
     }
 
-    private generateTournamentTree(tournament: Partial<TournamentModel>): TournamentNode {
+    private bstTraversal(root: TournamentNode, process: Function) {
+        let queue = [root];
+        let currentNode;
+        while (queue.length) {
+            currentNode = queue.shift();
+            if (currentNode.left) {
+                queue.push(currentNode.left);
+            }
+            if (currentNode.right) {
+                queue.push(currentNode.right);
+            }
+            process(currentNode);
+        }
+    }
+
+    private scheduleTournament(tournament: Partial<TournamentModel>): TournamentNode {
         const n = tournament?.teams.length; // the number of participants of the tournament
         const p = computePowerOf2(n); // The smallest power of 2 at least as large as
-        const eliminatoryRoundParticipantsNumber = 2 * n - p;
         const eliminatoryRoundMatchsNumber = n - p / 2;
         const firstRoundParticipantsNumber = p / 2;
-        const firstRoundMatchsNumber = firstRoundParticipantsNumber / 2;
         const tournamentMatchsNumber = firstRoundParticipantsNumber - 1 + eliminatoryRoundMatchsNumber;
         const tournamentMatchs: MatchModel[] = [];
         for (let i = 0; i < tournamentMatchsNumber; i++) {
             tournamentMatchs.push(new MatchModel(uuid()));
         }
         tournamentMatchs.sort((a, b) => (a.getUuid() < b.getUuid() ? -1 : 1));
-        const tree = this.matchArrayToBST(tournamentMatchs);
+        const tree = this.generateTree(tournamentMatchs, 0, tournamentMatchs.length - 1);
+        this.printAllNodes(tree);
         return tree;
     }
 
-    private computeRoundParticipants(participants: number, perfectParticipantsNumber: number): number {
-        return 2 * participants - perfectParticipantsNumber;
-    }
-
-    private computeRoundMatchs(participants: number, perfectParticipantsNumber: number): number {
-        return participants - perfectParticipantsNumber / 2;
-    }
-
-    private async scheduleMatchs(
-        firstRoundParticipantsNumber: number,
-        pool: TeamModel[],
-        firstRoundParticipants: Partial<TeamModel>[],
-        tournament: Partial<TournamentModel>,
-        firstRoundMatchsNumber: number,
-        perfectParticipantsNumber: number
-    ) {
-        for (let i = 0; i < firstRoundParticipantsNumber; i++) {
-            const [team] = pool.splice(getRandomInt(pool.length - 1, 0), 1);
-            firstRoundParticipants.push(team);
-        }
-        const firstRound = await this.roundService.createRound({ rank: 1, tournament: { connect: { id: tournament.id } } });
-        const firstRoundMatchs = [];
-        let firstRoundMatch: CreateMatchInput = new CreateMatchInput(null, null, null);
-        for (let i = 0; i < firstRoundMatchsNumber; i++) {
-            const [teamA] = firstRoundParticipants.splice(getRandomInt(firstRoundParticipants.length - 1, 0), 1);
-            const [teamB] = firstRoundParticipants.splice(getRandomInt(firstRoundParticipants.length - 1, 0), 1);
-            firstRoundMatch = new CreateMatchInput(teamA.id, teamB.id, firstRound.id);
-            firstRoundMatchs.push(firstRoundMatch);
-        }
-        await this.saveMatch(firstRoundMatchs);
-        if (!pool.length) {
-            return;
-        }
-        const secondRoundParticipantsNumber = perfectParticipantsNumber / 2;
-        const secondRoundMatchNumber = secondRoundParticipantsNumber / 2;
-        const secondRound = await this.roundService.createRound({
-            rank: 2,
-            tournament: { connect: { id: tournament.id } },
-        });
-        const secondRoundMatchs = [];
-        let secondRoundMatch = null;
-        for (let i = 0; i < secondRoundMatchNumber; i++) {
-            const [teamA] = pool.splice(getRandomInt(pool.length - 1, 0), 1);
-            const [teamB] = pool.splice(getRandomInt(pool.length - 1, 0), 1);
-            secondRoundMatch = new CreateMatchInput(teamA?.id, teamB?.id, secondRound.id);
-            secondRoundMatchs.push(secondRoundMatch);
-        }
-        await this.saveMatch(secondRoundMatchs);
-    }
-
-    private async saveMatch(matchs: CreateMatchInput[]) {
-        for (const match of matchs) {
-            await this.matchService.createMatch({
-                round: match.round ? { connect: { id: match.round } } : {},
-                teamA: match.teamA ? { connect: { id: match?.teamA } } : {},
-                teamB: match?.teamB ? { connect: { id: match?.teamB } } : {},
-            });
-        }
-    }
-
-    private traverse(values: MatchModel[], start: number, end: number): TournamentNode {
+    private generateTree(values: MatchModel[], start: number, end: number): TournamentNode {
         if (start > end) {
             return null;
         }
         const middle = Math.floor((start + end) / 2);
         const root = new TournamentNode(values[middle]);
-        root.left = this.traverse(values, start, middle - 1);
-        root.right = this.traverse(values, middle + 1, end);
+        root.left = this.generateTree(values, start, middle - 1);
+        root.right = this.generateTree(values, middle + 1, end);
         return root;
     }
 
-    private matchArrayToBST(values: MatchModel[]) {
-        return this.traverse(values, 0, values.length - 1);
+    private printAllNodes(root: TournamentNode): void {
+        this.bstTraversal(root, function (node: TournamentNode) {
+            console.log(`--- Match ${node?.data.uuid} ---`);
+            console.log(`A: ${node?.left?.data.uuid}`);
+            console.log(`B: ${node?.right?.data.uuid}`);
+            console.log();
+        });
     }
 }

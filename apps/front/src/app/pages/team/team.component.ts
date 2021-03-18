@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms'
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 interface iTeam {
 name: string;
-date: Date;
+date: number;
 tag: string;
 owner: string;
 }
@@ -37,6 +37,13 @@ export class TeamComponent implements OnInit {
     this.modalGames = this.modalService.open(content, {centered: true, size: 'sm' });
    }
    confirm() {
+     const tab = {
+       name: this.formTeam.value.name,
+       tag: this.formTeam.value.tag,
+       date: Date.now(),
+       owner: 'John Doe'
+     }
+     this.tabsTeam.push(tab)
      console.log(this.formTeam.value.name)
    }
   ngOnInit(): void {

@@ -1,6 +1,6 @@
 import { Field, GraphQLISODateTime, Int, ObjectType } from '@nestjs/graphql';
 import { FormatModel } from '../format/format.model';
-import { CreateMatchInput, MatchModel } from '../match/match.model';
+import { MatchModel } from '../match/match.model';
 import { RoundModel } from '../round/round.model';
 import { RuleModel } from '../rule/rule.model';
 import { TeamModel } from '../team/team.model';

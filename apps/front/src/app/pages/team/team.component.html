@@ -1,5 +1,5 @@
 <div id="MyTeams" class="my-teams">
-    <div class="grid-wrapper">
+    <div class="grid-wrapper" *ngIf="tabsTeam.length ===0; else tabsContent ">
         <div class="teams--container">
             <div class="teams--title"><span>Mes équipes</span></div>
             <div class="teams--list is-empty">
@@ -10,6 +10,15 @@
         </div>
     </div>
 </div>
+
+<!-- LIST TEAM -->
+<ng-template #tabsContent>
+    
+</ng-template>
+<!-- END OF LIST TEAM -->
+
+<!-- MODAL ADD TEAM -->
+
 <ng-template #content let-c="close" let-d="dismiss">
     <div class="modal-header">
         <h2>CRÉATION D'ÉQUIPE</h2>
@@ -39,3 +48,4 @@
           </div>
     </div>
 </ng-template>
+<!-- END OF ADD TEAM -->

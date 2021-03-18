@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
-
+interface iTeam {
+name: string;
+date: Date;
+tag: string;
+owner: string;
+}
 @Component({
   selector: 'nicecactus-platform-team',
   templateUrl: './team.component.html',
@@ -12,6 +17,7 @@ export class TeamComponent implements OnInit {
   name = new FormControl('', [Validators.required]);
   tag = new FormControl('', [Validators.required]);
   formTeam: FormGroup;
+  tabsTeam: Array<iTeam> = []
   constructor(
     config: NgbModalConfig,
     private modalService: NgbModal,

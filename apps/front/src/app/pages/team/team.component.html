@@ -1,1 +1,108 @@
-<p>team works!</p>
+<div id="MyTeams" class="my-teams">
+    <div class="grid-wrapper" *ngIf="tabsTeam.length === 0; else tabsContent">
+        <div class="teams--container">
+            <div class="teams--title"><span>Mes équipes</span></div>
+            <div class="teams--list is-empty">
+                <strong><span>Tu ne fais partie d’aucune équipe :/</span></strong
+                ><span><span>Si tu reçois une invitation elle apparaitra ici</span></span
+                ><button type="button" class="button is-cta" (click)="open(content)">Créer une nouvelle équipe</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- LIST TEAM -->
+<ng-template #tabsContent>
+    <div class="row">
+        <div class="teams--team col-md-3">
+            <div class="teams--team-cover"><img src="/static/media/default-cover.b1cca19c.png" alt="hlkj" /></div>
+            <div class="teams--team-title">
+                [ jlkj ] - hlkj
+                <div class="teams--team-avatar">
+                    <img
+                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAMAAACahl6sAAACAWlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNS41LjAiPgogPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgeG1sbnM6YXV4PSJodHRwOi8vbnMuYWRvYmUuY29tL2V4aWYvMS4wL2F1eC8iCiAgICB4bWxuczpleGlmRVg9Imh0dHA6Ly9jaXBhLmpwL2V4aWYvMS4wLyIKICAgIHhtbG5zOnRpZmY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vdGlmZi8xLjAvIgogICBhdXg6TGVucz0iIgogICBleGlmRVg6TGVuc01vZGVsPSIiCiAgIHRpZmY6SW1hZ2VMZW5ndGg9IjIwMCIKICAgdGlmZjpJbWFnZVdpZHRoPSIyMDAiLz4KIDwvcmRmOlJERj4KPC94OnhtcG1ldGE+Cjw/eHBhY2tldCBlbmQ9InIiPz6AvditAAABgmlDQ1BzUkdCIElFQzYxOTY2LTIuMQAAKJF1kc8rRFEUxz8zCGMmioWFxaRhZTSoiY0yk1DSNEb5tXnzzA81P17vPUm2ynaKEhu/FvwFbJW1UkRKNjbWxIbpOW9GjWTO7Z77ud97zunec8EZy6hZozYA2ZypR8dC3tm5eW/9My4cNOKhU1ENbSQSmaSqfdxJrNiN365VPe5fa1pKGCo4GoSHVU03hceFJ1dNzeZt4TY1rSwJnwr36HJB4Vtbj5f5xeZUmb9s1mPRMDhbhL2pXxz/xWpazwrLy/FlMyvqz33sl7gTuZlpWTtldmAQZYwQXiYYJUyQPobEB/HTT6/sqJIfKOVPkZdcVbzGGjrLpEhj0iPqilRPyJoUPSEjw5rd/799NZID/eXq7hDUPVnWWxfUb0GxYFmfh5ZVPIKaR7jIVfLzBzD4Lnqhovn2oXkDzi4rWnwHzjeh/UFTdKUk1ch0JpPwegKeOWi9BtdCuWc/5xzfQ2xdvuoKdvegW+KbF78BBFxnuZrvdY0AAAJwUExURbK1vaGlromOml9mdWtxgYCFl5aaps3O0mFoeH2Dk9DR1NHS1ImNmpSYoX6Ek4aMmcTGzc/Q08jJzsfJz8HEzIqPmb3Ayby/yNPT1NPU1cLFzJ+iqqistMrLzcPGzXZ8ic/P0a+xt2lwfoSJl8XHzq2wtoOImLa4vcnL0MvN0V9ldmpxf9PU1nV6h7y/xmFod2NqedDS19LS04WKlWdufKqtt3d9i6epsHuBjnV8jLKzupeao5WZo250gqirsoCFlZ2hqmVse4GFkc7P0p2gqIuPnmxygZmdp4KHkrW4v4eMl3R6i9DR0cTFx3B2g21zg32CjsDCxayvtL7Bx5ufqbCyt76/w+vs7s3O0KGlsHh9i5CVoYmNmJGVnmNpepOYomJpePDw8oOIlWBnd8zNznJ4hWZse3+FlISKl6eqsLK0ubm7v7CzuHp/i4yRml1kdNTV1dXV1oCGlYqPnX+HlZufp5meqcDDy4+Tnc3Oz3h+jLO1utHS0sbHycvN0v///83P1MLDx3yCkf39/YeNmmRren2Ek2FneHp/kKOnsHB2h9fX1/v7/MHEy3uCkaqutoyRnHZ8jOnq7HV7iHmAkH+Glo+UoNjY2Pj4+fP09W10hKOmrWZsfOfo67W4vZ6irPr7+3+FkXN6id3e4sbGyrG1u4KHlLi7woCGkvX293N5h+7v8e/w8ZKXo+Tl6IGHl210gtTW2mVsfJyfp3uBkezt719mdtfX2ODi5fLz9G92hmtxgvn5+o2SnWdufn6DkPf3+Hl+i3uAjb/CyqSosXl+jnJ5ib7ByWhvgMPEx9fZ3W92hXF3hfT19omOmCZFyXrZvbgAAADQdFJOU///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////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"
+                        alt="hlkj"
+                    />
+                </div>
+            </div>
+            <div class="teams--team-date">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path
+                        fill-rule="evenodd"
+                        d="M17 13h-5v5h5v-5zM16 2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-1V2h-2zm3 18H5V9h14v11z"
+                    ></path>
+                </svg>
+                <span>Créée le <strong>18/03/2021</strong></span>
+            </div>
+            <div class="teams--team-owner">
+                <svg class="IconStar" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path
+                        fill-rule="evenodd"
+                        d="M12 18.27L18.18 22l-1.64-7.03L22 10.24l-7.19-.61L12 3 9.19 9.63 2 10.24l5.46 4.73L5.82 22z"
+                    ></path>
+                </svg>
+                <span>Propriétaire : <strong>Manjato#4962</strong></span>
+            </div>
+            <div class="teams--team-number">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path
+                        fill-rule="evenodd"
+                        d="M16.5 12c1.38 0 2.49-1.12 2.49-2.5S17.88 7 16.5 7a2.5 2.5 0 0 0 0 5zM9 11c1.66 0 2.99-1.34 2.99-3S10.66 5 9 5C7.34 5 6 6.34 6 8s1.34 3 3 3zm7.5 3c-1.83 0-5.5.92-5.5 2.75V19h11v-2.25c0-1.83-3.67-2.75-5.5-2.75zM9 13c-2.33 0-7 1.17-7 3.5V19h7v-2.25c0-.85.33-2.34 2.37-3.47C10.5 13.1 9.66 13 9 13z"
+                    ></path>
+                </svg>
+                <span>1 joueurs</span>
+            </div>
+        </div>
+        <div class="teams--team-add col-md-3"><span class="add-icon"  ></span><span (click)="open(content)">Créer une nouvelle équipe</span></div>
+    </div>
+</ng-template>
+<!-- END OF LIST TEAM -->
+
+<!-- MODAL ADD TEAM -->
+
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h2>CRÉATION D'ÉQUIPE</h2>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p>Donne un nom à ton équipe :</p>
+        <div class="example-container">
+            <form class="box" [formGroup]="formTeam">
+                <div class="form-group">
+                    <input
+                        class="form-control"
+                        type="text"
+                        name="name"
+                        placeholder="Nom de l'équipe"
+                        formControlName="name"
+                        autocomplete="off"
+                    />
+                    <div class="alert-link" *ngIf="f.name.touched && f.name.invalid">
+                        <p *ngIf="f.name.errors.required">Required fields</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input
+                        class="form-control"
+                        type="text"
+                        name="tag"
+                        placeholder="Tag de l'équipe"
+                        formControlName="tag"
+                        autocomplete="off"
+                    />
+                    <div class="alert-link" *ngIf="f.tag.touched && f.tag.invalid">
+                        <p *ngIf="f.tag.errors.required">Required fields</p>
+                    </div>
+                </div>
+
+                <button type="button" class="btn btn-outline-dark confirm-btn d-block" style="margin: 0 auto" (click)="confirm()">
+                    Créer l'équipe
+                </button>
+            </form>
+        </div>
+    </div>
+</ng-template>
+<!-- END OF ADD TEAM -->

@@ -13,7 +13,7 @@ owner: string;
   styleUrls: ['./team.component.scss']
 })
 export class TeamComponent implements OnInit {
-  modalGames = null;
+  modalAddTeam = null;
   name = new FormControl('', [Validators.required]);
   tag = new FormControl('', [Validators.required]);
   formTeam: FormGroup;
@@ -34,7 +34,7 @@ export class TeamComponent implements OnInit {
   }
   get f() { return this.formTeam.controls; }
   open(content) {
-    this.modalGames = this.modalService.open(content, {centered: true, size: 'sm' });
+    this.modalAddTeam = this.modalService.open(content, {centered: true, size: 'sm' });
    }
    confirm() {
      const tab = {
@@ -44,7 +44,8 @@ export class TeamComponent implements OnInit {
        owner: 'John Doe'
      }
      this.tabsTeam.push(tab)
-     console.log(this.formTeam.value.name)
+     this.formTeam.reset()
+     this.modalAddTeam.close()
    }
   ngOnInit(): void {
   }

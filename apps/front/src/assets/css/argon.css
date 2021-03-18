@@ -22784,6 +22784,7 @@ textarea[resize='horizontal']
     .g-sidenav-pinned .sidenav.fixed-left + .main-content
     {
         margin-left: 250px;
+        background: white;
     }
     .g-sidenav-pinned .sidenav.fixed-right + .main-content
     {

@@ -1,16 +1,31 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { Prisma, Tournament } from '@prisma/client';
-import { MatchModel } from '../match/match.model';
-import { MatchService } from '../match/match.service';
-import { PrismaService } from '../prisma/prisma.service';
-import { RoundService } from '../round/round.service';
-import { computePowerOf2 } from '../shared/helpers/compute-power-of-2.helper';
-import { TournamentModel, TournamentNode } from './tournament.model';
 import { v4 as uuid } from 'uuid';
+import { MatchModel } from '../match/match.model';
+import { PrismaService } from '../prisma/prisma.service';
+import { computePowerOf2 } from '../shared/helpers/compute-power-of-2.helper';
+import { getRandomInt } from '../shared/helpers/get-random-int.helper';
+import { TeamModel } from '../team/team.model';
+import { TournamentModel, TournamentNode } from './tournament.model';
 
 @Injectable()
 export class TournamentService {
-    constructor(private prisma: PrismaService, private matchService: MatchService, private roundService: RoundService) {}
+    constructor(private prisma: PrismaService) {}
+
+    private static bstTraversal(root: TournamentNode, process: Function) {
+        let queue = [root];
+        let currentNode;
+        while (queue.length) {
+            currentNode = queue.shift();
+            if (currentNode.left) {
+                queue.push(currentNode.left);
+            }
+            if (currentNode.right) {
+                queue.push(currentNode.right);
+            }
+            process(currentNode);
+        }
+    }
 
     async loadTournament(where: Prisma.TournamentWhereUniqueInput): Promise<Tournament | null> {
         return this.prisma.tournament.findUnique({
@@ -140,34 +155,19 @@ export class TournamentService {
         });
     }
 
-    private bstTraversal(root: TournamentNode, process: Function) {
-        let queue = [root];
-        let currentNode;
-        while (queue.length) {
-            currentNode = queue.shift();
-            if (currentNode.left) {
-                queue.push(currentNode.left);
-            }
-            if (currentNode.right) {
-                queue.push(currentNode.right);
-            }
-            process(currentNode);
-        }
-    }
-
     private scheduleTournament(tournament: Partial<TournamentModel>): TournamentNode {
         const n = tournament?.teams.length; // the number of participants of the tournament
         const p = computePowerOf2(n); // The smallest power of 2 at least as large as
-        const eliminatoryRoundMatchsNumber = n - p / 2;
+        const eliminatorRoundMatchesNumber = n - p / 2;
         const firstRoundParticipantsNumber = p / 2;
-        const tournamentMatchsNumber = firstRoundParticipantsNumber - 1 + eliminatoryRoundMatchsNumber;
-        const tournamentMatchs: MatchModel[] = [];
-        for (let i = 0; i < tournamentMatchsNumber; i++) {
-            tournamentMatchs.push(new MatchModel(uuid()));
+        const tournamentMatchesNumber = firstRoundParticipantsNumber - 1 + eliminatorRoundMatchesNumber;
+        const tournamentMatches: MatchModel[] = [];
+        for (let i = 0; i < tournamentMatchesNumber; i++) {
+            tournamentMatches.push(new MatchModel(uuid()));
         }
-        tournamentMatchs.sort((a, b) => (a.getUuid() < b.getUuid() ? -1 : 1));
-        const tree = this.generateTree(tournamentMatchs, 0, tournamentMatchs.length - 1);
-        this.printAllNodes(tree);
+        tournamentMatches.sort((a, b) => (a.getUuid() < b.getUuid() ? -1 : 1));
+        const tree = this.generateTree(tournamentMatches, 0, tournamentMatches.length - 1);
+        this.placeEliminatorRoundParticipants(tree, tournament.teams);
         return tree;
     }
 
@@ -183,11 +183,24 @@ export class TournamentService {
     }
 
     private printAllNodes(root: TournamentNode): void {
-        this.bstTraversal(root, function (node: TournamentNode) {
+        TournamentService.bstTraversal(root, function (node: TournamentNode) {
             console.log(`--- Match ${node?.data.uuid} ---`);
             console.log(`A: ${node?.left?.data.uuid}`);
             console.log(`B: ${node?.right?.data.uuid}`);
             console.log();
+        });
+    }
+
+    private placeEliminatorRoundParticipants(root: TournamentNode, participants: Partial<TeamModel>[]) {
+        let p = participants;
+        TournamentService.bstTraversal(root, function (node: TournamentNode) {
+            if (!node.left && !node.right) {
+                const [a] = p.splice(getRandomInt(p.length - 1, 0), 1);
+                const [b] = p.splice(getRandomInt(p.length - 1, 0), 1);
+                node.data.teamAId = a?.id;
+                node.data.teamBId = b?.id;
+                console.log(node.data);
+            }
         });
     }
 }

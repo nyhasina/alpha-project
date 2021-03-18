@@ -61,6 +61,19 @@
     transition: all .2s ease;
     position: relative;
 }
+.alert-link>p, .alert-link {
+    font-size: 15px;
+    font-weight: 900;
+    color: red;
+    text-decoration: underline;
+}
+
+::ng-deep.box{
+    .form-control.ng-touched.ng-invalid {
+        border: 2px solid red;
+        color: red
+    }
+}
 ::ng-deep.mat-form-field-infix  {
     width: 320px !important;
     width: 100%;

@@ -20,17 +20,22 @@
     <div class="modal-body">
         <p>Donne un nom à ton équipe :</p>
         <div class="example-container">
-              <mat-form-field>
-                <input matInput name="amount"  [formControl]="name" placeholder="Nom de l'équipe">
-                <mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error>
-             </mat-form-field>
-             <mat-form-field>
-                <input matInput name="tag"  [formControl]="tag" placeholder="Tag de l'équipe">
-                <mat-error *ngIf="tag.invalid">{{getErrorTag()}}</mat-error>
-             </mat-form-field>
+            <form class="box"  [formGroup]="formTeam">
+                <div class="form-group">
+                  <input  class="form-control" type="text" name="name" placeholder="Nom de l'équipe" formControlName="name" autocomplete="off">
+                  <div class="alert-link" *ngIf="f.name.touched && f.name.invalid">
+                    <p *ngIf="f.name.errors.required">Required fields</p>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input  class="form-control" type="text" name="tag" placeholder="Tag de l'équipe" formControlName="tag" autocomplete="off">
+                  <div class="alert-link" *ngIf="f.tag.touched && f.tag.invalid">
+                    <p *ngIf="f.tag.errors.required">Required fields</p>
+                  </div>
+                </div>
+
+        <button type="button" class="btn btn-outline-dark confirm-btn d-block" style="margin: 0 auto;" (click)="confirm()">Créer l'équipe</button>
+              </form>
           </div>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-outline-dark confirm-btn" style="margin: 0 auto;" (click)="confirm()">Créer l'équipe</button>
     </div>
 </ng-template>

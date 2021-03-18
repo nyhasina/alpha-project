@@ -4,15 +4,16 @@ import { CommonModule } from '@angular/common';
 import { TeamRoutingModule } from './team-routing.module';
 import { TeamComponent } from './team.component';
 import {MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [TeamComponent],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     TeamRoutingModule,
     MatFormFieldModule,
-    MatInputModule
   ]
 })
 export class TeamModule { }

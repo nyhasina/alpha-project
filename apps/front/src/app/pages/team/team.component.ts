@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -11,23 +11,28 @@ export class TeamComponent implements OnInit {
   modalGames = null;
   name = new FormControl('', [Validators.required]);
   tag = new FormControl('', [Validators.required]);
-  constructor(config: NgbModalConfig, private modalService: NgbModal) {
+  formTeam: FormGroup;
+  constructor(
+    config: NgbModalConfig,
+    private modalService: NgbModal,
+    private formBuilder?: FormBuilder) {
     config.backdrop = 'static';
     config.keyboard = false;
+    this.createTeam()
   }
+  createTeam() {
+    this.formTeam = this.formBuilder.group({
+      name: ['', Validators.required],
+      tag: ['', Validators.required],
+  });
+  }
+  get f() { return this.formTeam.controls; }
   open(content) {
     this.modalGames = this.modalService.open(content, {centered: true, size: 'sm' });
    }
-   getErrorMessage() {
-    if (this.name.hasError('required')) {
-      return 'You must enter a value';
-    }
-  }
-  getErrorTag() {
-    if (this.name.hasError('required')) {
-      return 'You must enter a value';
-    }
-  }
+   confirm() {
+     console.log(this.formTeam.value.name)
+   }
   ngOnInit(): void {
   }
 

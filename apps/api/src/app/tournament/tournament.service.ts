@@ -6,13 +6,13 @@ import { PrismaService } from '../prisma/prisma.service';
 import { computePowerOf2 } from '../shared/helpers/compute-power-of-2.helper';
 import { getRandomInt } from '../shared/helpers/get-random-int.helper';
 import { TeamModel } from '../team/team.model';
-import { TournamentModel, TournamentNode } from './tournament.model';
+import { TournamentModel, MatchNode } from './tournament.model';
 
 @Injectable()
 export class TournamentService {
     constructor(private prisma: PrismaService) {}
 
-    private static bstTraversal(root: TournamentNode, process: Function) {
+    private static bstTraversal(root: MatchNode, process: Function) {
         let queue = [root];
         let currentNode;
         while (queue.length) {
@@ -154,7 +154,7 @@ export class TournamentService {
         });
     }
 
-    private scheduleTournament(tournament: Partial<TournamentModel>): TournamentNode {
+    private scheduleTournament(tournament: Partial<TournamentModel>): MatchNode {
         const n = tournament?.teams.length; // the number of participants of the tournament
         const p = computePowerOf2(n); // The smallest power of 2 at least as large as
         const eliminatorRoundMatchesNumber = n - p / 2;
@@ -172,27 +172,27 @@ export class TournamentService {
         return tree;
     }
 
-    private generateTree(values: MatchModel[], start: number, end: number): TournamentNode {
+    private generateTree(values: MatchModel[], start: number, end: number): MatchNode {
         if (start > end) {
             return null;
         }
         const middle = Math.floor((start + end) / 2);
-        const root = new TournamentNode(values[middle]);
+        const root = new MatchNode(values[middle]);
         root.left = this.generateTree(values, start, middle - 1);
         root.right = this.generateTree(values, middle + 1, end);
         return root;
     }
 
-    private printAllNodes(root: TournamentNode): void {
-        TournamentService.bstTraversal(root, function (node: TournamentNode) {
+    private printAllNodes(root: MatchNode): void {
+        TournamentService.bstTraversal(root, function (node: MatchNode) {
             console.log(`--- Match ${node?.data.uuid} ---`);
             console.log(`Team ${node.data.teamAId} vs Team ${node.data.teamBId}`);
         });
     }
 
-    private placeEliminatorRoundParticipants(root: TournamentNode, participants: Partial<TeamModel>[]) {
+    private placeEliminatorRoundParticipants(root: MatchNode, participants: Partial<TeamModel>[]) {
         let p = participants;
-        TournamentService.bstTraversal(root, function (node: TournamentNode) {
+        TournamentService.bstTraversal(root, function (node: MatchNode) {
             if (!node.left && !node.right) {
                 const [a] = p.splice(getRandomInt(p.length - 1, 0), 1);
                 const [b] = p.splice(getRandomInt(p.length - 1, 0), 1);
@@ -203,9 +203,9 @@ export class TournamentService {
         return p;
     }
 
-    private placeFirstRoundParticipants(root: TournamentNode, participants: Partial<TeamModel>[]) {
+    private placeFirstRoundParticipants(root: MatchNode, participants: Partial<TeamModel>[]) {
         let p = participants;
-        TournamentService.bstTraversal(root, function (node: TournamentNode) {
+        TournamentService.bstTraversal(root, function (node: MatchNode) {
             if (node.left && !node.right) {
                 const [a] = p.splice(getRandomInt(p.length - 1, 0), 1);
                 node.data.teamAId = a.id;

@@ -40,10 +40,10 @@ export class TournamentModel {
     rounds: RoundModel[];
 }
 
-export class TournamentNode {
+export class MatchNode {
     data: Partial<MatchModel>;
-    left: TournamentNode;
-    right: TournamentNode;
+    left: MatchNode;
+    right: MatchNode;
 
     constructor(data: Partial<MatchModel>) {
         this.data = data;
@@ -53,5 +53,3 @@ export class TournamentNode {
         return this.data.uuid;
     }
 }
-
-export class TournamentTree {}

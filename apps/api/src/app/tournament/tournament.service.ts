@@ -166,7 +166,7 @@ export class TournamentService {
         }
         tournamentMatches.sort((a, b) => (a.getUuid() < b.getUuid() ? -1 : 1));
         const tree = this.generateTree(tournamentMatches, 0, tournamentMatches.length - 1);
-        this.placeEliminatorRoundParticipants(tree, tournament.teams);
+        const rest = this.placeEliminatorRoundParticipants(tree, tournament.teams);
         return tree;
     }
 
@@ -184,8 +184,11 @@ export class TournamentService {
     private printAllNodes(root: TournamentNode): void {
         TournamentService.bstTraversal(root, function (node: TournamentNode) {
             console.log(`--- Match ${node?.data.uuid} ---`);
-            console.log(`A: ${node?.left?.data.uuid}`);
-            console.log(`B: ${node?.right?.data.uuid}`);
+            console.log(
+                `${node.left ? 'Winner from' : 'Team'} ${node?.left?.data.uuid || node.data.teamAId} vs ${
+                    node.left ? 'Winner from' : 'Team'
+                } ${node?.right?.data.uuid || node?.data.teamBId}`
+            );
             console.log();
         });
     }
@@ -198,8 +201,8 @@ export class TournamentService {
                 const [b] = p.splice(getRandomInt(p.length - 1, 0), 1);
                 node.data.teamAId = a?.id;
                 node.data.teamBId = b?.id;
-                console.log(node.data);
             }
         });
+        return p;
     }
 }

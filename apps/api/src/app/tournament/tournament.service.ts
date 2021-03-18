@@ -132,7 +132,6 @@ export class TournamentService {
             );
         }
         const root = this.scheduleTournament(tournament);
-        this.printAllNodes(root);
         return this.updateTournament({
             data: {
                 closed: true,

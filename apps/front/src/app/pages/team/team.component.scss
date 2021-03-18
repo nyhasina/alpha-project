@@ -81,3 +81,42 @@
     box-shadow: 0 2px 2px rgb(0 0 0 / 10%);
     color: #323639;
 }
+.teams--team-add {
+    font-size: 18px;
+    font-weight: 600;
+    color: #818797;
+    text-align: center;
+    text-decoration: underline;
+    border-radius: 5px;
+    border: 2px dashed #818797;
+    transition: all .2s ease;
+    cursor: pointer;
+    padding: 107px 20px;
+}
+.teams--team-add .add-icon:before {
+    content: "";
+    width: 30px;
+    height: 6px;
+    background-color: #fff;
+    display: inline-block;
+    position: absolute;
+    margin-left: -15px;
+    margin-top: -3px;
+    left: 50%;
+    top: 50%;
+}
+.teams--team-add .add-icon:after {
+    content: "";
+    width: 30px;
+    height: 6px;
+    background-color: #fff;
+    display: inline-block;
+    transform: rotate(
+90deg
+);
+    position: absolute;
+    margin-left: -15px;
+    margin-top: -3px;
+    left: 50%;
+    top: 50%;
+}

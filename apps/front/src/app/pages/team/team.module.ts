@@ -5,9 +5,10 @@ import { TeamRoutingModule } from './team-routing.module';
 import { TeamComponent } from './team.component';
 import {MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DetailTeamComponent } from './component/detail-team/detail-team.component';
 
 @NgModule({
-  declarations: [TeamComponent],
+  declarations: [TeamComponent, DetailTeamComponent],
   imports: [
     CommonModule,
     FormsModule,

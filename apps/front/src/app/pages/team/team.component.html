@@ -53,7 +53,12 @@
                 <span>1 joueurs</span>
             </div>
         </div>
-        <div class="teams--team-add col-md-3"><span class="add-icon"  ></span><span (click)="open(content)">Créer une nouvelle équipe</span></div>
+        <div class="teams--team-add col-md-3">
+           <div (click)="open(content)">
+            <i class="fa fa-plus fa-2x" aria-hidden="true" style="color: black;"></i>
+            <div>Créer une nouvelle équipe</div>
+           </div>
+        </div>
     </div>
 </ng-template>
 <!-- END OF LIST TEAM -->

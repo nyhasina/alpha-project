@@ -85,6 +85,7 @@
     font-size: 18px;
     font-weight: 600;
     color: #818797;
+    height: max-content;
     text-align: center;
     text-decoration: underline;
     border-radius: 5px;
@@ -92,31 +93,4 @@
     transition: all .2s ease;
     cursor: pointer;
     padding: 107px 20px;
-}
-.teams--team-add .add-icon:before {
-    content: "";
-    width: 30px;
-    height: 6px;
-    background-color: #fff;
-    display: inline-block;
-    position: absolute;
-    margin-left: -15px;
-    margin-top: -3px;
-    left: 50%;
-    top: 50%;
-}
-.teams--team-add .add-icon:after {
-    content: "";
-    width: 30px;
-    height: 6px;
-    background-color: #fff;
-    display: inline-block;
-    transform: rotate(
-90deg
-);
-    position: absolute;
-    margin-left: -15px;
-    margin-top: -3px;
-    left: 50%;
-    top: 50%;
 }
